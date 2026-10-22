@@ -266,7 +266,6 @@ function scheduleView(rows, opt) {
   const td = isoDay(today());
   const d = schedDay || (td <= 6 ? td : 1);
   
-  // Available groups from TSUE EDUPAGE_SCHEDULE_DATA
   const hasEdu = typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA;
   const groups = hasEdu ? Object.keys(EDUPAGE_SCHEDULE_DATA).sort() : ['AT-900/26', 'IB-900/26', 'II-900/26', 'RST-81/25'];
   
@@ -278,22 +277,19 @@ function scheduleView(rows, opt) {
     }
   }
 
-  // Filter groups by course if selected
   const filteredGroups = groups.filter(g => {
     if (currentSchedCourse === 'all') return true;
     const gData = EDUPAGE_SCHEDULE_DATA[g];
     return gData && String(gData.course) === String(currentSchedCourse);
   });
 
-  // Get schedule lessons for current selection
-  const dayIdx = d - 1; // 0 to 5
+  const dayIdx = d - 1;
   let lessons = [];
   
   if (hasEdu && EDUPAGE_SCHEDULE_DATA[currentSchedGroup]) {
     const gObj = EDUPAGE_SCHEDULE_DATA[currentSchedGroup];
     const wObj = gObj[currentSchedWeek] || gObj['odd'] || {};
     const dObj = wObj[dayIdx] || {};
-    // dObj keys are slots e.g. "0", "1", "2"...
     Object.keys(dObj).forEach(slotKey => {
       const item = dObj[slotKey];
       if (item && item.subject) {
@@ -318,7 +314,6 @@ function scheduleView(rows, opt) {
     }));
   }
 
-  // Filter lessons if text search is entered
   if (currentSchedSearch) {
     const q = currentSchedSearch.toLowerCase();
     lessons = lessons.filter(l => 
@@ -331,7 +326,6 @@ function scheduleView(rows, opt) {
   const daysPills = [1, 2, 3, 4, 5, 6].map(i => {
     const isToday = i === td;
     const isActive = i === d;
-    // count pairs for this day
     let count = 0;
     if (hasEdu && EDUPAGE_SCHEDULE_DATA[currentSchedGroup]) {
       const gObj = EDUPAGE_SCHEDULE_DATA[currentSchedGroup];
@@ -349,7 +343,7 @@ function scheduleView(rows, opt) {
     '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">' +
       '<div>' +
         '<h2>TDIU Rasmiy Dars Jadvali</h2>' +
-        '<p>Fakultet guruhlari, o'qituvchilar va xonalar bo'yicha real vaqt rejimida avtomatlashtirilgan interaktiv jadval tizimi.</p>' +
+        '<p>Fakultet guruhlari, ustozlar va auditoriyalar bo&#39;yicha real vaqt rejimida avtomatlashtirilgan interaktiv jadval tizimi.</p>' +
       '</div>' +
       '<div class="sched-btn-group">' +
         '<button type="button" class="' + (currentSchedWeek === 'odd' ? 'active' : '') + '" data-act="sched-week" data-week="odd">Toq hafta</button>' +
@@ -370,7 +364,7 @@ function scheduleView(rows, opt) {
         '</select>' +
       '</div>' +
       '<div style="flex:1;min-width:200px">' +
-        '<input type="text" placeholder="Fan, o'qituvchi yoki xona qidirish…" value="' + esc(currentSchedSearch) + '" data-act="sched-search-input" style="height:40px;border-radius:8px;border:none;padding:0 12px;width:100%">' +
+        '<input type="text" placeholder="Fan, o&#39;qituvchi yoki xona qidirish…" value="' + esc(currentSchedSearch) + '" data-act="sched-search-input" style="height:40px;border-radius:8px;border:none;padding:0 12px;width:100%">' +
       '</div>' +
     '</div>' +
   '</div>' +
@@ -382,10 +376,10 @@ function scheduleView(rows, opt) {
     '</div>' +
     (lessons.length ? 
       '<div class="lessons-list">' + lessons.map(l => {
-        let typeCls = 'type-lecture';
-        let typeName = 'Ma\'ruza';
-        if (l.type === 'practice' || l.type === 'seminar') { typeCls = 'type-practice'; typeName = 'Amaliyot'; }
-        else if (l.type === 'lab') { typeCls = 'type-lab'; typeName = 'Laboratoriya'; }
+        let typeCls = "type-lecture";
+        let typeName = "Ma&apos;ruza";
+        if (l.type === "practice" || l.type === "seminar") { typeCls = "type-practice"; typeName = "Amaliyot"; }
+        else if (l.type === "lab") { typeCls = "type-lab"; typeName = "Laboratoriya"; }
         return '<div class="lesson-card">' +
           '<div class="lesson-time">' +
             '<b>' + l.slot + '-para</b>' +
@@ -1174,14 +1168,14 @@ document.addEventListener("input", (e) => {
     }
   });
   document.addEventListener("click", async (e) => {
-    const b = e.target.closest("button, a");
-    if (b && b.dataset.act === "sched-week") {
-      currentSchedWeek = b.dataset.week;
+    const btnSched = e.target.closest("button, a");
+    if (btnSched && btnSched.dataset.act === "sched-week") {
+      currentSchedWeek = btnSched.dataset.week;
       render();
       return;
     }
-    if (b && b.dataset.act === "sched-day") {
-      schedDay = Number(b.dataset.day);
+    if (btnSched && btnSched.dataset.act === "sched-day") {
+      schedDay = Number(btnSched.dataset.day);
       render();
       return;
     }
@@ -1336,7 +1330,7 @@ function buildLocalState(meUser) {
       gpaT: [[5, 10], [4.5, 8.3], [4, 6.7], [3.5, 5]],
       attT: [["0–10 soat", 5], ["11–15 soat", 4], ["16–25 soat", 3], ["26–30 soat", 2], ["31+", 0]],
       gradeT: [[86, 5, "A'lo"], [71, 4, "Yaxshi"], [55, 3, "Qoniqarli"], [0, 2, "Qoniqarsiz"]],
-      levels: [[80, "A'lo daraja", "Grant olish imkoniyati eng yuqori"], [60, "Yaxshi daraja", "Grant bo'yicha raqobatbardosh"], [40, "O'rta daraja", "Kontraktda qolish ehtimoli yuqori"], [0, "Quyi daraja", "Quyi ko'rsatkich"]],
+      levels: [[80, "A'lo daraja", "Grant olish imkoniyati eng yuqori"], [60, "Yaxshi daraja", "Grant bo‘yicha raqobatbardosh"], [40, "O'rta daraja", "Kontraktda qolish ehtimoli yuqori"], [0, "Quyi daraja", "Quyi ko'rsatkich"]],
       eventIfi: {},
       hoursPerPair: 2
     },

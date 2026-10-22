@@ -10,16 +10,7 @@
       "grp": "AT-900/26",
       "phone": "+998901234567"
     },
-    {
-      "login": "antigravity",
-      "name": "Antigravity",
-      "surname": "Core",
-      "role": "admin",
-      "university": "TDIU",
-      "faculty": "Raqamli iqtisodiyot",
-      "grp": "AT-900/26",
-      "phone": "+998909876543"
-    },
+    
     {
       "login": "sardor.alisherov",
       "pass": "pbkdf2$100000$+YPHPo5TlmM3+uX4hn2XpA==$9PiE/ecSl4jy7rqYEn/ZNOTPeYdQG0UUeo+Q3FX70Gw=",
