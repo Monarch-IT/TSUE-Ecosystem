@@ -1,0 +1,7 @@
+{
+  "versionCode": 10,
+  "versionName": "1.1.0",
+  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.1.0/riat-tsue-android.apk",
+  "changelog": "• Оптимизация и адаптивное масштабирование реестра студентов в кабинете тьютора\\n• Поддержка специализированных кабинетов студента и родителя\\n• Виджет актуального расписания и ближайшей пары",
+  "forceUpdate": false
+}

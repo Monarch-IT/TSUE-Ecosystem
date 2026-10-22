@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RIAT Messenger (Telegram Web)</title>
+  <meta name="description" content="Внутривузовский Telegram-мессенджер факультета Цифровой Экономики ТГЭУ">
+  <link rel="icon" href="/assets/images/faculty_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/messenger.css">
+</head>
+<body>
+
+  <div class="tg-container">
+    
+    <!-- ════════ COLUMN 1: TELEGRAM FOLDERS / MAIN NAVIGATION ════════ -->
+    <nav class="tg-folders-bar">
+      <a href="/ecosystem" class="tg-folder-item" title="Хаб Экосистемы">
+        <i class="fa-solid fa-cubes"></i>
+        <span>Хаб</span>
+      </a>
+
+      <div class="tg-folder-sep"></div>
+
+      <div class="tg-folder-item active" onclick="setFolder('all', this)" title="Все чаты">
+        <i class="fa-solid fa-comments"></i>
+        <span>Все</span>
+        <div class="tg-folder-badge" id="badgeAll">3</div>
+      </div>
+
+      <div class="tg-folder-item" onclick="setFolder('channels', this)" title="Официальные каналы">
+        <i class="fa-solid fa-bullhorn"></i>
+        <span>Каналы</span>
+      </div>
+
+      <div class="tg-folder-item" onclick="setFolder('groups', this)" title="Учебные группы">
+        <i class="fa-solid fa-users"></i>
+        <span>Группы</span>
+      </div>
+
+      <div class="tg-folder-item" onclick="setFolder('direct', this)" title="Личные чаты">
+        <i class="fa-solid fa-user-tie"></i>
+        <span>Личные</span>
+      </div>
+
+      <div class="tg-folder-item" onclick="setFolder('bots', this)" title="Боты и сервисы">
+        <i class="fa-solid fa-robot"></i>
+        <span>Боты</span>
+      </div>
+
+      <div class="tg-folder-spacer"></div>
+
+      <a href="/bank" class="tg-folder-item" title="RIAT Equity Bank">
+        <i class="fa-solid fa-landmark"></i>
+        <span>Bank</span>
+      </a>
+
+      <div class="tg-folder-item" onclick="toggleTheme()" title="Сменить тему оформления">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+        <span>Тема</span>
+      </div>
+
+      <div class="tg-folder-item" onclick="window.location.href='/auth'" title="Профиль SSO">
+        <i class="fa-solid fa-circle-user"></i>
+        <span id="folderUserName">Профиль</span>
+      </div>
+    </nav>
+
+    <!-- ════════ COLUMN 2: CHATS & DIALOGS LIST ════════ -->
+    <aside class="tg-chats-column" id="chatsColumn">
+      <div class="tg-chats-header">
+        <button class="tg-menu-btn" onclick="toggleMainMenu()" title="Меню">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="tg-search-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input 
+            type="text" 
+            class="tg-search-input" 
+            id="chatSearchInput" 
+            placeholder="Поиск сообщений и чатов..." 
+            oninput="renderChatList()"
+          >
+        </div>
+      </div>
+
+      <div class="tg-chats-list" id="chatsListContainer">
+        <!-- Rendered dynamically -->
+      </div>
+    </aside>
+
+    <!-- ════════ COLUMN 3: MAIN CHAT DIALOG ════════ -->
+    <main class="tg-main-dialog">
+      
+      <!-- Top header bar -->
+      <div class="tg-dialog-header">
+        <div class="tg-header-left">
+          <button class="tg-back-mobile" onclick="backToDialogsList()" title="Назад к списку">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <div class="tg-avatar-box" style="width: 40px; height: 40px; cursor: pointer;" onclick="toggleRightPanel()">
+            <div class="tg-avatar-img" id="headerAvatarImg" style="background: linear-gradient(135deg, #004899, #00224d);">
+              <i class="fa-solid fa-bullhorn" style="font-size: 16px;"></i>
+            </div>
+          </div>
+          <div class="tg-header-meta" onclick="toggleRightPanel()">
+            <div class="tg-header-title" id="headerTitle">
+              Деканат · Официальный канал
+              <i class="fa-solid fa-certificate tg-verified-star" title="Верифицированный канал деканата"></i>
+            </div>
+            <div class="tg-header-status" id="headerStatus">1,420 подписчиков</div>
+          </div>
+        </div>
+
+        <div class="tg-header-right">
+          <button class="tg-action-btn" onclick="searchInsideChat()" title="Поиск по истории">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button class="tg-action-btn" onclick="toggleRightPanel()" title="Информация о канале">
+            <i class="fa-solid fa-circle-info"></i>
+          </button>
+          <button class="tg-action-btn" onclick="openChatMenu()" title="Действия">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages scroll container -->
+      <div class="tg-messages-canvas" id="messagesCanvas">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Input composer dock -->
+      <div class="tg-input-dock">
+        <button class="tg-attach-btn" onclick="attachTelegramDoc()" title="Прикрепить файл">
+          <i class="fa-solid fa-paperclip"></i>
+        </button>
+        
+        <textarea 
+          class="tg-composer-input" 
+          id="messageInput" 
+          rows="1" 
+          placeholder="Написать сообщение..." 
+          onkeydown="handleTelegramInputKey(event)"
+        ></textarea>
+
+        <button class="tg-emoji-btn" onclick="insertQuickEmoji()" title="Смайлик">
+          <i class="fa-regular fa-face-smile"></i>
+        </button>
+
+        <button class="tg-send-circle" onclick="sendTelegramMessage()" title="Отправить сообщение">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- ════════ COLUMN 4: RIGHT INFO / PROFILE DRAWER ════════ -->
+    <aside class="tg-right-panel" id="rightProfilePanel">
+      <div class="tg-profile-header">
+        <button class="tg-profile-close" onclick="toggleRightPanel()" title="Закрыть">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="tg-big-avatar" id="drawerBigAvatar" style="background: linear-gradient(135deg, #004899, #00224d);">
+          <i class="fa-solid fa-bullhorn"></i>
+        </div>
+        <div class="tg-profile-name" id="drawerProfileName">Деканат · Официальный канал</div>
+        <div class="tg-profile-status" id="drawerProfileStatus">Официальный верифицированный канал</div>
+      </div>
+
+      <div class="tg-profile-section">
+        <div class="tg-profile-label">Описание</div>
+        <div class="tg-profile-text" id="drawerProfileDesc">
+          Официальные приказы руководства факультета, академические дедлайны и распоряжения.
+        </div>
+      </div>
+
+      <div class="tg-profile-section">
+        <div class="tg-profile-label">Участники и администраторы</div>
+        <div id="drawerMembersList">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <div class="tg-profile-section">
+        <div class="tg-profile-label">Быстрые действия</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="/bank" style="color: #2481cc; text-decoration: none; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-landmark"></i> Открыть RIAT Equity Bank
+          </a>
+          <a href="/ecosystem" style="color: #2481cc; text-decoration: none; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-cubes"></i> Перейти в Хаб Экосистемы
+          </a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="/js/messenger.js"></script>
+</body>
+</html>

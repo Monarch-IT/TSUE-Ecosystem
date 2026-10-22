@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIAT Ecosystem — Единая технологическая архитектура сервисов</title>
+  <link rel="icon" href="/assets/images/faculty_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    :root {
+      --bg-body: #f4f6fa;
+      --bg-card: #ffffff;
+      --bg-card-header: #fcfdfe;
+      --text-head: #00224d;
+      --text-base: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --btn-status-bg: #f8fafc;
+    }
+    body.dark-mode {
+      --bg-body: #060e1a !important;
+      --bg-card: #0f1b2e !important;
+      --bg-card-header: #142238 !important;
+      --text-head: #f8fafc !important;
+      --text-base: #e2e8f0 !important;
+      --text-muted: #94a3b8 !important;
+      --border-color: #1e293b !important;
+      --btn-status-bg: #0b1526 !important;
+    }
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-base);
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .eco-page-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .eco-hero {
+      background: linear-gradient(135deg, #00224d 0%, #004899 60%, #0066cc 100%);
+      color: #ffffff;
+      padding: 44px 0 36px;
+      border-bottom: 3px solid #00224d;
+    }
+    body.dark-mode .eco-hero {
+      background: linear-gradient(135deg, #050d18 0%, #0a2540 60%, #0c3866 100%);
+      border-bottom-color: #030810;
+    }
+    .eco-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .eco-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .eco-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .eco-hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 10px 0;
+    }
+    .eco-hero-desc {
+      font-size: 15.5px;
+      line-height: 1.6;
+      max-width: 820px;
+      color: #dbeafe;
+      margin: 0;
+    }
+    .eco-main-content {
+      padding: 36px 0 60px;
+      flex: 1;
+    }
+    .eco-section-head {
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .eco-section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-head);
+      margin: 0 0 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eco-section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .eco-grid-9 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .eco-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .eco-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 72, 153, 0.1);
+      border-color: #93c5fd;
+    }
+    .eco-card-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card-header);
+    }
+    .eco-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      flex-shrink: 0;
+    }
+    .eco-icon-blue { background: #e0f2fe; color: #0284c7; }
+    .eco-icon-navy { background: #e0e7ff; color: #3730a3; }
+    .eco-icon-emerald { background: #dcfce7; color: #059669; }
+    .eco-icon-gold { background: #fef3c7; color: #d97706; }
+    .eco-icon-purple { background: #f3e8ff; color: #7e22ce; }
+    .eco-icon-rose { background: #ffe4e6; color: #e11d48; }
+    .eco-icon-cyan { background: #cffafe; color: #0891b2; }
+    .eco-icon-slate { background: #f1f5f9; color: #475569; }
+    .eco-icon-orange { background: #ffedd5; color: #ea580c; }
+    .eco-card-title-group {
+      flex: 1;
+      min-width: 0;
+    }
+    .eco-card-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .eco-card-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-head);
+      margin: 2px 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .eco-status-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .eco-status-beta { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .eco-status-dev { background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
+    .eco-status-sec { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+    .eco-card-body {
+      padding: 18px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .eco-card-desc {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--text-muted);
+      margin: 0 0 16px;
+      flex: 1;
+    }
+    .eco-card-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+    }
+    .eco-card-features li {
+      font-size: 12.5px;
+      color: var(--text-base);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eco-card-features li i {
+      color: #004899;
+      font-size: 11px;
+    }
+    .eco-card-actions {
+      border-top: 1px solid var(--border-color);
+      padding-top: 14px;
+    }
+    .eco-btn-status {
+      width: 100%;
+      background: var(--btn-status-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .eco-footer {
+      background: #00224d;
+      color: #cbd5e1;
+      padding: 22px 0;
+      font-size: 13px;
+      border-top: 1px solid #001733;
+    }
+    .eco-footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .lang-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .lang-btn.active {
+      background: #ffffff;
+      color: #00224d;
+    }
+    .theme-top-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .auth-btn-top {
+      background: #ffffff;
+      color: #004899;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .notif-btn-top {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+    .notif-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #ef4444;
+      color: #ffffff;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 5px;
+    }
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 9998;
+      display: none;
+    }
+    .sidebar-panel {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 380px;
+      height: 100%;
+      background: var(--bg-card);
+      box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+      z-index: 9999;
+      transition: right 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-panel.open {
+      right: 0;
+    }
+    .sidebar-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #00224d;
+      color: #ffffff;
+    }
+    .sidebar-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-close {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .sidebar-actions-strip {
+      padding: 10px 16px;
+      background: var(--btn-status-bg);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+    .sidebar-body {
+      padding: 16px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .notif-card {
+      border: 1px solid var(--border-color);
+      border-left: 4px solid #004899;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      background: var(--btn-status-bg);
+      position: relative;
+    }
+    .notif-card.urgent {
+      border-left-color: #ef4444;
+      background: #fef2f2;
+    }
+    body.dark-mode .notif-card.urgent {
+      background: #2a1215;
+    }
+    .notif-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      padding-right: 20px;
+    }
+    .notif-text {
+      font-size: 13px;
+      color: var(--text-base);
+      line-height: 1.45;
+      margin: 0;
+    }
+    .notif-del-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 13px;
+      padding: 2px 4px;
+    }
+    .notif-del-btn:hover {
+      color: #ef4444;
+    }
+    @media (max-width: 992px) {
+      .eco-grid-9 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .eco-grid-9 { grid-template-columns: 1fr; }
+      .eco-hero-title { font-size: 26px; }
+      .eco-footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .sidebar-panel { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="eco-page-wrap">
+
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <div class="top-left-group">
+          <div class="top-auth-wrap">
+            <a href="/#home" class="top-auth-btn" style="text-decoration:none;">
+              <span data-i18n="topBackPortal">Портал RIAT</span>
+            </a>
+          </div>
+          <div style="display:flex; gap:4px; margin-left:10px;">
+            <button class="lang-btn" onclick="setHubLang('uz')">UZ</button>
+            <button class="lang-btn active" onclick="setHubLang('ru')">RU</button>
+            <button class="lang-btn" onclick="setHubLang('en')">EN</button>
+          </div>
+        </div>
+        <div class="top-quick-links" style="display:flex; align-items:center; gap:10px;">
+          <button class="theme-top-btn" onclick="toggleDarkMode()" title="Переключить тему">
+            <i class="fa-solid fa-moon" id="themeIcon"></i>
+          </button>
+          <button class="notif-btn-top" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bell"></i>
+            <span data-i18n="topNotif">Уведомления</span>
+            <span class="notif-badge" id="notifBadgeCount" style="display:none;">0</span>
+          </button>
+          <button class="auth-btn-top" id="userAuthBtn" onclick="window.location.href='/auth.html'">
+            <i class="fa-solid fa-user"></i>
+            <span id="userAuthBtnLabel">Войти в аккаунт</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-header">
+      <div class="header-container">
+        <div class="brand-section">
+          <div class="university-logo-emblem">
+            <img src="/assets/images/faculty_logo.png" alt="RIAT">
+          </div>
+          <div class="brand-titles">
+            <h1 data-i18n="univTitle" style="font-size: 19px; font-weight: 700; line-height: 1.25; margin: 0 0 4px; max-width: 540px;">Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti</h1>
+            <div class="faculty-badge">
+              <i class="fa-solid fa-layer-group"></i>
+              <span data-i18n="badgeTitle">RIAT Ecosystem · Единая архитектура сервисов</span>
+            </div>
+          </div>
+        </div>
+        <div class="header-motto-call">
+          <div class="motto-text" data-i18n="motto">Инновации и прикладные решения</div>
+          <div class="motto-callcenter">
+            <span data-i18n="callcenter">Информационный центр:</span> <strong>+998 71 245 42 43</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="nav-container">
+        <ul class="nav-menu-list">
+          <li>
+            <a href="/#home" class="nav-item-btn" style="text-decoration:none;">
+              <i class="fa-solid fa-house-chimney"></i> <span data-i18n="navHome">Главная (Портал)</span>
+            </a>
+          </li>
+          <li>
+            <a href="/ecosystem.html" class="nav-item-btn active" style="text-decoration:none;">
+              <i class="fa-solid fa-cubes"></i> <span data-i18n="navHub">Хаб Экосистемы (9 сервисов)</span>
+            </a>
+          </li>
+        </ul>
+        <div class="nav-right-actions">
+          <a href="/#home" class="nav-search-btn" style="text-decoration:none;">
+            <i class="fa-solid fa-arrow-left"></i> <span data-i18n="navBack">В Портал</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="eco-hero">
+      <div class="eco-container">
+        <div class="eco-hero-meta">
+          <span class="eco-badge"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="heroBadgeOfficial">Официальная платформа</span></span>
+          <span class="eco-badge"><i class="fa-solid fa-code-branch"></i> <span data-i18n="heroBadgeArch">Архитектурный проект</span></span>
+        </div>
+        <h2 class="eco-hero-title" data-i18n="heroTitle">Единая технологическая архитектура сервисов RIAT</h2>
+        <p class="eco-hero-desc" data-i18n="heroDesc">
+          Комплекс из 9 специализированных веб-приложений и модулей для автоматизации академической деятельности,
+          внутренней системы Ijtimoiy Faollik (Equity), мониторинга успеваемости и защищенной коммуникации.
+        </p>
+      </div>
+    </section>
+
+    <main class="eco-main-content">
+      <div class="eco-container">
+
+        <div class="eco-section-head">
+          <div>
+            <h3 class="eco-section-title"><i class="fa-solid fa-grip"></i> <span data-i18n="regTitle">Реестр приложений экосистемы</span></h3>
+            <p class="eco-section-subtitle" data-i18n="regSub">Специализированные цифровые платформы по направлениям деятельности</p>
+          </div>
+        </div>
+
+        <div class="eco-grid-9" id="appsRegistry">
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="eco-footer">
+      <div class="eco-container eco-footer-inner">
+        <div>
+          <strong data-i18n="footerUniv">Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti</strong> · RIAT Ecosystem © 2026
+        </div>
+        <div data-i18n="footerAddress">
+          RIAT Core Engineering · Ташкент, ул. Ислама Каримова, 49
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+  <aside class="sidebar-panel" id="sidebarPanel">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title"><i class="fa-solid fa-bell"></i> <span data-i18n="sidebarTitle">Уведомления</span></h3>
+      <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
+    </div>
+    <div class="sidebar-actions-strip">
+      <span style="font-weight:700; color:var(--text-head);" id="sidebarUserProfile">Гость</span>
+      <button onclick="clearAllNotifications()" style="background:transparent; border:none; color:#ef4444; font-size:11.5px; font-weight:700; cursor:pointer;">
+        <i class="fa-solid fa-trash-can"></i> Очистить все
+      </button>
+    </div>
+    <div class="sidebar-body" id="notificationsList">
+    </div>
+  </aside>
+
+  <script>
+    const SUPABASE_URL = 'https://qngiieztqecrkywnstom.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuZ2lpZXp0cWVjcmt5d25zdG9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyMjQ4OTcsImV4cCI6MjEwNTgwMDg5N30.xogkvq8w0dgYbIt9gzMGE9BLpxxPBSgtge9wQOwmuOk';
+    let sbClient = null;
+    try {
+      if (typeof supabase !== 'undefined' && supabase.createClient) {
+        sbClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    } catch(e) {}
+
+    const DEFAULT_NOTIFICATIONS = [
+      { id: 'n1', type: 'urgent', time: 'Сегодня 08:15', title: 'Изменение в расписании', text: 'Пара «Базы данных и SQL» перенесена из Ауд. 208 в Корпус 4, Ауд. 312.' },
+      { id: 'n2', type: 'normal', time: 'Сегодня 07:30', title: 'Новости факультета', text: 'Открыт прием заявок на олимпиаду по прикладным технологиям RIAT Hack 2026.' },
+      { id: 'n3', type: 'normal', time: 'Вчера 16:40', title: 'Ijtimoiy Faollik (Equity)', text: 'Вам начислено +50 Equity за участие в научно-практическом семинаре.' }
+    ];
+
+    let userNotifications = JSON.parse(localStorage.getItem('riat_user_notifications') || 'null');
+    if (!userNotifications) {
+      userNotifications = [...DEFAULT_NOTIFICATIONS];
+      localStorage.setItem('riat_user_notifications', JSON.stringify(userNotifications));
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('themeIcon');
+      if (document.body.classList.contains('dark-mode')) {
+        if (icon) icon.className = 'fa-solid fa-sun';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        if (icon) icon.className = 'fa-solid fa-moon';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      const icon = document.getElementById('themeIcon');
+      if (icon) icon.className = 'fa-solid fa-sun';
+    }
+
+    const I18N = {
+      ru: {
+        topBackPortal: "Портал RIAT",
+        topNotif: "Уведомления",
+        univTitle: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
+        badgeTitle: "RIAT Ecosystem · Единая архитектура сервисов",
+        motto: "Инновации и прикладные решения",
+        callcenter: "Информационный центр:",
+        navHome: "Главная (Портал)",
+        navHub: "Хаб Экосистемы (9 сервисов)",
+        navBack: "В Портал",
+        heroBadgeOfficial: "Официальная платформа",
+        heroBadgeArch: "Архитектурный проект",
+        heroTitle: "Единая технологическая архитектура сервисов RIAT",
+        heroDesc: "Комплекс из 9 специализированных веб-приложений и модулей для автоматизации академической деятельности, внутренней системы Ijtimoiy Faollik (Equity), мониторинга успеваемости и защищенной коммуникации.",
+        regTitle: "Реестр приложений экосистемы",
+        regSub: "Специализированные цифровые платформы по направлениям деятельности",
+        footerUniv: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
+        footerAddress: "RIAT Core Engineering · Ташкент, ул. Ислама Каримова, 49",
+        sidebarTitle: "Уведомления системы",
+        statusPlanned: "Проектирование",
+        statusDev: "В разработке",
+        statusSecured: "Закрытый модуль",
+        actionPlanned: "Модуль в плане реализации"
+      },
+      uz: {
+        topBackPortal: "RIAT Portali",
+        topNotif: "Bildirishnomalar",
+        univTitle: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
+        badgeTitle: "RIAT Ecosystem · Yagona xizmatlar arxitekturasi",
+        motto: "Innovatsiyalar va amaliy yechimlar",
+        callcenter: "Axborot markazi:",
+        navHome: "Bosh sahifa (Portal)",
+        navHub: "Ekotizim xabi (9 ta xizmat)",
+        navBack: "Portalga",
+        heroBadgeOfficial: "Rasmiy platforma",
+        heroBadgeArch: "Arxitektura loyihasi",
+        heroTitle: "RIAT xizmatlarining yagona texnologik arxitekturasi",
+        heroDesc: "O‘quv jarayonini avtomatlashtirish, Ijtimoiy Faollik (Equity) faollik tizimi, davomat monitoringi va xavfsiz muloqot uchun 9 ta ixtisoslashtirilgan veb-ilova va modullar majmuasi.",
+        regTitle: "Ekotizim ilovalari reestri",
+        regSub: "Faoliyat yo‘nalishlari bo‘yicha ixtisoslashtirilgan raqamli platformalar",
+        footerUniv: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
+        footerAddress: "RIAT Core Engineering · Toshkent sh., Islom Karimov ko‘chasi, 49",
+        sidebarTitle: "Tizim bildirishnomalari",
+        statusPlanned: "Loyihalanmoqda",
+        statusDev: "Ishlab chiqilmoqda",
+        statusSecured: "Yopiq modul",
+        actionPlanned: "Amalga oshirish rejasida"
+      },
+      en: {
+        topBackPortal: "RIAT Portal",
+        topNotif: "Notifications",
+        univTitle: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
+        badgeTitle: "RIAT Ecosystem · Unified Services Architecture",
+        motto: "Innovations and Applied Solutions",
+        callcenter: "Information center:",
+        navHome: "Home (Portal)",
+        navHub: "Ecosystem Hub (9 services)",
+        navBack: "To Portal",
+        heroBadgeOfficial: "Official Platform",
+        heroBadgeArch: "Architectural Project",
+        heroTitle: "Unified Technology Architecture of RIAT Services",
+        heroDesc: "A suite of 9 specialized web applications and modules for academic automation, Ijtimoiy Faollik (Equity) activity tracking, monitoring, and secured communications.",
+        regTitle: "Ecosystem Application Registry",
+        regSub: "Specialized digital platforms categorized by operational domains",
+        footerUniv: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
+        footerAddress: "RIAT Core Engineering · 49 Islam Karimov St., Tashkent",
+        sidebarTitle: "System Notifications",
+        statusPlanned: "Planning",
+        statusDev: "In Development",
+        statusSecured: "Restricted Module",
+        actionPlanned: "Implementation planned"
+      }
+    };
+
+    const APPS_DATA = [
+      {
+        num: "01",
+        colorClass: "eco-icon-blue",
+        icon: "fa-cubes",
+        name: "RIAT-Ecosystem",
+        statusKey: "statusPlanned",
+        tagClass: "eco-status-beta",
+        desc: {
+          ru: "Центральный хаб авторизации, каталогизации и межсервисной маршрутизации всех решений института.",
+          uz: "Institut barcha tizimlarini yagona avtorizatsiya, katalog va marshrutlash markaziy xabi.",
+          en: "Central hub for authentication, cataloging, and inter-service routing across RIAT tools."
+        },
+        feats: {
+          ru: ["Единая учетная запись (SSO)", "Каталог решений RIAT", "Межмодульная маршрутизация"],
+          uz: ["Yagona hisob tizimi (SSO)", "RIAT yechimlari katalogi", "Modullararo marshrutlash"],
+          en: ["Single Sign-On (SSO)", "RIAT solutions catalog", "Cross-module routing"]
+        }
+      },
+      {
+        num: "02",
+        colorClass: "eco-icon-navy",
+        icon: "fa-graduation-cap",
+        name: "RIAT-Study",
+        statusKey: "statusPlanned",
+        tagClass: "eco-status-beta",
+        desc: {
+          ru: "Учебный портал: расписание занятий, электронный кабинет и журналы академической успеваемости.",
+          uz: "O‘quv portali: dars jadvali, elektron kabinet va akademik o‘zlashtirish jurnallari.",
+          en: "Academic portal: class schedule, personal dashboard, and gradebook."
+        },
+        feats: {
+          ru: ["Расписание пар и аудиторий", "Кабинет студента и преподавателя", "Поиск по учебным группам"],
+          uz: ["Dars va auditoriyalar jadvali", "Talaba va o‘qituvchi kabineti", "Guruhlar bo‘yicha qidiruv"],
+          en: ["Class & classroom schedule", "Student and faculty dashboard", "Academic group lookup"]
+        }
+      },
+      {
+        num: "03",
+        colorClass: "eco-icon-cyan",
+        icon: "fa-comments",
+        name: "RIAT-Massenger",
+        statusKey: "statusDev",
+        tagClass: "eco-status-dev",
+        desc: {
+          ru: "Внутривузовский защищенный мессенджер для групповых академических чатов и официальных объявлений.",
+          uz: "Akademik guruhlar va ma’muriyat e’lonlari uchun xavfsiz ichki xabar almashish tizimi.",
+          en: "Internal secured messenger for academic group discussions and administrative announcements."
+        },
+        feats: {
+          ru: ["Чаты учебных групп", "Каналы деканата и кафедр", "Обмен учебными материалами"],
+          uz: ["Guruh suhbatlari", "Boshqarma va kafedra kanallari", "O‘quv materiallari almashinuvi"],
+          en: ["Study group chats", "Department channels", "Study materials exchange"]
+        }
+      },
+      {
+        num: "04",
+        colorClass: "eco-icon-gold",
+        icon: "fa-building-columns",
+        name: "RIAT-Bank · Equity",
+        statusKey: "statusPlanned",
+        tagClass: "eco-status-beta",
+        desc: {
+          ru: "Система учета баллов общественной и академической активности студентов (Ijtimoiy Faollik) в единицах Equity.",
+          uz: "Talabalarning jamoat va akademik faolligi (Ijtimoiy Faollik) ballarini Equity birligida hisoblash tizimi.",
+          en: "Student social and academic activity points accounting system (Ijtimoiy Faollik) in Equity units."
+        },
+        feats: {
+          ru: ["Учет баллов Ijtimoiy Faollik", "Рейтинг социальной активности", "Начисления за достижения"],
+          uz: ["Ijtimoiy faollik ballari hisobi", "Ijtimoiy faollik reytingi", "Yutuqlar uchun rag‘bat"],
+          en: ["Ijtimoiy Faollik points tracking", "Social activity leaderboard", "Achievement grants"]
+        }
+      },
+      {
+        num: "05",
+        colorClass: "eco-icon-emerald",
+        icon: "fa-user-shield",
+        name: "RIAT-Parents",
+        statusKey: "statusPlanned",
+        tagClass: "eco-status-dev",
+        desc: {
+          ru: "Кабинет родителей для мониторинга посещаемости лекций, успеваемости и связи с тьюторами групп.",
+          uz: "Ota-onalar kabineti: darslarga qatnashuv monitoringi, baholar va tyutorlar bilan aloqa.",
+          en: "Parent portal: attendance tracking, academic grades, and communication with student tutors."
+        },
+        feats: {
+          ru: ["Контроль посещаемости", "Связь с куратором группы", "Уведомления об аттестациях"],
+          uz: ["Davomat nazorati", "Guruh tyutori bilan aloqa", "Attestatsiya bildirishnomalari"],
+          en: ["Attendance tracking", "Tutor communication", "Assessment alerts"]
+        }
+      },
+      {
+        num: "06",
+        colorClass: "eco-icon-purple",
+        icon: "fa-handshake-angle",
+        name: "RIAT-Ijtimoiy",
+        statusKey: "statusPlanned",
+        tagClass: "eco-status-beta",
+        desc: {
+          ru: "Интеграционная платформа учета студенческих инициатив, волонтерского корпуса и социальных грантов.",
+          uz: "Talabalar tashabbuslari, ko‘ngillilar korpusi va ijtimoiy dasturlarni muvofiqlashtirish platformasi.",
+          en: "Platform for student volunteer initiatives, social projects, and support programs."
+        },
+        feats: {
+          ru: ["Волонтерский корпус", "Социальные проекты института", "Программы студенческой поддержки"],
+          uz: ["Ko‘ngillilar korpusi", "Institut ijtimoiy loyihalari", "Talabalarni qo‘llab-quvvatlash"],
+          en: ["Volunteer corps", "Institute social initiatives", "Student welfare programs"]
+        }
+      },
+      {
+        num: "07",
+        colorClass: "eco-icon-rose",
+        icon: "fa-clapperboard",
+        name: "RIAT-Reels",
+        statusKey: "statusDev",
+        tagClass: "eco-status-dev",
+        desc: {
+          ru: "Студенческая медиа-платформа коротких видеороликов о научной, культурной и проектной жизни института.",
+          uz: "Institutning ilmiy, madaniy va loyihaviy hayoti haqidagi qisqa videoroliklar platformasi.",
+          en: "Student media portal for short educational and cultural video stories."
+        },
+        feats: {
+          ru: ["Научные видео-дайджесты", "Презентации стартапов", "События института"],
+          uz: ["Ilmiy dayjestlar", "Startap taqdimotlari", "Institut tadbirlari"],
+          en: ["Science digest videos", "Startup presentations", "Institute events"]
+        }
+      },
+      {
+        num: "08",
+        colorClass: "eco-icon-slate",
+        icon: "fa-server",
+        name: "Data-Base",
+        statusKey: "statusSecured",
+        tagClass: "eco-status-sec",
+        desc: {
+          ru: "Центральное хранилище данных и защищенный API-шлюз инфраструктуры RIAT для системных инженеров.",
+          uz: "RIAT axborot infratuzilmasining markaziy ma’lumotlar ombori va himoyalangan API shlyuzi.",
+          en: "Central encrypted database storage and API gateway for RIAT system administrators."
+        },
+        feats: {
+          ru: ["Репликация баз данных", "Аудит системных событий", "Резервное копирование"],
+          uz: ["Ma’lumotlar replikatsiyasi", "Tizim auditi", "Zaxira nusxalash"],
+          en: ["Data replication", "System audit logging", "Automated backups"]
+        }
+      },
+      {
+        num: "09",
+        colorClass: "eco-icon-orange",
+        icon: "fa-map-location-dot",
+        name: "RIAT-Maps",
+        statusKey: "statusPlanned",
+        tagClass: "eco-status-beta",
+        desc: {
+          ru: "Интерактивная карта кампуса с поиском корпусов, аудиторий, лабораторий и административных отделов.",
+          uz: "Kampus hududining interaktiv xaritasi: korpuslar, auditoriyalar va laboratoriyalar navigatsiyasi.",
+          en: "Interactive campus navigation map with buildings, lecture halls, and laboratories finder."
+        },
+        feats: {
+          ru: ["План корпусов и лабораторий", "Поиск аудитории по номеру", "Навигация по территории"],
+          uz: ["Bino va laboratoriyalar rejasi", "Auditoriya qidiruvi", "Hudud bo‘ylab navigatsiya"],
+          en: ["Building & lab floorplans", "Room search by number", "Campus navigation"]
+        }
+      }
+    ];
+
+    let currentLang = 'ru';
+
+    function setHubLang(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+
+      const dict = I18N[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      
+    const currUser = JSON.parse(localStorage.getItem('riat_user') || 'null');
+    if (!currUser || currUser.role !== 'admin') {
+      userNotifications = userNotifications.filter(n => {
+        const t = (n.title || '').toLowerCase();
+        const txt = (n.text || '').toLowerCase();
+        return !t.includes('регистрац') && !txt.includes('заявк') && !txt.includes('на роль');
+      });
+      localStorage.setItem('riat_user_notifications', JSON.stringify(userNotifications));
+    }
+  
+    renderApps();
+    }
+
+    function renderApps() {
+      const dict = I18N[currentLang];
+      const container = document.getElementById('appsRegistry');
+      container.innerHTML = APPS_DATA.map(app => `
+        <div class="eco-card">
+          <div class="eco-card-header">
+            <div class="eco-card-icon ${app.colorClass}">
+              <i class="fa-solid ${app.icon}"></i>
+            </div>
+            <div class="eco-card-title-group">
+              <div class="eco-card-num">Модуль ${app.num}</div>
+              <div class="eco-card-name">${app.name}</div>
+            </div>
+            <span class="eco-status-tag ${app.tagClass}">${dict[app.statusKey]}</span>
+          </div>
+          <div class="eco-card-body">
+            <p class="eco-card-desc">${app.desc[currentLang]}</p>
+            <ul class="eco-card-features">
+              ${app.feats[currentLang].map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('')}
+            </ul>
+            <div class="eco-card-actions">
+              <div class="eco-btn-status">
+                <i class="fa-solid fa-clock"></i> ${dict.actionPlanned}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleSidebar() {
+      const sb = document.getElementById('sidebarPanel');
+      const ov = document.getElementById('sidebarOverlay');
+      const isOpen = sb.classList.contains('open');
+      if (isOpen) {
+        sb.classList.remove('open');
+        ov.style.display = 'none';
+      } else {
+        renderNotifications();
+        sb.classList.add('open');
+        ov.style.display = 'block';
+      }
+    }
+
+    async function syncSupabaseNotifications() {
+      if (!sbClient) return;
+      const currentUserData = JSON.parse(localStorage.getItem('riat_user') || 'null');
+      const userRole = currentUserData ? currentUserData.role : 'student';
+
+      try {
+        const { data, error } = await sbClient
+          .from('notifications')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(15);
+
+        if (!error && data && data.length > 0) {
+          data.forEach(item => {
+            // Check if this notification is an admin-only registration request
+            const isRegRequest = (item.title && item.title.toLowerCase().includes('регистрац')) || 
+                                 (item.type && item.type.includes('registration')) ||
+                                 (item.body && item.body.toLowerCase().includes('заявк'));
+
+            // ONLY admins see registration requests
+            if (isRegRequest && userRole !== 'admin') {
+              return;
+            }
+
+            const exists = userNotifications.some(n => n.id === item.id || n.title === item.title);
+            if (!exists) {
+              userNotifications.unshift({
+                id: item.id || 'sb_' + Date.now(),
+                type: 'normal',
+                time: 'Недавно',
+                title: item.title,
+                text: item.message || item.body || ''
+              });
+            }
+          });
+          localStorage.setItem('riat_user_notifications', JSON.stringify(userNotifications));
+          renderNotifications();
+        }
+      } catch(e) {}
+    }
+
+    function renderNotifications() {
+      const savedUser = JSON.parse(localStorage.getItem('riat_user') || 'null');
+      document.getElementById('sidebarUserProfile').textContent = savedUser ? savedUser.name : 'Гость (student_it)';
+
+      const list = document.getElementById('notificationsList');
+      if (userNotifications.length === 0) {
+        list.innerHTML = '<div style="color:var(--text-muted); font-size:13px; text-align:center; padding:24px;">Нет активных уведомлений.</div>';
+        const b = document.getElementById('notifBadgeCount'); if (b) { b.textContent = '0'; b.style.display = 'none'; }
+        return;
+      }
+
+      list.innerHTML = userNotifications.map(n => `
+        <div class="notif-card ${n.type === 'urgent' ? 'urgent' : ''}">
+          <button class="notif-del-btn" onclick="deleteNotification('${n.id}')" title="Удалить уведомление">&times;</button>
+          <div class="notif-meta">
+            <span><strong>${n.title}</strong></span>
+            <span>${n.time}</span>
+          </div>
+          <p class="notif-text">${n.text}</p>
+        </div>
+      `).join('');
+
+      const b = document.getElementById('notifBadgeCount'); if (b) { if (userNotifications.length > 0) { b.textContent = userNotifications.length > 9 ? '9+' : userNotifications.length; b.style.display = 'inline-block'; } else { b.style.display = 'none'; } }
+    }
+
+    function deleteNotification(id) {
+      userNotifications = userNotifications.filter(n => n.id !== id);
+      localStorage.setItem('riat_user_notifications', JSON.stringify(userNotifications));
+      renderNotifications();
+    }
+
+    function clearAllNotifications() {
+      userNotifications = [];
+      localStorage.setItem('riat_user_notifications', JSON.stringify([]));
+      renderNotifications();
+    }
+
+    const savedUser = JSON.parse(localStorage.getItem('riat_user') || 'null');
+    if (savedUser) {
+      const btnLabel = document.getElementById('userAuthBtnLabel');
+      if (btnLabel) btnLabel.textContent = savedUser.name;
+    }
+
+    renderApps();
+    renderNotifications();
+    syncSupabaseNotifications();
+  </script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>RIAT-TSUE Identity · Авторизация и регистрация</title>
+  <link rel="icon" href="/assets/images/faculty_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&family=Outfit:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --ink: #003B81;
+      --ink-deep: #00255A;
+      --accent: #1A66D1;
+      --accent-soft: #EAF2FF;
+      --text: #0E2A52;
+      --muted: #4A5E7E;
+      --faint: #6B7F9E;
+      --line: #DCE5F2;
+      --line-soft: #E9EFF8;
+      --sunken: #F3F7FD;
+      --page: #F6F9FD;
+      --ok: #1E8A5F;
+      --ok-bg: #E8F6EF;
+      --warn: #9A6A12;
+      --warn-bg: #FFF4DC;
+      --bad: #B3402F;
+      --bad-bg: #FDECE8;
+      --ease: cubic-bezier(.2,.7,.2,1);
+      --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --serif: "Source Serif 4", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      margin: 0;
+      font: 15px/1.6 var(--sans);
+      color: var(--text);
+      background: var(--page);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .login {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    }
+
+    /* ── EXACT TELEGRAM DEMO STORY BLUEPRINT PANEL ── */
+    .story {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      padding: 44px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      border-radius: 0 28px 28px 0;
+      background: 
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px) 0 0/44px 44px,
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px) 0 0/44px 44px,
+        linear-gradient(165deg, #003B81, #00306E 55%, #00255A);
+      animation: gridDrift 28s linear infinite;
+    }
+    @keyframes gridDrift {
+      from { background-position: 0 0, 0 0, 0 0; }
+      to { background-position: 44px 44px, 44px 44px, 0 0; }
+    }
+
+    .story > * { position: relative; z-index: 1; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+    .brand .logo {
+      width: 44px;
+      height: 44px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .brand .logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .brand > span:last-child {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      font-size: 19px;
+    }
+    .brand small {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      opacity: .65;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* ── EXACT EMBLEM ANIMATION (DRAW, FILL, FLOAT, EXPANDING RINGS) ── */
+    .emblem {
+      flex: 1;
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+    }
+    .emb {
+      width: clamp(140px, 48%, 230px);
+      animation: floatY 7s ease-in-out 2.4s infinite;
+    }
+    .emb svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
+      filter: drop-shadow(0 12px 30px rgba(0, 20, 60, .45));
+    }
+    .emb path {
+      fill: transparent;
+      stroke: #fff;
+      stroke-width: 1.5;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: draw 1.5s ease-in-out .3s forwards, fillIn .6s ease-out 1.6s forwards;
+    }
+    .ring {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: clamp(240px, 70%, 420px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      opacity: 0;
+      animation: ringOut 6s ease-out infinite;
+    }
+    .r2 { animation-delay: 2s; }
+    .r3 { animation-delay: 4s; }
+
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fillIn { to { fill: #fff; stroke-opacity: 0; } }
+    @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes ringOut {
+      0% { transform: translate(-50%, -50%) scale(.55); opacity: .55; }
+      100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+    }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    .uni {
+      text-align: center;
+      font: 600 clamp(18px, 1vw + 12px, 24px)/1.3 var(--serif);
+      color: #fff;
+      opacity: 0;
+      animation: fade .8s ease 1.9s forwards;
+    }
+
+    .story-link-back {
+      color: #93c5fd;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      transition: color .2s;
+    }
+    .story-link-back:hover { color: #ffffff; }
+
+    /* ── RIGHT PANEL: KIM BO'LIB KIRASIZ? ── */
+    .pick {
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      max-width: 640px;
+      width: 100%;
+      margin: 0 auto;
+      animation: up .5s var(--ease) both;
+    }
+    .pick .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .pick h2 {
+      margin: 0;
+      font-size: clamp(28px, 1.4vw + 20px, 36px);
+      font-weight: 600;
+      line-height: 1.15;
+      font-family: var(--serif);
+      color: var(--text);
+    }
+    .pick p.muted {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .rolecards {
+      display: grid;
+      gap: 10px;
+      margin: 6px 0;
+    }
+    .rolecard {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      text-align: left;
+      width: 100%;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text);
+      transition: border-color .2s, transform .18s var(--ease), background-color .2s;
+    }
+    .rolecard:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+    .rolecard:active { transform: scale(.985); }
+
+    .rc-ic {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+    .rc-t {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .rc-t b { font-size: 15px; font-weight: 600; color: var(--text); }
+    .rc-t span { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+    .rc-go {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    /* Form Container */
+    .formbox {
+      padding: 18px 20px;
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      display: grid;
+      gap: 12px;
+      box-shadow: 0 4px 14px rgba(0, 34, 77, 0.04);
+    }
+    .formbox .lbl {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .formbox input {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14.5px;
+      color: var(--text);
+      background: var(--page);
+      outline: none;
+      transition: all .2s;
+    }
+    .formbox input:focus {
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(26, 102, 209, .15);
+    }
+    .btn-submit {
+      width: 100%;
+      height: 46px;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all .2s var(--ease);
+      box-shadow: 0 4px 12px rgba(0, 37, 90, .25);
+    }
+    .btn-submit:hover {
+      background: var(--ink-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 37, 90, .35);
+    }
+
+    .alert {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
+    .alert-err { background: var(--bad-bg); color: var(--bad); border: 1px solid var(--bad); }
+    .alert-ok { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok); }
+
+    .footnotes {
+      font-size: 12px;
+      color: var(--faint);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .footnotes code {
+      background: var(--line-soft);
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 980px) {
+      .login { grid-template-columns: 1fr; }
+      .story { border-radius: 0 0 24px 24px; padding: 30px 24px; gap: 14px; }
+      .emblem { min-height: 180px; }
+      .emb { width: 120px; }
+      .ring { width: 230px; }
+      .uni { font-size: 17px; }
+      .pick { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login">
+    
+    <!-- LEFT STORY BLUEPRINT PANEL -->
+    <aside class="story">
+      <div class="brand">
+        <span class="logo">
+          <svg role="img" aria-label="TDIU logotipi" viewBox="0 0 118 123" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0C0 3.63348 2.94446 6.59409 6.55811 6.59409H110.685C114.298 6.59409 117.243 3.63348 117.243 0H0Z" fill="white"/>
+            <path d="M9.77023 13.3228C9.77023 16.9562 12.7147 19.9168 16.3283 19.9168V104.429V106.986C16.3283 108.735 17.6667 110.081 19.4066 110.081H30.3814C36.9395 110.081 43.23 112.1 48.5835 115.733L59.2906 123L67.7225 116.675C73.3437 112.369 80.3034 110.081 87.263 110.081H97.8363C99.5762 110.081 100.915 108.735 100.915 106.986V104.429V19.9168H101.718C105.331 19.9168 108.276 16.9562 108.276 13.3228H9.77023ZM63.7073 111.427L59.023 114.926L52.1972 110.216C45.7729 105.775 38.1441 103.487 30.2476 103.487H22.7526V82.7626H30.2476C36.8057 82.7626 43.0961 84.7812 48.4497 88.4147L59.1568 95.6816L67.5887 89.3567C73.2099 85.0503 80.1695 82.7626 87.1292 82.7626H94.2226V103.487H87.1292C78.8311 103.487 70.5331 106.313 63.7073 111.427ZM55.4093 57.3282V85.0503L52.331 82.8971C50.4573 81.5514 48.4497 80.4748 46.3083 79.5328V57.3282H55.4093ZM61.9674 57.3282H70.3993V80.0426L71.2023 79.6674C68.5255 80.8786 66.1164 82.3589 63.7073 84.1083L61.8336 85.454V57.3282H61.9674ZM94.3565 76.1685H87.263C83.7832 76.1685 80.3034 76.7068 76.9574 77.6488V57.4628H82.4448C86.0584 57.4628 89.0029 54.5022 89.0029 50.8687H27.7047C27.7047 54.5022 30.6491 57.4628 34.2628 57.4628H39.7502V77.5142C36.6719 76.7068 33.5936 76.3031 30.3814 76.3031H22.8865V19.9168H94.3565V76.1685Z" fill="white"/>
+            <path d="M39.4825 41.7177H42.8285V31.6247H48.0482V41.7177H52.7325C54.7401 41.7177 56.3462 41.1794 57.4169 40.1028C58.4876 39.0263 59.023 37.4114 59.023 35.3928V34.5853C59.023 32.7013 58.4876 31.0864 57.4169 30.0098C56.3462 28.9333 54.7401 28.395 52.7325 28.395H48.4497H48.0482H35.8688V31.6247H39.4825V41.7177V41.7177ZM51.3942 31.6247H52.5987C53.6694 31.6247 54.3386 31.8939 54.874 32.2976C55.2755 32.7013 55.5432 33.5088 55.5432 34.5853V35.3928C55.5432 36.6039 55.2755 37.4114 54.874 37.8151C54.4725 38.2188 53.6694 38.488 52.5987 38.488H51.3942V31.6247Z" fill="white"/>
+            <path d="M64.5104 28.395H61.1644V41.7177H64.5104V28.395Z" fill="white"/>
+            <path d="M68.124 40.372C68.6594 40.9103 69.1947 41.1794 69.8639 41.4486C70.5331 41.7177 71.3362 41.8523 72.1392 41.8523C72.9422 41.8523 73.7452 41.7177 74.4144 41.4486C75.0836 41.1794 75.619 40.7757 76.1544 40.372C76.6897 39.8337 76.9574 39.2954 77.2251 38.6225C77.4927 37.9497 77.6266 37.1422 77.6266 36.3348V28.5295H74.2806V36.3348C74.2806 37.2768 74.1468 37.9497 73.7452 38.2188C73.3437 38.6225 72.9422 38.7571 72.273 38.7571C71.6038 38.7571 71.0685 38.6225 70.8008 38.2188C70.3993 37.8151 70.2654 37.1422 70.2654 36.3348V28.5295H66.9195V36.3348C66.9195 37.1422 67.0533 37.9497 67.321 38.6225C67.321 39.2954 67.5887 39.8337 68.124 40.372Z" fill="white"/>
+          </svg>
+        </span>
+        <span>RIAT-TSUE<small>TALABALAR VA O'QITUVCHILAR UCHUN</small></span>
+      </div>
+
+      <div class="emblem" aria-hidden="true">
+        <i class="ring r1"></i>
+        <i class="ring r2"></i>
+        <i class="ring r3"></i>
+        <div class="emb">
+          <svg viewBox="0 0 118 123" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path pathLength="1" d="M0 0C0 3.63348 2.94446 6.59409 6.55811 6.59409H110.685C114.298 6.59409 117.243 3.63348 117.243 0H0Z" fill="white"/>
+            <path pathLength="1" d="M9.77023 13.3228C9.77023 16.9562 12.7147 19.9168 16.3283 19.9168V104.429V106.986C16.3283 108.735 17.6667 110.081 19.4066 110.081H30.3814C36.9395 110.081 43.23 112.1 48.5835 115.733L59.2906 123L67.7225 116.675C73.3437 112.369 80.3034 110.081 87.263 110.081H97.8363C99.5762 110.081 100.915 108.735 100.915 106.986V104.429V19.9168H101.718C105.331 19.9168 108.276 16.9562 108.276 13.3228H9.77023ZM63.7073 111.427L59.023 114.926L52.1972 110.216C45.7729 105.775 38.1441 103.487 30.2476 103.487H22.7526V82.7626H30.2476C36.8057 82.7626 43.0961 84.7812 48.4497 88.4147L59.1568 95.6816L67.5887 89.3567C73.2099 85.0503 80.1695 82.7626 87.1292 82.7626H94.2226V103.487H87.1292C78.8311 103.487 70.5331 106.313 63.7073 111.427ZM55.4093 57.3282V85.0503L52.331 82.8971C50.4573 81.5514 48.4497 80.4748 46.3083 79.5328V57.3282H55.4093ZM61.9674 57.3282H70.3993V80.0426L71.2023 79.6674C68.5255 80.8786 66.1164 82.3589 63.7073 84.1083L61.8336 85.454V57.3282H61.9674ZM94.3565 76.1685H87.263C83.7832 76.1685 80.3034 76.7068 76.9574 77.6488V57.4628H82.4448C86.0584 57.4628 89.0029 54.5022 89.0029 50.8687H27.7047C27.7047 54.5022 30.6491 57.4628 34.2628 57.4628H39.7502V77.5142C36.6719 76.7068 33.5936 76.3031 30.3814 76.3031H22.8865V19.9168H94.3565V76.1685Z" fill="white"/>
+            <path pathLength="1" d="M39.4825 41.7177H42.8285V31.6247H48.0482V41.7177H52.7325C54.7401 41.7177 56.3462 41.1794 57.4169 40.1028C58.4876 39.0263 59.023 37.4114 59.023 35.3928V34.5853C59.023 32.7013 58.4876 31.0864 57.4169 30.0098C56.3462 28.9333 54.7401 28.395 52.7325 28.395H48.4497H48.0482H35.8688V31.6247H39.4825V41.7177V41.7177ZM51.3942 31.6247H52.5987C53.6694 31.6247 54.3386 31.8939 54.874 32.2976C55.2755 32.7013 55.5432 33.5088 55.5432 34.5853V35.3928C55.5432 36.6039 55.2755 37.4114 54.874 37.8151C54.4725 38.2188 53.6694 38.488 52.5987 38.488H51.3942V31.6247Z" fill="white"/>
+            <path pathLength="1" d="M64.5104 28.395H61.1644V41.7177H64.5104V28.395Z" fill="white"/>
+            <path pathLength="1" d="M68.124 40.372C68.6594 40.9103 69.1947 41.1794 69.8639 41.4486C70.5331 41.7177 71.3362 41.8523 72.1392 41.8523C72.9422 41.8523 73.7452 41.7177 74.4144 41.4486C75.0836 41.1794 75.619 40.7757 76.1544 40.372C76.6897 39.8337 76.9574 39.2954 77.2251 38.6225C77.4927 37.9497 77.6266 37.1422 77.6266 36.3348V28.5295H74.2806V36.3348C74.2806 37.2768 74.1468 37.9497 73.7452 38.2188C73.3437 38.6225 72.9422 38.7571 72.273 38.7571C71.6038 38.7571 71.0685 38.6225 70.8008 38.2188C70.3993 37.8151 70.2654 37.1422 70.2654 36.3348V28.5295H66.9195V36.3348C66.9195 37.1422 67.0533 37.9497 67.321 38.6225C67.321 39.2954 67.5887 39.8337 68.124 40.372Z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="uni">Toshkent davlat<br>iqtisodiyot universiteti</div>
+
+      <div>
+        <a href="/ecosystem" class="story-link-back"><i class="fa-solid fa-arrow-left"></i> Хаб Экосистемы (9 сервисов)</a>
+      </div>
+    </aside>
+
+    <!-- RIGHT PICK / LOGIN PANEL -->
+    <main class="pick">
+      <div>
+        <div class="eyebrow">Shaxsiy kabinet · SSO</div>
+        <h2>Kim bo‘lib kirasiz?</h2>
+        <p class="muted">Fakultet va tyutor demo uchun tez kiradi. Talaba HEMIS ID va paroli bilan kiradi.</p>
+      </div>
+
+      <!-- Quick Role Pickers -->
+      <div class="rolecards">
+        <button class="rolecard" onclick="selectQuickRole('monarch', 'Dodash2008')">
+          <span class="rc-ic">M</span>
+          <span class="rc-t">
+            <b>Monarch</b>
+            <span>Супер-Администратор Экосистемы · Barcha 9 modul</span>
+          </span>
+          <span class="rc-go">Parol bilan kirish →</span>
+        </button>
+
+        <button class="rolecard" onclick="selectQuickRole('fakultet@tdiu.uz', 'demo12345')">
+          <span class="rc-ic">F</span>
+          <span class="rc-t">
+            <b>Fakultet</b>
+            <span>Raqamli iqtisodiyot va axborot texnologiyalari fakulteti</span>
+          </span>
+          <span class="rc-go">Parol bilan kirish →</span>
+        </button>
+
+        <button class="rolecard" onclick="selectQuickRole('nodira@tdiu.uz', 'demo12345')">
+          <span class="rc-ic">T</span>
+          <span class="rc-t">
+            <b>Tyutor</b>
+            <span>Nodira / Dilrabo · II-81 … II-86 (6 ta guruh)</span>
+          </span>
+          <span class="rc-go">Parol bilan kirish →</span>
+        </button>
+
+        <button class="rolecard" onclick="selectQuickRole('362251100001', 'demo12345')">
+          <span class="rc-ic">S</span>
+          <span class="rc-t">
+            <b>Talaba</b>
+            <span>HEMIS ID va parol bilan kirish yoki ro‘yxatdan o‘tish</span>
+          </span>
+          <span class="rc-go">Tanlash →</span>
+        </button>
+      </div>
+
+      <!-- Login Input Form -->
+      <div class="formbox">
+        <div class="lbl">Xodimlar: e-pochta bilan</div>
+        
+        <div class="alert alert-err" id="authErr"></div>
+        <div class="alert alert-ok" id="authOk"></div>
+
+        <form onsubmit="handleAuthSubmit(event)">
+          <input 
+            type="text" 
+            id="authLogin" 
+            placeholder="Login, e-pochta yoki HEMIS ID" 
+            required
+            autocomplete="username"
+            style="margin-bottom: 10px;"
+          >
+          <input 
+            type="password" 
+            id="authPassword" 
+            placeholder="Parol" 
+            required
+            autocomplete="current-password"
+            style="margin-bottom: 12px;"
+          >
+          <button type="submit" class="btn-submit">
+            <span>Kirish</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="footnotes">
+          Demo hisoblar paroli: <code>Dodash2008</code> (Monarch) yoki <code>demo12345</code> (Fakultet, Tyutor, Talaba).
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    const USERS_DB = {
+      'monarch': { role: 'admin', name: 'Monarch', pass: 'Dodash2008' },
+      'tsue-monarch': { role: 'admin', name: 'Monarch', pass: 'Dodash2008' },
+      'fakultet@tdiu.uz': { role: 'dekanat', name: 'Fakultet Dekanati', pass: 'demo12345' },
+      'nodira@tdiu.uz': { role: 'tutor', name: 'Nodira Vahidovna (Тьютор)', pass: 'demo12345' },
+      'dilrabo': { role: 'tutor', name: 'Dilrabo Vahidovna (Тьютор)', pass: 'tutor2025' },
+      '362251100001': { role: 'student', name: 'Каримов Азиз (Студент)', pass: 'demo12345' },
+      'student-test': { role: 'student', name: 'Тестовый Студент', pass: 'student2026' }
+    };
+
+    function selectQuickRole(login, pass) {
+      document.getElementById('authLogin').value = login;
+      document.getElementById('authPassword').value = pass;
+      document.querySelector('.btn-submit').focus();
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const login = document.getElementById('authLogin').value.trim().toLowerCase();
+      const pass = document.getElementById('authPassword').value.trim();
+      const errEl = document.getElementById('authErr');
+      const okEl = document.getElementById('authOk');
+
+      const user = USERS_DB[login];
+      if (user && user.pass === pass) {
+        errEl.style.display = 'none';
+        okEl.textContent = 'Muvaffaqiyatli kirildi! Yo‘naltirilmoqda...';
+        okEl.style.display = 'block';
+
+        localStorage.setItem('riat_user', JSON.stringify({
+          username: login,
+          name: user.name,
+          role: user.role
+        }));
+
+        setTimeout(() => {
+          window.location.href = '/ecosystem';
+        }, 600);
+      } else {
+        okEl.style.display = 'none';
+        errEl.textContent = 'Login yoki parol noto‘g‘ri kiritildi.';
+        errEl.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

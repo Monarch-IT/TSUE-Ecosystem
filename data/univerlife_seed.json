@@ -1,0 +1,2775 @@
+{
+  "users": [
+    {
+      "login": "monarch",
+      "name": "Monarch",
+      "surname": "Developer",
+      "role": "admin",
+      "university": "TDIU",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "AT-900/26",
+      "phone": "+998901234567"
+    },
+    {
+      "login": "antigravity",
+      "name": "Antigravity",
+      "surname": "Core",
+      "role": "admin",
+      "university": "TDIU",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "AT-900/26",
+      "phone": "+998909876543"
+    },
+    {
+      "login": "sardor.alisherov",
+      "pass": "pbkdf2$100000$+YPHPo5TlmM3+uX4hn2XpA==$9PiE/ecSl4jy7rqYEn/ZNOTPeYdQG0UUeo+Q3FX70Gw=",
+      "name": "Sardor",
+      "surname": "Alisherov",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-81/25",
+      "role": "student"
+    },
+    {
+      "login": "admin",
+      "pass": "pbkdf2$100000$Xb9Bd3D9+4gjNK7nW+gRXA==$LEOjrgwDRuzKGVaG5MvCCjDpIIjB8p7dsJF34FsxIJk=",
+      "name": "Admin",
+      "surname": "UniverLife",
+      "university": "UniverLife",
+      "faculty": "Boshqaruv",
+      "grp": "-",
+      "role": "admin"
+    },
+    {
+      "login": "ota.demo",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Alisher",
+      "surname": "Alisherov",
+      "university": "-",
+      "faculty": "-",
+      "grp": "-",
+      "role": "parent"
+    },
+    {
+      "login": "tyutor.demo",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Gulnora",
+      "surname": "Rashidova",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "-",
+      "role": "tutor"
+    },
+    {
+      "login": "dekanat.demo",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Akmal",
+      "surname": "Nurmatov",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "-",
+      "role": "dean"
+    },
+    {
+      "login": "komendant.demo",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Rustam",
+      "surname": "Qodirov",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Talabalar turar joyi",
+      "grp": "-",
+      "role": "warden"
+    },
+    {
+      "login": "malika.karimova",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Malika",
+      "surname": "Karimova",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-81/25",
+      "role": "student"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Jasur",
+      "surname": "Toshmatov",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-81/25",
+      "role": "student"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Dilnoza",
+      "surname": "Rahimova",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-81/25",
+      "role": "student"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Bekzod",
+      "surname": "Usmonov",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-81/25",
+      "role": "student"
+    },
+    {
+      "login": "nodira.yusupova",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Nodira",
+      "surname": "Yusupova",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-82/25",
+      "role": "student"
+    },
+    {
+      "login": "sherzod.aliev",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Sherzod",
+      "surname": "Aliyev",
+      "university": "Toshkent davlat iqtisodiyot universiteti",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-82/25",
+      "role": "student"
+    },
+    {
+      "login": "klub.demo",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Bahodir",
+      "surname": "Yo'ldoshev",
+      "university": "TDIU",
+      "faculty": "Talabalar bilan ishlash bo'limi",
+      "grp": "-",
+      "role": "club",
+      "viewed": "0",
+      "read_n": "[]",
+      "jshir": "32205891230201",
+      "phone": "+998 93 520 44 10"
+    },
+    {
+      "login": "aziz.karimov",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Aziz",
+      "surname": "Karimov",
+      "university": "TDIU",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-83/25",
+      "role": "student",
+      "viewed": "0",
+      "read_n": "[]",
+      "jshir": "51010061230201",
+      "phone": ""
+    },
+    {
+      "login": "shahnoza.umarova",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Shahnoza",
+      "surname": "Umarova",
+      "university": "TDIU",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-83/25",
+      "role": "student",
+      "viewed": "0",
+      "read_n": "[]",
+      "jshir": "61111061230212",
+      "phone": ""
+    },
+    {
+      "login": "farrux.ismoilov",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Farrux",
+      "surname": "Ismoilov",
+      "university": "TDIU",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-83/25",
+      "role": "student",
+      "viewed": "0",
+      "read_n": "[]",
+      "jshir": "51212061230223",
+      "phone": ""
+    },
+    {
+      "login": "zarina.tolipova",
+      "pass": "pbkdf2$100000$IZQQO6TTx69QtTk3BD+O6Q==$+Y0H5CSx0zUuHcYFOs1SA93XL+2LPfQoCMSx4SRaNHk=",
+      "name": "Zarina",
+      "surname": "Tolipova",
+      "university": "TDIU",
+      "faculty": "Raqamli iqtisodiyot",
+      "grp": "RST-83/25",
+      "role": "student",
+      "viewed": "0",
+      "read_n": "[]",
+      "jshir": "61313061230234",
+      "phone": ""
+    }
+  ],
+  "clubs": [
+    {
+      "id": "c1",
+      "name": "Futbol seksiyasi",
+      "category": "sport",
+      "leader_login": "klub.demo",
+      "schedule": "Du, Cho — 16:00",
+      "place": "Sport zali",
+      "description": "Futbol bo'yicha mashg'ulotlar va universitet terma jamoasi uchun tanlov.",
+      "created": "1"
+    },
+    {
+      "id": "c2",
+      "name": "Basketbol seksiyasi",
+      "category": "sport",
+      "leader_login": "",
+      "schedule": "Se, Ju — 17:00",
+      "place": "Sport zali",
+      "description": "Basketbol bo'yicha mashg'ulotlar va fakultetlararo liga.",
+      "created": "2"
+    },
+    {
+      "id": "c3",
+      "name": "Sun'iy intellekt loyihalari",
+      "category": "it",
+      "leader_login": "klub.demo",
+      "schedule": "Chorshanba — 18:00",
+      "place": "IT laboratoriya",
+      "description": "Mentor bilan birga kichik AI loyihalar ustida ishlash.",
+      "created": "3"
+    },
+    {
+      "id": "c4",
+      "name": "Robototexnika to'garagi",
+      "category": "it",
+      "leader_login": "",
+      "schedule": "Juma — 16:00",
+      "place": "Robototexnika markazi",
+      "description": "Robotlar yasash va tanlovlarda qatnashish.",
+      "created": "4"
+    },
+    {
+      "id": "c5",
+      "name": "Zakovat intellektual klubi",
+      "category": "t5",
+      "leader_login": "klub.demo",
+      "schedule": "Payshanba — 17:00",
+      "place": "305-auditoriya",
+      "description": "\"Zakovat\" o'yinlari, shahar va respublika bosqichlariga tayyorgarlik.",
+      "created": "5"
+    },
+    {
+      "id": "c6",
+      "name": "Kitobxonlar klubi",
+      "category": "lit",
+      "leader_login": "",
+      "schedule": "Seshanba — 16:30",
+      "place": "Axborot-resurs markazi",
+      "description": "Har hafta bitta asar muhokamasi, adiblar bilan uchrashuvlar.",
+      "created": "6"
+    },
+    {
+      "id": "c7",
+      "name": "Talabalar teatr studiyasi",
+      "category": "art",
+      "leader_login": "",
+      "schedule": "Shanba — 14:00",
+      "place": "Madaniyat markazi",
+      "description": "Sahna nutqi, aktyorlik mahorati va spektakllar.",
+      "created": "7"
+    },
+    {
+      "id": "c8",
+      "name": "Karyera va bandlik klubi",
+      "category": "job",
+      "leader_login": "",
+      "schedule": "Dushanba — 15:00",
+      "place": "302-auditoriya",
+      "description": "Rezyume, suhbatga tayyorgarlik, amaliyot va ish o'rinlari.",
+      "created": "8"
+    }
+  ],
+  "events": [
+    {
+      "id": "t1",
+      "title": "Ma'rifat darsi: Yangi O'zbekiston va yoshlar",
+      "kind": "tadbir",
+      "date": "2026-10-23",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etiladi.",
+      "owner_login": "tyutor.demo",
+      "groups": "RST-81/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792400000000"
+    },
+    {
+      "id": "t2",
+      "title": "Temuriylar tarixi davlat muzeyiga tashrif",
+      "kind": "tadbir",
+      "date": "2026-10-26",
+      "time": "15:00 – 17:00",
+      "place": "Temuriylar tarixi davlat muzeyi",
+      "description": "Guruh bilan madaniy tashrif. Muzeyda tyutor QR-kod ochadi.",
+      "owner_login": "tyutor.demo",
+      "groups": "RST-81/25",
+      "club_id": "",
+      "ifi": "culture.visit",
+      "created": "1792400000001"
+    },
+    {
+      "id": "t3",
+      "title": "Hashar: universitet bog'ini obodonlashtirish",
+      "kind": "tadbir",
+      "date": "2026-10-31",
+      "time": "09:00 – 12:00",
+      "place": "Universitet bog'i",
+      "description": "Umumxalq hashari doirasida daraxt ekish.",
+      "owner_login": "tyutor3.demo",
+      "groups": "MNJ-21/24",
+      "club_id": "",
+      "ifi": "public.hashar",
+      "created": "1792400000002"
+    },
+    {
+      "id": "k1",
+      "title": "Futbol: kuzgi ichki turnir",
+      "kind": "musobaqa",
+      "date": "2026-10-29",
+      "time": "16:00 – 18:00",
+      "place": "Universitet stadioni",
+      "description": "Seksiya a'zolari o'rtasida ichki turnir.",
+      "owner_login": "klub.demo",
+      "groups": "",
+      "club_id": "c1",
+      "ifi": "sport.comp",
+      "created": "1792400000003"
+    },
+    {
+      "id": "k2",
+      "title": "Zakovat: fakultetlararo o'yin",
+      "kind": "musobaqa",
+      "date": "2026-11-06",
+      "time": "17:00 – 19:00",
+      "place": "305-auditoriya",
+      "description": "Zakovat klubi a'zolari va mehmonlar uchun o'yin.",
+      "owner_login": "klub.demo",
+      "groups": "",
+      "club_id": "c5",
+      "ifi": "",
+      "created": "1792400000004"
+    },
+    {
+      "id": "m1",
+      "title": "Ma'rifat darsi: Vatanparvarlik — burch va mas'uliyat",
+      "kind": "tadbir",
+      "date": "2026-09-18",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor.demo",
+      "groups": "RST-81/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000000"
+    },
+    {
+      "id": "m2",
+      "title": "Ma'rifat darsi: Kitob — ma'naviyat sarchashmasi",
+      "kind": "tadbir",
+      "date": "2026-10-02",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor.demo",
+      "groups": "RST-81/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000001"
+    },
+    {
+      "id": "m3",
+      "title": "Ma'rifat darsi: Raqamli odob va axborot xavfsizligi",
+      "kind": "tadbir",
+      "date": "2026-10-16",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor.demo",
+      "groups": "RST-81/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000002"
+    },
+    {
+      "id": "m4",
+      "title": "Ma'rifat darsi: Mustaqillik qadriyatlari",
+      "kind": "tadbir",
+      "date": "2026-09-25",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor2.demo",
+      "groups": "RST-82/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000003"
+    },
+    {
+      "id": "m5",
+      "title": "Ma'rifat darsi: Oila va jamiyat",
+      "kind": "tadbir",
+      "date": "2026-10-09",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor2.demo",
+      "groups": "RST-82/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000004"
+    },
+    {
+      "id": "m6",
+      "title": "Ma'rifat darsi: Yoshlar va tadbirkorlik",
+      "kind": "tadbir",
+      "date": "2026-09-24",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor3.demo",
+      "groups": "MNJ-21/24",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000005"
+    },
+    {
+      "id": "m7",
+      "title": "Ma'rifat darsi: Milliy merosimiz",
+      "kind": "tadbir",
+      "date": "2026-10-08",
+      "time": "14:00 – 15:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor3.demo",
+      "groups": "MNJ-21/24",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000006"
+    },
+    {
+      "id": "m8",
+      "title": "Ma'rifat darsi: Vatanparvarlik — burch va mas'uliyat",
+      "kind": "tadbir",
+      "date": "2026-09-19",
+      "time": "15:00 – 16:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor.demo",
+      "groups": "RST-83/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000100"
+    },
+    {
+      "id": "m9",
+      "title": "Ma'rifat darsi: Kitob — ma'naviyat sarchashmasi",
+      "kind": "tadbir",
+      "date": "2026-10-03",
+      "time": "15:00 – 16:20",
+      "place": "Kichik zal (B-blok)",
+      "description": "Guruh Ma'rifat darsi. Ishtirok QR-kod orqali qayd etildi.",
+      "owner_login": "tyutor.demo",
+      "groups": "RST-83/25",
+      "club_id": "",
+      "ifi": "enlight.part",
+      "created": "1792100000100"
+    }
+  ],
+  "scholarships": [
+    {
+      "id": "s1",
+      "type": "scholarship",
+      "title": "Prezident davlat stipendiyasi",
+      "amount": 2191541,
+      "deadline": "2026-11-15",
+      "description": "Davlat stipendiyasi. Har bir stipendiya uchun oylik miqdor va ariza muddati ko'rsatiladi.",
+      "requirements": [
+        "Faol talaba bo'lish",
+        "Akademik natijalar yuqori bo'lishi"
+      ],
+      "contact": "Fakultet dekanati"
+    },
+    {
+      "id": "s2",
+      "type": "scholarship",
+      "title": "Beruniy nomidagi davlat stipendiyasi",
+      "amount": 1461028,
+      "deadline": "2026-11-20",
+      "description": "Ilmiy yutuqlari bor talabalar uchun davlat stipendiyasi.",
+      "requirements": [
+        "Ilmiy maqola yoki loyiha",
+        "Qarzdorlik yo'qligi"
+      ],
+      "contact": "Ilmiy bo'lim"
+    },
+    {
+      "id": "s3",
+      "type": "scholarship",
+      "title": "Navoiy nomidagi davlat stipendiyasi",
+      "amount": 1461028,
+      "deadline": "2026-11-20",
+      "description": "Ijtimoiy faol va iqtidorli talabalar uchun davlat stipendiyasi.",
+      "requirements": [
+        "Ijtimoiy faollik",
+        "Yaxshi akademik ko'rsatkich"
+      ],
+      "contact": "Talabalar bo'limi"
+    }
+  ],
+  "articles": [
+    {
+      "id": "a1",
+      "tag": "Yangilik",
+      "date": "2026-10-10",
+      "title": "TDIU jamoasi xalqaro hakatonda 1-o'rinni egalladi",
+      "body": [
+        "TDIU jamoasi xalqaro hakatonda birinchi o'rinni egallab, universitet nomini sharafladi.",
+        "Jamoa a'zolari loyihalarini ekspertlar oldida himoya qilishdi."
+      ]
+    },
+    {
+      "id": "a2",
+      "tag": "Trending",
+      "date": "2026-10-09",
+      "title": "Yangi innovatsiya markazi ochildi — startaplar uchun makon",
+      "body": [
+        "Innovatsiya markazi talabalar startaplari uchun ish joyi, maslahat va uskunalar bilan ta'minlaydi."
+      ]
+    },
+    {
+      "id": "a3",
+      "tag": "Sport",
+      "date": "2026-10-06",
+      "title": "Bahorgi sport o'yinlari yakunlandi: g'oliblar e'lon qilindi",
+      "body": [
+        "Bahorgi sport o'yinlarida fakultetlar o'rtasida kurashlar bo'lib o'tdi.",
+        "G'oliblar sertifikat va sovg'alar bilan taqdirlandi."
+      ]
+    },
+    {
+      "id": "a4",
+      "tag": "Blog",
+      "date": "2026-10-03",
+      "title": "Birinchi kursdan bitiruvgacha: talaba maslahatlari",
+      "body": [
+        "Talaba blogida o'qish, faollik va ish o'rinlarini birlashtirish bo'yicha tajriba ulashildi."
+      ]
+    },
+    {
+      "id": "a5",
+      "tag": "Foto-video",
+      "date": "2026-10-01",
+      "title": "Foto-hisobot: kuz festivali",
+      "body": [
+        "Kuz festivalidan lavhalar: konsertlar, ko'rgazmalar va talabalar tashabbuslari."
+      ]
+    }
+  ],
+  "tutorGroups": [
+    {
+      "tutor_login": "tyutor.demo",
+      "grp": "RST-81/25"
+    },
+    {
+      "tutor_login": "tyutor.demo",
+      "grp": "RST-83/25"
+    },
+    {
+      "tutor_login": "tyutor.demo",
+      "grp": "AT-900/26"
+    },
+    {
+      "tutor_login": "tyutor.demo",
+      "grp": "IB-900/26"
+    },
+    {
+      "tutor_login": "tyutor.demo",
+      "grp": "II-900/26"
+    }
+  ],
+  "parentLinks": [
+    {
+      "parent_login": "ota.demo",
+      "child_login": "sardor.alisherov",
+      "created": "0"
+    }
+  ],
+  "hemisSubjects": [
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "85",
+      "absent_h": "0"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "93",
+      "absent_h": "2"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "89",
+      "absent_h": "6"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "88",
+      "absent_h": "2"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "85",
+      "absent_h": "2"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "83",
+      "absent_h": "6"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "82",
+      "absent_h": "2"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "95",
+      "absent_h": "0"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "88",
+      "absent_h": "6"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "84",
+      "absent_h": "2"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sardor.alisherov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "89",
+      "absent_h": "6"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "85",
+      "absent_h": "2"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "91",
+      "absent_h": "4"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "98",
+      "absent_h": "6"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "96",
+      "absent_h": "2"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "86",
+      "absent_h": "4"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "91",
+      "absent_h": "2"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "97",
+      "absent_h": "4"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "92",
+      "absent_h": "4"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "91",
+      "absent_h": "6"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "malika.karimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "68",
+      "absent_h": "6"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "74",
+      "absent_h": "6"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "68",
+      "absent_h": "0"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "77",
+      "absent_h": "4"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "71",
+      "absent_h": "2"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "76",
+      "absent_h": "6"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "75",
+      "absent_h": "4"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "76",
+      "absent_h": "4"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "74",
+      "absent_h": "4"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "74",
+      "absent_h": "2"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "jasur.toshmatov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "92",
+      "absent_h": "2"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "83",
+      "absent_h": "4"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "82",
+      "absent_h": "2"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "90",
+      "absent_h": "4"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "82",
+      "absent_h": "2"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "89",
+      "absent_h": "0"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "82",
+      "absent_h": "2"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "85",
+      "absent_h": "4"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "84",
+      "absent_h": "6"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "79",
+      "absent_h": "2"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "dilnoza.rahimova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "69",
+      "absent_h": "2"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "76",
+      "absent_h": "2"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "85",
+      "absent_h": "6"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "87",
+      "absent_h": "0"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "69",
+      "absent_h": "4"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "72",
+      "absent_h": "2"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "74",
+      "absent_h": "2"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "78",
+      "absent_h": "4"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "76",
+      "absent_h": "4"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "80",
+      "absent_h": "0"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "bekzod.usmonov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "95",
+      "absent_h": "4"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "93",
+      "absent_h": "4"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "100",
+      "absent_h": "6"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "89",
+      "absent_h": "2"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "87",
+      "absent_h": "6"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "100",
+      "absent_h": "2"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "86",
+      "absent_h": "0"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "84",
+      "absent_h": "0"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "86",
+      "absent_h": "2"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "89",
+      "absent_h": "6"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "nodira.yusupova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "61",
+      "absent_h": "2"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "65",
+      "absent_h": "2"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "66",
+      "absent_h": "2"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "66",
+      "absent_h": "2"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "67",
+      "absent_h": "2"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "70",
+      "absent_h": "0"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "58",
+      "absent_h": "6"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "77",
+      "absent_h": "4"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "68",
+      "absent_h": "2"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "63",
+      "absent_h": "4"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "sherzod.aliev",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Menejment asoslari",
+      "credits": "6",
+      "score": "82",
+      "absent_h": "2"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Marketing",
+      "credits": "6",
+      "score": "87",
+      "absent_h": "2"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Buxgalteriya hisobi",
+      "credits": "5",
+      "score": "76",
+      "absent_h": "2"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "84",
+      "absent_h": "2"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "Huquqshunoslik",
+      "credits": "3",
+      "score": "95",
+      "absent_h": "2"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Strategik menejment",
+      "credits": "6",
+      "score": "95",
+      "absent_h": "4"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Moliya",
+      "credits": "6",
+      "score": "91",
+      "absent_h": "6"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Tashkiliy xulq",
+      "credits": "4",
+      "score": "83",
+      "absent_h": "6"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "82",
+      "absent_h": "2"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Statistika",
+      "credits": "4",
+      "score": "80",
+      "absent_h": "2"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Loyiha boshqaruvi",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Inson resurslarini boshqarish",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Xalqaro menejment",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Biznes etikasi",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "kamola.alisherova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Menejment asoslari",
+      "credits": "6",
+      "score": "68",
+      "absent_h": "4"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Marketing",
+      "credits": "6",
+      "score": "79",
+      "absent_h": "6"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Buxgalteriya hisobi",
+      "credits": "5",
+      "score": "72",
+      "absent_h": "6"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "82",
+      "absent_h": "2"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "Huquqshunoslik",
+      "credits": "3",
+      "score": "75",
+      "absent_h": "4"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Strategik menejment",
+      "credits": "6",
+      "score": "79",
+      "absent_h": "0"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Moliya",
+      "credits": "6",
+      "score": "66",
+      "absent_h": "2"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Tashkiliy xulq",
+      "credits": "4",
+      "score": "79",
+      "absent_h": "4"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "81",
+      "absent_h": "0"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Statistika",
+      "credits": "4",
+      "score": "80",
+      "absent_h": "4"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Loyiha boshqaruvi",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Inson resurslarini boshqarish",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Xalqaro menejment",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Biznes etikasi",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "otabek.nazarov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Menejment asoslari",
+      "credits": "6",
+      "score": "100",
+      "absent_h": "2"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Marketing",
+      "credits": "6",
+      "score": "95",
+      "absent_h": "4"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Buxgalteriya hisobi",
+      "credits": "5",
+      "score": "96",
+      "absent_h": "0"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "90",
+      "absent_h": "2"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "Huquqshunoslik",
+      "credits": "3",
+      "score": "99",
+      "absent_h": "4"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Strategik menejment",
+      "credits": "6",
+      "score": "100",
+      "absent_h": "4"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Moliya",
+      "credits": "6",
+      "score": "100",
+      "absent_h": "6"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Tashkiliy xulq",
+      "credits": "4",
+      "score": "94",
+      "absent_h": "2"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "97",
+      "absent_h": "2"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Statistika",
+      "credits": "4",
+      "score": "97",
+      "absent_h": "2"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Loyiha boshqaruvi",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Inson resurslarini boshqarish",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Xalqaro menejment",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Biznes etikasi",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "madina.saidova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Menejment asoslari",
+      "credits": "6",
+      "score": "72",
+      "absent_h": "0"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Marketing",
+      "credits": "6",
+      "score": "76",
+      "absent_h": "0"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Buxgalteriya hisobi",
+      "credits": "5",
+      "score": "66",
+      "absent_h": "2"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "74",
+      "absent_h": "2"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "Huquqshunoslik",
+      "credits": "3",
+      "score": "73",
+      "absent_h": "2"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Strategik menejment",
+      "credits": "6",
+      "score": "67",
+      "absent_h": "6"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Moliya",
+      "credits": "6",
+      "score": "80",
+      "absent_h": "2"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Tashkiliy xulq",
+      "credits": "4",
+      "score": "84",
+      "absent_h": "2"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "68",
+      "absent_h": "2"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Statistika",
+      "credits": "4",
+      "score": "84",
+      "absent_h": "4"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Loyiha boshqaruvi",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Inson resurslarini boshqarish",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Xalqaro menejment",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Biznes etikasi",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "javohir.rustamov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Menejment asoslari",
+      "credits": "6",
+      "score": "79",
+      "absent_h": "4"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Marketing",
+      "credits": "6",
+      "score": "77",
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Buxgalteriya hisobi",
+      "credits": "5",
+      "score": "89",
+      "absent_h": "4"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "75",
+      "absent_h": "4"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "Huquqshunoslik",
+      "credits": "3",
+      "score": "81",
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Strategik menejment",
+      "credits": "6",
+      "score": "81",
+      "absent_h": "2"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Moliya",
+      "credits": "6",
+      "score": "83",
+      "absent_h": "2"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Tashkiliy xulq",
+      "credits": "4",
+      "score": "87",
+      "absent_h": "2"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "76",
+      "absent_h": "6"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Statistika",
+      "credits": "4",
+      "score": "86",
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Loyiha boshqaruvi",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Inson resurslarini boshqarish",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Xalqaro menejment",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Biznes etikasi",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "50505051239999",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "82",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "85",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "72",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "100",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "75",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "89",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "76",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "88",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "87",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "93",
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "aziz.karimov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "84",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "93",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "92",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "99",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "91",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "96",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "100",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "94",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "96",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "90",
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "shahnoza.umarova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "58",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "66",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "62",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "65",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "76",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "61",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "71",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "61",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "71",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "75",
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "farrux.ismoilov",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "0",
+      "subject": "Oliy matematika",
+      "credits": "6",
+      "score": "80",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "1",
+      "subject": "Iqtisodiyot nazariyasi",
+      "credits": "6",
+      "score": "86",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "2",
+      "subject": "Informatika",
+      "credits": "4",
+      "score": "84",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "73",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 1-semestr",
+      "pos": "4",
+      "subject": "O'zbekiston tarixi",
+      "credits": "4",
+      "score": "72",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "0",
+      "subject": "Statistika",
+      "credits": "6",
+      "score": "82",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "1",
+      "subject": "Mikroiqtisodiyot",
+      "credits": "6",
+      "score": "76",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "2",
+      "subject": "Dasturlash asoslari",
+      "credits": "4",
+      "score": "89",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "3",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": "71",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2025-2026 · 2-semestr",
+      "pos": "4",
+      "subject": "Falsafa",
+      "credits": "4",
+      "score": "89",
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "0",
+      "subject": "Makroiqtisodiyot",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "1",
+      "subject": "Ma'lumotlar tahlili",
+      "credits": "6",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "2",
+      "subject": "Raqamli texnologiyalar",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "3",
+      "subject": "Ekonometrika",
+      "credits": "5",
+      "score": null,
+      "absent_h": "0"
+    },
+    {
+      "login": "zarina.tolipova",
+      "sem": "2026-2027 · 1-semestr",
+      "pos": "4",
+      "subject": "Ingliz tili",
+      "credits": "4",
+      "score": null,
+      "absent_h": "0"
+    }
+  ]
+}
