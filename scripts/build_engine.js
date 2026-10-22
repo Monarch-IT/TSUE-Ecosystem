@@ -6,9 +6,9 @@ const originalJs = fs.readFileSync('/home/monarch/Downloads/Telegram Desktop/uni
 let js = originalJs.replace(/[\u{1F300}-\u{1FAFF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
 
 // 2. Change Brand and Titles
-js = js.replace(/<div class="brand"><i>U<\/i>UniverLife<\/div>/g, '<div class="brand"><div class="riat-badge">RIAT</div><span>Univerlife</span></div>');
-js = js.replace(/document\.title = title \+ " · UniverLife";/g, 'document.title = title + " · RIAT-Univerlife";');
-js = js.replace(/<div class="foot">TDIU talabalari uchun platforma<\/div>/g, '<div class="foot">RIAT-TSUE · Birlashgan ekotizim portali</div>');
+js = js.replace(/<div class="brand"><i>U<\/i>UniverLife<\/div>/g, '<div class="brand"><div class="riat-badge">TSUE</div><span>UniverLife</span></div>');
+js = js.replace(/document\.title = title \+ " · UniverLife";/g, 'document.title = title + " · TSUE UniverLife";');
+js = js.replace(/<div class="foot">TDIU talabalari uchun platforma<\/div>/g, '<div class="foot">TSUE UniverLife · Birlashgan ekotizim portali</div>');
 
 // 3. Add link to Ecosystem in top header
 js = js.replace(
@@ -33,10 +33,10 @@ let currentSchedCourse = 'all';
 function renderModuleBadges() {
   const cur = parseRoute().parts[0] || "home";
   return '<div class="module-badge-bar">' +
-    '<span style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-right:4px;">Birlashgan xizmatlar:</span>' +
-    '<a href="#/schedule" class="module-badge ' + (['schedule','attendance','gpa'].includes(cur)?'active':'') + '"><i class="fa-solid fa-graduation-cap"></i> RIAT-Study (Jadval, GPA, Davomat)</a>' +
-    '<a href="#/ifi" class="module-badge ' + (['ifi','clubs','events','scholarships'].includes(cur)?'active':'') + '"><i class="fa-solid fa-handshake-angle"></i> RIAT-Ijtimoiy (IFI 11-band, Klublar, Grantlar)</a>' +
-    '<a href="#/explanations" class="module-badge ' + (['explanations','tutor'].includes(cur)?'active':'') + '"><i class="fa-solid fa-user-shield"></i> RIAT-Parents (Ota-onalar va Tyutor)</a>' +
+    '<span style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-right:4px;">TSUE UniverLife:</span>' +
+    '<a href="#/schedule" class="module-badge ' + (['schedule','attendance','gpa'].includes(cur)?'active':'') + '"><i class="fa-solid fa-graduation-cap"></i> O‘quv & Jadval (EduPage, GPA, Davomat)</a>' +
+    '<a href="#/ifi" class="module-badge ' + (['ifi','clubs','events','scholarships'].includes(cur)?'active':'') + '"><i class="fa-solid fa-handshake-angle"></i> Ijtimoiy & IFI (11 mezon, Klublar, Grantlar)</a>' +
+    '<a href="#/explanations" class="module-badge ' + (['explanations','tutor'].includes(cur)?'active':'') + '"><i class="fa-solid fa-user-shield"></i> Oila & Tyutor (Monitoring va Aloqa)</a>' +
   '</div>';
 }
 
@@ -212,7 +212,19 @@ function todayLessons(rows) {
 `;
 js = js.replace(oldTodayRegex, newTodayFn);
 
-// 7. Add event listeners for schedule interactions
+// 7. Ensure all roles can access schedule, attendance, gpa, ifi without 'Sahifa topilmadi'
+js = js.replace(
+  'const fn = (V[role] && V[role][p0]) || V.common[p0];',
+  'const fn = (V[role] && V[role][p0]) || (V.student && V.student[p0]) || (V.admin && V.admin[p0]) || V.common[p0];'
+);
+
+// 8. Add schedule to admin and dean nav if not already present
+js = js.replace(
+  'admin: [["home", "Umumiy ko\'rinish", "grid"],',
+  'admin: [["home", "Umumiy ko\'rinish", "grid"], ["schedule", "Dars jadvali", "cal"], ["students", "Talabalar", "list"], ["attendance", "Davomat", "check"], ["gpa", "GPA va baholar", "cap"], ["ifi", "Ijtimoiy faollik", "star"],'
+);
+
+// 9. Add event listeners for schedule interactions
 js = js.replace(
   'document.addEventListener("click", async (e) => {',
   `document.addEventListener("input", (e) => {
@@ -248,7 +260,7 @@ js = js.replace(
 `
 );
 
-// 8. Replace init() and api() to work seamlessly client-side with localStorage SSO
+// 10. Replace init() and api() to work seamlessly client-side with localStorage SSO
 const oldInitRegex = /\(async function init\(\) \{[\s\S]*?\}\)\(\);/;
 const newInit = `
 /* SSO Boot Integration from TSUE Platform */
@@ -412,15 +424,18 @@ function buildLocalState(meUser) {
     clubs: [{ id: "c1", name: "Sun'iy intellekt to'garagi", status: "qabul" }]
   };
 
+  // Always provide a default st and schedule for fallback preview across all roles
+  base.st = stObject;
+  base.schedule = [];
+  base.board = [
+    { pos: 1, login: "sardor.alisherov", name: "Sardor Alisherov", grp: meUser.grp || "AT-900/26", gpa: 4.85, ifi: 86.4 },
+    { pos: 2, login: meUser.login, name: meUser.name + " " + meUser.surname, grp: meUser.grp || "AT-900/26", gpa: 4.82, ifi: 82.5 },
+    { pos: 3, login: "nodir.vali", name: "Nodir Valiyev", grp: meUser.grp || "AT-900/26", gpa: 4.60, ifi: 74.0 },
+    { pos: 4, login: "dilshod.k", name: "Dilshod Karimov", grp: meUser.grp || "AT-900/26", gpa: 4.45, ifi: 68.5 }
+  ];
+
   if (meUser.role === "student") {
-    base.st = stObject;
-    base.schedule = [];
-    base.board = [
-      { pos: 1, login: "sardor.alisherov", name: "Sardor Alisherov", grp: meUser.grp, gpa: 4.85, ifi: 86.4 },
-      { pos: 2, login: meUser.login, name: meUser.name + " " + meUser.surname, grp: meUser.grp, gpa: 4.82, ifi: 82.5 },
-      { pos: 3, login: "nodir.vali", name: "Nodir Valiyev", grp: meUser.grp, gpa: 4.60, ifi: 74.0 },
-      { pos: 4, login: "dilshod.k", name: "Dilshod Karimov", grp: meUser.grp, gpa: 4.45, ifi: 68.5 }
-    ];
+    // Already set defaults
   } else if (meUser.role === "parent") {
     base.kids = [
       {

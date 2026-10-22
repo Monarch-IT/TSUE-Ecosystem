@@ -118,7 +118,7 @@ const NAV = {
     ["explanations", "Tushuntirish xatlari", "mail"], ["tutor", "Tyutor", "user"], ["schedule", "Dars jadvali", "cal"]],
   tutor: [["home", "Bosh sahifa", "home"], ["attendance", "Davomat", "check"], ["queue", "Arizalar", "inbox"], ["students", "Talabalar", "users"], ["explanations", "Tushuntirish xatlari", "mail"], ["events", "Tadbirlar va QR", "qr"]],
   dean: [["home", "Umumiy ko'rinish", "grid"], ["tutors", "Tyutorlar", "user"], ["groups", "Guruhlar", "users"], ["students", "Talabalar", "list"], ["events", "Tadbirlar", "flag"]],
-  admin: [["home", "Umumiy ko'rinish", "grid"], ["users", "Foydalanuvchilar", "users"], ["clubs", "To'garaklar", "club"], ["scholarships", "Stipendiyalar", "wallet"], ["news", "Yangiliklar", "news"],
+  admin: [["home", "Umumiy ko'rinish", "grid"], ["schedule", "Dars jadvali", "cal"], ["students", "Talabalar", "list"], ["attendance", "Davomat", "check"], ["gpa", "GPA va baholar", "cap"], ["ifi", "Ijtimoiy faollik", "star"], ["users", "Foydalanuvchilar", "users"], ["clubs", "To'garaklar", "club"], ["scholarships", "Stipendiyalar", "wallet"], ["news", "Yangiliklar", "news"],
     ["events", "Tadbirlar", "flag"], ["students", "Talabalar", "list"], ["hemis", "HEMIS va Edu", "db"]],
   club: [["home", "Klublarim", "club"], ["events", "Tadbirlar va QR", "qr"]],
 };
@@ -143,7 +143,7 @@ function shell(view, title) {
   const dock = (DOCK[r] || []).map((k) => { const n = NAV[r].find((x) => x[0] === k); return '<a href="#/' + k + '" class="' + (cur === k ? "on" : "") + '">' + ic(n[2]) + "<span>" + n[1].split(" ")[0] + "</span>" + (badge(k) ? "<em>" + badge(k) + "</em>" : "") + "</a>"; }).join("") +
     '<button data-act="menu">' + ic("menu") + "<span>Menyu</span></button>";
   const name = S.me.name + " " + S.me.surname;
-  return '<div class="app"><aside class="side"><div class="brand"><div class="riat-badge">RIAT</div><span>Univerlife</span></div><div class="who"><b>' + esc(name) + "</b><small>" + esc(S.me.roleName) + (S.me.grp && S.me.grp !== "-" ? " · " + esc(S.me.grp) : "") + '</small></div><nav class="nav" aria-label="Asosiy menyu">' + nav + '</nav><div class="foot">RIAT-TSUE · Birlashgan ekotizim portali</div></aside>' +
+  return '<div class="app"><aside class="side"><div class="brand"><div class="riat-badge">TSUE</div><span>UniverLife</span></div><div class="who"><b>' + esc(name) + "</b><small>" + esc(S.me.roleName) + (S.me.grp && S.me.grp !== "-" ? " · " + esc(S.me.grp) : "") + '</small></div><nav class="nav" aria-label="Asosiy menyu">' + nav + '</nav><div class="foot">TSUE UniverLife · Birlashgan ekotizim portali</div></aside>' +
     '<div class="main"><header class="top"><a href="/ecosystem" class="riat-ecosystem-link"><i class="fa-solid fa-arrow-left"></i> Ekotizimga qaytish</a><h1>' + esc(title) + '</h1><a class="ib" href="#/notifications" aria-label="Bildirishnomalar">' + ic("bell") + (S.unread ? "<em>" + S.unread + "</em>" : "") + '</a><a href="#/profile" aria-label="Profil">' + ava(name, "") + "</a></header>" +
     '<main class="content" id="view">' + renderModuleBadges() + view + '</main></div><nav class="dock" aria-label="Pastki menyu">' + dock + "</nav></div>";
 }
@@ -168,7 +168,7 @@ function render() {
   if (p0 === "login") { location.replace("#/home"); return; }
   afterRender = [];
   const role = S.me.role;
-  const fn = (V[role] && V[role][p0]) || V.common[p0];
+  const fn = (V[role] && V[role][p0]) || (V.student && V.student[p0]) || (V.admin && V.admin[p0]) || V.common[p0];
   let html, title;
   try {
     const out = fn ? fn(r) : null;
@@ -178,7 +178,7 @@ function render() {
   } catch (e) { console.error(e); html = card("", '<p class="note bad">Sahifani ko\'rsatishda xatolik: ' + esc(e.message) + "</p>"); title = "Xatolik"; }
   if (!title) { const n = (NAV[role] || []).find((x) => x[0] === p0); title = n ? n[1] : TITLES[p0] || "UniverLife"; }
   root.innerHTML = shell(html, title);
-  document.title = title + " · RIAT-Univerlife";
+  document.title = title + " · TSUE UniverLife";
   afterRender.forEach((f) => { try { f(); } catch (e) { console.error(e); } });
 }
 window.addEventListener("hashchange", () => { closeSheet(); render(); window.scrollTo(0, 0); });
@@ -187,7 +187,7 @@ window.addEventListener("scroll", () => { const t = $(".top"); if (t) t.classLis
 /* ---- kirish ---- */
 const DEMO = [["sardor.alisherov", "Talaba", "Sardor Alisherov"], ["ota.demo", "Ota-ona", "2 farzand"], ["tyutor.demo", "Tyutor", "RST-81/25"], ["dekanat.demo", "Dekanat", "Raqamli iqtisodiyot"], ["klub.demo", "Klub rahbari", "3 ta klub"]];
 function viewLogin() {
-  return '<div class="auth"><div class="auth-l"><div class="brand"><div class="riat-badge">RIAT</div><span>Univerlife</span></div><div><h2>Talaba hayoti bitta platformada</h2><p>Davomat, baholar, ijtimoiy faollik indeksi, stipendiyalar, to\'garaklar va tadbirlar — talaba, ota-ona, tyutor va dekanat uchun.</p>' +
+  return '<div class="auth"><div class="auth-l"><div class="brand"><div class="riat-badge">TSUE</div><span>UniverLife</span></div><div><h2>Talaba hayoti bitta platformada</h2><p>Davomat, baholar, ijtimoiy faollik indeksi, stipendiyalar, to\'garaklar va tadbirlar — talaba, ota-ona, tyutor va dekanat uchun.</p>' +
     "<ul><li>Ijtimoiy faollik indeksi — HEMIS yo'riqnomasi bo'yicha 11 band</li><li>Tyutor davomati va ota-onaga bildirishnoma</li><li>Tadbirlarda QR-kod orqali qayd etish</li></ul></div><small style=\"color:#a9c4cf\">TDIU talabalari uchun platforma</small></div>" +
     '<div class="auth-r"><div class="auth-box"><h1>Tizimga kirish</h1><p class="lead">Login va parol administrator tomonidan beriladi.</p><form class="form" data-form="login">' +
     field("Login yoki JSHIR", "login", { req: true, ph: "masalan: sardor.alisherov", attrs: ' autocomplete="username" autocapitalize="none"' }) +
@@ -254,10 +254,10 @@ let currentSchedCourse = 'all';
 function renderModuleBadges() {
   const cur = parseRoute().parts[0] || "home";
   return '<div class="module-badge-bar">' +
-    '<span style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-right:4px;">Birlashgan xizmatlar:</span>' +
-    '<a href="#/schedule" class="module-badge ' + (['schedule','attendance','gpa'].includes(cur)?'active':'') + '"><i class="fa-solid fa-graduation-cap"></i> RIAT-Study (Jadval, GPA, Davomat)</a>' +
-    '<a href="#/ifi" class="module-badge ' + (['ifi','clubs','events','scholarships'].includes(cur)?'active':'') + '"><i class="fa-solid fa-handshake-angle"></i> RIAT-Ijtimoiy (IFI 11-band, Klublar, Grantlar)</a>' +
-    '<a href="#/explanations" class="module-badge ' + (['explanations','tutor'].includes(cur)?'active':'') + '"><i class="fa-solid fa-user-shield"></i> RIAT-Parents (Ota-onalar va Tyutor)</a>' +
+    '<span style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-right:4px;">TSUE UniverLife:</span>' +
+    '<a href="#/schedule" class="module-badge ' + (['schedule','attendance','gpa'].includes(cur)?'active':'') + '"><i class="fa-solid fa-graduation-cap"></i> O‘quv & Jadval (EduPage, GPA, Davomat)</a>' +
+    '<a href="#/ifi" class="module-badge ' + (['ifi','clubs','events','scholarships'].includes(cur)?'active':'') + '"><i class="fa-solid fa-handshake-angle"></i> Ijtimoiy & IFI (11 mezon, Klublar, Grantlar)</a>' +
+    '<a href="#/explanations" class="module-badge ' + (['explanations','tutor'].includes(cur)?'active':'') + '"><i class="fa-solid fa-user-shield"></i> Oila & Tyutor (Monitoring va Aloqa)</a>' +
   '</div>';
 }
 
@@ -1404,15 +1404,18 @@ function buildLocalState(meUser) {
     clubs: [{ id: "c1", name: "Sun'iy intellekt to'garagi", status: "qabul" }]
   };
 
+  // Always provide a default st and schedule for fallback preview across all roles
+  base.st = stObject;
+  base.schedule = [];
+  base.board = [
+    { pos: 1, login: "sardor.alisherov", name: "Sardor Alisherov", grp: meUser.grp || "AT-900/26", gpa: 4.85, ifi: 86.4 },
+    { pos: 2, login: meUser.login, name: meUser.name + " " + meUser.surname, grp: meUser.grp || "AT-900/26", gpa: 4.82, ifi: 82.5 },
+    { pos: 3, login: "nodir.vali", name: "Nodir Valiyev", grp: meUser.grp || "AT-900/26", gpa: 4.60, ifi: 74.0 },
+    { pos: 4, login: "dilshod.k", name: "Dilshod Karimov", grp: meUser.grp || "AT-900/26", gpa: 4.45, ifi: 68.5 }
+  ];
+
   if (meUser.role === "student") {
-    base.st = stObject;
-    base.schedule = [];
-    base.board = [
-      { pos: 1, login: "sardor.alisherov", name: "Sardor Alisherov", grp: meUser.grp, gpa: 4.85, ifi: 86.4 },
-      { pos: 2, login: meUser.login, name: meUser.name + " " + meUser.surname, grp: meUser.grp, gpa: 4.82, ifi: 82.5 },
-      { pos: 3, login: "nodir.vali", name: "Nodir Valiyev", grp: meUser.grp, gpa: 4.60, ifi: 74.0 },
-      { pos: 4, login: "dilshod.k", name: "Dilshod Karimov", grp: meUser.grp, gpa: 4.45, ifi: 68.5 }
-    ];
+    // Already set defaults
   } else if (meUser.role === "parent") {
     base.kids = [
       {
