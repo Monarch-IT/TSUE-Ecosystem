@@ -2,27 +2,48 @@ const fs = require('fs');
 
 const originalJs = fs.readFileSync('/home/monarch/Downloads/Telegram Desktop/univerlife/public/app.js', 'utf8');
 
-// 1. Remove emojis
 let js = originalJs.replace(/[\u{1F300}-\u{1FAFF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
 
-// 2. Change Brand and Titles
-js = js.replace(/<div class="brand"><i>U<\/i>UniverLife<\/div>/g, '<div class="brand"><div class="riat-badge">TSUE</div><span>UniverLife</span></div>');
+js = js.replace(/<div class="brand"><i>U<\/i>UniverLife<\/div>/g, '<a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge">TSUE</div><span>UniverLife</span></a>');
 js = js.replace(/document\.title = title \+ " · UniverLife";/g, 'document.title = title + " · TSUE UniverLife";');
 js = js.replace(/<div class="foot">TDIU talabalari uchun platforma<\/div>/g, '<div class="foot">TSUE UniverLife · Birlashgan ekotizim portali</div>');
 
-// 3. Add link to Ecosystem in top header
 js = js.replace(
   '<header class="top"><h1>\' + esc(title) + \'</h1>',
-  '<header class="top"><a href="/ecosystem" class="riat-ecosystem-link"><i class="fa-solid fa-arrow-left"></i> Ekotizimga qaytish</a><h1>\' + esc(title) + \'</h1>'
+  '<header class="top"><h1>\' + esc(title) + \'</h1><div class="top-controls-group"><button type="button" class="top-lang-btn \' + (getLang()===\'uz\'?\'active\':\'\') + \'" data-act="set-lang" data-l="uz">UZ</button><button type="button" class="top-lang-btn \' + (getLang()===\'ru\'?\'active\':\'\') + \'" data-act="set-lang" data-l="ru">RU</button><button type="button" class="top-lang-btn \' + (getLang()===\'en\'?\'active\':\'\') + \'" data-act="set-lang" data-l="en">EN</button><button type="button" class="top-theme-btn" data-act="toggle-theme" title="Theme"><i class="fa-solid fa-circle-half-stroke"></i></button></div>'
 );
 
-// 4. Inject module badges bar at the top of main content view
-js = js.replace(
-  '<main class="content" id="view">\' + view + \'</main>',
-  '<main class="content" id="view">\' + renderModuleBadges() + view + \'</main>'
-);
+const oldShellRegex = /function shell\(view, title\) \{[\s\S]*?\n\}/;
+const newShellFn = `
+function shell(view, title) {
+  const r = S.me.role, cur = parseRoute().parts[0] || "home";
+  const nav = (NAV[r] || []).map((n) => n === "-" ? '<div class="sep"></div>' : '<a href="#/' + n[0] + '" class="' + (cur === n[0] ? "on" : "") + '">' + ic(n[2]) + "<span>" + (t(n[0]) || n[1]) + "</span>" + (badge(n[0]) ? "<em>" + badge(n[0]) + "</em>" : "") + "</a>").join("") +
+    (r !== "admin" && r !== "club" ? '<div class="sep"></div><a href="#/rules" class="' + (cur === "rules" ? "on" : "") + '">' + ic("info") + "<span>" + t("rules") + "</span></a>" : "") +
+    '<a href="#/notifications" class="' + (cur === "notifications" ? "on" : "") + '">' + ic("bell") + "<span>" + t("notifications") + "</span>" + (S.unread ? "<em>" + S.unread + "</em>" : "") + "</a>" +
+    '<a href="#/profile" class="' + (cur === "profile" ? "on" : "") + '">' + ic("user") + "<span>" + t("profile") + "</span></a>";
+  const dock = (DOCK[r] || []).map((k) => { const n = NAV[r].find((x) => x[0] === k); return '<a href="#/' + k + '" class="' + (cur === k ? "on" : "") + '">' + ic(n[2]) + "<span>" + (t(k) || n[1]).split(" ")[0] + "</span>" + (badge(k) ? "<em>" + badge(k) + "</em>" : "") + "</a>"; }).join("") +
+    '<button data-act="menu">' + ic("menu") + "<span>" + t("menu") + "</span></button>";
+  const name = S.me.name + " " + S.me.surname;
+  const roleDisplay = t("role_" + S.me.role) || S.me.roleName;
+  return '<div class="app"><aside class="side"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge">TSUE</div><span>UniverLife</span></a><div class="who"><b>' + esc(name) + "</b><small>" + esc(roleDisplay) + (S.me.grp && S.me.grp !== "-" ? " · " + esc(S.me.grp) : "") + '</small></div><nav class="nav" aria-label="Asosiy menyu">' + nav + '</nav><div class="foot">TSUE UniverLife · Birlashgan ekotizim portali</div></aside>' +
+    '<div class="main"><header class="top"><h1>' + esc(title) + '</h1><div class="top-controls-group"><button type="button" class="top-lang-btn ' + (getLang()==='uz'?'active':'') + '" data-act="set-lang" data-l="uz">UZ</button><button type="button" class="top-lang-btn ' + (getLang()==='ru'?'active':'') + '" data-act="set-lang" data-l="ru">RU</button><button type="button" class="top-lang-btn ' + (getLang()==='en'?'active':'') + '" data-act="set-lang" data-l="en">EN</button><button type="button" class="top-theme-btn" data-act="toggle-theme" title="Theme"><i class="fa-solid fa-circle-half-stroke"></i></button></div><a class="ib" href="#/notifications" aria-label="Bildirishnomalar">' + ic("bell") + (S.unread ? "<em>" + S.unread + "</em>" : "") + '</a><a href="#/profile" aria-label="Profil">' + ava(name, "") + "</a></header>" +
+    '<main class="content" id="view">' + view + '</main></div><nav class="dock" aria-label="Pastki menyu">' + dock + "</nav></div>";
+}
+`;
+js = js.replace(oldShellRegex, newShellFn);
 
-// 5. Replace scheduleView with full TSUE interactive schedule view (safely escaped quotes)
+const oldMenuSheetRegex = /function menuSheet\(\) \{[\s\S]*?\n\}/;
+const newMenuSheetFn = `
+function menuSheet() {
+  const r = S.me.role;
+  sheet(t("menu"), '<nav class="nav">' + (NAV[r] || []).filter((n) => n !== "-").map((n) => '<a href="#/' + n[0] + '" data-act="close-sheet">' + ic(n[2]) + "<span>" + (t(n[0]) || n[1]) + "</span>" + (badge(n[0]) ? "<em>" + badge(n[0]) + "</em>" : "") + "</a>").join("") +
+    '<div class="sep"></div>' + (r !== "admin" && r !== "club" ? '<a href="#/rules" data-act="close-sheet">' + ic("info") + "<span>" + t("rules") + "</span></a>" : "") +
+    '<a href="#/notifications" data-act="close-sheet">' + ic("bell") + "<span>" + t("notifications") + "</span></a>" + '<a href="#/profile" data-act="close-sheet">' + ic("user") + "<span>" + t("profile") + "</span></a>" +
+    '<a href="#" data-act="logout">' + ic("out") + "<span>" + t("logout") + "</span></a></nav>");
+}
+`;
+js = js.replace(oldMenuSheetRegex, newMenuSheetFn);
+
 const oldSchedRegex = /function scheduleView\(rows, opt\) \{[\s\S]*?\n\}/;
 const newSchedFn = `
 let currentSchedWeek = 'odd';
@@ -30,20 +51,202 @@ let currentSchedGroup = '';
 let currentSchedSearch = '';
 let currentSchedCourse = 'all';
 
-function renderModuleBadges() {
-  const cur = parseRoute().parts[0] || "home";
-  return '<div class="module-badge-bar">' +
-    '<span style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-right:4px;">TSUE UniverLife:</span>' +
-    '<a href="#/schedule" class="module-badge ' + (['schedule','attendance','gpa'].includes(cur)?'active':'') + '"><i class="fa-solid fa-graduation-cap"></i> O‘quv & Jadval (EduPage, GPA, Davomat)</a>' +
-    '<a href="#/ifi" class="module-badge ' + (['ifi','clubs','events','scholarships'].includes(cur)?'active':'') + '"><i class="fa-solid fa-handshake-angle"></i> Ijtimoiy & IFI (11 mezon, Klublar, Grantlar)</a>' +
-    '<a href="#/explanations" class="module-badge ' + (['explanations','tutor'].includes(cur)?'active':'') + '"><i class="fa-solid fa-user-shield"></i> Oila & Tyutor (Monitoring va Aloqa)</a>' +
-  '</div>';
+const I18N = {
+  uz: {
+    back_eco: "Ekotizimga qaytish",
+    mod_edu: "O‘quv & Jadval (EduPage, GPA, Davomat)",
+    mod_ifi: "Ijtimoiy & IFI (11 mezon, Klublar, Grantlar)",
+    mod_fam: "Oila & Tyutor (Monitoring va Aloqa)",
+    sched_title: "TDIU Rasmiy Dars Jadvali",
+    sched_sub: "Fakultet guruhlari, ustozlar va auditoriyalar bo'yicha real vaqt rejimida avtomatlashtirilgan interaktiv jadval tizimi.",
+    odd_week: "Toq hafta",
+    even_week: "Juft hafta",
+    all_courses: "Barcha kurslar",
+    course_1: "1-kurs",
+    course_2: "2-kurs",
+    course_3: "3-kurs",
+    course_4: "4-kurs",
+    group_search_ph: "Guruhni qidirish (masalan: AT-82/25, II-81...)",
+    lesson_search_ph: "Fan, o'qituvchi yoki xona...",
+    group_label: "Guruh:",
+    course_label: "Kurs:",
+    today_badge: "Bugun",
+    lessons_count: "ta dars",
+    no_lessons: "Bu kunda tanlangan guruh uchun darslar mavjud emas.",
+    sync_badge: "TDIU EduPage Jadval Tizimi (Sinxron)",
+    lecture: "Ma'ruza",
+    practice: "Amaliyot",
+    lab: "Laboratoriya",
+    para: "-para",
+    home: "Bosh sahifa",
+    schedule: "Dars jadvali",
+    attendance: "Davomat",
+    gpa: "GPA va baholar",
+    ifi: "Ijtimoiy faollik",
+    rating: "Reyting",
+    scholarships: "Stipendiyalar",
+    clubs: "To'garaklar",
+    events: "Tadbir va musobaqalar",
+    news: "Yangiliklar",
+    explanations: "Tushuntirish xatlari",
+    users: "Foydalanuvchilar",
+    tutors: "Tyutorlar",
+    groups: "Guruhlar",
+    students: "Talabalar",
+    overview: "Umumiy ko'rinish",
+    notifications: "Bildirishnomalar",
+    profile: "Profil",
+    rules: "IFI va GPA qanday hisoblanadi",
+    logout: "Chiqish",
+    menu: "Menyu",
+    queue: "Arizalar",
+    hemis: "HEMIS va Edu",
+    role_student: "Talaba",
+    role_tutor: "Tyutor",
+    role_parent: "Ota-ona",
+    role_dean: "Dekanat",
+    role_admin: "Administrator",
+    role_club: "Klub rahbari"
+  },
+  ru: {
+    back_eco: "Назад в экосистему",
+    mod_edu: "Учеба и расписание (EduPage, GPA, Посещаемость)",
+    mod_ifi: "Социальная активность и ИФИ (11 критериев, Клубы, Гранты)",
+    mod_fam: "Семья и Тьютор (Мониторинг и Связь)",
+    sched_title: "Официальное расписание занятий ТГЭУ",
+    sched_sub: "Интерактивная система расписания факультетов, преподавателей и аудиторий в реальном времени.",
+    odd_week: "Нечетная неделя",
+    even_week: "Четная неделя",
+    all_courses: "Все курсы",
+    course_1: "1-курс",
+    course_2: "2-курс",
+    course_3: "3-курс",
+    course_4: "4-курс",
+    group_search_ph: "Поиск группы (напр: AT-82/25, II-81...)",
+    lesson_search_ph: "Предмет, преподаватель или аудитория...",
+    group_label: "Группа:",
+    course_label: "Курс:",
+    today_badge: "Сегодня",
+    lessons_count: "пар",
+    no_lessons: "На этот день для выбранной группы занятий нет.",
+    sync_badge: "Синхронизация EduPage ТГЭУ",
+    lecture: "Лекция",
+    practice: "Практика",
+    lab: "Лабораторная",
+    para: "-пара",
+    home: "Главная",
+    schedule: "Расписание занятий",
+    attendance: "Посещаемость",
+    gpa: "GPA и оценки",
+    ifi: "Социальная активность",
+    rating: "Рейтинг",
+    scholarships: "Стипендии",
+    clubs: "Кружки",
+    events: "Мероприятия",
+    news: "Новости",
+    explanations: "Объяснительные",
+    users: "Пользователи",
+    tutors: "Тьюторы",
+    groups: "Группы",
+    students: "Студенты",
+    overview: "Обзор",
+    notifications: "Уведомления",
+    profile: "Профиль",
+    rules: "Как рассчитываются ИФИ и GPA",
+    logout: "Выход",
+    menu: "Меню",
+    queue: "Заявки",
+    hemis: "HEMIS и Edu",
+    role_student: "Студент",
+    role_tutor: "Тьютор",
+    role_parent: "Родитель",
+    role_dean: "Деканат",
+    role_admin: "Администратор",
+    role_club: "Руководитель клуба"
+  },
+  en: {
+    back_eco: "Back to Ecosystem",
+    mod_edu: "Study & Timetable (EduPage, GPA, Attendance)",
+    mod_ifi: "Social & IFI (11 Criteria, Clubs, Grants)",
+    mod_fam: "Family & Tutor (Monitoring & Contact)",
+    sched_title: "Official TSUE Timetable",
+    sched_sub: "Real-time automated interactive schedule for faculty groups, professors, and auditoriums.",
+    odd_week: "Odd week",
+    even_week: "Even week",
+    all_courses: "All courses",
+    course_1: "1st year",
+    course_2: "2nd year",
+    course_3: "3rd year",
+    course_4: "4th year",
+    group_search_ph: "Search group (e.g. AT-82/25, II-81...)",
+    lesson_search_ph: "Subject, teacher or room...",
+    group_label: "Group:",
+    course_label: "Course:",
+    today_badge: "Today",
+    lessons_count: "lessons",
+    no_lessons: "No lessons scheduled for the selected group on this day.",
+    sync_badge: "TSUE EduPage Timetable (Sync)",
+    lecture: "Lecture",
+    practice: "Practice",
+    lab: "Lab",
+    para: "-slot",
+    home: "Dashboard",
+    schedule: "Timetable",
+    attendance: "Attendance",
+    gpa: "GPA & Grades",
+    ifi: "Social Activity",
+    rating: "Rating",
+    scholarships: "Scholarships",
+    clubs: "Clubs",
+    events: "Events & Contests",
+    news: "News",
+    explanations: "Explanations",
+    users: "Users",
+    tutors: "Tutors",
+    groups: "Groups",
+    students: "Students",
+    overview: "Overview",
+    notifications: "Notifications",
+    profile: "Profile",
+    rules: "How IFI & GPA are calculated",
+    logout: "Logout",
+    menu: "Menu",
+    queue: "Applications",
+    hemis: "HEMIS & Edu",
+    role_student: "Student",
+    role_tutor: "Tutor",
+    role_parent: "Parent",
+    role_dean: "Dean Office",
+    role_admin: "Administrator",
+    role_club: "Club Leader"
+  }
+};
+
+function getLang() {
+  try {
+    const l = localStorage.getItem("riat_lang");
+    if (l === "ru" || l === "en" || l === "uz") return l;
+  } catch(e) {}
+  return "uz";
+}
+
+function setLang(l) {
+  try { localStorage.setItem("riat_lang", l); } catch(e) {}
+  render();
+}
+
+function t(k) {
+  const l = getLang();
+  return (I18N[l] && I18N[l][k]) || (I18N.uz && I18N.uz[k]) || k;
 }
 
 function scheduleView(rows, opt) {
   opt = opt || {};
   const td = isoDay(today());
-  const d = schedDay || (td <= 6 ? td : 1);
+  if (!schedDay) {
+    schedDay = (td >= 1 && td <= 6) ? td : 1;
+  }
+  const d = schedDay;
   
   const hasEdu = typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA;
   const groups = hasEdu ? Object.keys(EDUPAGE_SCHEDULE_DATA).sort() : ['AT-900/26', 'IB-900/26', 'II-900/26', 'RST-81/25'];
@@ -57,9 +260,14 @@ function scheduleView(rows, opt) {
   }
 
   const filteredGroups = groups.filter(g => {
-    if (currentSchedCourse === 'all') return true;
-    const gData = EDUPAGE_SCHEDULE_DATA[g];
-    return gData && String(gData.course) === String(currentSchedCourse);
+    if (currentSchedCourse !== 'all') {
+      const gData = EDUPAGE_SCHEDULE_DATA[g];
+      if (gData && String(gData.course) !== String(currentSchedCourse)) return false;
+    }
+    if (currentSchedSearch) {
+      return g.toLowerCase().includes(currentSchedSearch.toLowerCase());
+    }
+    return true;
   });
 
   const dayIdx = d - 1;
@@ -93,15 +301,6 @@ function scheduleView(rows, opt) {
     }));
   }
 
-  if (currentSchedSearch) {
-    const q = currentSchedSearch.toLowerCase();
-    lessons = lessons.filter(l => 
-      l.subject.toLowerCase().includes(q) ||
-      l.teacher.toLowerCase().includes(q) ||
-      l.room.toLowerCase().includes(q)
-    );
-  }
-
   const daysPills = [1, 2, 3, 4, 5, 6].map(i => {
     const isToday = i === td;
     const isActive = i === d;
@@ -114,54 +313,60 @@ function scheduleView(rows, opt) {
     }
     return '<button type="button" class="sched-day-pill ' + (isActive ? 'active' : '') + '" data-act="sched-day" data-day="' + i + '">' +
       '<span class="d-title">' + DAYS[i] + '</span>' +
-      '<span class="d-sub">' + (isToday ? 'Bugun · ' : '') + count + ' ta dars</span>' +
+      '<span class="d-sub">' + (isToday ? t('today_badge') + ' · ' : '') + count + ' ' + t('lessons_count') + '</span>' +
     '</button>';
+  }).join('');
+
+  const groupPills = filteredGroups.map(g => {
+    const isSel = g === currentSchedGroup;
+    return '<button type="button" class="sched-group-btn ' + (isSel ? 'active' : '') + '" data-act="sched-select-group" data-grp="' + esc(g) + '">' + esc(g) + '</button>';
   }).join('');
 
   return '<div class="sched-hero">' +
     '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">' +
       '<div>' +
-        '<h2>TDIU Rasmiy Dars Jadvali</h2>' +
-        '<p>Fakultet guruhlari, ustozlar va auditoriyalar bo&#39;yicha real vaqt rejimida avtomatlashtirilgan interaktiv jadval tizimi.</p>' +
+        '<h2>' + t('sched_title') + '</h2>' +
+        '<p>' + t('sched_sub') + '</p>' +
       '</div>' +
       '<div class="sched-btn-group">' +
-        '<button type="button" class="' + (currentSchedWeek === 'odd' ? 'active' : '') + '" data-act="sched-week" data-week="odd">Toq hafta</button>' +
-        '<button type="button" class="' + (currentSchedWeek === 'even' ? 'active' : '') + '" data-act="sched-week" data-week="even">Juft hafta</button>' +
+        '<button type="button" class="' + (currentSchedWeek === 'odd' ? 'active' : '') + '" data-act="sched-week" data-week="odd">' + t('odd_week') + '</button>' +
+        '<button type="button" class="' + (currentSchedWeek === 'even' ? 'active' : '') + '" data-act="sched-week" data-week="even">' + t('even_week') + '</button>' +
       '</div>' +
     '</div>' +
-    '<div class="sched-controls">' +
-      '<div class="sched-select-wrap">' +
-        '<select data-act="sched-course">' +
-          '<option value="all"' + (currentSchedCourse==='all'?' selected':'') + '>Barcha kurslar</option>' +
-          '<option value="1"' + (currentSchedCourse==='1'?' selected':'') + '>1-kurs</option>' +
-          '<option value="2"' + (currentSchedCourse==='2'?' selected':'') + '>2-kurs</option>' +
-          '<option value="3"' + (currentSchedCourse==='3'?' selected':'') + '>3-kurs</option>' +
-          '<option value="4"' + (currentSchedCourse==='4'?' selected':'') + '>4-kurs</option>' +
-        '</select>' +
-        '<select data-act="sched-group">' +
-          filteredGroups.map(g => '<option value="' + g + '"' + (g === currentSchedGroup ? ' selected' : '') + '>' + g + '</option>').join('') +
-        '</select>' +
+    '<div style="margin-top:16px;display:flex;flex-direction:column;gap:12px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">' +
+        '<div class="sched-course-pills">' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === 'all' ? 'active' : '') + '" data-act="sched-course-tab" data-course="all">' + t('all_courses') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '1' ? 'active' : '') + '" data-act="sched-course-tab" data-course="1">' + t('course_1') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '2' ? 'active' : '') + '" data-act="sched-course-tab" data-course="2">' + t('course_2') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '3' ? 'active' : '') + '" data-act="sched-course-tab" data-course="3">' + t('course_3') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '4' ? 'active' : '') + '" data-act="sched-course-tab" data-course="4">' + t('course_4') + '</button>' +
+        '</div>' +
+        '<div style="flex:1;min-width:240px;max-width:400px">' +
+          '<input type="text" placeholder="' + t('group_search_ph') + '" value="' + esc(currentSchedSearch) + '" data-act="sched-group-search-input" style="height:38px;border-radius:10px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.9);color:#0E2A52;padding:0 12px;width:100%;font-weight:600">' +
+        '</div>' +
       '</div>' +
-      '<div style="flex:1;min-width:200px">' +
-        '<input type="text" placeholder="Fan, o&#39;qituvchi yoki xona qidirish…" value="' + esc(currentSchedSearch) + '" data-act="sched-search-input" style="height:40px;border-radius:8px;border:none;padding:0 12px;width:100%">' +
+      '<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.15)">' +
+        '<div style="font-size:12px;color:rgba(255,255,255,0.8);margin-bottom:6px;font-weight:700">' + t('group_label') + ' <span style="color:#fff;background:rgba(0,59,129,0.6);padding:2px 8px;border-radius:6px;font-weight:800">' + currentSchedGroup + '</span> <span class="sched-group-count">(' + filteredGroups.length + ')</span></div>' +
+        '<div class="sched-group-grid">' + (groupPills || '<span style="color:#fff;padding:8px">Guruh topilmadi</span>') + '</div>' +
       '</div>' +
     '</div>' +
   '</div>' +
   '<div class="sched-days-nav">' + daysPills + '</div>' +
   '<div class="card">' +
     '<div class="ch">' +
-      '<h2>' + DAYS[d] + (d === td ? ' <small style="color:var(--ok);font-weight:700">· Bugun</small>' : '') + ' <small>(' + currentSchedGroup + ' · ' + (currentSchedWeek === 'odd' ? 'Toq' : 'Juft') + ' hafta)</small></h2>' +
-      '<span class="src"><i></i> TDIU EduPage Jadval Tizimi (Sinxron)</span>' +
+      '<h2>' + DAYS[d] + (d === td ? ' <small style="color:var(--ok);font-weight:700">· ' + t('today_badge') + '</small>' : '') + ' <small>(' + currentSchedGroup + ' · ' + (currentSchedWeek === 'odd' ? t('odd_week') : t('even_week')) + ')</small></h2>' +
+      '<span class="src"><i></i> ' + t('sync_badge') + '</span>' +
     '</div>' +
     (lessons.length ? 
       '<div class="lessons-list">' + lessons.map(l => {
         let typeCls = "type-lecture";
-        let typeName = "Ma&apos;ruza";
-        if (l.type === "practice" || l.type === "seminar") { typeCls = "type-practice"; typeName = "Amaliyot"; }
-        else if (l.type === "lab") { typeCls = "type-lab"; typeName = "Laboratoriya"; }
+        let typeName = t('lecture');
+        if (l.type === "practice" || l.type === "seminar") { typeCls = "type-practice"; typeName = t('practice'); }
+        else if (l.type === "lab") { typeCls = "type-lab"; typeName = t('lab'); }
         return '<div class="lesson-card">' +
           '<div class="lesson-time">' +
-            '<b>' + l.slot + '-para</b>' +
+            '<b>' + l.slot + t('para') + '</b>' +
             '<small>' + esc(l.time) + '</small>' +
           '</div>' +
           '<div class="lesson-info">' +
@@ -174,7 +379,7 @@ function scheduleView(rows, opt) {
           '</div>' +
         '</div>';
       }).join('') + '</div>'
-      : empty('Bu kunda tanlangan guruh uchun darslar mavjud emas.')
+      : empty(t('no_lessons'))
     ) +
   '</div>';
 }
@@ -182,7 +387,6 @@ function scheduleView(rows, opt) {
 
 js = js.replace(oldSchedRegex, newSchedFn);
 
-// 6. Update todayLessons in dashboard to use EDUPAGE_SCHEDULE_DATA
 const oldTodayRegex = /function todayLessons\(rows\) \{[\s\S]*?\n\}/;
 const newTodayFn = `
 function todayLessons(rows) {
@@ -212,58 +416,158 @@ function todayLessons(rows) {
 `;
 js = js.replace(oldTodayRegex, newTodayFn);
 
-// 7. Ensure all roles can access schedule, attendance, gpa, ifi without 'Sahifa topilmadi'
 js = js.replace(
   'const fn = (V[role] && V[role][p0]) || V.common[p0];',
   'const fn = (V[role] && V[role][p0]) || (V.student && V.student[p0]) || (V.admin && V.admin[p0]) || V.common[p0];'
 );
 
-// 8. Add schedule to admin and dean nav if not already present
 js = js.replace(
   'admin: [["home", "Umumiy ko\'rinish", "grid"],',
-  'admin: [["home", "Umumiy ko\'rinish", "grid"], ["schedule", "Dars jadvali", "cal"], ["students", "Talabalar", "list"], ["attendance", "Davomat", "check"], ["gpa", "GPA va baholar", "cap"], ["ifi", "Ijtimoiy faollik", "star"],'
+  'admin: [["home", "Umumiy ko\'rinish", "grid"], ["schedule", "Dars jadvali", "cal"], ["attendance", "Davomat", "check"], ["gpa", "GPA va baholar", "cap"], ["ifi", "Ijtimoiy faollik", "star"],'
 );
 
-// 9. Add event listeners for schedule interactions
+const oldProfileRegex = /V\.common\.profile = \(\) => \{[\s\S]*?\n\};/;
+const newProfileFn = `
+V.common.profile = () => {
+  const m = S.me;
+  const allGroups = (typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA) ? Object.keys(EDUPAGE_SCHEDULE_DATA).sort() : ['AT-900/26', 'IB-900/26', 'II-900/26', 'RST-81/25'];
+  const currentGrp = m.grp && m.grp !== '-' ? m.grp : 'AT-900/26';
+  const grpOptions = allGroups.map(g => '<option value="' + g + '"' + (g === currentGrp ? ' selected' : '') + '>' + g + '</option>').join('');
+  const adminGrpChangeForm = m.role === 'admin' ? (
+    '<form class="form" data-form="admin-group" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line2)">' +
+      '<div class="field"><label style="font-weight:700;font-size:13px;display:block;margin-bottom:6px">Guruhga biriktirish (Administrator / talaba ko\\'rinishi)</label>' +
+      '<select name="grp" style="height:40px;border-radius:8px;padding:0 10px;width:100%">' + grpOptions + '</select></div>' +
+      '<button class="btn sm" type="submit" style="margin-top:8px">Guruhni saqlash</button>' +
+    '</form>'
+  ) : '';
+
+  return '<div class="grid g2">' + card("Ma'lumotlarim", '<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">' + ava(m.name + ' ' + m.surname, 'l') + '<div><b style="font-size:18px">' + esc(m.name + ' ' + m.surname) + '</b><div class="muted">' + esc(m.roleName) + (m.grp && m.grp !== '-' ? ' · ' + esc(m.grp) : '') + '</div></div></div>' +
+    '<div class="kv"><div><small>Login</small><b>' + esc(m.login) + '</b></div>' + (m.jshir ? '<div><small>JSHIR</small><b>' + esc(m.jshir) + '</b></div>' : '') + (m.faculty && m.faculty !== '-' ? '<div><small>Fakultet / bo\\'lim</small><b>' + esc(m.faculty) + '</b></div>' : '') + '</div>' +
+    adminGrpChangeForm +
+    '<form class="form" data-form="phone" style="margin-top:16px">' + field('Telefon raqami' + (m.role === 'tutor' ? " (ota-onalar ko'radi)" : ''), 'phone', { type: 'tel', val: m.phone, ph: '+998 90 123 45 67' }) + '<button class="btn ghost" type="submit">Saqlash</button></form>') +
+    card("Parolni o'zgartirish", '<form class="form" data-form="password">' + field('Joriy parol', 'old', { type: 'password', req: true, attrs: ' autocomplete="current-password"' }) + field('Yangi parol', 'password', { type: 'password', req: true, hint: 'kamida 6 belgi', attrs: ' autocomplete="new-password" minlength="6"' }) + '<button class="btn" type="submit">O\\'zgartirish</button></form>' +
+    '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line2)"><button class="btn bad" data-act="logout">' + ic('out') + 'Tizimdan chiqish</button></div>') + '</div>';
+};
+`;
+js = js.replace(oldProfileRegex, newProfileFn);
+
+const oldIfiCritsRegex = /function ifiCrits\(st, opt\) \{[\s\S]*?\n\}/;
+const newIfiCritsFn = `
+function ifiCrits(st, opt) {
+  opt = opt || {};
+  const sc = (st && st.ifi) || { v: {}, info: {} };
+  const info = sc.info || {};
+  return '<div class="crits">' + S.rules.crit.map((c) => {
+    const v = (sc.v && sc.v[c.id]) || 0;
+    const E = (st && st.entries) ? st.entries.filter((e) => e.crit === c.id) : [];
+    let extra = "";
+    if (c.id === "acad") extra = '<div class="ent"><span>GPA ' + f2((info.acad || {}).gpa || 0) + " · " + esc((info.acad || {}).year || "") + ' o\\'quv yili</span><a class="btn sm ghost" href="' + (opt.base || "#/") + 'gpa">Batafsil</a></div>';
+    if (c.id === "att") extra = '<div class="ent"><span>Sababsiz qoldirilgan: ' + ((info.att || {}).hours || 0) + ' soat</span><a class="btn sm ghost" href="' + (opt.base || "#/") + 'attendance">Batafsil</a></div>';
+    if (c.id === "enlight" && info.enlight) extra = '<div class="ent"><span>Ma\\'rifat darslari: ' + info.enlight.n + " / " + info.enlight.held + " ishtirok (QR) → " + f1(info.enlight.part) + " ball</span></div>";
+    if (c.id === "culture" && info.culture) extra = '<div class="ent"><span>Tasdiqlangan tashrif bo\\'lgan oylar: ' + info.culture.months + " / " + info.culture.need + "</span></div>";
+    const can = opt.student && (c.who === "student" || c.who === "ref");
+    const ents = E.filter((e) => !(c.id === "enlight" && e.source === "qr")).slice(0, 6);
+    return '<div class="crit"><div class="crit-h"><span class="num">' + c.n + '</span><div class="t"><b>' + esc(c.name) + "</b><small>" + esc(c.hint) + '</small></div><div class="pts">' + f1(v) + " <span>/ " + c.max + "</span></div></div>" + bar(v, c.max, v >= c.max ? "ok" : "") +
+      '<div class="who">' + chip(WHO[c.who], c.who === "hemis" ? "warn" : c.who === "tutor" ? "pri" : "") + (c.future ? '<span class="muted">' + esc(c.future) + "</span>" : "") + "</div>" +
+      (extra || ents.length ? '<div class="ents">' + extra + ents.map((e) => entryLine(e, opt)).join("") + "</div>" : "") +
+      (opt.canScore && c.who === "tutor" || opt.canScore && (c.id === "public" || c.id === "spirit") ? '<details' + (c.who === "tutor" ? " open" : "") + '><summary class="small" style="cursor:pointer;font-weight:700;color:var(--pri2)">Tyutor bahosi</summary><div style="margin-top:8px">' + tutorScoreForm(st, c) + "</div></details>" : "") +
+      (can ? '<div class="acts"><a class="btn sm" href="#/ifi/new/' + c.id + '">' + ic("plus") + (c.who === "ref" ? "Ma'lumotnoma to'ldirish" : "Ariza berish") + "</a></div>" : "") + "</div>";
+  }).join("") + "</div>";
+}
+`;
+js = js.replace(oldIfiCritsRegex, newIfiCritsFn);
+
+const oldUserFormRegex = /function userForm\(u\) \{[\s\S]*?\n\}/;
+const newUserFormFn = `
+function userForm(u) {
+  u = u || { role: "student" };
+  const tg = u.login ? (S.tutorGroups || []).filter((x) => x.tutor === u.login).map((x) => x.grp).join(", ") : "";
+  const allGroups = (typeof EDUPAGE_SCHEDULE_DATA !== "undefined" && EDUPAGE_SCHEDULE_DATA) ? Object.keys(EDUPAGE_SCHEDULE_DATA).sort() : ["AT-900/26", "IB-900/26", "II-900/26", "RST-81/25"];
+  const currentGrp = u.grp && u.grp !== "-" ? u.grp : "AT-900/26";
+  const grpOptions = allGroups.map(g => '<option value="' + g + '"' + (g === currentGrp ? ' selected' : '') + '>' + g + '</option>').join('');
+
+  return '<form class="form" data-form="user"><input type="hidden" name="edit" value="' + esc(u.login || "") + '">' + field("Rol", "role", { type: "select", val: u.role, opts: ROLE_OPTS }) +
+    '<div class="f2">' + field("Ism", "name", { req: true, val: u.name }) + field("Familiya", "surname", { req: true, val: u.surname }) + "</div>" +
+    '<div class="f2">' + field("Login", "login", { req: true, val: u.login, attrs: u.login ? " readonly" : ' autocapitalize="none"', ph: "masalan: ali.valiyev" }) + field("JSHIR", "jshir", { val: u.jshir, hint: "ixtiyoriy, 14 raqam", attrs: ' inputmode="numeric"' }) + "</div>" +
+    '<div class="f2">' +
+      '<div class="field"><label>Guruh (talaba uchun tanlang)</label><select name="grp">' + grpOptions + '</select></div>' +
+      field("Fakultet / bo'lim", "faculty", { val: u.faculty !== "-" ? u.faculty : "Raqamli iqtisodiyot" }) +
+    '</div>' +
+    field("Tyutor guruhlari", "groups", { val: tg, hint: "tyutor uchun, vergul bilan", ph: "RST-81/25, RST-82/25" }) + field("Telefon", "phone", { type: "tel", val: u.phone }) +
+    field(u.login ? "Yangi parol" : "Parol", "password", { type: "text", req: !u.login, hint: u.login ? "o'zgartirmasangiz bo'sh qoldiring" : "kamida 6 belgi — foydalanuvchiga bering" }) + '<button class="btn block" type="submit">Saqlash</button></form>';
+}
+`;
+js = js.replace(oldUserFormRegex, newUserFormFn);
+
+js = js.replace(
+  'if (kind === "phone") return api("setPhone", { phone: g("phone") });',
+  'if (kind === "admin-group") return api("adminSetGrp", { grp: g("grp") });\n  if (kind === "phone") return api("setPhone", { phone: g("phone") });'
+);
+
 js = js.replace(
   'document.addEventListener("click", async (e) => {',
   `document.addEventListener("input", (e) => {
     const t = e.target;
-    if (t.dataset.act === "sched-search-input") {
+    if (t.dataset.act === "sched-group-search-input") {
       currentSchedSearch = t.value;
-      const cardEl = document.querySelector(".lessons-list");
-      if (cardEl) render();
-    }
-  });
-  document.addEventListener("change", (e) => {
-    const t = e.target;
-    if (t.dataset.act === "sched-course") {
-      currentSchedCourse = t.value;
-      render();
-    } else if (t.dataset.act === "sched-group") {
-      currentSchedGroup = t.value;
-      render();
+      const q = currentSchedSearch.trim().toLowerCase();
+      const grid = document.querySelector(".sched-group-grid");
+      if (grid) {
+        const btns = grid.querySelectorAll(".sched-group-btn");
+        let visibleCount = 0;
+        btns.forEach(btn => {
+          const grp = (btn.dataset.grp || "").toLowerCase();
+          const matches = !q || grp.includes(q);
+          btn.style.display = matches ? "inline-flex" : "none";
+          if (matches) visibleCount++;
+        });
+        const countSpan = document.querySelector(".sched-group-count");
+        if (countSpan) countSpan.textContent = "(" + visibleCount + ")";
+      }
     }
   });
   document.addEventListener("click", async (e) => {
-    const btnSched = e.target.closest("button, a");
-    if (btnSched && btnSched.dataset.act === "sched-week") {
-      currentSchedWeek = btnSched.dataset.week;
-      render();
-      return;
-    }
-    if (btnSched && btnSched.dataset.act === "sched-day") {
-      schedDay = Number(btnSched.dataset.day);
-      render();
-      return;
+    const btnAct = e.target.closest("[data-act]");
+    if (btnAct) {
+      const act = btnAct.dataset.act;
+      if (act === "sched-week") {
+        currentSchedWeek = btnAct.dataset.week;
+        render();
+        return;
+      }
+      if (act === "sched-day") {
+        schedDay = Number(btnAct.dataset.day);
+        render();
+        return;
+      }
+      if (act === "sched-course-tab") {
+        currentSchedCourse = btnAct.dataset.course;
+        render();
+        return;
+      }
+      if (act === "sched-select-group") {
+        currentSchedGroup = btnAct.dataset.grp;
+        render();
+        return;
+      }
+      if (act === "set-lang") {
+        setLang(btnAct.dataset.l);
+        return;
+      }
+      if (act === "toggle-theme") {
+        document.body.classList.toggle("dark-mode");
+        try {
+          const isDark = document.body.classList.contains("dark-mode");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch(e) {}
+        return;
+      }
     }
 `
 );
 
-// 10. Replace init() and api() to work seamlessly client-side with localStorage SSO
 const oldInitRegex = /\(async function init\(\) \{[\s\S]*?\}\)\(\);/;
 const newInit = `
-/* SSO Boot Integration from TSUE Platform */
 function bootFromEcosystem() {
   try {
     const raw = localStorage.getItem("riat_user") || localStorage.getItem("tsue_user");
@@ -272,7 +576,7 @@ function bootFromEcosystem() {
       if (u && (u.login || u.username)) {
         const login = u.login || u.username;
         let role = "student";
-        if (u.role === "admin" || login === "monarch" || login === "antigravity") role = "admin";
+        if (u.role === "admin" || login === "monarch") role = "admin";
         else if (u.role === "tutor" || u.role === "tyutor") role = "tutor";
         else if (u.role === "parent") role = "parent";
         else if (u.role === "dean") role = "dean";
@@ -296,7 +600,6 @@ function bootFromEcosystem() {
   return null;
 }
 
-/* Local storage state manager for static deployment */
 const DB_STORAGE_KEY = "riat_univerlife_local_db";
 function getLocalDb() {
   try {
@@ -323,7 +626,6 @@ function saveLocalDb(db) {
   } catch(e) {}
 }
 
-/* Standalone buildState generator */
 function buildLocalState(meUser) {
   const ldb = getLocalDb();
   const seed = window.__UNIVERLIFE_SEED__ || {};
@@ -355,7 +657,7 @@ function buildLocalState(meUser) {
       hoursPerPair: 2
     },
     notifs: [
-      { id: "n1", title: "RIAT-Univerlife platformasiga xush kelibsiz", body: "RIAT-Study, RIAT-Parents va RIAT-Ijtimoiy bitta markaziy sahifaga birlashtirildi.", link: "#/home", created: Date.now() - 3600000, read: 0 }
+      { id: "n1", title: "TSUE UniverLife platformasiga xush kelibsiz", body: "RIAT-Study, RIAT-Parents va RIAT-Ijtimoiy bitta markaziy tizimga birlashtirildi.", link: "#/home", created: Date.now() - 3600000, read: 0 }
     ],
     unread: 1,
     events: ldb.events.length ? ldb.events : (seed.events || []),
@@ -366,7 +668,6 @@ function buildLocalState(meUser) {
 
   if (!meUser) return base;
 
-  // Student specific full object
   const userEntries = ldb.entries.filter(e => e.login === meUser.login);
   const stObject = {
     login: meUser.login,
@@ -411,7 +712,13 @@ function buildLocalState(meUser) {
     ifi: {
       total: 82.5,
       level: "A'lo daraja",
-      v: { acad: 9.3, att: 5, read: 20, club: 20, contest: 9, public: 5, culture: 5, sport: 5, conduct: 4.2 }
+      v: { acad: 9.3, att: 5, read: 20, club: 20, contest: 9, public: 5, culture: 5, sport: 5, conduct: 4.2 },
+      info: {
+        acad: { gpa: 4.82, year: "2025–2026" },
+        att: { hours: 4 },
+        enlight: { n: 4, held: 4, part: 6 },
+        culture: { months: 2, need: 2 }
+      }
     },
     rank: {
       ifi: { grp: { pos: 1, of: 26 }, fac: { pos: 3, of: 240 }, all: { pos: 8, of: 1200 } },
@@ -424,7 +731,6 @@ function buildLocalState(meUser) {
     clubs: [{ id: "c1", name: "Sun'iy intellekt to'garagi", status: "qabul" }]
   };
 
-  // Always provide a default st and schedule for fallback preview across all roles
   base.st = stObject;
   base.schedule = [];
   base.board = [
@@ -435,7 +741,6 @@ function buildLocalState(meUser) {
   ];
 
   if (meUser.role === "student") {
-    // Already set defaults
   } else if (meUser.role === "parent") {
     base.kids = [
       {
@@ -477,7 +782,6 @@ function buildLocalState(meUser) {
   return base;
 }
 
-/* Standalone API interceptor */
 async function localApiHandler(action, data) {
   const ldb = getLocalDb();
   if (action === "state") {
@@ -487,7 +791,7 @@ async function localApiHandler(action, data) {
     const lg = String(data.login || "").trim().toLowerCase();
     let found = (ldb.users || []).find(u => u.login.toLowerCase() === lg);
     if (!found) {
-      if (lg === "monarch" || lg === "antigravity" || lg === "admin") {
+      if (lg === "monarch" || lg === "admin") {
         found = { login: lg, name: lg.toUpperCase(), surname: "Admin", role: "admin", university: "TDIU", faculty: "Raqamli iqtisodiyot", grp: "AT-900/26" };
       } else if (lg.includes("tyutor") || lg.includes("tutor")) {
         found = { login: lg, name: "Farhod", surname: "Karimov", role: "tutor", university: "TDIU", faculty: "Raqamli iqtisodiyot", grp: "-" };
@@ -521,6 +825,62 @@ async function localApiHandler(action, data) {
     try { localStorage.removeItem("riat_user"); } catch(e) {}
     S = buildLocalState(null);
     return { ok: true, msg: "Tizimdan chiqildi", state: S };
+  }
+
+  if (action === "adminSetGrp") {
+    const newGrp = String(data.grp || "").trim();
+    if (newGrp && S.me) {
+      S.me.grp = newGrp;
+      currentSchedGroup = newGrp;
+      try {
+        const raw = localStorage.getItem("riat_user");
+        if (raw) {
+          const u = JSON.parse(raw);
+          u.grp = newGrp;
+          u.group = newGrp;
+          localStorage.setItem("riat_user", JSON.stringify(u));
+        }
+      } catch(e) {}
+      let userInDb = (ldb.users || []).find(u => u.login.toLowerCase() === S.me.login.toLowerCase());
+      if (userInDb) {
+        userInDb.grp = newGrp;
+        saveLocalDb(ldb);
+      }
+      S = buildLocalState(S.me);
+      return { ok: true, msg: "Guruh muvaffaqiyatli o'zgartirildi: " + newGrp, state: S };
+    }
+    return { ok: false, msg: "Guruh topilmadi" };
+  }
+
+  if (action === "userSave") {
+    const editLogin = String(data.edit || data.login || "").trim().toLowerCase();
+    let idx = ldb.users.findIndex(u => u.login.toLowerCase() === editLogin);
+    const updatedUser = {
+      login: editLogin || data.login,
+      name: data.name || "Foydalanuvchi",
+      surname: data.surname || "",
+      role: data.role || "student",
+      grp: data.grp || "AT-900/26",
+      faculty: data.faculty || "Raqamli iqtisodiyot",
+      phone: data.phone || "",
+      jshir: data.jshir || ""
+    };
+    if (idx >= 0) {
+      ldb.users[idx] = Object.assign(ldb.users[idx], updatedUser);
+    } else {
+      ldb.users.push(updatedUser);
+    }
+    saveLocalDb(ldb);
+    S = buildLocalState(S.me);
+    return { ok: true, msg: "Foydalanuvchi muvaffaqiyatli saqlandi", state: S };
+  }
+
+  if (action === "userDelete") {
+    const delLogin = String(data.login || "").trim().toLowerCase();
+    ldb.users = ldb.users.filter(u => u.login.toLowerCase() !== delLogin);
+    saveLocalDb(ldb);
+    S = buildLocalState(S.me);
+    return { ok: true, msg: "Foydalanuvchi o'chirildi", state: S };
   }
 
   if (action === "ifiAdd") {
@@ -563,7 +923,6 @@ async function localApiHandler(action, data) {
   return { ok: true, msg: "Amal muvaffaqiyatli bajarildi", state: S };
 }
 
-/* Overwrite api() function to use localApiHandler */
 api = async function(action, data, opt) {
   opt = opt || {};
   try {
@@ -580,12 +939,17 @@ api = async function(action, data, opt) {
 (async function init() {
   $("#root").innerHTML = '<div style="display:grid;place-items:center;min-height:100vh;color:var(--muted)">Yuklanmoqda…</div>';
   
-  // 1. Try SSO from localStorage.riat_user
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  } catch(e) {}
+
   const ssoUser = bootFromEcosystem();
   if (ssoUser) {
     S = buildLocalState(ssoUser);
   } else {
-    // Default to student demo Sardor Alisherov
     const defaultStudent = {
       login: "sardor.alisherov",
       name: "Sardor",
@@ -606,6 +970,28 @@ api = async function(action, data, opt) {
 
 js = js.replace(oldInitRegex, newInit);
 
-// Write to final js file
+function stripAllComments(code) {
+  let js = code.replace(/\/\*[\s\S]*?\*\//g, (match) => {
+    if (match.startsWith('/*"') || match.startsWith('/*,') || match.startsWith('/*.') || match.startsWith('/*/')) {
+      return match;
+    }
+    return '';
+  });
+
+  js = js.split('\n').map(line => {
+    const t = line.trim();
+    if (t.startsWith('//')) return '';
+    if (t.startsWith('/*') && t.endsWith('*/') && !t.includes('application/pdf')) return '';
+    if (line.includes(' // ') && !line.includes('://')) {
+      return line.split(' // ')[0];
+    }
+    return line;
+  }).join('\n');
+
+  return js;
+}
+
+js = stripAllComments(js);
+
 fs.writeFileSync('/home/monarch/Projects/TSUE-Ecosystem/js/univerlife_engine.js', js);
-console.log('Successfully re-generated /home/monarch/Projects/TSUE-Ecosystem/js/univerlife_engine.js');
+console.log('Successfully written stripped js/univerlife_engine.js');

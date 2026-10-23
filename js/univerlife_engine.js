@@ -1,4 +1,4 @@
-/* UniverLife v3 — yadro: API, marshrutlash, qobiq, umumiy komponentlar */
+
 (function () {
 "use strict";
 let S = { me: null };
@@ -22,7 +22,7 @@ const AVC = ["#2f5a6e", "#5b7b3a", "#8a5a2b", "#5a4d8a", "#2b6f78", "#8a3d4f"];
 const avc = (s) => { let h = 0; for (const ch of String(s)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return AVC[h % AVC.length]; };
 const ava = (name, cls) => '<span class="av ' + (cls || "s") + '" style="background:' + avc(name) + '">' + esc(ini(name)) + "</span>";
 
-/* ---- ikonkalar ---- */
+
 const IP = {
   home: "M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z", cal: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4", check: "M5 12l4 4 10-10", cap: "M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5",
   star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z", trophy: "M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6",
@@ -37,7 +37,7 @@ const IP = {
 };
 const ic = (k) => '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="' + (IP[k] || IP.info) + '"/></svg>';
 
-/* ---- yordamchi UI ---- */
+
 function toast(msg, err) {
   document.querySelectorAll(".toast").forEach((t) => t.remove());
   if (!msg) return;
@@ -80,7 +80,7 @@ const bar = (v, max, tone) => '<div class="bar ' + (tone || "") + '"><i style="w
 const today = () => S.today || new Date(Date.now() + 5 * 3600e3).toISOString().slice(0, 10);
 const levelOf = (t) => ((S.rules && S.rules.levels) || []).find((l) => t >= l[0]) || [0, "", ""];
 
-/* ---- API ---- */
+
 async function api(action, data, opt) {
   opt = opt || {};
   if (busy && !opt.quiet) return null;
@@ -88,7 +88,7 @@ async function api(action, data, opt) {
   try {
     const r = await fetch("/api/rpc", { method: "POST", headers: { "content-type": "application/json" }, credentials: "same-origin", body: JSON.stringify({ action, data: data || {}, lite: !!opt.lite }) });
     let j = null;
-    try { j = await r.json(); } catch (e) { /* */ }
+    try { j = await r.json(); } catch (e) {  }
     if (!j) throw new Error("Server javob bermadi. Internetni tekshirib, qayta urinib ko'ring");
     if (j.state) S = j.state;
     if (!r.ok || j.error) { lastErr = j.error || "Xatolik"; if (!opt.silent) toast(j.error || "Xatolik", true); if (j.state && !opt.noRender) render(); return null; }
@@ -103,14 +103,14 @@ async function api(action, data, opt) {
   }
 }
 
-/* ---- marshrut ---- */
+
 function parseRoute() {
   const h = location.hash.replace(/^#\/?/, "");
   const [path, qs] = h.split("?");
   return { parts: path.split("/").filter(Boolean).map(decodeURIComponent), q: new URLSearchParams(qs || "") };
 }
 function go(hash) { if (location.hash === hash) render(); else location.hash = hash; }
-const V = {}; // ko'rinishlar ro'yxati: V.student.home = fn
+const V = {};
 const NAV = {
   student: [["home", "Bosh sahifa", "home"], ["schedule", "Dars jadvali", "cal"], ["attendance", "Davomat", "check"], ["gpa", "GPA va baholar", "cap"], ["ifi", "Ijtimoiy faollik", "star"],
     ["rating", "Reyting", "trophy"], ["scholarships", "Stipendiyalar", "wallet"], ["clubs", "To'garaklar", "club"], ["events", "Tadbir va musobaqalar", "flag"], ["news", "Yangiliklar", "news"], "-", ["explanations", "Tushuntirish xatlari", "mail"]],
@@ -118,7 +118,7 @@ const NAV = {
     ["explanations", "Tushuntirish xatlari", "mail"], ["tutor", "Tyutor", "user"], ["schedule", "Dars jadvali", "cal"]],
   tutor: [["home", "Bosh sahifa", "home"], ["attendance", "Davomat", "check"], ["queue", "Arizalar", "inbox"], ["students", "Talabalar", "users"], ["explanations", "Tushuntirish xatlari", "mail"], ["events", "Tadbirlar va QR", "qr"]],
   dean: [["home", "Umumiy ko'rinish", "grid"], ["tutors", "Tyutorlar", "user"], ["groups", "Guruhlar", "users"], ["students", "Talabalar", "list"], ["events", "Tadbirlar", "flag"]],
-  admin: [["home", "Umumiy ko'rinish", "grid"], ["schedule", "Dars jadvali", "cal"], ["students", "Talabalar", "list"], ["attendance", "Davomat", "check"], ["gpa", "GPA va baholar", "cap"], ["ifi", "Ijtimoiy faollik", "star"], ["users", "Foydalanuvchilar", "users"], ["clubs", "To'garaklar", "club"], ["scholarships", "Stipendiyalar", "wallet"], ["news", "Yangiliklar", "news"],
+  admin: [["home", "Umumiy ko'rinish", "grid"], ["schedule", "Dars jadvali", "cal"], ["attendance", "Davomat", "check"], ["gpa", "GPA va baholar", "cap"], ["ifi", "Ijtimoiy faollik", "star"], ["users", "Foydalanuvchilar", "users"], ["clubs", "To'garaklar", "club"], ["scholarships", "Stipendiyalar", "wallet"], ["news", "Yangiliklar", "news"],
     ["events", "Tadbirlar", "flag"], ["students", "Talabalar", "list"], ["hemis", "HEMIS va Edu", "db"]],
   club: [["home", "Klublarim", "club"], ["events", "Tadbirlar va QR", "qr"]],
 };
@@ -134,26 +134,31 @@ function badge(k) {
 }
 const TITLES = { notifications: "Bildirishnomalar", profile: "Profil", rules: "IFI va GPA qanday hisoblanadi", news: "Yangiliklar", student: "Talaba kartasi", qr: "QR-kod", c: "Tadbirda qayd etish", ref: "Ma'lumotnoma" };
 
+
 function shell(view, title) {
   const r = S.me.role, cur = parseRoute().parts[0] || "home";
-  const nav = (NAV[r] || []).map((n) => n === "-" ? '<div class="sep"></div>' : '<a href="#/' + n[0] + '" class="' + (cur === n[0] ? "on" : "") + '">' + ic(n[2]) + "<span>" + n[1] + "</span>" + (badge(n[0]) ? "<em>" + badge(n[0]) + "</em>" : "") + "</a>").join("") +
-    (r !== "admin" && r !== "club" ? '<div class="sep"></div><a href="#/rules" class="' + (cur === "rules" ? "on" : "") + '">' + ic("info") + "<span>Qanday hisoblanadi</span></a>" : "") +
-    '<a href="#/notifications" class="' + (cur === "notifications" ? "on" : "") + '">' + ic("bell") + "<span>Bildirishnomalar</span>" + (S.unread ? "<em>" + S.unread + "</em>" : "") + "</a>" +
-    '<a href="#/profile" class="' + (cur === "profile" ? "on" : "") + '">' + ic("user") + "<span>Profil</span></a>";
-  const dock = (DOCK[r] || []).map((k) => { const n = NAV[r].find((x) => x[0] === k); return '<a href="#/' + k + '" class="' + (cur === k ? "on" : "") + '">' + ic(n[2]) + "<span>" + n[1].split(" ")[0] + "</span>" + (badge(k) ? "<em>" + badge(k) + "</em>" : "") + "</a>"; }).join("") +
-    '<button data-act="menu">' + ic("menu") + "<span>Menyu</span></button>";
+  const nav = (NAV[r] || []).map((n) => n === "-" ? '<div class="sep"></div>' : '<a href="#/' + n[0] + '" class="' + (cur === n[0] ? "on" : "") + '">' + ic(n[2]) + "<span>" + (t(n[0]) || n[1]) + "</span>" + (badge(n[0]) ? "<em>" + badge(n[0]) + "</em>" : "") + "</a>").join("") +
+    (r !== "admin" && r !== "club" ? '<div class="sep"></div><a href="#/rules" class="' + (cur === "rules" ? "on" : "") + '">' + ic("info") + "<span>" + t("rules") + "</span></a>" : "") +
+    '<a href="#/notifications" class="' + (cur === "notifications" ? "on" : "") + '">' + ic("bell") + "<span>" + t("notifications") + "</span>" + (S.unread ? "<em>" + S.unread + "</em>" : "") + "</a>" +
+    '<a href="#/profile" class="' + (cur === "profile" ? "on" : "") + '">' + ic("user") + "<span>" + t("profile") + "</span></a>";
+  const dock = (DOCK[r] || []).map((k) => { const n = NAV[r].find((x) => x[0] === k); return '<a href="#/' + k + '" class="' + (cur === k ? "on" : "") + '">' + ic(n[2]) + "<span>" + (t(k) || n[1]).split(" ")[0] + "</span>" + (badge(k) ? "<em>" + badge(k) + "</em>" : "") + "</a>"; }).join("") +
+    '<button data-act="menu">' + ic("menu") + "<span>" + t("menu") + "</span></button>";
   const name = S.me.name + " " + S.me.surname;
-  return '<div class="app"><aside class="side"><div class="brand"><div class="riat-badge">TSUE</div><span>UniverLife</span></div><div class="who"><b>' + esc(name) + "</b><small>" + esc(S.me.roleName) + (S.me.grp && S.me.grp !== "-" ? " · " + esc(S.me.grp) : "") + '</small></div><nav class="nav" aria-label="Asosiy menyu">' + nav + '</nav><div class="foot">TSUE UniverLife · Birlashgan ekotizim portali</div></aside>' +
-    '<div class="main"><header class="top"><a href="/ecosystem" class="riat-ecosystem-link"><i class="fa-solid fa-arrow-left"></i> Ekotizimga qaytish</a><h1>' + esc(title) + '</h1><a class="ib" href="#/notifications" aria-label="Bildirishnomalar">' + ic("bell") + (S.unread ? "<em>" + S.unread + "</em>" : "") + '</a><a href="#/profile" aria-label="Profil">' + ava(name, "") + "</a></header>" +
-    '<main class="content" id="view">' + renderModuleBadges() + view + '</main></div><nav class="dock" aria-label="Pastki menyu">' + dock + "</nav></div>";
+  const roleDisplay = t("role_" + S.me.role) || S.me.roleName;
+  return '<div class="app"><aside class="side"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge">TSUE</div><span>UniverLife</span></a><div class="who"><b>' + esc(name) + "</b><small>" + esc(roleDisplay) + (S.me.grp && S.me.grp !== "-" ? " · " + esc(S.me.grp) : "") + '</small></div><nav class="nav" aria-label="Asosiy menyu">' + nav + '</nav><div class="foot">TSUE UniverLife · Birlashgan ekotizim portali</div></aside>' +
+    '<div class="main"><header class="top"><h1>' + esc(title) + '</h1><div class="top-controls-group"><button type="button" class="top-lang-btn ' + (getLang()==='uz'?'active':'') + '" data-act="set-lang" data-l="uz">UZ</button><button type="button" class="top-lang-btn ' + (getLang()==='ru'?'active':'') + '" data-act="set-lang" data-l="ru">RU</button><button type="button" class="top-lang-btn ' + (getLang()==='en'?'active':'') + '" data-act="set-lang" data-l="en">EN</button><button type="button" class="top-theme-btn" data-act="toggle-theme" title="Theme"><i class="fa-solid fa-circle-half-stroke"></i></button></div><a class="ib" href="#/notifications" aria-label="Bildirishnomalar">' + ic("bell") + (S.unread ? "<em>" + S.unread + "</em>" : "") + '</a><a href="#/profile" aria-label="Profil">' + ava(name, "") + "</a></header>" +
+    '<main class="content" id="view">' + view + '</main></div><nav class="dock" aria-label="Pastki menyu">' + dock + "</nav></div>";
 }
+
+
 function menuSheet() {
   const r = S.me.role;
-  sheet("Menyu", '<nav class="nav">' + (NAV[r] || []).filter((n) => n !== "-").map((n) => '<a href="#/' + n[0] + '" data-act="close-sheet">' + ic(n[2]) + "<span>" + n[1] + "</span>" + (badge(n[0]) ? "<em>" + badge(n[0]) + "</em>" : "") + "</a>").join("") +
-    '<div class="sep"></div>' + (r !== "admin" && r !== "club" ? '<a href="#/rules" data-act="close-sheet">' + ic("info") + "<span>Qanday hisoblanadi</span></a>" : "") +
-    '<a href="#/notifications" data-act="close-sheet">' + ic("bell") + "<span>Bildirishnomalar</span></a>" + '<a href="#/profile" data-act="close-sheet">' + ic("user") + "<span>Profil</span></a>" +
-    '<a href="#" data-act="logout">' + ic("out") + "<span>Chiqish</span></a></nav>");
+  sheet(t("menu"), '<nav class="nav">' + (NAV[r] || []).filter((n) => n !== "-").map((n) => '<a href="#/' + n[0] + '" data-act="close-sheet">' + ic(n[2]) + "<span>" + (t(n[0]) || n[1]) + "</span>" + (badge(n[0]) ? "<em>" + badge(n[0]) + "</em>" : "") + "</a>").join("") +
+    '<div class="sep"></div>' + (r !== "admin" && r !== "club" ? '<a href="#/rules" data-act="close-sheet">' + ic("info") + "<span>" + t("rules") + "</span></a>" : "") +
+    '<a href="#/notifications" data-act="close-sheet">' + ic("bell") + "<span>" + t("notifications") + "</span></a>" + '<a href="#/profile" data-act="close-sheet">' + ic("user") + "<span>" + t("profile") + "</span></a>" +
+    '<a href="#" data-act="logout">' + ic("out") + "<span>" + t("logout") + "</span></a></nav>");
 }
+
 
 let afterRender = [];
 function render() {
@@ -161,7 +166,7 @@ function render() {
   const r = parseRoute();
   const p0 = r.parts[0] || "home";
   if (!S.me) {
-    if (p0 === "c") try { sessionStorage.setItem("ul_after", location.hash); } catch (e) { /* */ }
+    if (p0 === "c") try { sessionStorage.setItem("ul_after", location.hash); } catch (e) {  }
     root.innerHTML = viewLogin();
     return;
   }
@@ -184,10 +189,10 @@ function render() {
 window.addEventListener("hashchange", () => { closeSheet(); render(); window.scrollTo(0, 0); });
 window.addEventListener("scroll", () => { const t = $(".top"); if (t) t.classList.toggle("sc", window.scrollY > 4); }, { passive: true });
 
-/* ---- kirish ---- */
+
 const DEMO = [["sardor.alisherov", "Talaba", "Sardor Alisherov"], ["ota.demo", "Ota-ona", "2 farzand"], ["tyutor.demo", "Tyutor", "RST-81/25"], ["dekanat.demo", "Dekanat", "Raqamli iqtisodiyot"], ["klub.demo", "Klub rahbari", "3 ta klub"]];
 function viewLogin() {
-  return '<div class="auth"><div class="auth-l"><div class="brand"><div class="riat-badge">TSUE</div><span>UniverLife</span></div><div><h2>Talaba hayoti bitta platformada</h2><p>Davomat, baholar, ijtimoiy faollik indeksi, stipendiyalar, to\'garaklar va tadbirlar — talaba, ota-ona, tyutor va dekanat uchun.</p>' +
+  return '<div class="auth"><div class="auth-l"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge">TSUE</div><span>UniverLife</span></a><div><h2>Talaba hayoti bitta platformada</h2><p>Davomat, baholar, ijtimoiy faollik indeksi, stipendiyalar, to\'garaklar va tadbirlar — talaba, ota-ona, tyutor va dekanat uchun.</p>' +
     "<ul><li>Ijtimoiy faollik indeksi — HEMIS yo'riqnomasi bo'yicha 11 band</li><li>Tyutor davomati va ota-onaga bildirishnoma</li><li>Tadbirlarda QR-kod orqali qayd etish</li></ul></div><small style=\"color:#a9c4cf\">TDIU talabalari uchun platforma</small></div>" +
     '<div class="auth-r"><div class="auth-box"><h1>Tizimga kirish</h1><p class="lead">Login va parol administrator tomonidan beriladi.</p><form class="form" data-form="login">' +
     field("Login yoki JSHIR", "login", { req: true, ph: "masalan: sardor.alisherov", attrs: ' autocomplete="username" autocapitalize="none"' }) +
@@ -196,7 +201,7 @@ function viewLogin() {
     DEMO.map((d) => '<button type="button" data-act="demo" data-login="' + d[0] + '">' + d[1] + "<small>" + esc(d[2]) + "</small></button>").join("") + "</div></div></div></div></div>";
 }
 
-/* ---- umumiy sahifalar ---- */
+
 V.common = {};
 V.common.notifications = () => {
   const N = S.notifs || [];
@@ -204,14 +209,28 @@ V.common.notifications = () => {
   return card("", N.length ? '<div class="list">' + N.map((n) => '<a class="row" href="' + esc(n.link || "#/home") + '">' + '<span class="ib" style="width:36px;height:36px">' + ic(n.title.indexOf("Davomat") === 0 ? "check" : n.title.indexOf("Tushuntirish") === 0 ? "mail" : n.title.indexOf("Ijtimoiy") === 0 ? "star" : n.title.indexOf("Stipendiya") === 0 ? "wallet" : "bell") + "</span>" +
     '<span class="t"><b>' + esc(n.title) + (n.read ? "" : ' <span class="chip pri">yangi</span>') + "</b><small>" + esc(n.body) + "</small></span><small class=\"muted\">" + ago(n.created) + "</small></a>").join("") + "</div>" : empty("Hozircha bildirishnoma yo'q."));
 };
+
 V.common.profile = () => {
   const m = S.me;
-  return '<div class="grid g2">' + card("Ma'lumotlarim", '<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">' + ava(m.name + " " + m.surname, "l") + "<div><b style=\"font-size:18px\">" + esc(m.name + " " + m.surname) + '</b><div class="muted">' + esc(m.roleName) + (m.grp && m.grp !== "-" ? " · " + esc(m.grp) : "") + "</div></div></div>" +
-    '<div class="kv"><div><small>Login</small><b>' + esc(m.login) + "</b></div>" + (m.jshir ? "<div><small>JSHIR</small><b>" + esc(m.jshir) + "</b></div>" : "") + (m.faculty && m.faculty !== "-" ? "<div><small>Fakultet / bo'lim</small><b>" + esc(m.faculty) + "</b></div>" : "") + "</div>" +
-    '<form class="form" data-form="phone" style="margin-top:16px">' + field("Telefon raqami" + (m.role === "tutor" ? " (ota-onalar ko'radi)" : ""), "phone", { type: "tel", val: m.phone, ph: "+998 90 123 45 67" }) + '<button class="btn ghost" type="submit">Saqlash</button></form>') +
-    card("Parolni o'zgartirish", '<form class="form" data-form="password">' + field("Joriy parol", "old", { type: "password", req: true, attrs: ' autocomplete="current-password"' }) + field("Yangi parol", "password", { type: "password", req: true, hint: "kamida 6 belgi", attrs: ' autocomplete="new-password" minlength="6"' }) + '<button class="btn" type="submit">O\'zgartirish</button></form>' +
-      '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line2)"><button class="btn bad" data-act="logout">' + ic("out") + "Tizimdan chiqish</button></div>") + "</div>";
+  const allGroups = (typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA) ? Object.keys(EDUPAGE_SCHEDULE_DATA).sort() : ['AT-900/26', 'IB-900/26', 'II-900/26', 'RST-81/25'];
+  const currentGrp = m.grp && m.grp !== '-' ? m.grp : 'AT-900/26';
+  const grpOptions = allGroups.map(g => '<option value="' + g + '"' + (g === currentGrp ? ' selected' : '') + '>' + g + '</option>').join('');
+  const adminGrpChangeForm = m.role === 'admin' ? (
+    '<form class="form" data-form="admin-group" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line2)">' +
+      '<div class="field"><label style="font-weight:700;font-size:13px;display:block;margin-bottom:6px">Guruhga biriktirish (Administrator / talaba ko\'rinishi)</label>' +
+      '<select name="grp" style="height:40px;border-radius:8px;padding:0 10px;width:100%">' + grpOptions + '</select></div>' +
+      '<button class="btn sm" type="submit" style="margin-top:8px">Guruhni saqlash</button>' +
+    '</form>'
+  ) : '';
+
+  return '<div class="grid g2">' + card("Ma'lumotlarim", '<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">' + ava(m.name + ' ' + m.surname, 'l') + '<div><b style="font-size:18px">' + esc(m.name + ' ' + m.surname) + '</b><div class="muted">' + esc(m.roleName) + (m.grp && m.grp !== '-' ? ' · ' + esc(m.grp) : '') + '</div></div></div>' +
+    '<div class="kv"><div><small>Login</small><b>' + esc(m.login) + '</b></div>' + (m.jshir ? '<div><small>JSHIR</small><b>' + esc(m.jshir) + '</b></div>' : '') + (m.faculty && m.faculty !== '-' ? '<div><small>Fakultet / bo\'lim</small><b>' + esc(m.faculty) + '</b></div>' : '') + '</div>' +
+    adminGrpChangeForm +
+    '<form class="form" data-form="phone" style="margin-top:16px">' + field('Telefon raqami' + (m.role === 'tutor' ? " (ota-onalar ko'radi)" : ''), 'phone', { type: 'tel', val: m.phone, ph: '+998 90 123 45 67' }) + '<button class="btn ghost" type="submit">Saqlash</button></form>') +
+    card("Parolni o'zgartirish", '<form class="form" data-form="password">' + field('Joriy parol', 'old', { type: 'password', req: true, attrs: ' autocomplete="current-password"' }) + field('Yangi parol', 'password', { type: 'password', req: true, hint: 'kamida 6 belgi', attrs: ' autocomplete="new-password" minlength="6"' }) + '<button class="btn" type="submit">O\'zgartirish</button></form>' +
+    '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line2)"><button class="btn bad" data-act="logout">' + ic('out') + 'Tizimdan chiqish</button></div>') + '</div>';
 };
+
 V.common.rules = () => {
   const R = S.rules;
   const who = { student: "Talaba kiritadi → tyutor tasdiqlaydi", ref: "Talaba ma'lumotnoma to'ldiradi → tyutor baholaydi", tutor: "Tyutor baholaydi", hemis: "HEMIS tizimidan avtomatik" };
@@ -239,10 +258,10 @@ V.common.news = (r) => {
   }
   return A.length ? '<div class="news">' + A.map((a) => '<a class="nc" href="#/news/' + esc(a.id) + '"><div class="im" style="background-image:url(' + img(a) + ')"></div><div class="b"><small>' + esc(a.tag || "Yangilik") + " · " + fmtShort(a.date) + "</small><b>" + esc(a.title) + "</b></div></a>").join("") + "</div>" : card("", empty("Yangiliklar yo'q."));
 };
-/* ---------- talaba ma'lumotlari: talaba, ota-ona va xodimlar uchun umumiy bloklar ---------- */
+
 const crit = (id) => (S.rules.crit || []).find((c) => c.id === id);
 const WHO = { student: "Talaba kiritadi · tyutor tasdiqlaydi", ref: "Ma'lumotnoma (namuna bo'yicha) · tyutor baholaydi", tutor: "Tyutor baholaydi", hemis: "HEMIS'dan avtomatik" };
-let CARD = null; // xodim ochgan talaba kartasi
+let CARD = null;
 let schedDay = 0;
 
 
@@ -251,20 +270,202 @@ let currentSchedGroup = '';
 let currentSchedSearch = '';
 let currentSchedCourse = 'all';
 
-function renderModuleBadges() {
-  const cur = parseRoute().parts[0] || "home";
-  return '<div class="module-badge-bar">' +
-    '<span style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-right:4px;">TSUE UniverLife:</span>' +
-    '<a href="#/schedule" class="module-badge ' + (['schedule','attendance','gpa'].includes(cur)?'active':'') + '"><i class="fa-solid fa-graduation-cap"></i> O‘quv & Jadval (EduPage, GPA, Davomat)</a>' +
-    '<a href="#/ifi" class="module-badge ' + (['ifi','clubs','events','scholarships'].includes(cur)?'active':'') + '"><i class="fa-solid fa-handshake-angle"></i> Ijtimoiy & IFI (11 mezon, Klublar, Grantlar)</a>' +
-    '<a href="#/explanations" class="module-badge ' + (['explanations','tutor'].includes(cur)?'active':'') + '"><i class="fa-solid fa-user-shield"></i> Oila & Tyutor (Monitoring va Aloqa)</a>' +
-  '</div>';
+const I18N = {
+  uz: {
+    back_eco: "Ekotizimga qaytish",
+    mod_edu: "O‘quv & Jadval (EduPage, GPA, Davomat)",
+    mod_ifi: "Ijtimoiy & IFI (11 mezon, Klublar, Grantlar)",
+    mod_fam: "Oila & Tyutor (Monitoring va Aloqa)",
+    sched_title: "TDIU Rasmiy Dars Jadvali",
+    sched_sub: "Fakultet guruhlari, ustozlar va auditoriyalar bo'yicha real vaqt rejimida avtomatlashtirilgan interaktiv jadval tizimi.",
+    odd_week: "Toq hafta",
+    even_week: "Juft hafta",
+    all_courses: "Barcha kurslar",
+    course_1: "1-kurs",
+    course_2: "2-kurs",
+    course_3: "3-kurs",
+    course_4: "4-kurs",
+    group_search_ph: "Guruhni qidirish (masalan: AT-82/25, II-81...)",
+    lesson_search_ph: "Fan, o'qituvchi yoki xona...",
+    group_label: "Guruh:",
+    course_label: "Kurs:",
+    today_badge: "Bugun",
+    lessons_count: "ta dars",
+    no_lessons: "Bu kunda tanlangan guruh uchun darslar mavjud emas.",
+    sync_badge: "TDIU EduPage Jadval Tizimi (Sinxron)",
+    lecture: "Ma'ruza",
+    practice: "Amaliyot",
+    lab: "Laboratoriya",
+    para: "-para",
+    home: "Bosh sahifa",
+    schedule: "Dars jadvali",
+    attendance: "Davomat",
+    gpa: "GPA va baholar",
+    ifi: "Ijtimoiy faollik",
+    rating: "Reyting",
+    scholarships: "Stipendiyalar",
+    clubs: "To'garaklar",
+    events: "Tadbir va musobaqalar",
+    news: "Yangiliklar",
+    explanations: "Tushuntirish xatlari",
+    users: "Foydalanuvchilar",
+    tutors: "Tyutorlar",
+    groups: "Guruhlar",
+    students: "Talabalar",
+    overview: "Umumiy ko'rinish",
+    notifications: "Bildirishnomalar",
+    profile: "Profil",
+    rules: "IFI va GPA qanday hisoblanadi",
+    logout: "Chiqish",
+    menu: "Menyu",
+    queue: "Arizalar",
+    hemis: "HEMIS va Edu",
+    role_student: "Talaba",
+    role_tutor: "Tyutor",
+    role_parent: "Ota-ona",
+    role_dean: "Dekanat",
+    role_admin: "Administrator",
+    role_club: "Klub rahbari"
+  },
+  ru: {
+    back_eco: "Назад в экосистему",
+    mod_edu: "Учеба и расписание (EduPage, GPA, Посещаемость)",
+    mod_ifi: "Социальная активность и ИФИ (11 критериев, Клубы, Гранты)",
+    mod_fam: "Семья и Тьютор (Мониторинг и Связь)",
+    sched_title: "Официальное расписание занятий ТГЭУ",
+    sched_sub: "Интерактивная система расписания факультетов, преподавателей и аудиторий в реальном времени.",
+    odd_week: "Нечетная неделя",
+    even_week: "Четная неделя",
+    all_courses: "Все курсы",
+    course_1: "1-курс",
+    course_2: "2-курс",
+    course_3: "3-курс",
+    course_4: "4-курс",
+    group_search_ph: "Поиск группы (напр: AT-82/25, II-81...)",
+    lesson_search_ph: "Предмет, преподаватель или аудитория...",
+    group_label: "Группа:",
+    course_label: "Курс:",
+    today_badge: "Сегодня",
+    lessons_count: "пар",
+    no_lessons: "На этот день для выбранной группы занятий нет.",
+    sync_badge: "Синхронизация EduPage ТГЭУ",
+    lecture: "Лекция",
+    practice: "Практика",
+    lab: "Лабораторная",
+    para: "-пара",
+    home: "Главная",
+    schedule: "Расписание занятий",
+    attendance: "Посещаемость",
+    gpa: "GPA и оценки",
+    ifi: "Социальная активность",
+    rating: "Рейтинг",
+    scholarships: "Стипендии",
+    clubs: "Кружки",
+    events: "Мероприятия",
+    news: "Новости",
+    explanations: "Объяснительные",
+    users: "Пользователи",
+    tutors: "Тьюторы",
+    groups: "Группы",
+    students: "Студенты",
+    overview: "Обзор",
+    notifications: "Уведомления",
+    profile: "Профиль",
+    rules: "Как рассчитываются ИФИ и GPA",
+    logout: "Выход",
+    menu: "Меню",
+    queue: "Заявки",
+    hemis: "HEMIS и Edu",
+    role_student: "Студент",
+    role_tutor: "Тьютор",
+    role_parent: "Родитель",
+    role_dean: "Деканат",
+    role_admin: "Администратор",
+    role_club: "Руководитель клуба"
+  },
+  en: {
+    back_eco: "Back to Ecosystem",
+    mod_edu: "Study & Timetable (EduPage, GPA, Attendance)",
+    mod_ifi: "Social & IFI (11 Criteria, Clubs, Grants)",
+    mod_fam: "Family & Tutor (Monitoring & Contact)",
+    sched_title: "Official TSUE Timetable",
+    sched_sub: "Real-time automated interactive schedule for faculty groups, professors, and auditoriums.",
+    odd_week: "Odd week",
+    even_week: "Even week",
+    all_courses: "All courses",
+    course_1: "1st year",
+    course_2: "2nd year",
+    course_3: "3rd year",
+    course_4: "4th year",
+    group_search_ph: "Search group (e.g. AT-82/25, II-81...)",
+    lesson_search_ph: "Subject, teacher or room...",
+    group_label: "Group:",
+    course_label: "Course:",
+    today_badge: "Today",
+    lessons_count: "lessons",
+    no_lessons: "No lessons scheduled for the selected group on this day.",
+    sync_badge: "TSUE EduPage Timetable (Sync)",
+    lecture: "Lecture",
+    practice: "Practice",
+    lab: "Lab",
+    para: "-slot",
+    home: "Dashboard",
+    schedule: "Timetable",
+    attendance: "Attendance",
+    gpa: "GPA & Grades",
+    ifi: "Social Activity",
+    rating: "Rating",
+    scholarships: "Scholarships",
+    clubs: "Clubs",
+    events: "Events & Contests",
+    news: "News",
+    explanations: "Explanations",
+    users: "Users",
+    tutors: "Tutors",
+    groups: "Groups",
+    students: "Students",
+    overview: "Overview",
+    notifications: "Notifications",
+    profile: "Profile",
+    rules: "How IFI & GPA are calculated",
+    logout: "Logout",
+    menu: "Menu",
+    queue: "Applications",
+    hemis: "HEMIS & Edu",
+    role_student: "Student",
+    role_tutor: "Tutor",
+    role_parent: "Parent",
+    role_dean: "Dean Office",
+    role_admin: "Administrator",
+    role_club: "Club Leader"
+  }
+};
+
+function getLang() {
+  try {
+    const l = localStorage.getItem("riat_lang");
+    if (l === "ru" || l === "en" || l === "uz") return l;
+  } catch(e) {}
+  return "uz";
+}
+
+function setLang(l) {
+  try { localStorage.setItem("riat_lang", l); } catch(e) {}
+  render();
+}
+
+function t(k) {
+  const l = getLang();
+  return (I18N[l] && I18N[l][k]) || (I18N.uz && I18N.uz[k]) || k;
 }
 
 function scheduleView(rows, opt) {
   opt = opt || {};
   const td = isoDay(today());
-  const d = schedDay || (td <= 6 ? td : 1);
+  if (!schedDay) {
+    schedDay = (td >= 1 && td <= 6) ? td : 1;
+  }
+  const d = schedDay;
   
   const hasEdu = typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA;
   const groups = hasEdu ? Object.keys(EDUPAGE_SCHEDULE_DATA).sort() : ['AT-900/26', 'IB-900/26', 'II-900/26', 'RST-81/25'];
@@ -278,9 +479,14 @@ function scheduleView(rows, opt) {
   }
 
   const filteredGroups = groups.filter(g => {
-    if (currentSchedCourse === 'all') return true;
-    const gData = EDUPAGE_SCHEDULE_DATA[g];
-    return gData && String(gData.course) === String(currentSchedCourse);
+    if (currentSchedCourse !== 'all') {
+      const gData = EDUPAGE_SCHEDULE_DATA[g];
+      if (gData && String(gData.course) !== String(currentSchedCourse)) return false;
+    }
+    if (currentSchedSearch) {
+      return g.toLowerCase().includes(currentSchedSearch.toLowerCase());
+    }
+    return true;
   });
 
   const dayIdx = d - 1;
@@ -314,15 +520,6 @@ function scheduleView(rows, opt) {
     }));
   }
 
-  if (currentSchedSearch) {
-    const q = currentSchedSearch.toLowerCase();
-    lessons = lessons.filter(l => 
-      l.subject.toLowerCase().includes(q) ||
-      l.teacher.toLowerCase().includes(q) ||
-      l.room.toLowerCase().includes(q)
-    );
-  }
-
   const daysPills = [1, 2, 3, 4, 5, 6].map(i => {
     const isToday = i === td;
     const isActive = i === d;
@@ -335,54 +532,60 @@ function scheduleView(rows, opt) {
     }
     return '<button type="button" class="sched-day-pill ' + (isActive ? 'active' : '') + '" data-act="sched-day" data-day="' + i + '">' +
       '<span class="d-title">' + DAYS[i] + '</span>' +
-      '<span class="d-sub">' + (isToday ? 'Bugun · ' : '') + count + ' ta dars</span>' +
+      '<span class="d-sub">' + (isToday ? t('today_badge') + ' · ' : '') + count + ' ' + t('lessons_count') + '</span>' +
     '</button>';
+  }).join('');
+
+  const groupPills = filteredGroups.map(g => {
+    const isSel = g === currentSchedGroup;
+    return '<button type="button" class="sched-group-btn ' + (isSel ? 'active' : '') + '" data-act="sched-select-group" data-grp="' + esc(g) + '">' + esc(g) + '</button>';
   }).join('');
 
   return '<div class="sched-hero">' +
     '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">' +
       '<div>' +
-        '<h2>TDIU Rasmiy Dars Jadvali</h2>' +
-        '<p>Fakultet guruhlari, ustozlar va auditoriyalar bo&#39;yicha real vaqt rejimida avtomatlashtirilgan interaktiv jadval tizimi.</p>' +
+        '<h2>' + t('sched_title') + '</h2>' +
+        '<p>' + t('sched_sub') + '</p>' +
       '</div>' +
       '<div class="sched-btn-group">' +
-        '<button type="button" class="' + (currentSchedWeek === 'odd' ? 'active' : '') + '" data-act="sched-week" data-week="odd">Toq hafta</button>' +
-        '<button type="button" class="' + (currentSchedWeek === 'even' ? 'active' : '') + '" data-act="sched-week" data-week="even">Juft hafta</button>' +
+        '<button type="button" class="' + (currentSchedWeek === 'odd' ? 'active' : '') + '" data-act="sched-week" data-week="odd">' + t('odd_week') + '</button>' +
+        '<button type="button" class="' + (currentSchedWeek === 'even' ? 'active' : '') + '" data-act="sched-week" data-week="even">' + t('even_week') + '</button>' +
       '</div>' +
     '</div>' +
-    '<div class="sched-controls">' +
-      '<div class="sched-select-wrap">' +
-        '<select data-act="sched-course">' +
-          '<option value="all"' + (currentSchedCourse==='all'?' selected':'') + '>Barcha kurslar</option>' +
-          '<option value="1"' + (currentSchedCourse==='1'?' selected':'') + '>1-kurs</option>' +
-          '<option value="2"' + (currentSchedCourse==='2'?' selected':'') + '>2-kurs</option>' +
-          '<option value="3"' + (currentSchedCourse==='3'?' selected':'') + '>3-kurs</option>' +
-          '<option value="4"' + (currentSchedCourse==='4'?' selected':'') + '>4-kurs</option>' +
-        '</select>' +
-        '<select data-act="sched-group">' +
-          filteredGroups.map(g => '<option value="' + g + '"' + (g === currentSchedGroup ? ' selected' : '') + '>' + g + '</option>').join('') +
-        '</select>' +
+    '<div style="margin-top:16px;display:flex;flex-direction:column;gap:12px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">' +
+        '<div class="sched-course-pills">' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === 'all' ? 'active' : '') + '" data-act="sched-course-tab" data-course="all">' + t('all_courses') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '1' ? 'active' : '') + '" data-act="sched-course-tab" data-course="1">' + t('course_1') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '2' ? 'active' : '') + '" data-act="sched-course-tab" data-course="2">' + t('course_2') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '3' ? 'active' : '') + '" data-act="sched-course-tab" data-course="3">' + t('course_3') + '</button>' +
+          '<button type="button" class="sched-course-btn ' + (currentSchedCourse === '4' ? 'active' : '') + '" data-act="sched-course-tab" data-course="4">' + t('course_4') + '</button>' +
+        '</div>' +
+        '<div style="flex:1;min-width:240px;max-width:400px">' +
+          '<input type="text" placeholder="' + t('group_search_ph') + '" value="' + esc(currentSchedSearch) + '" data-act="sched-group-search-input" style="height:38px;border-radius:10px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.9);color:#0E2A52;padding:0 12px;width:100%;font-weight:600">' +
+        '</div>' +
       '</div>' +
-      '<div style="flex:1;min-width:200px">' +
-        '<input type="text" placeholder="Fan, o&#39;qituvchi yoki xona qidirish…" value="' + esc(currentSchedSearch) + '" data-act="sched-search-input" style="height:40px;border-radius:8px;border:none;padding:0 12px;width:100%">' +
+      '<div style="background:rgba(255,255,255,0.1);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.15)">' +
+        '<div style="font-size:12px;color:rgba(255,255,255,0.8);margin-bottom:6px;font-weight:700">' + t('group_label') + ' <span style="color:#fff;background:rgba(0,59,129,0.6);padding:2px 8px;border-radius:6px;font-weight:800">' + currentSchedGroup + '</span> <span class="sched-group-count">(' + filteredGroups.length + ')</span></div>' +
+        '<div class="sched-group-grid">' + (groupPills || '<span style="color:#fff;padding:8px">Guruh topilmadi</span>') + '</div>' +
       '</div>' +
     '</div>' +
   '</div>' +
   '<div class="sched-days-nav">' + daysPills + '</div>' +
   '<div class="card">' +
     '<div class="ch">' +
-      '<h2>' + DAYS[d] + (d === td ? ' <small style="color:var(--ok);font-weight:700">· Bugun</small>' : '') + ' <small>(' + currentSchedGroup + ' · ' + (currentSchedWeek === 'odd' ? 'Toq' : 'Juft') + ' hafta)</small></h2>' +
-      '<span class="src"><i></i> TDIU EduPage Jadval Tizimi (Sinxron)</span>' +
+      '<h2>' + DAYS[d] + (d === td ? ' <small style="color:var(--ok);font-weight:700">· ' + t('today_badge') + '</small>' : '') + ' <small>(' + currentSchedGroup + ' · ' + (currentSchedWeek === 'odd' ? t('odd_week') : t('even_week')) + ')</small></h2>' +
+      '<span class="src"><i></i> ' + t('sync_badge') + '</span>' +
     '</div>' +
     (lessons.length ? 
       '<div class="lessons-list">' + lessons.map(l => {
         let typeCls = "type-lecture";
-        let typeName = "Ma&apos;ruza";
-        if (l.type === "practice" || l.type === "seminar") { typeCls = "type-practice"; typeName = "Amaliyot"; }
-        else if (l.type === "lab") { typeCls = "type-lab"; typeName = "Laboratoriya"; }
+        let typeName = t('lecture');
+        if (l.type === "practice" || l.type === "seminar") { typeCls = "type-practice"; typeName = t('practice'); }
+        else if (l.type === "lab") { typeCls = "type-lab"; typeName = t('lab'); }
         return '<div class="lesson-card">' +
           '<div class="lesson-time">' +
-            '<b>' + l.slot + '-para</b>' +
+            '<b>' + l.slot + t('para') + '</b>' +
             '<small>' + esc(l.time) + '</small>' +
           '</div>' +
           '<div class="lesson-info">' +
@@ -395,7 +598,7 @@ function scheduleView(rows, opt) {
           '</div>' +
         '</div>';
       }).join('') + '</div>'
-      : empty('Bu kunda tanlangan guruh uchun darslar mavjud emas.')
+      : empty(t('no_lessons'))
     ) +
   '</div>';
 }
@@ -486,16 +689,19 @@ function tutorScoreForm(st, c) {
     subs.map((s) => '<label class="opt"><input type="checkbox" name="subs" value="' + s.id + '"' + (mine.includes(s.id) ? " checked" : "") + "><span>" + esc(s.name) + (c.id === "enlight" && s.id === "part" ? ' <small class="muted">(belgilamasangiz, QR davomatidan)</small>' : "") + "</span><em>" + s.pts + "</em></label>").join("") +
     '</div><button class="btn sm" type="submit">Saqlash</button></form>';
 }
+
 function ifiCrits(st, opt) {
   opt = opt || {};
-  const sc = st.ifi || { v: {}, info: {} };
+  const sc = (st && st.ifi) || { v: {}, info: {} };
+  const info = sc.info || {};
   return '<div class="crits">' + S.rules.crit.map((c) => {
-    const v = sc.v[c.id] || 0, E = st.entries.filter((e) => e.crit === c.id);
+    const v = (sc.v && sc.v[c.id]) || 0;
+    const E = (st && st.entries) ? st.entries.filter((e) => e.crit === c.id) : [];
     let extra = "";
-    if (c.id === "acad") extra = '<div class="ent"><span>GPA ' + f2((sc.info.acad || {}).gpa || 0) + " · " + esc((sc.info.acad || {}).year || "") + ' o\'quv yili</span><a class="btn sm ghost" href="' + (opt.base || "#/") + 'gpa">Batafsil</a></div>';
-    if (c.id === "att") extra = '<div class="ent"><span>Sababsiz qoldirilgan: ' + ((sc.info.att || {}).hours || 0) + ' soat</span><a class="btn sm ghost" href="' + (opt.base || "#/") + 'attendance">Batafsil</a></div>';
-    if (c.id === "enlight" && sc.info.enlight) extra = '<div class="ent"><span>Ma\'rifat darslari: ' + sc.info.enlight.n + " / " + sc.info.enlight.held + " ishtirok (QR) → " + f1(sc.info.enlight.part) + " ball</span></div>";
-    if (c.id === "culture" && sc.info.culture) extra = '<div class="ent"><span>Tasdiqlangan tashrif bo\'lgan oylar: ' + sc.info.culture.months + " / " + sc.info.culture.need + "</span></div>";
+    if (c.id === "acad") extra = '<div class="ent"><span>GPA ' + f2((info.acad || {}).gpa || 0) + " · " + esc((info.acad || {}).year || "") + ' o\'quv yili</span><a class="btn sm ghost" href="' + (opt.base || "#/") + 'gpa">Batafsil</a></div>';
+    if (c.id === "att") extra = '<div class="ent"><span>Sababsiz qoldirilgan: ' + ((info.att || {}).hours || 0) + ' soat</span><a class="btn sm ghost" href="' + (opt.base || "#/") + 'attendance">Batafsil</a></div>';
+    if (c.id === "enlight" && info.enlight) extra = '<div class="ent"><span>Ma\'rifat darslari: ' + info.enlight.n + " / " + info.enlight.held + " ishtirok (QR) → " + f1(info.enlight.part) + " ball</span></div>";
+    if (c.id === "culture" && info.culture) extra = '<div class="ent"><span>Tasdiqlangan tashrif bo\'lgan oylar: ' + info.culture.months + " / " + info.culture.need + "</span></div>";
     const can = opt.student && (c.who === "student" || c.who === "ref");
     const ents = E.filter((e) => !(c.id === "enlight" && e.source === "qr")).slice(0, 6);
     return '<div class="crit"><div class="crit-h"><span class="num">' + c.n + '</span><div class="t"><b>' + esc(c.name) + "</b><small>" + esc(c.hint) + '</small></div><div class="pts">' + f1(v) + " <span>/ " + c.max + "</span></div></div>" + bar(v, c.max, v >= c.max ? "ok" : "") +
@@ -505,6 +711,7 @@ function ifiCrits(st, opt) {
       (can ? '<div class="acts"><a class="btn sm" href="#/ifi/new/' + c.id + '">' + ic("plus") + (c.who === "ref" ? "Ma'lumotnoma to'ldirish" : "Ariza berish") + "</a></div>" : "") + "</div>";
   }).join("") + "</div>";
 }
+
 function ifiView(st, opt) {
   opt = opt || {};
   const tab = opt.tab || "crit";
@@ -545,7 +752,7 @@ function notesView(st, opt) {
     card(opt.tutor ? "Izohlar" : "Tyutor izohlari", N.length ? '<div class="list">' + N.map((n) => '<div class="row" style="align-items:flex-start"><span class="t">' + chip(NK[n.kind] ? NK[n.kind][0] : n.kind, NK[n.kind] ? NK[n.kind][1] : "") + "<b style=\"margin-top:6px;white-space:normal\">" + esc(n.text) + "</b><small>" + esc(n.by) + " · " + ago(n.created) + "</small></span>" + (opt.tutor ? '<button class="btn sm ghost" data-act="note-del" data-id="' + esc(n.id) + '">O\'chirish</button>' : "") + "</div>").join("") + "</div>" : empty("Hali izoh yo'q."));
 }
 
-/* ---------- talaba sahifalari ---------- */
+
 V.student = {};
 V.student.home = () => {
   const st = S.st, me = S.me;
@@ -586,7 +793,7 @@ function ifiNew(id) {
       (c.who === "ref" ? '<p class="small muted">Yuborilgandan so\'ng ma\'lumotnoma namunadagi shaklda avtomatik tuziladi — uni chop etib, talaba, tyutor va dekan muovini imzolaydi.</p>' : "") +
       (c.future ? '<p class="note warn">' + esc(c.future) + "</p>" : "") + (c.id === "club" ? '<p class="note ok">Platformadagi to\'garakka a\'zo bo\'lsangiz, klub rahbari tasdiqlagach ariza o\'zi yaratiladi. <a href="#/clubs">To\'garaklar</a></p>' : "")) + "</div>" };
 }
-/* ---- ma'lumotnoma (5, 8, 9, 11-band namunasi) ---- */
+
 const REF_TXT = { contest: "Xalqaro, Respublika, viloyat miqyosdagi ko'rik-tanlov, fan olimpiadalari va sport musobaqalarida erishgan natijalari", public: "Volontyorlik va jamoat ishlaridagi faolligi",
   culture: "Teatr va muzey, xiyobon, kino, tarixiy qadamjolarga tashriflar", spirit: "Ma'naviy-ma'rifiy sohaga oid boshqa yo'nalishlardagi faolligi uchun" };
 function findEntry(id) {
@@ -676,9 +883,9 @@ V.student.events = (r) => {
     (past.length ? '<h3 style="font-size:15px;margin:22px 0 10px">O\'tgan tadbirlarim</h3>' + card("", '<div class="list">' + past.map(evRow).join("") + "</div>") : "");
 };
 V.student.news = V.common.news;
-/* ---- QR orqali qayd etish ---- */
+
 let devId = "";
-try { devId = localStorage.getItem("ul_dev") || ""; if (!devId) { devId = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("ul_dev", devId); } } catch (e) { /* */ }
+try { devId = localStorage.getItem("ul_dev") || ""; if (!devId) { devId = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("ul_dev", devId); } } catch (e) {  }
 V.student.c = (r) => {
   const code = r.parts[1] || "", [sid, tok] = code.split(".");
   afterRender.push(() => api("qrInfo", { id: sid }, { quiet: true, silent: true, noRender: true, lite: true }).then((j) => {
@@ -691,9 +898,9 @@ V.student.c = (r) => {
   return '<div style="max-width:520px;margin:0 auto">' + card("", '<div id="ci-info"><p class="muted">Yuklanmoqda…</p></div><p class="small muted" style="margin:16px 0">Qayd etish uchun joylashuvingiz tekshiriladi — tadbir joyida bo\'lishingiz kerak. Brauzer so\'raganda «Ruxsat berish»ni bosing.</p>' +
     '<button class="btn block" data-act="checkin" data-sid="' + esc(sid) + '" data-tok="' + esc(tok || "") + '">' + ic("check") + "Ishtirokni qayd etish</button><div id=\"ci-res\" style=\"margin-top:12px\"></div>") + "</div>";
 };
-/* ---------- ota-ona ---------- */
+
 let kidIdx = 0;
-try { kidIdx = Number(localStorage.getItem("ul_kid")) || 0; } catch (e) { /* */ }
+try { kidIdx = Number(localStorage.getItem("ul_kid")) || 0; } catch (e) {  }
 function kid() { const K = S.kids || []; if (kidIdx >= K.length) kidIdx = 0; return K[kidIdx]; }
 function kidBar() {
   const K = S.kids || [];
@@ -723,10 +930,10 @@ V.parent.schedule = P((k) => scheduleView(k.schedule));
 V.parent.tutor = P((k) => '<div class="grid g2" style="margin-bottom:16px">' + (k.tutors.length ? k.tutors.map((t) => card("Tyutor", '<div style="display:flex;gap:14px;align-items:center">' + ava(t.name, "l") + '<div style="flex:1"><b style="font-size:17px">' + esc(t.name) + '</b><div class="muted">' + esc(k.grp) + " guruhi tyutori</div></div></div>" +
   '<div class="kv" style="margin-top:14px"><div><small>Telefon</small><b>' + (t.phone ? '<a href="tel:' + tel(t.phone) + '">' + esc(t.phone) + "</a>" : "kiritilmagan") + "</b></div></div>")).join("") : card("Tyutor", empty("Tyutor biriktirilmagan."))) + "</div>" + notesView(k));
 
-/* ---------- tyutor ---------- */
-// Guruh tanlagich: tyutorning bir nechta guruhi bo'lsa, barcha sahifalar tanlangan guruh bo'yicha ko'rsatiladi
+
+
 let TG = "";
-try { TG = localStorage.getItem("ul_tg") || ""; } catch (e) { /* */ }
+try { TG = localStorage.getItem("ul_tg") || ""; } catch (e) {  }
 function tgBar() {
   const G = S.groups || [];
   if (G.length < 2) return "";
@@ -869,7 +1076,7 @@ function evForm(e) {
       '<div class="fl"><span>Guruhlar' + (role === "tutor" ? "" : " <small>tanlanmasa — hamma uchun</small>") + '</span><div class="pchips">' + groups.map((g) => '<label class="opt" style="padding:7px 11px"><input type="checkbox" name="groups" value="' + esc(g) + '"' + ((e.groups || []).includes(g) || (role === "tutor" && groups.length === 1) ? " checked" : "") + "><span>" + esc(g) + "</span></label>").join("") + "</div></div>") +
     field("Tavsif", "description", { type: "textarea", rows: 3, val: e.description }) + '<button class="btn block" type="submit">Saqlash</button></form>';
 }
-/* ---- QR ekran ---- */
+
 let qrTimer = null, qrLast = "";
 function qrPoll(sid) {
   if (parseRoute().parts[0] !== "qr") { clearInterval(qrTimer); qrTimer = null; return; }
@@ -905,7 +1112,7 @@ function qrPage(r) {
 V.tutor.qr = qrPage;
 ["home", "attendance", "queue", "students", "explanations", "events"].forEach((k) => { V.tutor[k] = TGV(V.tutor[k]); });
 
-/* ---------- dekanat ---------- */
+
 V.dean = {};
 function overview() {
   const st = S.students || [], T = S.tutors || [];
@@ -952,7 +1159,7 @@ V.dean.student = studentPage;
 V.dean.events = (r) => eventsPage(r, { hint: "Tanlangan guruhlar yoki barcha talabalar uchun.", others: false });
 V.dean.qr = qrPage;
 
-/* ---------- admin ---------- */
+
 V.admin = {};
 V.admin.home = () => {
   const U = S.users || [], cnt = (r) => U.filter((u) => u.role === r).length;
@@ -979,16 +1186,25 @@ V.admin.users = (r) => {
     U.slice(0, 300).map((u) => '<tr><td><span class="who">' + ava(u.name + " " + u.surname) + "<span><b>" + esc(u.surname + " " + u.name) + "</b><small>" + esc(u.phone || "") + '</small></span></span></td><td data-l="Rol">' + esc(RL[u.role] || u.role) + '</td><td data-l="Login">' + esc(u.login) + (u.jshir && u.jshir !== u.login ? '<br><small class="muted">' + esc(u.jshir) + "</small>" : "") + "</td>" +
       '<td data-l="Guruh">' + esc(u.role === "student" ? u.grp : u.role === "tutor" ? tg(u.login).join(", ") : u.role === "parent" ? kids(u.login).join(", ") : u.faculty !== "-" ? u.faculty : "") + '</td><td style="white-space:nowrap"><button class="btn sm ghost" data-act="user-edit" data-id="' + esc(u.login) + '">Tahrirlash</button> <button class="btn sm bad" data-act="user-del" data-id="' + esc(u.login) + '">O\'chirish</button></td></tr>').join("") + "</tbody></table></div>";
 };
+
 function userForm(u) {
   u = u || { role: "student" };
   const tg = u.login ? (S.tutorGroups || []).filter((x) => x.tutor === u.login).map((x) => x.grp).join(", ") : "";
+  const allGroups = (typeof EDUPAGE_SCHEDULE_DATA !== "undefined" && EDUPAGE_SCHEDULE_DATA) ? Object.keys(EDUPAGE_SCHEDULE_DATA).sort() : ["AT-900/26", "IB-900/26", "II-900/26", "RST-81/25"];
+  const currentGrp = u.grp && u.grp !== "-" ? u.grp : "AT-900/26";
+  const grpOptions = allGroups.map(g => '<option value="' + g + '"' + (g === currentGrp ? ' selected' : '') + '>' + g + '</option>').join('');
+
   return '<form class="form" data-form="user"><input type="hidden" name="edit" value="' + esc(u.login || "") + '">' + field("Rol", "role", { type: "select", val: u.role, opts: ROLE_OPTS }) +
     '<div class="f2">' + field("Ism", "name", { req: true, val: u.name }) + field("Familiya", "surname", { req: true, val: u.surname }) + "</div>" +
     '<div class="f2">' + field("Login", "login", { req: true, val: u.login, attrs: u.login ? " readonly" : ' autocapitalize="none"', ph: "masalan: ali.valiyev" }) + field("JSHIR", "jshir", { val: u.jshir, hint: "ixtiyoriy, 14 raqam", attrs: ' inputmode="numeric"' }) + "</div>" +
-    '<div class="f2">' + field("Guruh", "grp", { val: u.grp !== "-" ? u.grp : "", hint: "talaba uchun", ph: "RST-81/25" }) + field("Fakultet / bo'lim", "faculty", { val: u.faculty !== "-" ? u.faculty : "" }) + "</div>" +
+    '<div class="f2">' +
+      '<div class="field"><label>Guruh (talaba uchun tanlang)</label><select name="grp">' + grpOptions + '</select></div>' +
+      field("Fakultet / bo'lim", "faculty", { val: u.faculty !== "-" ? u.faculty : "Raqamli iqtisodiyot" }) +
+    '</div>' +
     field("Tyutor guruhlari", "groups", { val: tg, hint: "tyutor uchun, vergul bilan", ph: "RST-81/25, RST-82/25" }) + field("Telefon", "phone", { type: "tel", val: u.phone }) +
     field(u.login ? "Yangi parol" : "Parol", "password", { type: "text", req: !u.login, hint: u.login ? "o'zgartirmasangiz bo'sh qoldiring" : "kamida 6 belgi — foydalanuvchiga bering" }) + '<button class="btn block" type="submit">Saqlash</button></form>';
 }
+
 V.admin.clubs = () => {
   const C = S.clubs || [];
   return '<div class="bar-row"><button class="btn" data-act="club-new">' + ic("plus") + 'To\'garak qo\'shish</button><span class="small muted">Klub rahbari — «Klub rahbari» rolidagi foydalanuvchi. U a\'zolarni tasdiqlaydi va klub tadbirlarini yaratadi.</span></div>' +
@@ -1027,7 +1243,7 @@ V.admin.tutor = V.dean.tutor;
 V.admin.qr = qrPage;
 V.admin.tutors = V.dean.tutors;
 
-/* ---------- klub rahbari ---------- */
+
 V.club = {};
 V.club.home = () => {
   const C = S.myClubs || [];
@@ -1042,7 +1258,7 @@ V.club.home = () => {
 V.club.events = (r) => eventsPage(r, { hint: "Klub tadbirlari barcha talabalarga ko'rinadi. QR-kod tadbir kuni ochiladi.", others: false });
 V.club.qr = qrPage;
 V.common.c = () => card("", '<p class="note">Bu QR-kod talabalar uchun. Talaba hisobi bilan kiring.</p>');
-/* ---------- fayllar: rasmni siqish ---------- */
+
 const FILES = {};
 function readAsDataURL(f) { return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(f); }); }
 async function prepFile(f) {
@@ -1093,7 +1309,7 @@ async function showFile(id) {
   else { const a = document.createElement("a"); a.href = src2; a.download = d.name; document.body.appendChild(a); a.click(); a.remove(); }
 }
 
-/* ---------- formalar ---------- */
+
 document.addEventListener("submit", async (e) => {
   const f = e.target.closest("form[data-form]");
   if (!f) return;
@@ -1102,9 +1318,10 @@ document.addEventListener("submit", async (e) => {
   const sub = e.submitter;
   if (kind === "login") {
     const j = await api("login", { login: g("login"), password: fd.get("password") });
-    if (j) { let to = ""; try { to = sessionStorage.getItem("ul_after") || ""; sessionStorage.removeItem("ul_after"); } catch (x) { /* */ } if (to) location.hash = to; else if (location.hash !== "#/home") location.hash = "#/home"; }
+    if (j) { let to = ""; try { to = sessionStorage.getItem("ul_after") || ""; sessionStorage.removeItem("ul_after"); } catch (x) {  } if (to) location.hash = to; else if (location.hash !== "#/home") location.hash = "#/home"; }
     return;
   }
+  if (kind === "admin-group") return api("adminSetGrp", { grp: g("grp") });
   if (kind === "phone") return api("setPhone", { phone: g("phone") });
   if (kind === "password") { const j = await api("changePassword", { old: fd.get("old"), password: fd.get("password") }); if (j) f.reset(); return; }
   if (kind === "ifiadd") {
@@ -1148,36 +1365,63 @@ document.addEventListener("submit", async (e) => {
   if (kind === "artform") { const j = await api("articleSave", Object.fromEntries(fd.entries())); if (j) closeSheet(); return; }
 });
 
-/* ---------- tugmalar ---------- */
+
 document.addEventListener("input", (e) => {
     const t = e.target;
-    if (t.dataset.act === "sched-search-input") {
+    if (t.dataset.act === "sched-group-search-input") {
       currentSchedSearch = t.value;
-      const cardEl = document.querySelector(".lessons-list");
-      if (cardEl) render();
-    }
-  });
-  document.addEventListener("change", (e) => {
-    const t = e.target;
-    if (t.dataset.act === "sched-course") {
-      currentSchedCourse = t.value;
-      render();
-    } else if (t.dataset.act === "sched-group") {
-      currentSchedGroup = t.value;
-      render();
+      const q = currentSchedSearch.trim().toLowerCase();
+      const grid = document.querySelector(".sched-group-grid");
+      if (grid) {
+        const btns = grid.querySelectorAll(".sched-group-btn");
+        let visibleCount = 0;
+        btns.forEach(btn => {
+          const grp = (btn.dataset.grp || "").toLowerCase();
+          const matches = !q || grp.includes(q);
+          btn.style.display = matches ? "inline-flex" : "none";
+          if (matches) visibleCount++;
+        });
+        const countSpan = document.querySelector(".sched-group-count");
+        if (countSpan) countSpan.textContent = "(" + visibleCount + ")";
+      }
     }
   });
   document.addEventListener("click", async (e) => {
-    const btnSched = e.target.closest("button, a");
-    if (btnSched && btnSched.dataset.act === "sched-week") {
-      currentSchedWeek = btnSched.dataset.week;
-      render();
-      return;
-    }
-    if (btnSched && btnSched.dataset.act === "sched-day") {
-      schedDay = Number(btnSched.dataset.day);
-      render();
-      return;
+    const btnAct = e.target.closest("[data-act]");
+    if (btnAct) {
+      const act = btnAct.dataset.act;
+      if (act === "sched-week") {
+        currentSchedWeek = btnAct.dataset.week;
+        render();
+        return;
+      }
+      if (act === "sched-day") {
+        schedDay = Number(btnAct.dataset.day);
+        render();
+        return;
+      }
+      if (act === "sched-course-tab") {
+        currentSchedCourse = btnAct.dataset.course;
+        render();
+        return;
+      }
+      if (act === "sched-select-group") {
+        currentSchedGroup = btnAct.dataset.grp;
+        render();
+        return;
+      }
+      if (act === "set-lang") {
+        setLang(btnAct.dataset.l);
+        return;
+      }
+      if (act === "toggle-theme") {
+        document.body.classList.toggle("dark-mode");
+        try {
+          const isDark = document.body.classList.contains("dark-mode");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch(e) {}
+        return;
+      }
     }
 
   const tr = e.target.closest("tr[data-href]");
@@ -1191,9 +1435,9 @@ document.addEventListener("input", (e) => {
   if (a === "demo") { const f = $("form[data-form=login]"); f.login.value = b.dataset.login; f.password.value = "demo1234"; f.requestSubmit(); return; }
   if (a === "menu") return menuSheet();
   if (a === "logout") { closeSheet(); await api("logout"); CARD = null; ATT = null; location.hash = "#/home"; return; }
-  if (a === "tg") { TG = b.dataset.g || ""; try { localStorage.setItem("ul_tg", TG); } catch (x) { /* */ } return render(); }
+  if (a === "tg") { TG = b.dataset.g || ""; try { localStorage.setItem("ul_tg", TG); } catch (x) {  } return render(); }
   if (a === "sday") { schedDay = Number(b.dataset.d); return render(); }
-  if (a === "kid") { kidIdx = Number(b.dataset.i); try { localStorage.setItem("ul_kid", kidIdx); } catch (x) { /* */ } return render(); }
+  if (a === "kid") { kidIdx = Number(b.dataset.i); try { localStorage.setItem("ul_kid", kidIdx); } catch (x) {  } return render(); }
   if (a === "rmfile") { (FILES[b.dataset.k] || []).splice(Number(b.dataset.i), 1); return paintThumbs(b.dataset.k); }
   if (a === "file") return showFile(id);
   if (a === "print") return window.print();
@@ -1241,9 +1485,8 @@ document.addEventListener("input", (e) => {
 });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet(); });
 
-/* ---------- ishga tushirish ---------- */
 
-/* SSO Boot Integration from TSUE Platform */
+
 function bootFromEcosystem() {
   try {
     const raw = localStorage.getItem("riat_user") || localStorage.getItem("tsue_user");
@@ -1252,7 +1495,7 @@ function bootFromEcosystem() {
       if (u && (u.login || u.username)) {
         const login = u.login || u.username;
         let role = "student";
-        if (u.role === "admin" || login === "monarch" || login === "antigravity") role = "admin";
+        if (u.role === "admin" || login === "monarch") role = "admin";
         else if (u.role === "tutor" || u.role === "tyutor") role = "tutor";
         else if (u.role === "parent") role = "parent";
         else if (u.role === "dean") role = "dean";
@@ -1276,7 +1519,6 @@ function bootFromEcosystem() {
   return null;
 }
 
-/* Local storage state manager for static deployment */
 const DB_STORAGE_KEY = "riat_univerlife_local_db";
 function getLocalDb() {
   try {
@@ -1303,7 +1545,6 @@ function saveLocalDb(db) {
   } catch(e) {}
 }
 
-/* Standalone buildState generator */
 function buildLocalState(meUser) {
   const ldb = getLocalDb();
   const seed = window.__UNIVERLIFE_SEED__ || {};
@@ -1335,7 +1576,7 @@ function buildLocalState(meUser) {
       hoursPerPair: 2
     },
     notifs: [
-      { id: "n1", title: "RIAT-Univerlife platformasiga xush kelibsiz", body: "RIAT-Study, RIAT-Parents va RIAT-Ijtimoiy bitta markaziy sahifaga birlashtirildi.", link: "#/home", created: Date.now() - 3600000, read: 0 }
+      { id: "n1", title: "TSUE UniverLife platformasiga xush kelibsiz", body: "RIAT-Study, RIAT-Parents va RIAT-Ijtimoiy bitta markaziy tizimga birlashtirildi.", link: "#/home", created: Date.now() - 3600000, read: 0 }
     ],
     unread: 1,
     events: ldb.events.length ? ldb.events : (seed.events || []),
@@ -1346,7 +1587,6 @@ function buildLocalState(meUser) {
 
   if (!meUser) return base;
 
-  // Student specific full object
   const userEntries = ldb.entries.filter(e => e.login === meUser.login);
   const stObject = {
     login: meUser.login,
@@ -1391,7 +1631,13 @@ function buildLocalState(meUser) {
     ifi: {
       total: 82.5,
       level: "A'lo daraja",
-      v: { acad: 9.3, att: 5, read: 20, club: 20, contest: 9, public: 5, culture: 5, sport: 5, conduct: 4.2 }
+      v: { acad: 9.3, att: 5, read: 20, club: 20, contest: 9, public: 5, culture: 5, sport: 5, conduct: 4.2 },
+      info: {
+        acad: { gpa: 4.82, year: "2025–2026" },
+        att: { hours: 4 },
+        enlight: { n: 4, held: 4, part: 6 },
+        culture: { months: 2, need: 2 }
+      }
     },
     rank: {
       ifi: { grp: { pos: 1, of: 26 }, fac: { pos: 3, of: 240 }, all: { pos: 8, of: 1200 } },
@@ -1404,7 +1650,6 @@ function buildLocalState(meUser) {
     clubs: [{ id: "c1", name: "Sun'iy intellekt to'garagi", status: "qabul" }]
   };
 
-  // Always provide a default st and schedule for fallback preview across all roles
   base.st = stObject;
   base.schedule = [];
   base.board = [
@@ -1415,7 +1660,6 @@ function buildLocalState(meUser) {
   ];
 
   if (meUser.role === "student") {
-    // Already set defaults
   } else if (meUser.role === "parent") {
     base.kids = [
       {
@@ -1457,7 +1701,6 @@ function buildLocalState(meUser) {
   return base;
 }
 
-/* Standalone API interceptor */
 async function localApiHandler(action, data) {
   const ldb = getLocalDb();
   if (action === "state") {
@@ -1467,7 +1710,7 @@ async function localApiHandler(action, data) {
     const lg = String(data.login || "").trim().toLowerCase();
     let found = (ldb.users || []).find(u => u.login.toLowerCase() === lg);
     if (!found) {
-      if (lg === "monarch" || lg === "antigravity" || lg === "admin") {
+      if (lg === "monarch" || lg === "admin") {
         found = { login: lg, name: lg.toUpperCase(), surname: "Admin", role: "admin", university: "TDIU", faculty: "Raqamli iqtisodiyot", grp: "AT-900/26" };
       } else if (lg.includes("tyutor") || lg.includes("tutor")) {
         found = { login: lg, name: "Farhod", surname: "Karimov", role: "tutor", university: "TDIU", faculty: "Raqamli iqtisodiyot", grp: "-" };
@@ -1501,6 +1744,62 @@ async function localApiHandler(action, data) {
     try { localStorage.removeItem("riat_user"); } catch(e) {}
     S = buildLocalState(null);
     return { ok: true, msg: "Tizimdan chiqildi", state: S };
+  }
+
+  if (action === "adminSetGrp") {
+    const newGrp = String(data.grp || "").trim();
+    if (newGrp && S.me) {
+      S.me.grp = newGrp;
+      currentSchedGroup = newGrp;
+      try {
+        const raw = localStorage.getItem("riat_user");
+        if (raw) {
+          const u = JSON.parse(raw);
+          u.grp = newGrp;
+          u.group = newGrp;
+          localStorage.setItem("riat_user", JSON.stringify(u));
+        }
+      } catch(e) {}
+      let userInDb = (ldb.users || []).find(u => u.login.toLowerCase() === S.me.login.toLowerCase());
+      if (userInDb) {
+        userInDb.grp = newGrp;
+        saveLocalDb(ldb);
+      }
+      S = buildLocalState(S.me);
+      return { ok: true, msg: "Guruh muvaffaqiyatli o'zgartirildi: " + newGrp, state: S };
+    }
+    return { ok: false, msg: "Guruh topilmadi" };
+  }
+
+  if (action === "userSave") {
+    const editLogin = String(data.edit || data.login || "").trim().toLowerCase();
+    let idx = ldb.users.findIndex(u => u.login.toLowerCase() === editLogin);
+    const updatedUser = {
+      login: editLogin || data.login,
+      name: data.name || "Foydalanuvchi",
+      surname: data.surname || "",
+      role: data.role || "student",
+      grp: data.grp || "AT-900/26",
+      faculty: data.faculty || "Raqamli iqtisodiyot",
+      phone: data.phone || "",
+      jshir: data.jshir || ""
+    };
+    if (idx >= 0) {
+      ldb.users[idx] = Object.assign(ldb.users[idx], updatedUser);
+    } else {
+      ldb.users.push(updatedUser);
+    }
+    saveLocalDb(ldb);
+    S = buildLocalState(S.me);
+    return { ok: true, msg: "Foydalanuvchi muvaffaqiyatli saqlandi", state: S };
+  }
+
+  if (action === "userDelete") {
+    const delLogin = String(data.login || "").trim().toLowerCase();
+    ldb.users = ldb.users.filter(u => u.login.toLowerCase() !== delLogin);
+    saveLocalDb(ldb);
+    S = buildLocalState(S.me);
+    return { ok: true, msg: "Foydalanuvchi o'chirildi", state: S };
   }
 
   if (action === "ifiAdd") {
@@ -1543,7 +1842,6 @@ async function localApiHandler(action, data) {
   return { ok: true, msg: "Amal muvaffaqiyatli bajarildi", state: S };
 }
 
-/* Overwrite api() function to use localApiHandler */
 api = async function(action, data, opt) {
   opt = opt || {};
   try {
@@ -1560,12 +1858,17 @@ api = async function(action, data, opt) {
 (async function init() {
   $("#root").innerHTML = '<div style="display:grid;place-items:center;min-height:100vh;color:var(--muted)">Yuklanmoqda…</div>';
   
-  // 1. Try SSO from localStorage.riat_user
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  } catch(e) {}
+
   const ssoUser = bootFromEcosystem();
   if (ssoUser) {
     S = buildLocalState(ssoUser);
   } else {
-    // Default to student demo Sardor Alisherov
     const defaultStudent = {
       login: "sardor.alisherov",
       name: "Sardor",

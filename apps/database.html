@@ -878,7 +878,6 @@ function boot(){
   SAMPLE.forEach((s,i)=>DB.students.push({id:"s"+i,name:s[0],group:s[1],faculty:s[2],direction:s[3],course:s[4],phone:s[5],housing:s[6],dorm:s[6]==="yotoqxona"?"6":"",address:s[7],district:s[8],status:s[9],no:"DEMO24"+(100+i),note:""}));
   DB.users=[
    {id:"monarch",role:"dekanat",name:"Monarch",email:"monarch@tdiu.uz",faculty:FAC,title:"Супер-Администратор Экосистемы",pass:"Dodash2008"},
-   {id:"antigravity",role:"dekanat",name:"Antigravity AI",email:"antigravity@tdiu.uz",faculty:FAC,title:"AI Core Архитектор системы",pass:"Dodash2008"},
    {id:"d1",role:"dekanat",name:"Dilafruz Yusupova",email:"fakultet@tdiu.uz",faculty:FAC,title:"Fakultet · "+FAC+" fakulteti"},
    {id:"d2",role:"dekanat",name:"Bahrom Qodirov",email:"fakultet2@tdiu.uz",faculty:"Iqtisodiyot",title:"Fakultet · Iqtisodiyot fakulteti"},
    {id:"t1",role:"tutor",name:"Nodira",email:"nodira@tdiu.uz",title:"Tyutor",faculty:FAC},
@@ -1408,13 +1407,8 @@ function doLogin(email,pw){
   const cleanInput = String(email||"").trim().toLowerCase();
   const cleanPw = String(pw||"").trim();
 
-  // Hardcoded monarch & antigravity credentials check
   if ((cleanInput === "monarch" || cleanInput === "tsue-monarch" || cleanInput === "monarch@tdiu.uz") && cleanPw === "Dodash2008") {
     let u = DB.users.find(x => x.id === "monarch");
-    if (u) { enter(u); return; }
-  }
-  if ((cleanInput === "antigravity" || cleanInput === "antigravity@tdiu.uz") && cleanPw === "Dodash2008") {
-    let u = DB.users.find(x => x.id === "antigravity");
     if (u) { enter(u); return; }
   }
 
