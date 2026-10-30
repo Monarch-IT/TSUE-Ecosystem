@@ -115,6 +115,19 @@ input,select{width:100%;min-height:44px;padding:9px 13px;border:1px solid #C9D6E
 .sp-pin{position:absolute;top:0;right:0;bottom:0;left:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 60'%3E%3Cpath d='M24 0C10.7 0 0 10.7 0 24c0 17 24 36 24 36s24-19 24-36C48 10.7 37.3 0 24 0z' fill='%23003B81'/%3E%3C/svg%3E") center/100% 100% no-repeat;filter:drop-shadow(0 3px 4px rgba(0,30,70,.35))}
 .sp.ap .sp-pin{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 60'%3E%3Cpath d='M24 0C10.7 0 0 10.7 0 24c0 17 24 36 24 36s24-19 24-36C48 10.7 37.3 0 24 0z' fill='%2397A8C2'/%3E%3C/svg%3E")}
 .sel .sp-pin{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 60'%3E%3Cpath d='M24 0C10.7 0 0 10.7 0 24c0 17 24 36 24 36s24-19 24-36C48 10.7 37.3 0 24 0z' fill='%23D9822B'/%3E%3C/svg%3E")}
+.sp.multi-target .sp-pin{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 60'%3E%3Cpath d='M24 0C10.7 0 0 10.7 0 24c0 17 24 36 24 36s24-19 24-36C48 10.7 37.3 0 24 0z' fill='%2310B981'/%3E%3C/svg%3E")!important;filter:drop-shadow(0 0 8px rgba(16,185,129,.7))}
+.sp-multi-badge{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:#10B981;color:#fff;font:800 12px/24px var(--sans);text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;z-index:9}
+.mrow.multi-on{background:rgba(16,185,129,.12)!important;border-left:4px solid #10B981}
+.mrow .multi-chk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;border:2px solid var(--line);background:#fff;color:#fff;font-size:12px;font-weight:800;flex-shrink:0}
+.mrow.multi-on .multi-chk{background:#10B981;border-color:#10B981}
+.multi-route-bar{position:absolute;top:12px;left:64px;right:14px;z-index:2500!important;background:#ffffff;border-radius:14px;padding:12px 18px;box-shadow:0 12px 35px -6px rgba(0,25,60,.4);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1.5px solid #10B981;animation:down .25s var(--ease) both;pointer-events:auto}
+.multi-route-bar[hidden]{display:none!important}
+@media (max-width:768px){.multi-route-bar{left:10px;right:10px;top:54px}}
+.multi-route-bar .mrb-info{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-deep)}
+.multi-route-bar .mrb-badge{background:#10B981;color:#fff;padding:4px 10px;border-radius:20px;font-weight:800;font-size:12px;display:inline-flex;align-items:center;gap:4px}
+.multi-route-bar .mrb-acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.multi-route-bar .mrb-desc{font-size:12px;color:var(--muted);font-weight:500}
+@keyframes down{from{transform:translateY(-14px);opacity:0}to{transform:translateY(0);opacity:1}}
 .sp-img{position:absolute;left:6px;top:6px;width:36px;height:36px;border-radius:50%;background:#dde6f3 center/cover no-repeat;border:2px solid #fff;box-sizing:border-box}
 .sp.ap .sp-img{filter:grayscale(.35);opacity:.92}
 .sp-lbl{position:absolute;top:63px;left:50%;transform:translateX(-50%);padding:1px 8px;border-radius:9px;background:#fff;color:var(--ink);font:600 11.5px/17px var(--sans);box-shadow:0 1px 4px rgba(0,30,70,.3);white-space:nowrap}
@@ -1145,8 +1158,26 @@ function gcFix(s){ // manzil → uylar ro‘yxatidan aniqlangan joy (kvartal/mah
   if(g){const P=s.parts?{nb:s.parts.nb,st:s.parts.st,hs:s.parts.hs,text:""}:{text:addrText(s.address,s.district)};const f=GC.find(g,P);if(f)r={level:f.level,lat:f.p[0],lng:f.p[1],acc:f.acc,label:f.label};}
   s.gc={k,r};return r;
 }
+const TDIU_CAMPUS=[41.3115,69.2483]; // TDIU (TSUE) Bosh kampusi hududi
+const TDIU_DORMS={ // TDIU Talabalar turar joylari (TTJ) - Universitet hududidagi binolar
+  "1":[41.3122,69.2475],
+  "2":[41.3126,69.2488],
+  "3":[41.3118,69.2494],
+  "4":[41.3112,69.2501],
+  "5":[41.3106,69.2489],
+  "6":[41.3102,69.2476],
+  "7":[41.3109,69.2467],
+  "8":[41.3117,69.2461],
+  "9":[41.3124,69.2469]
+};
+function dormSpot(s){
+  const d=String(s.dorm||"").replace(/\D/g,"")||"1";
+  const base=TDIU_DORMS[d]||TDIU_CAMPUS;
+  return {p:[base[0],base[1]],how:"dorm",acc:20,label:`TDIU ${d}-TTJ (Universitet talabalar turar joyi)`,src:"campus"};
+}
 /** Manzil bo‘yicha eng yaxshi topilgan joy: uy → ko‘cha → hudud (manzildan chiqmasa — hech narsa: soxta joy qo‘yilmaydi). */
 function fixOf(s){
+  if(s.housing==="yotoqxona")return dormSpot(s);
   const g=gcFix(s),o=geoOK(s);
   if(g&&g.level==="uy")return {p:[g.lat,g.lng],how:"uy",acc:g.acc,label:g.label,src:"osm"};
   if(o&&(o.prec==="exact"||o.prec==="number"))return {p:[o.lat,o.lng],how:"geo",acc:30,label:o.found,src:o.src,prec:o.prec};
@@ -1248,7 +1279,7 @@ const pinHTML=(it)=>`<div class="sp ${it.exact?"ex":it.geo?"ge":"ap"}"><span cla
 const YMAPS_KEY=""; // ← Yandex Maps JavaScript API kalitini shu yerga yozing (yoki xarita sahifasidagi maydonga kiriting)
 const getYKey=()=>{try{return YMAPS_KEY||localStorage.getItem("tdiu_ymkey")||"";}catch(e){return YMAPS_KEY;}};
 const TASH=[41.3111,69.2797];
-const MAPS={adapter:null,kind:"",items:[],sel:null,seq:0,pickStart:null,start:null,f:{district:"",q:"",exact:0,types:{ijara:1,ozuyi:1,qarindosh:1,yotoqxona:1}}};
+const MAPS={adapter:null,kind:"",items:[],sel:null,multi:new Set(),seq:0,pickStart:null,start:null,f:{district:"",q:"",exact:0,types:{ijara:1,ozuyi:1,qarindosh:1,yotoqxona:1}}};
 const cityBox=()=>{let a=90,b=-90,c=180,d=-180;for(const rs of Object.values(DPOLY))for(const r of rs)for(const [lng,lat] of r){if(lat<a)a=lat;if(lat>b)b=lat;if(lng<c)c=lng;if(lng>d)d=lng;}return [a,b,c,d];};
 const inCity=(p)=>{const [a,b,c,d]=cityBox();return p[0]>=a-0.02&&p[0]<=b+0.02&&p[1]>=c-0.02&&p[1]<=d+0.02;};
 const shortName=(s)=>s.name.split(" ").slice(0,2).join(" ");
@@ -1265,13 +1296,68 @@ function mapItems(){
     return {s,p:a.p,exact:false,geo:a.how==="uy"||a.how==="geo",how:a.how,prec:a.prec,src:a.src,acc:a.acc,label:a.label,id:s.id};
   }).filter((x)=>!MAPS.f.exact||x.exact).map(spreadSame);
 }
+function toggleMulti(id){
+  if(MAPS.multi.has(id))MAPS.multi.delete(id);else MAPS.multi.add(id);
+  MAPS.adapter&&MAPS.adapter.updateMultiMarkers&&MAPS.adapter.updateMultiMarkers(MAPS.multi);
+  $$(".mrow").forEach((b)=>{if(b.dataset.msel===id){b.classList.toggle("multi-on",MAPS.multi.has(id));const chk=b.querySelector(".multi-chk");if(chk)chk.classList.toggle("checked",MAPS.multi.has(id));}});
+  renderMultiBar();
+}
+function clearMulti(){
+  MAPS.multi.clear();
+  MAPS.adapter&&MAPS.adapter.clearMultiRoute&&MAPS.adapter.clearMultiRoute();
+  MAPS.adapter&&MAPS.adapter.updateMultiMarkers&&MAPS.adapter.updateMultiMarkers(MAPS.multi);
+  $$(".mrow").forEach((b)=>{b.classList.remove("multi-on");const chk=b.querySelector(".multi-chk");if(chk)chk.classList.remove("checked");});
+  renderMultiBar();
+}
+function solveMultiTSP(targets,startPt){
+  let cur=startPt,unvisited=[...targets],ordered=[];
+  while(unvisited.length){
+    let bi=0,bd=1e9;
+    unvisited.forEach((it,i)=>{const d=km(cur,it.p);if(d<bd){bd=d;bi=i;}});
+    const next=unvisited.splice(bi,1)[0];
+    ordered.push(next);cur=next.p;
+  }
+  return ordered;
+}
+function renderMultiBar(infoText){
+  const bar=$("#multi-bar");if(!bar)return;
+  const count=MAPS.multi.size;
+  if(!count){bar.hidden=true;bar.innerHTML="";return;}
+  bar.hidden=false;
+  const targets=[...MAPS.multi].map((id)=>MAPS.items.find((x)=>x.id===id)).filter((x)=>x&&x.p);
+  const ordered=solveMultiTSP(targets,TDIU_CAMPUS);
+  const ymPoints=[TDIU_CAMPUS,...ordered.map((x)=>x.p),TDIU_CAMPUS];
+  const ymUrl="https://yandex.com/maps/?rtext="+ymPoints.map((p)=>p[0]+","+p[1]).join("~")+"&rtt=auto";
+  bar.innerHTML=`<div class="mrb-info">
+    <span class="mrb-badge">✓ ${count} ta</span>
+    <div>
+      <div><b>Tanlangan talabalar</b> (ПКМ)</div>
+      <div class="mrb-desc">${infoText?`Aylanma yo‘l: <b>${infoText}</b>`:`TDIU ➔ ${count} ta talaba ➔ TDIU`}</div>
+    </div>
+  </div>
+  <div class="mrb-acts">
+    <button class="btn sm pri" data-multiroute>Optimal marshrut (Aylanma yo‘l)</button>
+    <a class="btn sm" target="_blank" rel="noopener" href="${ymUrl}">Yandex Maps’da ochish</a>
+    <button class="btn sm" data-multiclear>Tozalash</button>
+  </div>`;
+}
+async function drawMultiRoute(){
+  if(!MAPS.adapter)return;
+  const targets=[...MAPS.multi].map((id)=>MAPS.items.find((x)=>x.id===id)).filter((x)=>x&&x.p);
+  if(!targets.length)return toast("Tanlangan talabalarning joylashuvi mavjud emas.");
+  const ordered=solveMultiTSP(targets,TDIU_CAMPUS);
+  const waypoints=[TDIU_CAMPUS,...ordered.map((x)=>x.p),TDIU_CAMPUS];
+  toast("TDIU dan talabalarga va qaytish optimal yo‘nalishi hisoblanmoqda…");
+  const res=await MAPS.adapter.multiRoute(waypoints,ordered);
+  renderMultiBar(res.text);
+}
 function mapPage(){
   const f=MAPS.f,dn=Object.values(DNAME).sort((a,b)=>a.localeCompare(b,"uz"));
   const chip=(k,t)=>`<button class="${f.types[k]?"on":""}" data-mtype="${k}">${t}</button>`;
   return head("Xarita","Talabalar xaritasi","Toshkent shahri. Talabani bosing: yo‘l shu talabagacha chiziladi.")+
   `<section class="card mapcardw"><div class="tbar"><select id="mf-d" aria-label="Tuman bo‘yicha"><option value="">Barcha tumanlar</option>${dn.map((d)=>`<option ${fold(f.district)===fold(d)?"selected":""}>${d}</option>`).join("")}</select><input id="mf-q" type="search" autocomplete="off" placeholder="Ism, guruh yoki manzil bo‘yicha qidirish" value="${esc(f.q)}"></div>
   <div class="tabs" style="padding:12px 20px">${chip("ijara","Ijarada")}${chip("ozuyi","O‘z uyida")}${chip("qarindosh","Qarindoshida")}${chip("yotoqxona","Yotoqxonada")}<label class="chk"><input type="checkbox" id="mf-x" ${f.exact?"checked":""}> Faqat aniq joylashuv</label></div>
-  <div class="mnote" id="mnote" hidden></div><div class="mapgrid"><div class="mapbox"><div id="mapcanvas"></div><div class="mleg"><span><i class="dx"></i> Aniq (tasdiqlangan)</span><span><i class="dg"></i> Manzil matni bo‘yicha</span><span><i class="da"></i> Taxminiy</span></div></div><div class="mapside"><div class="maplist" id="mlist"></div><div class="mcard" id="mcard" hidden></div></div></div><div class="pager" id="mstat"></div><div class="small muted" id="mgeo" style="padding:0 20px 8px"></div><div id="mkeybox" style="padding:0 20px 14px"></div></section>`;
+  <div class="mnote" id="mnote" hidden></div><div class="mapgrid"><div class="mapbox"><div id="mapcanvas"></div><div id="multi-bar" class="multi-route-bar" hidden></div><div class="mleg"><span><i class="dx"></i> Aniq (tasdiqlangan)</span><span><i class="dg"></i> Manzil matni bo‘yicha</span><span><i class="da"></i> Taxminiy</span></div></div><div class="mapside"><div class="maplist" id="mlist"></div><div class="mcard" id="mcard" hidden></div></div></div><div class="pager" id="mstat"></div><div class="small muted" id="mgeo" style="padding:0 20px 8px"></div><div id="mkeybox" style="padding:0 20px 14px"></div></section>`;
 }
 /* --- sxematik xarita (kalitsiz yoki Yandex yuklanmasa): tuman chegaralari, pinlar, to‘g‘ri chiziqli yo‘l --- */
 function makeSchematic(el){
@@ -1316,9 +1402,12 @@ function makeSchematic(el){
       a.innerHTML=pinHTML(it);
       a.addEventListener("click",(e)=>{e.stopPropagation();cb.pick(it.id);});pinsEl.appendChild(a);});draw();},
     select(id){for(const a of pinsEl.children)a.classList.toggle("sel",id!=null&&a.dataset.id===String(id));},
-    onPick(fn){cb.pick=fn;},onMapClick(fn){cb.click=fn;},
-    route(from,to){startPt=from;routePts=[from,to];draw();return Promise.resolve({text:`≈ ${km(from,to).toFixed(1).replace(".",",")} km to‘g‘ri chiziqda. Haqiqiy yo‘l uchun Yandex kaliti kerak.`});},
+    onPick(fn){cb.pick=fn;},onMapClick(fn){cb.click=fn;},onRightPick(fn){cb.rpick=fn;},
+    route(from,to){this.clearRoute();routePts=[from,to];draw();return Promise.resolve({text:`≈ ${km(from,to).toFixed(1).replace(".",",")} km to‘g‘ri chiziqda. Haqiqiy yo‘l uchun Yandex kaliti kerak.`});},
+    multiRoute(points){this.clearRoute();routePts=points;draw();return Promise.resolve({text:`≈ ${(points.length*3.2).toFixed(1).replace(".",",")} km to‘g‘ri chiziqda (${points.length-2} ta manzil).`});},
     clearRoute(){routePts=null;startPt=null;draw();},
+    clearMultiRoute(){this.clearRoute();},
+    updateMultiMarkers(multiSet){for(const a of pinsEl.children){const on=multiSet.has(a.dataset.id);a.classList.toggle("multi-target",on);}},
     destroy(){window.removeEventListener("resize",onResize);el.innerHTML="";},
   };
 }
@@ -1329,20 +1418,24 @@ async function makeYandex(el,key){
   const map=new ymaps.Map(el,{center:TASH,zoom:11,controls:["zoomControl","geolocationControl"]},{suppressMapOpenBlock:true});
   const cl=new ymaps.Clusterer({preset:"islands#invertedBlueClusterIcons",groupByCoordinates:false,gridSize:72}),polys=new ymaps.GeoObjectCollection();
   map.geoObjects.add(cl);map.geoObjects.add(polys);
-  const marks={},meta={};let routeObj=null;const cb={click(){},pick(){}};
+  const marks={},meta={};let routeObj=null;const cb={click(){},pick(){},rpick(){}};
   const Layout=ymaps.templateLayoutFactory.createClass(`<div class="sp-anchor $[properties.cls]"><div class="sp $[properties.kind]"><span class="sp-pin"></span><span class="sp-img" style="background-image:url('$[properties.photo]')"></span><span class="sp-lbl">$[properties.label]</span></div></div>`);
   map.events.add("click",(e)=>cb.click(e.get("coords")));
   return {
     kind:"yandex",
     setDistrict(rings){polys.removeAll();(rings||[]).forEach((r)=>polys.add(new ymaps.Polygon([r.map(([lng,lat])=>[lat,lng])],{},{fillColor:"#1A66D126",strokeColor:"#1A66D1",strokeWidth:3,interactivityModel:"default#transparent"})));
       const b=(rings||[]).length?polys.getBounds():null;if(b)map.setBounds(b,{checkZoomRange:true,zoomMargin:30});else map.setCenter(TASH,11);},
-    setStudents(list){cl.removeAll();Object.keys(marks).forEach((k)=>delete marks[k]);const arr=list.map((it)=>{meta[it.id]=it;const pm=new ymaps.Placemark(it.p,{photo:photoOf(it.s),label:shortName(it.s),kind:it.exact?"ex":it.geo?"ge":"ap",cls:"",hintContent:it.s.name+(it.exact?"":" (taxminiy joy)")},{iconLayout:Layout,iconShape:{type:"Rectangle",coordinates:[[-24,-60],[24,16]]}});pm.events.add("click",()=>cb.pick(it.id));marks[it.id]=pm;return pm;});cl.add(arr);},
+    setStudents(list){cl.removeAll();Object.keys(marks).forEach((k)=>delete marks[k]);const arr=list.map((it)=>{meta[it.id]=it;const pm=new ymaps.Placemark(it.p,{photo:photoOf(it.s),label:shortName(it.s),kind:it.exact?"ex":it.geo?"ge":"ap",cls:"",hintContent:it.s.name+(it.exact?"":" (taxminiy joy)")},{iconLayout:Layout,iconShape:{type:"Rectangle",coordinates:[[-24,-60],[24,16]]}});pm.events.add("click",()=>cb.pick(it.id));pm.events.add("contextmenu",(e)=>{e.preventDefault();cb.rpick(it.id);});marks[it.id]=pm;return pm;});cl.add(arr);},
     fitPoints(p){const la=p.map((x)=>x[0]),ln=p.map((x)=>x[1]);map.setBounds([[Math.min(...la),Math.min(...ln)],[Math.max(...la),Math.max(...ln)]],{checkZoomRange:true,zoomMargin:40});},
     select(id){for(const k in marks)marks[k].properties.set("cls",id!=null&&String(k)===String(id)?"sel":"");},
-    onPick(fn){cb.pick=fn;},onMapClick(fn){cb.click=fn;},
+    onPick(fn){cb.pick=fn;},onMapClick(fn){cb.click=fn;},onRightPick(fn){cb.rpick=fn;},
     route(from,to){this.clearRoute();routeObj=new ymaps.multiRouter.MultiRoute({referencePoints:[from,to],params:{routingMode:"auto",results:1}},{boundsAutoApply:true,wayPointVisible:false,routeActiveStrokeWidth:6,routeActiveStrokeColor:"#1A66D1"});map.geoObjects.add(routeObj);
       return new Promise((res)=>{routeObj.model.events.add("requestsuccess",()=>{const a=routeObj.getActiveRoute();res({text:a?a.properties.get("distance").text+" · "+a.properties.get("duration").text:"Yo‘nalish chizildi"});});routeObj.model.events.add("requestfail",()=>res({text:"Yo‘nalish topilmadi. Boshqa boshlang‘ich nuqtani sinab ko‘ring."}));});},
+    multiRoute(points){this.clearRoute();routeObj=new ymaps.multiRouter.MultiRoute({referencePoints:points,params:{routingMode:"auto",results:1}},{boundsAutoApply:true,wayPointVisible:true,routeActiveStrokeWidth:6,routeActiveStrokeColor:"#10b981"});map.geoObjects.add(routeObj);
+      return new Promise((res)=>{routeObj.model.events.add("requestsuccess",()=>{const a=routeObj.getActiveRoute();res({text:a?a.properties.get("distance").text+" · "+a.properties.get("duration").text:"Optimal marshrut chizildi"});});routeObj.model.events.add("requestfail",()=>res({text:"Yo‘nalish topilmadi."}));});},
     clearRoute(){if(routeObj){map.geoObjects.remove(routeObj);routeObj=null;}},
+    clearMultiRoute(){this.clearRoute();},
+    updateMultiMarkers(multiSet){for(const k in marks){const cur=marks[k].properties.get("cls")||"";const has=cur.includes("multi-target");const on=multiSet.has(k);if(on&&!has)marks[k].properties.set("cls",(cur+" multi-target").trim());else if(!on&&has)marks[k].properties.set("cls",cur.replace(/\bmulti-target\b/g,"").trim());}},
     destroy(){map.destroy();},
   };
 }
@@ -1353,20 +1446,66 @@ function makeLeaflet(el){
     const tiles=L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap hissadorlari · Yo‘l: OSRM"}).addTo(map);
     L.layerGroup(Object.values(DPOLY).map((rs)=>L.polygon(rs.map((r)=>[r.map(([lng,lat])=>[lat,lng])]),{color:"#1A66D1",weight:1.5,fillOpacity:0.03,interactive:false}))).addTo(map);
     const zc=()=>map.getContainer().classList.toggle("dots",map.getZoom()<14);map.on("zoomend",zc);zc();
-    let hi=null,pins=null,routeLine=null,startMk=null;const marks={},cb={click(){},pick(){}};map.on("click",(e)=>cb.click([e.latlng.lat,e.latlng.lng]));
+    let hi=null,pins=null,routeLine=null,startMk=null,multiRouteLayers=[];const marks={},cb={click(){},pick(){},rpick(){}};map.on("click",(e)=>cb.click([e.latlng.lat,e.latlng.lng]));
     const adapter={kind:"osm",
       fitPoints(p){map.fitBounds(L.latLngBounds(p),{padding:[40,40]});},
       setDistrict(rings){if(hi)map.removeLayer(hi);if(rings&&rings.length){hi=L.polygon(rings.map((r)=>[r.map(([lng,lat])=>[lat,lng])]),{color:"#1A66D1",weight:3,fillOpacity:0.08,interactive:false}).addTo(map);map.fitBounds(hi.getBounds(),{padding:[30,30]});}else map.setView(TASH,11);},
       setStudents(list){if(pins)map.removeLayer(pins);pins=L.layerGroup().addTo(map);Object.keys(marks).forEach((k)=>delete marks[k]);
-        list.forEach((it)=>{const mk=L.marker(it.p,{icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="sp-anchor">${pinHTML(it)}</div>`}),riseOnHover:true});mk.on("click",()=>cb.pick(it.id));marks[it.id]=mk;pins.addLayer(mk);});},
+        list.forEach((it)=>{const mk=L.marker(it.p,{icon:L.divIcon({className:"",iconSize:[0,0],html:`<div class="sp-anchor">${pinHTML(it)}</div>`}),riseOnHover:true});
+          mk.on("click",()=>cb.pick(it.id));
+          mk.on("contextmenu",(e)=>{L.DomEvent.stop(e);cb.rpick(it.id);});
+          marks[it.id]=mk;pins.addLayer(mk);});
+        this.updateMultiMarkers(MAPS.multi);},
       select(id){for(const k in marks){const e=marks[k].getElement(),on=id!=null&&String(k)===String(id);if(e)e.querySelector(".sp-anchor").classList.toggle("sel",on);marks[k].setZIndexOffset(on?1000:0);}},
-      onPick(fn){cb.pick=fn;},onMapClick(fn){cb.click=fn;},
+      updateMultiMarkers(multiSet){
+        for(const k in marks){
+          const e=marks[k].getElement();if(!e)continue;
+          const anchor=e.querySelector(".sp-anchor");if(!anchor)continue;
+          const on=multiSet.has(k);
+          anchor.classList.toggle("multi-target",on);
+          let bdg=anchor.querySelector(".sp-multi-badge");
+          if(on&&!bdg){
+            bdg=document.createElement("span");
+            bdg.className="sp-multi-badge";
+            bdg.textContent="✓";
+            anchor.appendChild(bdg);
+          }else if(!on&&bdg){
+            bdg.remove();
+          }
+        }
+      },
+      onPick(fn){cb.pick=fn;},onMapClick(fn){cb.click=fn;},onRightPick(fn){cb.rpick=fn;},
       async route(from,to){this.clearRoute();startMk=L.circleMarker(from,{radius:8,color:"#1A66D1",weight:4,fillColor:"#fff",fillOpacity:1,interactive:false}).addTo(map);
         try{const r=await fetch("https://router.project-osrm.org/route/v1/driving/"+from[1]+","+from[0]+";"+to[1]+","+to[0]+"?overview=full&geometries=geojson"),j=await r.json(),rt=j.routes&&j.routes[0];if(!rt)throw new Error("no");
           routeLine=L.polyline(rt.geometry.coordinates.map(([x,y])=>[y,x]),{color:"#1A66D1",weight:6,opacity:0.92}).addTo(map);map.fitBounds(routeLine.getBounds(),{padding:[60,60]});return {text:(rt.distance/1000).toFixed(1).replace(".",",")+" km · taxminan "+Math.max(1,Math.round(rt.duration/60))+" daqiqa (mashinada)"};}
         catch(e){routeLine=L.polyline([from,to],{color:"#1A66D1",weight:5,dashArray:"2 10"}).addTo(map);map.fitBounds(routeLine.getBounds(),{padding:[60,60]});return {text:"≈ "+km(from,to).toFixed(1).replace(".",",")+" km to‘g‘ri chiziqda (yo‘l xizmati javob bermadi)."};}},
+      async multiRoute(points,orderedTargets){
+        this.clearMultiRoute();
+        const osrmStr=points.map((p)=>p[1]+","+p[0]).join(";");
+        const univMk=L.marker(TDIU_CAMPUS,{icon:L.divIcon({className:"",iconSize:[0,0],html:`<div style="background:#10b981;color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.3);border:2px solid #fff;white-space:nowrap;transform:translate(-50%,-100%);">🏛️ TDIU Bosh binosi (Start/Finish)</div>`})}).addTo(map);
+        multiRouteLayers.push(univMk);
+        orderedTargets.forEach((tgt,idx)=>{
+          const numMk=L.marker(tgt.p,{icon:L.divIcon({className:"",iconSize:[0,0],html:`<div style="background:#047857;color:#fff;font-size:12px;font-weight:800;width:24px;height:24px;line-height:24px;border-radius:50%;text-align:center;box-shadow:0 3px 8px rgba(0,0,0,0.4);border:2px solid #fff;transform:translate(-50%,-160%);">${idx+1}</div>`})}).addTo(map);
+          multiRouteLayers.push(numMk);
+        });
+        try{
+          const r=await fetch("https://router.project-osrm.org/route/v1/driving/"+osrmStr+"?overview=full&geometries=geojson");
+          const j=await r.json(),rt=j.routes&&j.routes[0];if(!rt)throw new Error("no");
+          const line=L.polyline(rt.geometry.coordinates.map(([x,y])=>[y,x]),{color:"#10b981",weight:6,opacity:0.95,lineCap:"round",lineJoin:"round"}).addTo(map);
+          multiRouteLayers.push(line);
+          map.fitBounds(line.getBounds(),{padding:[60,60]});
+          return {text:(rt.distance/1000).toFixed(1).replace(".",",")+" km · taxminan "+Math.max(1,Math.round(rt.duration/60))+" daqiqa (aylanma yo‘l)"};
+        }catch(e){
+          const line=L.polyline(points,{color:"#10b981",weight:5,dashArray:"6 8"}).addTo(map);
+          multiRouteLayers.push(line);
+          map.fitBounds(line.getBounds(),{padding:[60,60]});
+          let totalKm=0;for(let i=0;i<points.length-1;i++)totalKm+=km(points[i],points[i+1]);
+          return {text:"≈ "+totalKm.toFixed(1).replace(".",",")+" km to‘g‘ri chiziqli aylanma yo‘l"};
+        }
+      },
       clearRoute(){if(routeLine){map.removeLayer(routeLine);routeLine=null;}if(startMk){map.removeLayer(startMk);startMk=null;}},
-      destroy(){try{map.remove();}catch(e){}}};
+      clearMultiRoute(){multiRouteLayers.forEach((l)=>{try{map.removeLayer(l);}catch(_){}});multiRouteLayers=[];},
+      destroy(){this.clearMultiRoute();try{map.remove();}catch(e){}}};
     // fon (tile) bo‘laklari yuklanishini kutamiz; bloklangan bo‘lsa sxematik ko‘rinishga o‘tiladi
     let loaded=false,errors=0,done=false;const finish=(good)=>{if(done)return;done=true;clearTimeout(timer);if(good)resolve(adapter);else{adapter.destroy();el.innerHTML="";resolve(null);}};
     tiles.on("tileload",()=>{loaded=true;finish(true);});tiles.on("tileerror",()=>{if(++errors>=3&&!loaded)finish(false);});const timer=setTimeout(()=>finish(loaded),5000);
@@ -1389,6 +1528,7 @@ async function initMap(){
     const kb=$("#mkeybox");if(kb)kb.innerHTML=""; // Yandex kaliti kerak emas: OpenStreetMap + yo‘l (OSRM) kalitsiz ishlaydi
   }
   ad.onPick((id)=>selectStudent(id,true));
+  ad.onRightPick((id)=>{toggleMulti(id);toast(MAPS.multi.has(id)?"Talaba qo‘shildi (ПКМ).":"Talaba olib tashlandi (ПКМ).");});
   ad.onMapClick((pt)=>{
     if(MAPS.pickLoc){const s=DB.students.find((x)=>x.id===MAPS.pickLoc);MAPS.pickLoc=null;const g=$("#mgeo");if(g)g.textContent="";
       if(s&&CAN[ME.role].mark&&scoped().includes(s)){s.locs=s.locs||{};s.locs.tutor={lat:+pt[0].toFixed(6),lng:+pt[1].toFixed(6),acc:30,at:new Date(),by:ME.name,manual:true};s.loc=locOf(s);log(`${s.name}: uy joylashuvi xaritadan belgilandi`);mapUpdate(false);selectStudent(s.id,false);toast("Joylashuv belgilandi.");}return;}
@@ -1403,9 +1543,14 @@ function mapUpdate(refit){
   const outside=shown.filter((x)=>!inCity(x.p));
   if(MAPS.sel&&!shown.some((x)=>x.id===MAPS.sel)){MAPS.sel=null;ad.clearRoute();showSide(false);}
   ad.select(MAPS.sel);
+  ad.updateMultiMarkers&&ad.updateMultiMarkers(MAPS.multi);
+  renderMultiBar();
   const ex=shown.filter((x)=>x.exact).length,ge=shown.filter((x)=>x.geo).length,no=items.length-shown.length;
   const st=$("#mstat");if(st)st.innerHTML=`<span>Xaritada: <b>${shown.length}</b> ta (aniq ${ex}, manzil bo‘yicha ${ge}, taxminiy ${shown.length-ex-ge})${outside.length?` · shahar tashqarisida: ${outside.length} ta <button type="button" class="linkbtn" data-mfitall>Hammasini ko‘rish</button>`:""}${no?` · joylashuvsiz: ${no} ta`:""}</span>`;
-  const list=$("#mlist");if(list)list.innerHTML=items.length?items.map((it)=>`<button class="mrow ${MAPS.sel===it.id?"on":""}" data-msel="${it.id}">${av(it.s)}<span class="rt"><b>${esc(it.s.name)}</b><span class="small muted">${esc(it.s.group)} · ${HOUS[it.s.housing]}</span></span><span class="tag loct ${it.exact?"lt":it.geo?"lg":"ls"}">${it.exact?"aniq":it.geo?"manzil":it.how==="street"?"ko‘cha":it.how==="area"?"mahalla":it.how==="district"?"tuman":"joyi yo‘q"}</span></button>`).join(""):`<div class="empty">Tanlangan filtrda talaba yo‘q</div>`;
+  const list=$("#mlist");if(list)list.innerHTML=items.length?items.map((it)=>{
+    const mOn=MAPS.multi.has(it.id);
+    return `<button class="mrow ${MAPS.sel===it.id?"on":""} ${mOn?"multi-on":""}" data-msel="${it.id}"><span class="multi-chk ${mOn?"checked":""}" title="ПКМ: ko‘p tanlash"></span>${av(it.s)}<span class="rt"><b>${esc(it.s.name)}</b><span class="small muted">${esc(it.s.group)} · ${HOUS[it.s.housing]}</span></span><span class="tag loct ${it.exact?"lt":it.geo?"lg":"ls"}">${it.exact?"aniq":it.geo?"manzil":it.how==="street"?"ko‘cha":it.how==="area"?"mahalla":it.how==="district"?"tuman":"joyi yo‘q"}</span></button>`;
+  }).join(""):`<div class="empty">Tanlangan filtrda talaba yo‘q</div>`;
 }
 const FIXTXT={district:"faqat tuman aniqlandi",uy:"uy aniqligida",geo:"uy/ko‘cha aniqligida",street:"faqat ko‘cha aniqlandi",area:"faqat mahalla/hudud aniqlandi"};
 function fixNote(it){
@@ -1793,7 +1938,7 @@ const overlay=(h)=>{closeOv();const d=document.createElement("div");d.id="ov";d.
 const closeOv=()=>{$("#ov")?.remove();document.body.style.overflow="";};
 document.addEventListener("click",async(ev)=>{
   syncStore();
-  const t=ev.target.closest("[data-mfitall],[data-editreq],[data-editcancel],[data-ed],[data-readall],[data-nact],[data-mpick],[data-mgeo],[data-locdel],[data-sphoto],[data-sphoto-del],[data-updonly],[data-resetdb],[data-photo],[data-photo-del],[data-stuauth],[data-stutab],[data-stuback],[data-stulogin],[data-studemo],[data-stucont],[data-regback],[data-showpw],[data-msel],[data-mroute],[data-mclose],[data-mtype],[data-mmark],[data-ymsave],[data-login],[data-submit],[data-logout],[data-view],[data-tab],[data-page],[data-open],[data-export],[data-set],[data-assign],[data-saveassign],[data-newtutor],[data-createtutor],[data-savemine],[data-menu],[data-closebtn],[data-close],[data-mark],[data-markgo],[data-marksave],[data-scrim],[data-locallow],[data-locskip],[data-locask],[data-route],[data-rpick],[data-rtype],[data-rcopy],[data-rshare],[data-openroute]");
+  const t=ev.target.closest("[data-multiroute],[data-multiclear],[data-mfitall],[data-editreq],[data-editcancel],[data-ed],[data-readall],[data-nact],[data-mpick],[data-mgeo],[data-locdel],[data-sphoto],[data-sphoto-del],[data-updonly],[data-resetdb],[data-photo],[data-photo-del],[data-stuauth],[data-stutab],[data-stuback],[data-stulogin],[data-studemo],[data-stucont],[data-regback],[data-showpw],[data-msel],[data-mroute],[data-mclose],[data-mtype],[data-mmark],[data-ymsave],[data-login],[data-submit],[data-logout],[data-view],[data-tab],[data-page],[data-open],[data-export],[data-set],[data-assign],[data-saveassign],[data-newtutor],[data-createtutor],[data-savemine],[data-menu],[data-closebtn],[data-close],[data-mark],[data-markgo],[data-marksave],[data-scrim],[data-locallow],[data-locskip],[data-locask],[data-route],[data-rpick],[data-rtype],[data-rcopy],[data-rshare],[data-openroute]");
   if(!t){return;}
   const d=t.dataset;
   if(t.closest("#side")&&!("menu" in d))$("#side").classList.remove("open"); // menyudagi har qanday amaldan keyin menyu yopiladi
@@ -1874,9 +2019,19 @@ document.addEventListener("click",async(ev)=>{
   if("marksave" in d)return commitMark();
   if("openroute" in d){ev.preventDefault();return openRoute();}
   if("rcopy" in d)return toast((await copyText(routeText()))?"Ro‘yxat nusxalandi: Yandex’dagi 1, 2, 3… raqamlari shu tartibda":"Nusxalab bo‘lmadi");
+  if("multiroute" in d)return drawMultiRoute();
+  if("multiclear" in d)return clearMulti();
   if("rshare" in d){try{await navigator.share({title:"Yo‘nalish",text:routeText()});}catch(e){}return;}
   if("closebtn" in d)return closeOv();
   if("close" in d&&ev.target===t)return closeOv();
+});
+document.addEventListener("contextmenu",(ev)=>{
+  const mrow=ev.target.closest(".mrow");
+  if(mrow&&mrow.dataset.msel){
+    ev.preventDefault();
+    toggleMulti(mrow.dataset.msel);
+    toast(MAPS.multi.has(mrow.dataset.msel)?"Talaba tanlandi (ПКМ).":"Talaba olib tashlandi (ПКМ).");
+  }
 });
 document.addEventListener("input",(ev)=>{
   if(ev.target.id==="mf-q"){MAPS.f.q=ev.target.value;return mapUpdate(false);}

@@ -619,7 +619,7 @@
           </li>
           <li>
             <a href="/ecosystem.html" class="nav-item-btn active" style="text-decoration:none;">
-              <i class="fa-solid fa-cubes"></i> <span data-i18n="navHub">Хаб Экосистемы (9 сервисов)</span>
+              <i class="fa-solid fa-cubes"></i> <span data-i18n="navHub">Хаб Экосистемы</span>
             </a>
           </li>
         </ul>
@@ -639,7 +639,7 @@
         </div>
         <h2 class="eco-hero-title" data-i18n="heroTitle">Единая технологическая архитектура сервисов RIAT</h2>
         <p class="eco-hero-desc" data-i18n="heroDesc">
-          Комплекс из 9 специализированных веб-приложений и модулей для автоматизации академической деятельности,
+          Комплекс специализированных веб-приложений и модулей для автоматизации академической деятельности,
           внутренней системы Ijtimoiy Faollik (Equity), мониторинга успеваемости и защищенной коммуникации.
         </p>
       </div>
@@ -738,12 +738,12 @@
         motto: "Инновации и прикладные решения",
         callcenter: "Информационный центр:",
         navHome: "Главная (Портал)",
-        navHub: "Хаб Экосистемы (9 сервисов)",
+        navHub: "Хаб Экосистемы",
         navBack: "В Портал",
         heroBadgeOfficial: "Официальная платформа",
         heroBadgeArch: "Архитектурный проект",
         heroTitle: "Единая технологическая архитектура сервисов RIAT",
-        heroDesc: "Комплекс из 9 специализированных веб-приложений и модулей для автоматизации академической деятельности, внутренней системы Ijtimoiy Faollik (Equity), мониторинга успеваемости и защищенной коммуникации.",
+        heroDesc: "Комплекс специализированных веб-приложений и модулей для автоматизации академической деятельности, внутренней системы Ijtimoiy Faollik (Equity), мониторинга успеваемости и защищенной коммуникации.",
         regTitle: "Реестр приложений экосистемы",
         regSub: "Специализированные цифровые платформы по направлениям деятельности",
         footerUniv: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
@@ -754,7 +754,8 @@
         statusSecured: "Закрытый модуль",
         statusActive: "Работает",
         actionOpen: "Открыть сервис",
-        actionPlanned: "Модуль в плане реализации"
+        actionPlanned: "Модуль в плане реализации",
+        moduleWord: "Модуль"
       },
       uz: {
         topBackPortal: "RIAT Portali",
@@ -764,12 +765,12 @@
         motto: "Innovatsiyalar va amaliy yechimlar",
         callcenter: "Axborot markazi:",
         navHome: "Bosh sahifa (Portal)",
-        navHub: "Ekotizim xabi (9 ta xizmat)",
+        navHub: "Ekotizim xabi",
         navBack: "Portalga",
         heroBadgeOfficial: "Rasmiy platforma",
         heroBadgeArch: "Arxitektura loyihasi",
         heroTitle: "RIAT xizmatlarining yagona texnologik arxitekturasi",
-        heroDesc: "O‘quv jarayonini avtomatlashtirish, Ijtimoiy Faollik (Equity) faollik tizimi, davomat monitoringi va xavfsiz muloqot uchun 9 ta ixtisoslashtirilgan veb-ilova va modullar majmuasi.",
+        heroDesc: "O‘quv jarayonini avtomatlashtirish, Ijtimoiy Faollik (Equity) faollik tizimi, davomat monitoringi va xavfsiz muloqot uchun ixtisoslashtirilgan veb-ilova va modullar majmuasi.",
         regTitle: "Ekotizim ilovalari reestri",
         regSub: "Faoliyat yo‘nalishlari bo‘yicha ixtisoslashtirilgan raqamli platformalar",
         footerUniv: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
@@ -780,7 +781,8 @@
         statusSecured: "Yopiq modul",
         statusActive: "Ishlamoqda",
         actionOpen: "Xizmatni ochish",
-        actionPlanned: "Amalga oshirish rejasida"
+        actionPlanned: "Amalga oshirish rejasida",
+        moduleWord: "Modul"
       },
       en: {
         topBackPortal: "RIAT Portal",
@@ -790,12 +792,12 @@
         motto: "Innovations and Applied Solutions",
         callcenter: "Information center:",
         navHome: "Home (Portal)",
-        navHub: "Ecosystem Hub (9 services)",
+        navHub: "Ecosystem Hub",
         navBack: "To Portal",
         heroBadgeOfficial: "Official Platform",
         heroBadgeArch: "Architectural Project",
         heroTitle: "Unified Technology Architecture of RIAT Services",
-        heroDesc: "A suite of 9 specialized web applications and modules for academic automation, Ijtimoiy Faollik (Equity) activity tracking, monitoring, and secured communications.",
+        heroDesc: "A suite of specialized web applications and modules for academic automation, Ijtimoiy Faollik (Equity) activity tracking, monitoring, and secured communications.",
         regTitle: "Ecosystem Application Registry",
         regSub: "Specialized digital platforms categorized by operational domains",
         footerUniv: "Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti",
@@ -806,31 +808,14 @@
         statusSecured: "Restricted Module",
         statusActive: "Active",
         actionOpen: "Open Service",
-        actionPlanned: "Implementation planned"
+        actionPlanned: "Implementation planned",
+        moduleWord: "Module"
       }
     };
 
     const APPS_DATA = [
       {
         num: "01",
-        colorClass: "eco-icon-blue",
-        icon: "fa-cubes",
-        name: "RIAT-Ecosystem",
-        statusKey: "statusPlanned",
-        tagClass: "eco-status-beta",
-        desc: {
-          ru: "Центральный хаб авторизации, каталогизации и межсервисной маршрутизации всех решений института.",
-          uz: "Institut barcha tizimlarini yagona avtorizatsiya, katalog va marshrutlash markaziy xabi.",
-          en: "Central hub for authentication, cataloging, and inter-service routing across RIAT tools."
-        },
-        feats: {
-          ru: ["Единая учетная запись (SSO)", "Каталог решений RIAT", "Межмодульная маршрутизация"],
-          uz: ["Yagona hisob tizimi (SSO)", "RIAT yechimlari katalogi", "Modullararo marshrutlash"],
-          en: ["Single Sign-On (SSO)", "RIAT solutions catalog", "Cross-module routing"]
-        }
-      },
-      {
-        num: "02",
         colorClass: "eco-icon-navy",
         icon: "fa-graduation-cap",
         name: "TSUE UniverLife",
@@ -861,7 +846,7 @@
         }
       },
       {
-        num: "03",
+        num: "02",
         colorClass: "eco-icon-cyan",
         icon: "fa-comments",
         name: "RIAT-Messenger",
@@ -880,7 +865,7 @@
         }
       },
       {
-        num: "04",
+        num: "03",
         colorClass: "eco-icon-gold",
         icon: "fa-landmark",
         name: "RIAT-Bank · Equity",
@@ -899,7 +884,7 @@
         }
       },
       {
-        num: "07",
+        num: "04",
         colorClass: "eco-icon-rose",
         icon: "fa-clapperboard",
         name: "RIAT-Reels",
@@ -917,7 +902,7 @@
         }
       },
       {
-        num: "08",
+        num: "05",
         colorClass: "eco-icon-slate",
         icon: "fa-server",
         name: "Data-Base",
@@ -936,7 +921,7 @@
         }
       },
       {
-        num: "09",
+        num: "06",
         colorClass: "eco-icon-orange",
         icon: "fa-map-location-dot",
         name: "RIAT-Maps",
@@ -989,6 +974,7 @@
     function renderApps() {
       const dict = I18N[currentLang];
       const container = document.getElementById('appsRegistry');
+      const modulePrefix = dict.moduleWord || 'Модуль';
       container.innerHTML = APPS_DATA.map(app => `
         <div class="eco-card${app.url ? ' eco-card-live' : ''}">
           <div class="eco-card-header">
@@ -996,7 +982,7 @@
               <i class="fa-solid ${app.icon}"></i>
             </div>
             <div class="eco-card-title-group">
-              <div class="eco-card-num">Модуль ${app.num}</div>
+              <div class="eco-card-num">${modulePrefix} ${app.num}</div>
               <div class="eco-card-name">${app.name}</div>
             </div>
             <span class="eco-status-tag ${app.tagClass}">${dict[app.statusKey] || app.statusKey}</span>
