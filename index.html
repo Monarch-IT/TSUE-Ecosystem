@@ -3,52 +3,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Факультет Цифровой Экономики | ТГЭУ (TDIU TSUE)</title>
-  <meta name="description" content="Официальный портал Факультета Цифровой Экономики ТГЭУ — расписание, тьюторы, кафедры, направления обучения и новости.">
+  <title>TSUE Ecosystem — Официальный Супер-Сервис ТГЭУ (TDIU) · Сайт и Мобильное приложение</title>
   <link rel="icon" type="image/png" href="/assets/images/faculty_logo.png">
-  <link rel="apple-touch-icon" href="/assets/images/faculty_logo.png">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#004899">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="RIAT-TDIU">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=1792577838556">
-  <link rel="stylesheet" href="css/academic-attendance.css">
-  <link rel="stylesheet" href="css/mobile-app-fixes.css">
-  <link rel="stylesheet" href="css/student-cabinet.css">
-  <link rel="stylesheet" href="css/parent-cabinet.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/pro-superapp.css">
 </head>
 <body>
-
-  <div id="app-root">
-    <div id="app-loading-screen" style="
-      display:flex; align-items:center; justify-content:center;
-      height:100vh; background:var(--bg-primary,#0a1628);
-      flex-direction:column; gap:16px;
-    ">
-      <img src="/assets/images/faculty_logo.png" alt="RIAT" style="width:78px; height:78px; object-fit:contain; border-radius:50%; box-shadow:0 4px 20px rgba(0,72,153,0.4);">
-      <div style="color:#60a5fa;font-family:'Outfit',sans-serif;font-size:14px;letter-spacing:1px;">Загрузка портала...</div>
+  <header class="studio-bar">
+    <div class="studio-brand">
+      <div class="studio-logo-badge">
+        <img src="/assets/images/faculty_logo.png" alt="TDIU">
+      </div>
+      <div class="studio-title-wrap">
+        <div class="studio-title">
+          <span>TSUE SuperApp Ecosystem</span>
+          <span class="studio-tag">LIVE API · БЕЗ САЙДБАРА</span>
+        </div>
+        <div class="studio-subtitle">Синхронизация с tsue-digital-economy.web.app, tsue.edupage.org и Supabase</div>
+      </div>
     </div>
+    <div class="studio-mode-pills">
+      <button class="studio-mode-btn active" data-mode="split" onclick="setStudioMode('split')">
+        <i class="fa-solid fa-table-columns"></i> <span>Сайт + Телефон</span>
+      </button>
+      <button class="studio-mode-btn" data-mode="mobile" onclick="setStudioMode('mobile')">
+        <i class="fa-solid fa-mobile-screen"></i> <span>Мобильное приложение</span>
+      </button>
+      <button class="studio-mode-btn" data-mode="desktop" onclick="setStudioMode('desktop')">
+        <i class="fa-solid fa-desktop"></i> <span>Веб-портал (Сайт)</span>
+      </button>
+    </div>
+    <div class="studio-controls">
+      <select id="studioRoleSelect" class="studio-role-select" onchange="setRole(this.value)" title="Единый профиль SSO (HEMIS / JSHSHIR)">
+        <option value="student">Студент: HEMIS 392241101842 · AT-31/25r</option>
+        <option value="teacher">Преподаватель: проф. Илхамова Ё.С. (Зав. каф.)</option>
+        <option value="merchant">Партнёр (Hamkor POS): TSUE Book & Coffee</option>
+        <option value="commission">Комиссия Equity: Акбаров Н.Г. (Деканат)</option>
+      </select>
+
+      <div class="studio-lang-group">
+        <button class="studio-lang-btn" data-lang="uz" onclick="setLang('uz')">UZ</button>
+        <button class="studio-lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+        <button class="studio-lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+
+      <button class="studio-icon-btn" onclick="toggleTheme()" title="Переключить тему">
+        <i class="fa-solid fa-moon" id="studioThemeIcon"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="studio-stage mode-split" id="studioStage">
+    <section class="desktop-showcase-pane">
+      <div class="tsue-main-header">
+        <div class="tsue-header-container">
+          <div class="tsue-brand-section" onclick="navigateTo('hub')" style="cursor:pointer">
+            <div class="tsue-emblem">
+              <img src="/assets/images/faculty_logo.png" alt="Герб ТГЭУ">
+            </div>
+            <div class="tsue-brand-titles">
+              <h1 id="webUnivTitle">Toshkent Davlat Iqtisodiyot Universiteti · TSUE Ecosystem</h1>
+              <div class="tsue-faculty-badge">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span id="webBadgeTitle">Факультет Цифровой Экономики и ИТ · Прямая интеграция с tsue-digital-economy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tsue-omni-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="globalOmniInput" placeholder="Поиск: группа (АТ-31/25r), преподаватель, кафедра, аудитория, купон Equity..." oninput="onGlobalOmniSearch(this.value)">
+            <div id="globalOmniDropdown" class="omni-dropdown" style="display:none"></div>
+          </div>
+
+          <div class="tsue-header-right">
+            <div class="header-eq-pill" onclick="navigateTo('equity')" title="Открыть кошелёк Equity и QR-оплату">
+              <span class="eq-dot"></span>
+              <span id="webHeaderEqBalance">285 EQ</span>
+              <span class="eq-top-tag">TOP-42</span>
+            </div>
+            <button class="header-id-pill" onclick="navigateTo('id')" title="Динамический Цифровой ID (HEMIS / JSHSHIR)">
+              <i class="fa-solid fa-qrcode"></i>
+              <span id="webUserName">HEMIS: 392241101842</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="superapp-launcher-bar">
+        <div class="launcher-container">
+          <button class="launcher-tile active" data-sec="hub" onclick="navigateTo('hub')">
+            <div class="lt-icon lt-navy"><i class="fa-solid fa-compass"></i></div>
+            <div class="lt-text">
+              <b>Главный Хаб</b>
+              <span>Все сервисы</span>
+            </div>
+          </button>
+
+          <button class="launcher-tile" data-sec="schedule" onclick="navigateTo('schedule')">
+            <div class="lt-icon lt-blue"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="lt-text">
+              <b>Расписание и НБ</b>
+              <span>EduPage API · Журнал</span>
+            </div>
+          </button>
+
+          <button class="launcher-tile" data-sec="kafedra" onclick="navigateTo('kafedra')">
+            <div class="lt-icon lt-indigo"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <div class="lt-text">
+              <b>Кафедры и ППС</b>
+              <span>5 кафедр · 172 преп.</span>
+            </div>
+          </button>
+
+          <button class="launcher-tile" data-sec="equity" onclick="navigateTo('equity')">
+            <div class="lt-icon lt-gold"><i class="fa-solid fa-coins"></i></div>
+            <div class="lt-text">
+              <b>Equity & Низом</b>
+              <span>Каталог · Контракт</span>
+            </div>
+          </button>
+
+          <button class="launcher-tile" data-sec="qrmerchant" onclick="navigateTo('qrmerchant')">
+            <div class="lt-icon lt-emerald"><i class="fa-solid fa-qrcode"></i></div>
+            <div class="lt-text">
+              <b>QR-Оплата & Магазины</b>
+              <span>Касса Hamkorlar</span>
+            </div>
+          </button>
+
+          <button class="launcher-tile" data-sec="messenger" onclick="navigateTo('messenger')">
+            <div class="lt-icon lt-sky"><i class="fa-brands fa-telegram"></i></div>
+            <div class="lt-text">
+              <b>RIAT-Messenger</b>
+              <span>Чаты и каналы</span>
+            </div>
+          </button>
+
+          <button class="launcher-tile" data-sec="id" onclick="navigateTo('id')">
+            <div class="lt-icon lt-slate"><i class="fa-solid fa-id-card-clip"></i></div>
+            <div class="lt-text">
+              <b>Цифровой ID</b>
+              <span>HEMIS · JSHSHIR</span>
+            </div>
+          </button>
+
+          <button class="launcher-tile" data-sec="settings" onclick="navigateTo('settings')">
+            <div class="lt-icon lt-gold"><i class="fa-solid fa-sliders"></i></div>
+            <div class="lt-text">
+              <b>Настройки</b>
+              <span>Темы · Liquid Glass</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Основной рабочий холст сайта (100% ширины без сайдбара) -->
+      <div id="webMainScroll"></div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ПРАВАЯ ПАНЕЛЬ: ПОЛНОФУНКЦИОНАЛЬНОЕ МОБИЛЬНОЕ ПРИЛОЖЕНИЕ ТГЭУ
+         (100% ПАРИТЕТ С САЙТОМ — ВСЕ ФУНКЦИИ ДОСТУПНЫ В ТЕЛЕФОНЕ)
+         ══════════════════════════════════════════════════════════════════ -->
+    <aside class="mobile-showcase-pane">
+      <div class="phone-caption-top">
+        <span><i class="fa-solid fa-mobile-screen-button"></i> TSUE Mobile SuperApp (Full Parity)</span>
+        <span class="phone-sync-badge" id="mobApiStatusBadge">API Sync: OK</span>
+      </div>
+
+            <div class="iphone-frame">
+        <div class="iphone-screen">
+
+          <!-- Строгий системный статус-бар -->
+          <div class="mob-statusbar">
+            <span>09:41</span>
+            <span>TDIU · TSUE Official</span>
+            <span style="display:flex;gap:5px;align-items:center;font-size:10.5px">
+              <i class="fa-solid fa-signal"></i>
+              <i class="fa-solid fa-wifi"></i>
+              <i class="fa-solid fa-battery-full"></i>
+            </span>
+          </div>
+
+          <!-- Рабочий экран мобильного приложения -->
+          <div class="mob-viewport" id="mobViewport"></div>
+
+          <!-- Парящая навигация HEMIS v4.4.7 Liquid Glass -->
+          <nav class="hemis-floating-dock">
+            <button class="hemis-dock-btn active" data-tab="hub" onclick="navigateTo('hub')">
+              <div class="hemis-dock-pill"><i class="fa-solid fa-house"></i></div>
+              <span>Главная</span>
+            </button>
+            <button class="hemis-dock-btn" data-tab="schedule" onclick="navigateTo('schedule')">
+              <div class="hemis-dock-pill"><i class="fa-solid fa-calendar-days"></i></div>
+              <span>Расписание</span>
+            </button>
+            <button class="hemis-dock-btn" data-tab="equity" onclick="navigateTo('equity')">
+              <div class="hemis-dock-pill"><i class="fa-solid fa-brain"></i></div>
+              <span>HEMIS AI / EQ</span>
+            </button>
+            <button class="hemis-dock-btn" data-tab="kafedra" onclick="navigateTo('kafedra')">
+              <div class="hemis-dock-pill"><i class="fa-solid fa-book-open"></i></div>
+              <span>Предметы</span>
+            </button>
+            <button class="hemis-dock-btn" data-tab="id" onclick="navigateTo('id')">
+              <div class="hemis-dock-pill"><i class="fa-solid fa-grip"></i></div>
+              <span>Все</span>
+            </button>
+          </nav>
+
+        </div>
+      </div>
+    </aside>
+
   </div>
 
+  <!-- Модальное окно детальной карточки преподавателя / QR-чека -->
+  <div class="pro-modal-backdrop" id="proModalBackdrop" style="display:none" onclick="if(event.target===this)closeProModal()">
+    <div class="pro-modal-card" id="proModalContent"></div>
+  </div>
+
+  <!-- Строгое уведомление -->
+  <div class="pro-toast" id="proToast">
+    <i class="fa-solid fa-circle-check" style="color:#34d399"></i>
+    <span id="proToastText">Выполнено</span>
+  </div>
+
+  <!-- Подключение Supabase SDK, реального расписания EduPage и базы 5 кафедр -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="js/data.js?v=1792568553127"></script>
-  <script src="js/edupage_data.js"></script>
-  <script src="js/data_at31.js?v=20261011_1"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/auth.js?v=20261011_2"></script>
-  <script src="js/schedule.js"></script>
-  <script src="js/tutor.js?v=20261011_2"></script>
-  <script src="js/attendance.js"></script>
-  <script src="js/cabinet.js?v=20261017_1"></script>
-  <script src="js/main.js?v=1792577838556"></script>
+  <script src="/js/edupage_data.js"></script>
+  <script src="/js/kafedra_teachers_data.js"></script>
+  <script src="/js/qrcode.min.js"></script>
+  <script src="/js/pro-superapp.js"></script>
 </body>
 </html>

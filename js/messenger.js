@@ -1,8 +1,3 @@
-/**
- * RIAT-Messenger (Telegram Web Edition)
- * True Telegram UX: Folders, channels, double-checks, audio-visual feedback, reply & file simulation
- */
-
 const TG_CHANNELS = [
   {
     id: 'dekanat-channel',
