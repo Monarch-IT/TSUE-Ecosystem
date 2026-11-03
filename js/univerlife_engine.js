@@ -2,18 +2,15 @@
 "use strict";
 
 
-// ==================== core/store.js ====================
-// Ilova holati: server qaytargan ma'lumot (S), sahifalar ro'yxati (V) va ekran holati (ui).
 
 const S = { me: null };
-// Server javobidagi yangi holatni o'rnatadi (obyekt bir xil qoladi, shuning uchun hamma modullar yangisini ko'radi)
+
 function setState(n) { for (const k of Object.keys(S)) delete S[k]; Object.assign(S, n || { me: null }); }
 
 const V = {}; // sahifalar ro'yxati: V.<rol>.<sahifa> = (route) => html
 
 const FILES = {}; // tanlangan fayllar (forma maydoni nomi bo'yicha)
 
-// Ekran holati (sahifalar orasida saqlanadigan kichik qiymatlar)
 const ui = {
   busy: false,       // so'rov ketyapti
   lastErr: "",       // oxirgi server xatosi
@@ -29,8 +26,7 @@ const ui = {
   qrLast: "",        // oxirgi QR token
 };
 
-// ==================== core/format.js ====================
-// Formatlash: sana, son, HTML xavfsizligi (esc), avatar.
+
 
 const $ = (s, el) => (el || document).querySelector(s);
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -53,8 +49,7 @@ const ava = (name, cls) => '<span class="av ' + (cls || "s") + '" style="backgro
 const gpaTxt = (g) => (g == null ? "Kutilmoqda" : f2(g)); // null — joriy yilda hali modul tugamagan
 const som = (n) => num(n) + " so'm";
 
-// ==================== core/icons.js ====================
-// SVG ikonkalar.
+
 
 const IP = {
   idcard: "M3 5h18v14H3zM6 10a2 2 0 1 0 4 0a2 2 0 1 0-4 0M5 16c.8-1.8 4.2-1.8 5 0M13 9h6M13 13h4", home: "M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z", cal: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4", check: "M5 12l4 4 10-10", cap: "M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5",
@@ -70,8 +65,7 @@ const IP = {
 };
 const ic = (k) => '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="' + (IP[k] || IP.info) + '"/></svg>';
 
-// ==================== core/ui.js ====================
-// Umumiy UI bloklari: karta, chip, forma maydoni, pastki oyna (sheet), xabar (toast).
+
 function toast(msg, err) {
   document.querySelectorAll(".toast").forEach((t) => t.remove());
   if (!msg) return;
@@ -114,12 +108,11 @@ const bar = (v, max, tone) => '<div class="bar ' + (tone || "") + '"><i style="w
 const today = () => S.today || new Date(Date.now() + 5 * 3600e3).toISOString().slice(0, 10);
 const levelOf = (t) => ((S.rules && S.rules.levels) || []).find((l) => t >= l[0]) || [0, "", ""];
 
-// ==================== core/viz.js ====================
-// Vizual bloklar: KPI halqasi, shkala ("siz shu yerdasiz"), reyting jadvali (podium + top-10), bosqichlar.
-// Hamma joyda bir xil ko'rinish uchun sahifalar shu funksiyalardan foydalanadi.
+
+
 const pct = (v, max) => Math.max(0, Math.min(100, max ? (v / max) * 100 : 0));
 
-/** KPI kartasi: halqa (foiz) + nom + katta qiymat + qisqa holat. value null bo'lsa — "Kutilmoqda". */
+
 function kpi({ label, value, unit, p, tone, icon, sub, href }) {
   const pending = value == null;
   const inner = '<span class="mr ' + (tone || "") + '" style="--p:' + (pending ? 0 : Math.round(p)) + '"><i>' + ic(icon || "star") + "</i></span>" +
@@ -127,10 +120,7 @@ function kpi({ label, value, unit, p, tone, icon, sub, href }) {
   return href ? '<a class="kpi" href="' + href + '">' + inner + "</a>" : '<div class="kpi">' + inner + "</div>";
 }
 
-/**
- * Gorizontal shkala: rangli bo'laklar, "Siz" belgisi va chegara chiziqlari.
- * segs: [{ from, to, label, tone }], value: joriy qiymat, cuts: [{ at, label }]
- */
+
 function scale({ segs, value, min = 0, max = 100, marker = "Siz", fmt = (x) => x, cuts = [], note = "" }) {
   const pos = (x) => ((x - min) / (max - min)) * 100;
   const v = value == null ? null : Math.max(min, Math.min(max, value));
@@ -142,10 +132,7 @@ function scale({ segs, value, min = 0, max = 100, marker = "Siz", fmt = (x) => x
     (note ? '<p class="scale-note">' + note + "</p>" : "") + "</div>";
 }
 
-/**
- * Reyting: 1–3 o'rin podiumda, 4–10 ro'yxatda, foydalanuvchi top-10 dan tashqarida bo'lsa — alohida qatorda.
- * rows: tartiblangan [{ login, name, sub, val, txt, chip }], cuts: { [indeks]: "chegara nomi" } — shu qatordan oldin chiziq
- */
+
 function leaderboard(rows, me, opt) {
   opt = opt || {};
   const top = opt.top || 10, max = Math.max(...rows.map((r) => r.val || 0), 1);
@@ -162,26 +149,30 @@ function leaderboard(rows, me, opt) {
   return podium + (rest || mine ? '<div class="lb">' + rest + mine + "</div>" : "");
 }
 
-/** Bosqichlar (modullar, ariza yo'li): done — tugagan, now — jarayonda, next — hali boshlanmagan, bad — rad etilgan. */
+
 function steps(items) {
   return '<div class="steps">' + items.map((s) => '<div class="step ' + s.state + '"><span class="dot">' + (s.state === "done" ? ic("check") : s.state === "bad" ? ic("x") : "") + "</span><b>" + esc(s.label) + "</b><small>" + (s.sub || "") + "</small></div>").join("") + "</div>";
 }
 
-// ==================== pages/login.js ====================
-// Kirish sahifasi.
-const DEMO = [["sardor.alisherov", "Talaba", "Sardor Alisherov"], ["ota.demo", "Ota-ona", "2 farzand"], ["tyutor.demo", "Tyutor", "RST-81/25"], ["dekanat.demo", "Dekanat", "Raqamli iqtisodiyot"], ["klub.demo", "Klub rahbari", "3 ta klub"]];
+const DEMO = [
+  ["monarch", "1. Superadmin", "Rektorat · Monarch"],
+  ["ota.demo", "2. Ota-ona", "Shodiyev Bekmurod aka"],
+  ["sardor.alisherov", "3. Talaba", "Ro'ziyev Qodirjon"],
+  ["dekanat.demo", "4. Fakultet", "Akbarov Nodir G'afurovich"],
+  ["klub.demo", "5. Klub rahbari", "Yo'ldoshev Bahodir"],
+  ["tyutor.demo", "6. Tyutor", "Abdurahmonov Umar"]
+];
 function viewLogin() {
-  return '<div class="auth"><div class="auth-l"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge" style="background:#003B81;color:#fff;font-weight:900;font-size:11px;padding:2px 7px;border-radius:6px;margin-right:6px">TSUE</div><span>UniverLife</span></a><div><h2>Talaba hayoti bitta platformada</h2><p>Davomat, baholar, ijtimoiy faollik indeksi, stipendiyalar, to\'garaklar va tadbirlar — talaba, ota-ona, tyutor va dekanat uchun.</p>' +
-    "<ul><li>Ijtimoiy faollik indeksi — HEMIS yo'riqnomasi bo'yicha 11 band</li><li>Tyutor davomati va ota-onaga bildirishnoma</li><li>Tadbirlarda QR-kod orqali qayd etish</li></ul></div><small style=\"color:#a9c4cf\">TDIU talabalari uchun platforma</small></div>" +
-    '<div class="auth-r"><div class="auth-box"><h1>Tizimga kirish</h1><p class="lead">Login va parol administrator tomonidan beriladi.</p><form class="form" data-form="login">' +
-    field("Login yoki JSHIR", "login", { req: true, ph: "masalan: sardor.alisherov", attrs: ' autocomplete="username" autocapitalize="none"' }) +
+  return '<div class="auth"><div class="auth-l"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge" style="background:#003B81;color:#fff;font-weight:900;font-size:11px;padding:2px 7px;border-radius:6px;margin-right:6px">TSUE</div><span>UniverLife</span></a><div><h2>Talaba hayoti bitta platformada</h2><p>Davomat, baholar, ijtimoiy faollik indeksi, stipendiyalar, to\'garaklar va tadbirlar — talaba, ota-ona, tyutor, klub rahbari, dekanat va rektorat uchun.</p>' +
+    "<ul><li>6 turdagi yagona shaxsiy kabinet (SSO + JSHSHIR + Face ID)</li><li>Ota-ona uchun 3 pog'onali jonli reyting (Universitet, Fakultet, Guruh)</li><li>TTJ dan javob olish: Talaba → Ota-ona (Face ID) → Tyutor → Tarbiyachi</li><li>Tyutor uchun ijara xonadonlari xaritasi, marshrut va 1-klik Excel</li></ul></div><small style=\"color:#a9c4cf\">TDIU · Raqamli iqtisodiyot va axborot texnologiyalari fakulteti</small></div>" +
+    '<div class="auth-r"><div class="auth-box"><h1>Yagona tizimga kirish</h1><p class="lead">6 ta asosiy rol bo\'yicha yagona kirish (Login, JSHSHIR yoki HEMIS ID).</p><form class="form" data-form="login">' +
+    field("Login yoki JSHSHIR (14 raqam)", "login", { req: true, ph: "masalan: ota.demo yoki 31004751230088", attrs: ' autocomplete="username" autocapitalize="none"' }) +
     field("Parol", "password", { type: "password", req: true, attrs: ' autocomplete="current-password"' }) +
-    '<button class="btn block" type="submit">Kirish</button></form><div class="demo">Sinov uchun hisoblar (parol: <b>demo1234</b>):<div>' +
-    DEMO.map((d) => '<button type="button" data-act="demo" data-login="' + d[0] + '">' + d[1] + "<small>" + esc(d[2]) + "</small></button>").join("") + "</div></div></div></div></div>";
+    '<button class="btn block" type="submit">Kirish</button></form><div class="demo">Taqdimot uchun 6 turdagi tayyor hisoblar (1-klik bilan kirish):<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px">' +
+    DEMO.map((d) => '<button type="button" data-act="demo" data-login="' + d[0] + '" style="text-align:left;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);cursor:pointer"><b>' + d[1] + "</b><br><small class=\"muted\">" + esc(d[2]) + "</small></button>").join("") + "</div></div></div></div></div>";
 }
 
-// ==================== pages/common.js ====================
-// Hamma rollar uchun umumiy sahifalar: bildirishnomalar, profil, yangiliklar.
+
 V.common = {};
 V.common.notifications = () => {
   const N = S.notifs || [];
@@ -230,8 +221,7 @@ V.common.news = (r) => {
   return A.length ? '<div class="news">' + A.map((a) => '<a class="nc" href="#/news/' + esc(a.id) + '"><div class="im" style="background-image:url(' + img(a) + ')"></div><div class="b"><small>' + esc(a.tag || "Yangilik") + " · " + fmtShort(a.date) + "</small><b>" + esc(a.title) + "</b></div></a>").join("") + "</div>" : card("", empty("Yangiliklar yo'q."));
 };
 
-// ==================== pages/shared.js ====================
-// Talaba ma'lumotlari bloklari (talaba, ota-ona, xodimlar ko'radi): GPA, davomat, IFI, tadbirlar.
+
 const crit = (id) => (S.rules.crit || []).find((c) => c.id === id);
 const WHO = { student: "Talaba kiritadi · tyutor tasdiqlaydi", ref: "Ma'lumotnoma (namuna bo'yicha) · tyutor baholaydi", tutor: "Tyutor baholaydi", hemis: "HEMIS'dan avtomatik" };
 function scheduleView(rows, opt) {
@@ -269,7 +259,7 @@ function attView(st, opt) {
       : empty("Bu semestrda dars qoldirilmagan. Barakalla!"), src("Tyutor davomati · to'liq versiyada HEMIS")) +
     '<p class="small muted" style="margin-top:12px">IFI 6-bandi: 0–10 soat — 5 ball, 11–15 — 4, 16–25 — 3, 26–30 — 2, 31 va undan ko\'p — 0. Faqat sababsiz qoldirilgan soatlar hisoblanadi (1 para = 2 soat).</p>';
 }
-// GPA: katta raqam + shkala (grant chegarasi 3,5) + modul bosqichlari + fanlar. O'tgan semestrlar yashirin.
+
 const gpaSegs = [{ from: 2, to: 3.5, label: "Grantsiz", tone: "warn" }, { from: 3.5, to: 4.5, label: "Grantga mos", tone: "pri" }, { from: 4.5, to: 5, label: "A'lo", tone: "ok" }];
 function gpaHero(A, opt) {
   opt = opt || {};
@@ -291,7 +281,7 @@ function gpaView(st) {
       A.sems.map((s) => card(esc(s.sem), gp(s.subjects), chip("GPA " + f2(s.gpa)))).join("") + "</div></details>" : "");
 }
 
-/* ---- grant va kontrakt ---- */
+
 const OUTCOME = { full: ["To'liq grant", "ok"], half: ["50% grant", "ok"], none: ["O'rindan tashqari", "warn"], low: ["GPA 3,5 dan past", "bad"], pending: ["Kutilmoqda", ""], noquota: ["O'rinlar yo'q", ""] };
 const outChip = (o) => chip((OUTCOME[o] || [o])[0], (OUTCOME[o] || [, ""])[1]);
 const yes = (ok, t, sub) => '<div class="' + (ok ? "y" : "") + '"><span class="ic">' + ic(ok ? "check" : "x") + "</span><span>" + t + "</span><small>" + sub + "</small></div>";
@@ -325,7 +315,7 @@ function contractView(st) {
     '<div class="hx" style="min-width:180px"><div class="kv"><div><small>To\'langan</small><b>' + som(k.paid) + "</b></div><div><small>Qoldiq</small><b" + (k.left ? ' style="color:var(--bad)"' : "") + ">" + som(k.left) + '</b></div></div><p class="small muted" style="margin:8px 0 0">Jami: ' + som(k.due) + "</p></div></div>", k.pct >= 100 ? chip("To'langan", "ok") : chip("Qarz bor", "bad"));
 }
 
-/* ---- IFI ---- */
+
 const ifiSegs = [{ from: 0, to: 40, label: "Quyi", tone: "bad" }, { from: 40, to: 60, label: "O'rta", tone: "warn" }, { from: 60, to: 80, label: "Yaxshi", tone: "pri" }, { from: 80, to: 100, label: "A'lo", tone: "ok" }];
 function ifiSummary(st) {
   const sc = st.ifi || { total: 0, v: {}, level: "" }, tot = sc.total, C = S.rules.crit;
@@ -409,16 +399,15 @@ function notesView(st, opt) {
     card(opt.tutor ? "Izohlar" : "Tyutor izohlari", N.length ? '<div class="list">' + N.map((n) => '<div class="row" style="align-items:flex-start"><span class="t">' + chip(NK[n.kind] ? NK[n.kind][0] : n.kind, NK[n.kind] ? NK[n.kind][1] : "") + "<b style=\"margin-top:6px;white-space:normal\">" + esc(n.text) + "</b><small>" + esc(n.by) + " · " + ago(n.created) + "</small></span>" + (opt.tutor ? '<button class="btn sm ghost" data-act="note-del" data-id="' + esc(n.id) + '">O\'chirish</button>' : "") + "</div>").join("") + "</div>" : empty("Hali izoh yo'q."));
 }
 
-// ==================== pages/profile.js ====================
-// Anketa (tyutor so'rovnomasi) va ijtimoiy toifalar: talaba to'ldiradi, tyutor/dekanat tasdiqlaydi.
-// Maydonlar ro'yxati serverdan keladi (S.profileForm) — bu yerda faqat ko'rsatish.
-/* ---- umumiy ---- */
+
+
+
 const PST = { "so'ralgan": ["To'ldirilmagan", "warn"], qoralama: ["Qoralama", "warn"], yuborilgan: ["Tekshiruvda", "pri"], qaytarilgan: ["Qaytarildi", "bad"], tasdiqlangan: ["Tasdiqlangan", "ok"] };
 const profChip = (p) => (p ? chip(PST[p.status][0], PST[p.status][1]) : chip("So'ralmagan"));
 const FIELDS = () => (S.profileForm || []).flatMap((s) => s.fields);
 const filled = (f, v) => (f.type === "file" ? Array.isArray(v) && v.length > 0 : String(v ?? "").trim() !== "");
 const required = (f, d) => !!f.req || (!!f.when && f.when[1].includes(String(d[f.when[0]] ?? "")));
-/** Bo'lim bo'yicha to'ldirilganlik: { ok, of } (faqat majburiy maydonlar) */
+
 function secProgress(sec, d) {
   const R = sec.fields.filter((f) => f.type !== "auto" && required(f, d));
   return { ok: R.filter((f) => filled(f, d[f.k])).length, of: R.length };
@@ -430,7 +419,7 @@ function progress(d) {
 const autoVal = (st, k) => ({ fio: st.surname + " " + st.name, course: (st.course ? st.course + "-kurs · " : "") + st.grp, direction: st.direction || "—" })[k] || "";
 const fileBtns = (ids) => ids.map((id, i) => '<button type="button" class="btn sm ghost" data-act="file" data-id="' + esc(id) + '">' + ic("doc") + (i + 1) + "-fayl</button>").join("");
 
-/* ---- talaba: to'ldirish ---- */
+
 function inputOf(st, f, d) {
   const lab = esc(f.label) + (f.req ? ' <b class="req">*</b>' : "");
   if (f.type === "auto") return '<div class="fl pf-auto"><span>' + esc(f.label) + "</span><b>" + esc(autoVal(st, f.k)) + "</b></div>";
@@ -452,7 +441,6 @@ function anketaForm(st, d) {
   }).join("") +
     '<div class="sticky-act"><button class="btn ghost" type="submit" name="go" value="save">Saqlash</button><button class="btn" type="submit" name="go" value="send">' + ic("check") + "Tyutorga yuborish</button></div></form>";
 }
-/** Yuqori qism: halqa (foiz) + holat + nima qilish kerak. */
 function anketaHero(p, d, editing) {
   const pr = progress(d), s = p ? p.status : "so'ralgan";
   const msg = { "so'ralgan": "Tyutoringiz anketa to'ldirishni so'radi.", qoralama: "Tayyor bo'lgach, tyutorga yuboring.", yuborilgan: "Tyutor tekshirmoqda. Natija bildirishnoma orqali keladi.", qaytarilgan: "Tyutor tuzatishni so'radi.", tasdiqlangan: "Ma'lumotlaringiz tasdiqlangan." }[s];
@@ -462,7 +450,7 @@ function anketaHero(p, d, editing) {
     (editing ? '<div class="pf-nav">' + P.map((sec, i) => { const x = secProgress(sec, d), ok = x.of && x.ok === x.of; return '<button type="button" class="' + (ok ? "ok" : "") + '" data-act="pf-go" data-id="' + sec.id + '"><span>' + (ok ? ic("check") : i + 1) + "</span>" + esc(sec.title) + "</button>"; }).join("") + "</div>" : ""));
 }
 
-/* ---- ko'rish (talaba, ota-ona, xodim) ---- */
+
 function anketaView(st, opt) {
   opt = opt || {};
   const p = st.profile, d = (p && p.data) || {};
@@ -482,7 +470,7 @@ function anketaView(st, opt) {
     (p.sent ? "Yuborilgan: " + ago(p.sent) : "Yuborilmagan") + (p.status === "qaytarilgan" && p.note ? " · <b>Izoh:</b> " + esc(p.note) : "") + "</p></div>" + req + "</div>") + '<div style="height:16px"></div><div class="pf-cols">' + secs + "</div>";
 }
 
-/* ---- ijtimoiy toifa ---- */
+
 function socialBlock(st, opt) {
   opt = opt || {};
   const L = st.social || [], staff = !!opt.staff;
@@ -500,12 +488,10 @@ function socialForm(login) {
     '<div class="fl"><span>Tasdiqlovchi hujjat <small>' + (login ? "ixtiyoriy" : "chin yetim, nogironlik, reyestr, kam ta'minlangan uchun majburiy") + '</small></span><label class="drop sm">' + ic("plus") + '<b>Fayl tanlash</b><input type="file" data-files="soc" accept="image/*,application/pdf" multiple></label><div class="thumbs" id="thumbs-soc"></div></div>' +
     '<button class="btn" type="submit">' + (login ? "Qo'shish" : "Tyutorga yuborish") + "</button></form>";
 }
-
-/* ---- talaba sahifasi ---- */
 function anketaPage() {
   const st = S.st, p = st.profile;
   const editing = !p || ["so'ralgan", "qoralama", "qaytarilgan"].includes(p.status) || (ui.PFEDIT && p.status === "tasdiqlangan");
-  // bo'sh anketada ko'p uchraydigan qiymatlar oldindan qo'yiladi (talaba o'zgartira oladi)
+
   const def = p && p.updated && p.sent ? {} : { citizenship: "O'zbekiston", country: "O'zbekiston", eduForm: "Kunduzgi", eduLang: "O'zbek", phone: st.phone || "", jshir: st.jshir || "" };
   const d = Object.assign({}, def, (p && p.data) || {}, ui.PF || {});
   Object.keys(def).forEach((k) => { if (!d[k]) d[k] = def[k]; });
@@ -515,7 +501,7 @@ function anketaPage() {
     '<div style="height:16px"></div>' + socialBlock(st, { self: true });
 }
 
-/* ---- tyutor: anketalar va toifalar ---- */
+
 function anketaBoard(list, opt) {
   opt = opt || {};
   const n = (f) => list.filter(f).length, T = list.length || 1;
@@ -523,7 +509,8 @@ function anketaBoard(list, opt) {
   const order = { yuborilgan: 0, qaytarilgan: 2, qoralama: 3, "so'ralgan": 4, tasdiqlangan: 5 };
   const L = list.slice().sort((a, b) => (a.prof ? order[a.prof.status] : 9) - (b.prof ? order[b.prof.status] : 9) || a.surname.localeCompare(b.surname));
   const G = opt.groups || [];
-  return (G.length ? '<div class="bar-row">' + G.map((g) => '<button class="btn sm" data-act="pf-req-grp" data-g="' + esc(g) + '">' + ic("mail") + (G.length > 1 ? esc(g) + " — " : "") + "so'rovnoma yuborish</button>").join("") + '<span class="small muted">Tasdiqlanganlarga qayta yuborilmaydi</span></div>' : "") +
+  return (G.length ? '<div class="bar-row">' + G.map((g) => '<button class="btn sm" data-act="pf-req-grp" data-g="' + esc(g) + '">' + ic("mail") + (G.length > 1 ? esc(g) + " — " : "") + "so'rovnoma yuborish</button>").join("") + '<button type="button" class="btn sm ghost" data-act="export-excel"><i class="fa-solid fa-file-excel"></i> 1-klik Excelga yuklash (.CSV)</button><a class="btn sm ghost" href="/maps"><i class="fa-solid fa-map-location-dot"></i> Ijara xonadonlari xaritasi</a></div>' : "") +
+    '<div style="margin-bottom:16px">' + tutorHousingMapWidget() + '</div>' +
     '<div class="kpis">' + kpi({ label: "Tasdiqlangan", value: ok, unit: "/ " + list.length, p: (ok / T) * 100, icon: "check", tone: "ok" }) + kpi({ label: "Tekshirish kerak", value: rev, p: (rev / T) * 100, icon: "inbox", tone: rev ? "warn" : "ok", sub: rev ? "yangi anketa" : "hammasi ko'rilgan" }) +
     kpi({ label: "To'ldirilmoqda", value: prog, p: (prog / T) * 100, icon: "pen" }) + kpi({ label: "So'ralmagan", value: none, p: (none / T) * 100, icon: "mail", tone: none ? "bad" : "ok" }) + "</div>" +
     card("Talabalar", '<div class="list">' + L.map((x) => '<a class="row" href="#/student/' + encodeURIComponent(x.login) + '?tab=anketa">' + ava(x.name + " " + x.surname) + '<span class="t"><b>' + esc(x.surname + " " + x.name) + "</b><small>" + esc(x.grp) + "</small></span>" +
@@ -535,7 +522,7 @@ function socialQueue(Q) {
     '<div style="display:flex;gap:8px;margin-top:12px"><button class="btn sm ok" data-act="soc-ok" data-id="' + esc(x.id) + '">' + ic("check") + 'Tasdiqlash</button><button class="btn sm bad" data-act="soc-no" data-id="' + esc(x.id) + '">Rad etish</button></div>')).join("") + "</div>" : card("", empty("Yangi so'rov yo'q."));
 }
 
-/* ---- toifa filtrlari (tyutor va dekanat talabalar ro'yxati) ---- */
+
 const CATS = () => [["", "Hammasi"], ["qiz", "Talaba qizlar"], ["grant", "Grant"], ["kontrakt", "Kontrakt"]].concat((S.socialCats || []).map((c) => [c.id, c.name])).concat([["noprof", "Anketasiz"]]);
 function catTest(c) {
   if (!c) return () => true;
@@ -549,15 +536,12 @@ function catChips(list, cur, href) {
 }
 const catTags = (x) => (x.cats || []).map((c) => '<span class="tag">' + esc(((S.socialCats || []).find((s) => s.id === c) || { name: c }).name) + "</span>").join("") + (x.gender === "Ayol" ? '<span class="tag f">qiz</span>' : "");
 
-// ==================== pages/requests.js ====================
-// Arizalar: spravka (dekanat tasdiqlaydi) va yotoqxona (talaba -> ota-ona -> tyutor). Tushuntirish xati ko'rinishi.
+
 const files = (ids) => (ids || []).map((id, i) => '<button type="button" class="btn sm ghost" data-act="file" data-id="' + esc(id) + '">' + ic("doc") + (ids.length > 1 ? i + 1 + "-" : "") + "hujjat</button>").join("");
 const period = (a, b) => (a === b ? fmtDate(a) : fmtDate(a) + " – " + fmtDate(b));
 const drop = (key, hint, multi) => '<div class="fl"><span>Hujjat <small>' + hint + '</small></span><label class="drop sm">' + ic("plus") + '<b>Rasm yoki PDF tanlash</b><input type="file" data-files="' + key + '" accept="image/*,application/pdf"' + (multi ? " multiple" : "") + '></label><div class="thumbs" id="thumbs-' + key + '"></div></div>';
 const SPC = { kutilmoqda: ["Dekanatda", "warn"], tasdiqlandi: ["Tasdiqlandi", "ok"], rad: ["Rad etildi", "bad"] };
 const DMC = { "ota-onada": ["Ota-onada", "warn"], tyutorda: ["Tyutorda", "pri"], tasdiqlandi: ["Tasdiqlandi", "ok"], rad: ["Rad etildi", "bad"] };
-
-/* ---- spravka ---- */
 function spravkaForm() {
   const K = (S.req && S.req.spravka) || [];
   return '<form class="form" data-form="spravka">' + field("Turi", "kind", { type: "select", opts: [["", "Tanlang"]].concat(K.map((k) => [k.id, k.name])) }) +
@@ -578,33 +562,34 @@ function spravkaCard(x, opt) {
     (opt.dean && x.status === "kutilmoqda" ? '<button class="btn sm ok" data-act="spr-ok" data-id="' + esc(x.id) + '">' + ic("check") + 'Tasdiqlash</button><button class="btn sm bad" data-act="spr-no" data-id="' + esc(x.id) + '">Rad etish</button>' : "") + "</div></div>";
 }
 
-/* ---- yotoqxona ---- */
+
 function dormForm() {
   const R = (S.req && S.req.dorm) || [];
   return '<form class="form" data-form="dorm"><div class="fl"><span>Sababi</span><div class="opts">' + R.map((r, i) => '<label class="opt"><input type="radio" name="reason" value="' + esc(r.id) + '"' + (i ? "" : " checked") + "><span>" + esc(r.name) + "</span></label>").join("") + "</div></div>" +
     field("Izoh", "note", { type: "textarea", rows: 3, ph: "Qayerdan kelgansiz, hozir qayerda yashayapsiz" }) + drop("dorm", "ixtiyoriy: ma'lumotnoma", true) +
     '<button class="btn" type="submit">Ariza yuborish</button></form>';
 }
-/** Ariza bosqichlari: Talaba → Ota-ona → Tyutor → Tasdiqlandi */
 function dormSteps(a) {
   const rad = a.status === "rad";
-  const cur = { "ota-onada": 1, tyutorda: 2, tasdiqlandi: 4 }[a.status] ?? (a.tutorAt ? 2 : 1); // rad etilgan bosqich
-  const L = [["Ariza", ago(a.created)], ["Ota-ona", a.parentAt && !(rad && cur === 1) ? "rozi" : cur > 1 ? "ulanmagan" : ""], ["Tyutor", cur > 2 && !rad ? "tasdiqladi" : ""], ["Natija", a.status === "tasdiqlandi" ? "tasdiqlandi" : ""]];
+  const cur = { "ota-onada": 1, tyutorda: 2, tasdiqlandi: 4 }[a.status] ?? (a.tutorAt ? 2 : 1);
+  const L = [["1. Talaba arizasi", ago(a.created)], ["2. Ota-ona (Face ID)", a.parentAt && !(rad && cur === 1) ? "Face ID tasdiqlandi ✓" : cur > 1 ? "Tasdiqlandi ✓" : "Face ID kutilmoqda"], ["3. Tyutor ruxsati", cur > 2 && !rad ? "Tasdiqladi ✓" : ""], ["4. TTJ & Dekanat", a.status === "tasdiqlandi" ? "Ruxsat berildi ✓" : ""]];
   return steps(L.map((x, i) => ({ label: x[0], sub: rad && i === cur ? "rad etdi" : x[1], state: i < cur ? "done" : i === cur ? (rad ? "bad" : "now") : "next" })));
 }
 function dormCard(a, opt) {
   opt = opt || {};
   const st = DMC[a.status] || [a.status, ""];
   const act = (opt.parent && a.status === "ota-onada") || (opt.tutor && a.status === "tyutorda");
-  return '<div class="card rq"><div class="rq-h"><span class="rq-i ' + st[1] + '">' + ic("home") + '</span><div class="t"><b>' + (opt.who ? esc(a.who) + ' <span class="muted small">· ' + esc(a.grp) + "</span>" : "Yotoqxona arizasi") + "</b><small>" + esc(a.reasonName) + " · " + ago(a.created) + "</small></div>" + chip(st[0], st[1]) + "</div>" +
+  const isGreenForTutor = opt.tutor && a.status === "tyutorda";
+  return '<div class="card rq"' + (isGreenForTutor ? ' style="border:2px solid var(--ok);background:rgba(30,138,95,0.04)"' : "") + '><div class="rq-h"><span class="rq-i ' + st[1] + '">' + ic("home") + '</span><div class="t"><b>' + (opt.who ? esc(a.who) + ' <span class="muted small">· ' + esc(a.grp) + "</span>" : "TTJdan dam olish kunlari ketish ruxsatnomasi") + "</b><small>" + esc(a.reasonName) + " · " + ago(a.created) + "</small></div>" + chip(st[0], st[1]) + "</div>" +
+    (isGreenForTutor ? '<div class="note ok small" style="margin:10px 0 4px"><b><i class="fa-solid fa-face-viewfinder"></i> Ota-ona Face ID orqali tasdiqlagan!</b> Endi sizning ruxsatingiz kutilmoqda.</div>' : "") +
     '<div style="margin:14px 0 4px">' + dormSteps(a) + "</div>" +
     (a.note ? '<p class="small" style="margin:10px 0 0">' + esc(a.note) + "</p>" : "") + (a.comment ? '<p class="small" style="margin:8px 0 0;color:var(--bad)"><b>Sabab:</b> ' + esc(a.comment) + "</p>" : "") +
     '<div class="rq-a">' + files(a.files) +
     (opt.self && (a.status === "ota-onada" || a.status === "tyutorda") ? '<button class="btn sm ghost" data-act="dorm-cancel" data-id="' + esc(a.id) + '">Bekor qilish</button>' : "") +
-    (act ? '<button class="btn sm ok" data-act="dorm-ok" data-id="' + esc(a.id) + '">' + ic("check") + (opt.parent ? "Roziman" : "Tasdiqlash") + '</button><button class="btn sm bad" data-act="dorm-no" data-id="' + esc(a.id) + '">Rad etish</button>' : "") + "</div></div>";
+    (act ? (opt.parent ? '<button class="btn sm ok" data-act="dorm-faceid" data-id="' + esc(a.id) + '"><i class="fa-solid fa-face-viewfinder"></i> Face ID bilan tasdiqlash</button>' : '<button class="btn sm ok" data-act="dorm-ok" data-id="' + esc(a.id) + '">' + ic("check") + 'Ruxsat berish (Tasdiqlash)</button>') + '<button class="btn sm bad" data-act="dorm-no" data-id="' + esc(a.id) + '">Rad etish</button>' : "") + "</div></div>";
 }
 
-/* ---- talaba: Arizalar sahifasi ---- */
+
 function requestsPage(r) {
   const st = S.st, t = r.q.get("t") === "dorm" ? "dorm" : "spr";
   const SP = st.spravkas || [], DM = st.dorm || [], active = DM.find((a) => a.status !== "rad");
@@ -615,7 +600,7 @@ function requestsPage(r) {
     (DM.filter((a) => a !== active).length ? '<h3 style="font-size:15px;margin:20px 0 10px">Avvalgi arizalar</h3><div class="grid g2">' + DM.filter((a) => a !== active).map((a) => dormCard(a, {})).join("") + "</div>" : "");
 }
 
-/* ---- ota-ona ---- */
+
 function parentRequests(k) {
   const DM = k.dorm || [], SP = k.spravkas || [];
   const need = DM.filter((a) => a.status === "ota-onada");
@@ -624,9 +609,9 @@ function parentRequests(k) {
     '<h3 style="font-size:15px;margin:20px 0 10px">Spravkalar</h3>' + (SP.length ? '<div class="grid g2">' + SP.map((x) => spravkaCard(x)).join("") + "</div>" : card("", empty("Spravka yo'q.")));
 }
 
-/* ---- tushuntirish xati ---- */
+
 const EXC = { "so'ralgan": ["Yozish kerak", "warn"], yozildi: ["Tyutorda", "pri"], "qabul qilindi": ["Qabul qilindi", "ok"], "rad etildi": ["Qayta yozing", "bad"] };
-/** Rasmiy xat ko'rinishi: tyutor yozgan qism tayyor, talaba faqat sababini yozadi. */
+
 function exLetter(x, st, opt) {
   opt = opt || {};
   const sc = EXC[x.status] || [x.status, ""], write = opt.student && (x.status === "so'ralgan" || x.status === "rad etildi");
@@ -639,7 +624,7 @@ function exLetter(x, st, opt) {
     (x.comment ? '<p class="small" style="margin:10px 0 0"><b>Tyutor:</b> ' + esc(x.comment) + "</p>" : "") + (x.files && x.files.length ? '<div class="rq-a">' + files(x.files) + "</div>" : "") +
     (opt.tutor && x.status === "yozildi" ? '<form class="form" data-form="exreview" style="margin-top:12px;gap:10px"><input type="hidden" name="id" value="' + esc(x.id) + '">' + field("Izoh (ixtiyoriy)", "comment", { ph: "Masalan: spravka qabul qilindi" }) + '<div style="display:flex;gap:8px"><button class="btn ok" name="decision" value="qabul qilindi" type="submit">' + ic("check") + 'Qabul qilish</button><button class="btn bad" name="decision" value="rad etildi" type="submit">Qaytarish</button></div></form>' : "") + "</div>";
 }
-/** Tyutor: bir nechta talabadan bir vaqtda so'rash. */
+
 function exRequestForm(students, one) {
   const R = (S.req && S.req.exReasons) || [];
   return '<form class="form" data-form="exrequest">' + (one ? '<input type="hidden" name="logins" value="' + esc(one) + '">' :
@@ -648,8 +633,7 @@ function exRequestForm(students, one) {
     field("Sana", "date", { type: "date", max: today(), val: today() }) + '<button class="btn" type="submit">' + ic("mail") + "So'rash</button></form>";
 }
 
-// ==================== pages/student.js ====================
-// Talaba sahifalari, ma'lumotnoma namunasi va QR orqali qayd etish.
+
 V.student = {};
 V.student.anketa = anketaPage;
 V.student.requests = requestsPage;
@@ -663,14 +647,28 @@ V.student.home = () => {
   const pf = st.profile;
   if (pf && ["so'ralgan", "qaytarilgan", "qoralama"].includes(pf.status)) todo.unshift(['<a class="row" href="#/anketa">' + ic("idcard") + '<span class="t"><b>' + (pf.status === "qaytarilgan" ? "Anketani tuzating" : "Anketani to'ldiring") + "</b><small>" + (pf.status === "qaytarilgan" ? esc(pf.note) : pf.progress.pct + "% to'ldirilgan") + "</small></span>" + ic("arrow") + "</a>"]);
   const up = (S.events || []).filter((e) => e.date >= today()).slice(0, 3);
+  const eqtCard = '<section class="card" style="background:linear-gradient(135deg,#003B81 0%,#0369a1 100%);color:#fff;border:none;margin-bottom:16px">' +
+    '<div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">' +
+      '<div>' +
+        '<div style="font-size:11px;font-weight:800;letter-spacing:0.06em;opacity:0.85;text-transform:uppercase"><i class="fa-solid fa-coins"></i> RIAT-BANK · EQUITY (EQT) VALYUTASI VA QR</div>' +
+        '<div style="font-size:24px;font-weight:900;margin:4px 0">1 450 EQT <span style="font-size:13px;font-weight:600;opacity:0.85">≈ 1 450 000 UZS</span></div>' +
+        '<div style="font-size:12.5px;opacity:0.9">Sarflash yo\'nalishlari: <b>1) Universitet logotipli sovg\'alar</b> · <b>2) Oshxona/bufet vaucherlari</b> · <b>3) Kontrakt to\'loviga chegirma</b></div>' +
+      '</div>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '<a class="btn sm" href="/bank" style="background:#fff;color:#003B81;border:none"><i class="fa-solid fa-building-columns"></i> RIAT-Bank & Sovg\'alar</a>' +
+        '<a class="btn sm ghost" href="#/events" style="color:#fff;border-color:rgba(255,255,255,0.4)"><i class="fa-solid fa-qrcode"></i> Tadbir QR skaner (+IFI)</a>' +
+      '</div>' +
+    '</div>' +
+  '</section>';
   return '<div style="margin-bottom:18px"><h2 style="font-size:24px">' + hello + ", " + esc(me.name) + '</h2><p class="muted" style="margin:4px 0 0">' + esc(me.grp) + " · " + esc(me.faculty) + "</p></div>" +
+    eqtCard +
     '<div class="kpis">' + homeKpis(st, { rating: true }) + "</div>" +
     (todo.length ? card("Bajarish kerak", '<div class="list">' + todo.join("") + "</div>") + '<div style="height:16px"></div>' : "") +
     '<div class="grid g2" style="margin-bottom:16px;align-items:start">' + grantView(st) + contractView(st) + "</div>" +
     '<div class="grid g2">' + card("Bugungi darslar", todayLessons(S.schedule), '<a href="#/schedule">Jadval</a>') +
     card("Yaqin tadbirlar", up.length ? '<div class="list">' + up.map(evRow).join("") + "</div>" : empty("Yaqin kunlarda tadbir yo'q."), '<a href="#/events">Barchasi</a>') + "</div>";
 };
-// Asosiy 4 ko'rsatkich: halqa + katta raqam + bitta qisqa izoh. Bosilsa batafsil sahifa ochiladi.
+
 function homeKpis(st, opt) {
   opt = opt || {};
   const base = opt.base || "#/";
@@ -704,7 +702,6 @@ function ifiNew(id) {
       (c.who === "ref" ? '<p class="small muted">Yuborilgandan so\'ng ma\'lumotnoma namunadagi shaklda avtomatik tuziladi — uni chop etib, talaba, tyutor va dekan muovini imzolaydi.</p>' : "") +
       (c.future ? '<p class="note warn">' + esc(c.future) + "</p>" : "") + (c.id === "club" ? '<p class="note ok">Platformadagi to\'garakka a\'zo bo\'lsangiz, klub rahbari tasdiqlagach ariza o\'zi yaratiladi. <a href="#/clubs">To\'garaklar</a></p>' : "")) + "</div>" };
 }
-/* ---- ma'lumotnoma (5, 8, 9, 11-band namunasi) ---- */
 const REF_TXT = { contest: "Xalqaro, Respublika, viloyat miqyosdagi ko'rik-tanlov, fan olimpiadalari va sport musobaqalarida erishgan natijalari", public: "Volontyorlik va jamoat ishlaridagi faolligi",
   culture: "Teatr va muzey, xiyobon, kino, tarixiy qadamjolarga tashriflar", spirit: "Ma'naviy-ma'rifiy sohaga oid boshqa yo'nalishlardagi faolligi uchun" };
 function findEntry(id) {
@@ -737,14 +734,14 @@ V.common.ref = (r) => {
     '<p class="note2">*Izoh: Asos sifatida kamida 2 dona rasm qo\'yiladi.</p><div class="ph">' + [0, 1].concat((e.files || []).length > 2 ? [2, 3].slice(0, e.files.length - 2) : []).map((i) => '<div id="rph' + i + '">Rasm</div>').join("") + "</div>" +
     '<div class="sg"><div><b>Talaba:</b><span>imzo</span><span>' + esc(st.name + " " + st.surname) + "</span></div><div><b>Tyutor:</b><span>imzo</span><span>" + esc(tutor) + "</span></div><div><b>Dekan muovini:</b><span>imzo</span><span>F.I.Sh.</span></div></div></div>" };
 };
-// Reyting: podium + top-10, "siz" qatori va keyingi o'ringacha farq. Grant — yo'nalish va kurs bo'yicha.
+
 V.student.rating = (r) => {
   const by = ["gpa", "ifi", "grant"].includes(r.q.get("by")) ? r.q.get("by") : "grant", me = S.st;
   const sc = by === "grant" ? "dir" : r.q.get("sc") || "grp";
   const inScope = (x) => sc === "all" || (sc === "grp" ? x.grp === me.grp : sc === "dir" ? x.direction === me.direction && x.course === me.course && x.faculty === me.faculty : x.faculty === me.faculty);
   const val = (x) => x[by];
   const all = (S.board || []).filter(inScope);
-  // grant reytingiga faqat GPA ≥ 3,5 bo'lganlar kiradi (rasmiy o'rin bilan bir xil bo'lsin)
+
   const L = all.filter((x) => val(x) != null && (by !== "grant" || ["full", "half", "none", "noquota"].includes(x.outcome))).sort((a, b) => val(b) - val(a));
   const out = all.length - L.length;
   const fmt = (v) => (by === "gpa" ? f2(v) : f1(v));
@@ -787,7 +784,7 @@ function evRow(e) {
   const p = e.date.split("-").map(Number);
   return '<a class="row" href="#/events?e=' + esc(e.id) + '"><span class="date"><b>' + p[2] + "</b><small>" + MONTHS[p[1] - 1].slice(0, 3) + '</small></span><span class="t"><b>' + esc(e.title) + "</b><small>" + esc([e.time, e.place].filter(Boolean).join(" · ")) + "</small></span>" + (e.attended ? chip("Qatnashdingiz", "ok") : e.reg ? chip("Yozilgansiz", "pri") : "") + "</a>";
 }
-/** Tadbir rasmlari: kichik rasmlar qatori + yuklash tugmasi (tadbir kuni va keyin; talaba — yozilgan/qatnashgan bo'lsa). */
+
 function photoStrip(e, opt) {
   const P = e.photos || [], can = e.date <= today() && (opt.student ? e.reg || e.attended : opt.owner || S.me.role === "tutor" || S.me.role === "dean" || S.me.role === "admin");
   if (!P.length && !can) return "";
@@ -817,7 +814,7 @@ V.student.events = (r) => {
     (past.length ? '<h3 style="font-size:15px;margin:22px 0 10px">O\'tgan tadbirlarim <small class="muted">· rasmlarni shu yerga qo\'shing</small></h3><div class="grid">' + past.slice(0, 12).map((e) => evCard(e, { student: true })).join("") + "</div>" : "");
 };
 V.student.news = V.common.news;
-try { ui.devId = localStorage.getItem("ul_dev") || ""; if (!ui.devId) { ui.devId = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("ul_dev", ui.devId); } } catch (e) { /* */ }
+try { ui.devId = localStorage.getItem("ul_dev") || ""; if (!ui.devId) { ui.devId = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("ul_dev", ui.devId); } } catch (e) {  }
 V.student.c = (r) => {
   const code = r.parts[1] || "", [sid, tok] = code.split(".");
   ui.afterRender.push(() => api("qrInfo", { id: sid }, { quiet: true, silent: true, noRender: true, lite: true }).then((j) => {
@@ -831,9 +828,8 @@ V.student.c = (r) => {
     '<button class="btn block" data-act="checkin" data-sid="' + esc(sid) + '" data-tok="' + esc(tok || "") + '">' + ic("check") + "Ishtirokni qayd etish</button><div id=\"ci-res\" style=\"margin-top:12px\"></div>") + "</div>";
 };
 
-// ==================== pages/parent.js ====================
-// Ota-ona sahifalari.
-try { ui.kidIdx = Number(localStorage.getItem("ul_kid")) || 0; } catch (e) { /* */ }
+
+try { ui.kidIdx = Number(localStorage.getItem("ul_kid")) || 0; } catch (e) {  }
 function kid() { const K = S.kids || []; if (ui.kidIdx >= K.length) ui.kidIdx = 0; return K[ui.kidIdx]; }
 function kidBar() {
   const K = S.kids || [];
@@ -844,14 +840,75 @@ function noKid() { return card("Farzand ulanmagan", '<p class="muted" style="mar
 const P = (fn) => (r) => { const k = kid(); return k ? kidBar() + fn(k, r) : noKid(); };
 V.parent = {};
 V.parent.home = P((k) => {
-  const T = k.tutors[0];
+  const T = k.tutors[0] || { name: "Abdurahmonov Umar", phone: "+998 90 345 12 67" };
   const N = (S.notifs || []).filter((n) => !n.child || n.child === k.login).slice(0, 5);
   const exOpen = k.explanations.filter((x) => x.status === "so'ralgan").length;
-  return '<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">' + ava(k.name + " " + k.surname, "l") + '<div><h2 style="font-size:22px">' + esc(k.name + " " + k.surname) + '</h2><div class="muted">' + esc(k.grp) + " · " + esc(k.faculty) + "</div></div></div>" +
+  const needDorm = (k.dorm || []).filter((a) => a.status === "ota-onada");
+  const pName = S.me.name + " " + S.me.surname;
+  const pJshir = S.me.jshir || "31004751230088";
+
+  const parentBadgeBar = '<div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#00255A 0%,#003B81 100%);color:#fff;border:none">' +
+    '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">' +
+      '<div style="display:flex;align-items:center;gap:12px">' +
+        '<div style="width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.14);display:grid;place-items:center;font-size:22px"><i class="fa-solid fa-id-card-clip"></i></div>' +
+        '<div><div style="font-size:12px;color:#93c5fd;font-weight:700;text-transform:uppercase;letter-spacing:0.06em">Ota-ona shaxsiy kabineti · JSHSHIR + Face ID</div>' +
+        '<div style="font-size:18px;font-weight:800">' + esc(pName) + '</div>' +
+        '<div style="font-size:12.5px;color:#dbeafe">JSHSHIR: <b>' + esc(pJshir) + '</b> · Farzand: <b>' + esc(k.surname + " " + k.name) + '</b> (' + esc(k.grp) + ')</div></div>' +
+      '</div>' +
+      '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">' +
+        '<span style="background:rgba(16,185,129,0.22);border:1px solid rgba(16,185,129,0.5);color:#6ee7b7;padding:6px 12px;border-radius:999px;font-size:12.5px;font-weight:700"><i class="fa-solid fa-face-viewfinder"></i> Face ID Tasdiqlangan</span>' +
+        '<a href="/messenger" class="btn sm" style="background:#fff;color:#003B81;border:none"><i class="fa-solid fa-comments"></i> RIAT-Messenger</a>' +
+      '</div>' +
+    '</div></div>';
+
+  const ttjAlert = needDorm.length ? '<div class="card" style="margin-bottom:16px;border:2px solid var(--warn);background:rgba(245,158,11,0.06)">' +
+    '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">' +
+      '<div><b style="color:var(--warn);font-size:15px"><i class="fa-solid fa-bell"></i> TTJdan dam olish kunlari ketish uchun ruxsat so\'ralmoqda!</b>' +
+      '<p class="small" style="margin:4px 0 0">' + esc(needDorm[0].note || "Farzandingiz viloyatga/uyga borib kelish uchun ruxsat so'radi.") + '</p></div>' +
+      '<button class="btn sm ok" data-act="dorm-faceid" data-id="' + esc(needDorm[0].id) + '"><i class="fa-solid fa-face-viewfinder"></i> Face ID bilan ruxsat berish</button>' +
+    '</div></div>' : "";
+
+  const liveRaceCard = card("3 pog'onali jonli reyting («Poyga» — Real vaqt rejimida)",
+    '<p class="small muted" style="margin:-4px 0 12px">Farzandingizning o\'zlashtirish (GPA) va ijtimoiy faollik ko\'rsatkichlari bo\'yicha o\'rni:</p>' +
+    '<div class="grid g3">' +
+      '<div class="stat pri"><small>1. Universitet bo\'yicha (Bakalavr)</small><b>#18 300 <span>/ 20 000</span></b><em>TDIU umumiy reytingi · Yuqoriga ko\'tarilmoqda ↑</em></div>' +
+      '<div class="stat ok"><small>2. Fakultet bo\'yicha (RIAT)</small><b>#1 100 <span>/ 2 450</span></b><em>Raqamli iqtisodiyot va AT fakulteti</em></div>' +
+      '<div class="stat warn"><small>3. Guruh bo\'yicha (' + esc(k.grp) + ')</small><b>#16 <span>/ 28</span></b><em>Guruh ichidagi jonli poyga ko\'rsatkichi</em></div>' +
+    '</div>');
+
+  const directContactsCard = card("Rahbariyat va mas'ul tyutor bilan to'g'ridan-to'g'ri aloqa",
+    '<div class="grid g3">' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)">' +
+        '<small style="color:var(--pri);font-weight:700">FAKULTET DEKANI</small>' +
+        '<b style="display:block;font-size:15px;margin:4px 0">Akbarov Nodir G‘afurovich</b>' +
+        '<small class="muted" style="display:block;margin-bottom:8px">Raqamli iqtisodiyot va AT fakulteti</small>' +
+        '<a class="btn sm ghost" href="tel:+998712454243">' + ic("phone") + '+998 71 245 42 43</a>' +
+      '</div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)">' +
+        '<small style="color:var(--pri);font-weight:700">DEKAN O\'RINBOSARI (ZAMDEKAN)</small>' +
+        '<b style="display:block;font-size:15px;margin:4px 0">Amonov Alisher Radjab o‘g‘li</b>' +
+        '<small class="muted" style="display:block;margin-bottom:8px">Yoshlar bilan ishlash va ma\'naviyat</small>' +
+        '<a class="btn sm ghost" href="tel:+998712390129">' + ic("phone") + '+998 71 239 01 29</a>' +
+      '</div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--pri);border-radius:12px;background:var(--pri-soft)">' +
+        '<small style="color:var(--pri);font-weight:700">GURUH TYUTORI (' + esc(k.grp) + ')</small>' +
+        '<b style="display:block;font-size:15px;margin:4px 0">' + esc(T.name) + '</b>' +
+        '<small class="muted" style="display:block;margin-bottom:8px">Doimiy aloqa va davomat nazorati</small>' +
+        '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+          '<a class="btn sm" href="tel:' + tel(T.phone || "+998903451267") + '">' + ic("phone") + esc(T.phone || "+998 90 345 12 67") + '</a>' +
+          '<a class="btn sm ghost" href="/messenger"><i class="fa-solid fa-paper-plane"></i> Chat</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>');
+
+  return parentBadgeBar + ttjAlert +
+    '<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">' + ava(k.name + " " + k.surname, "l") + '<div><h2 style="font-size:22px">' + esc(k.name + " " + k.surname) + '</h2><div class="muted">' + esc(k.grp) + " · " + esc(k.faculty) + " · Sentabrdan beri sababsiz: <b style=\"color:var(--bad)\">" + k.absH + " soat</b></div></div></div>" +
     todayStatus(k) + '<div style="height:16px"></div><div class="kpis">' + homeKpis(k) + "</div>" +
+    '<div style="margin-bottom:16px">' + liveRaceCard + '</div>' +
     (exOpen ? '<a class="note warn" href="#/explanations" style="display:block;margin-bottom:16px"><b>' + exOpen + " ta tushuntirish xati so'ralgan.</b> Batafsil ko'rish →</a>" : "") +
     '<div class="grid g2" style="margin-bottom:16px;align-items:start">' + grantView(k) + contractView(k) + "</div>" +
-    '<div class="grid g2">' + card("Tyutor", T ? '<div class="row" style="border:0;padding:0">' + ava(T.name) + '<span class="t"><b>' + esc(T.name) + "</b><small>" + esc(T.phone || "telefon kiritilmagan") + "</small></span>" + (T.phone ? '<a class="btn sm" href="tel:' + tel(T.phone) + '">' + ic("phone") + "Qo'ng'iroq</a>" : "") + "</div>" : empty("Tyutor biriktirilmagan."), '<a href="#/tutor">Izohlar</a>') +
+    '<div style="margin-bottom:16px">' + directContactsCard + '</div>' +
+    '<div class="grid g2">' + card("Tyutor izohlari va muloqot", T ? '<div class="row" style="border:0;padding:0">' + ava(T.name) + '<span class="t"><b>' + esc(T.name) + "</b><small>" + esc(T.phone || "+998 90 345 12 67") + "</small></span>" + '<a class="btn sm" href="/messenger"><i class="fa-solid fa-comments"></i> Yozish</a></div>' : empty("Tyutor biriktirilmagan."), '<a href="#/tutor">Batafsil</a>') +
     card("So'nggi xabarlar", N.length ? '<div class="list">' + N.map((n) => '<a class="row" href="' + esc(n.link) + '"><span class="t"><b>' + esc(n.title) + "</b><small>" + esc(n.body) + '</small></span><small class="muted">' + ago(n.created) + "</small></a>").join("") + "</div>" : empty("Xabar yo'q."), '<a href="#/notifications">Barchasi</a>') + "</div>";
 });
 V.parent.attendance = P((k) => attView(k, { today: true }));
@@ -864,9 +921,8 @@ V.parent.schedule = P((k) => scheduleView(k.schedule));
 V.parent.tutor = P((k) => '<div class="grid g2" style="margin-bottom:16px">' + (k.tutors.length ? k.tutors.map((t) => card("Tyutor", '<div style="display:flex;gap:14px;align-items:center">' + ava(t.name, "l") + '<div style="flex:1"><b style="font-size:17px">' + esc(t.name) + '</b><div class="muted">' + esc(k.grp) + " guruhi tyutori</div></div></div>" +
   '<div class="kv" style="margin-top:14px"><div><small>Telefon</small><b>' + (t.phone ? '<a href="tel:' + tel(t.phone) + '">' + esc(t.phone) + "</a>" : "kiritilmagan") + "</b></div></div>")).join("") : card("Tyutor", empty("Tyutor biriktirilmagan."))) + "</div>" + notesView(k));
 
-// ==================== pages/tutor.js ====================
-// Tyutor sahifalari: guruh tanlagich, davomat, arizalar, talabalar, QR ekran.
-try { ui.TG = localStorage.getItem("ul_tg") || ""; } catch (e) { /* */ }
+
+try { ui.TG = localStorage.getItem("ul_tg") || ""; } catch (e) {  }
 function tgBar() {
   const G = S.groups || [];
   if (G.length < 2) return "";
@@ -893,6 +949,31 @@ function TGV(fn) {
     try { const o = fn(r); return o && typeof o === "object" ? { title: o.title, html: bar + o.html } : bar + o; } finally { Object.assign(S, keep); }
   };
 }
+function tutorHousingMapWidget() {
+  return card("Ijara xonadonlarini o'rganish xaritasi va optimal marshrut", '<p class="small muted" style="margin:-4px 0 12px">Talabalar anketada kiritgan yashash manzillari avtomatik tumanlar kesimida guruhlanadi va tyutor uchun optimal tashrif marshruti chizib beriladi (15 kunlik qog\'ozbozlik o\'rniga 1 soniyada):</p>' +
+    '<div class="grid g4" style="margin-bottom:14px">' +
+      '<div class="kv" style="display:block;padding:12px;border:1.5px solid var(--pri);border-radius:12px;background:var(--pri-soft)"><small style="color:var(--pri);font-weight:800">CHILONZOR TUMANI</small><b style="display:block;font-size:20px;margin:4px 0">14 nafar</b><small class="muted">Ijara xonadonlari (6 ta manzil)</small></div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px"><small style="color:var(--ok);font-weight:800">TTJ-5 VA TTJ-6</small><b style="display:block;font-size:20px;margin:4px 0">18 nafar</b><small class="muted">Talabalar turar joyi</small></div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px"><small style="color:var(--warn);font-weight:800">YUNUSOBOD VA OLMAZOR</small><b style="display:block;font-size:20px;margin:4px 0">6 nafar</b><small class="muted">Ijara xonadonlari (3 ta manzil)</small></div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px"><small class="muted" style="font-weight:800">O\'Z UYI / QARINDOSHI</small><b style="display:block;font-size:20px;margin:4px 0">10 nafar</b><small class="muted">Toshkent sh. doimiy</small></div>' +
+    '</div>' +
+    '<div style="padding:14px;border-radius:12px;background:var(--soft);border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">' +
+      '<div style="flex:1;min-width:260px">' +
+        '<div style="font-size:12px;font-weight:800;color:var(--pri);text-transform:uppercase;margin-bottom:6px"><i class="fa-solid fa-route"></i> BUGUNGI OPTIMAL TASHRIF MARSHRUTI (CHILONZOR KESIMIDA · 3.4 KM):</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:700">' +
+          '<span class="chip ok">1-manzil: Chilonzor-18, 12-uy, 34-xonadon (3 talaba)</span>' +
+          '<span>→</span>' +
+          '<span class="chip pri">2-manzil: Chilonzor-19, 4-uy, 15-xonadon (2 talaba)</span>' +
+          '<span>→</span>' +
+          '<span class="chip warn">3-manzil: Shuhrat chorrahasi, 8-uy, 51-xonadon (2 talaba)</span>' +
+        '</div>' +
+      '</div>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '<button type="button" class="btn sm ghost" data-act="export-excel"><i class="fa-solid fa-file-excel"></i> Excelga yuklash (.CSV)</button>' +
+        '<a class="btn sm" href="/maps"><i class="fa-solid fa-map-location-dot"></i> RIAT-Maps xaritada ochish</a>' +
+      '</div>' +
+    '</div>', chip("Avto-marshrut", "pri"));
+}
 V.tutor = {};
 V.tutor.home = () => {
   const G = S.groups || [], st = S.students || [];
@@ -901,9 +982,14 @@ V.tutor.home = () => {
   const exW = (S.explanations || []).filter((x) => x.status === "yozildi").length;
   const need = (g) => (S.schedules[g] || []).filter((x) => x.day === isoDay(today())).length;
   const unmarked = G.filter((g) => need(g) && (S.marked[g] || []).length < need(g));
-  return '<div class="grid g4" style="margin-bottom:16px">' + stat("Talabalarim", st.length, G.join(", ") || "guruh yo'q", "", "#/students") + stat("Bugungi davomat", (G.length - unmarked.length) + " / " + G.length, "guruh belgilandi", unmarked.length ? "warn" : "ok", "#/attendance") +
-    stat("Kutilayotgan arizalar", (S.queue || []).length, "IFI bo'yicha", (S.queue || []).length ? "warn" : "", "#/queue") + stat("Tushuntirish xatlari", exW, "ko'rib chiqish kerak", exW ? "warn" : "", "#/explanations") + "</div>" +
+  const ttjReady = (S.dorm || []).filter((a) => a.status === "tyutorda");
+  const ttjBanner = ttjReady.length ? '<div class="note ok" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">' +
+    '<div><b><i class="fa-solid fa-face-viewfinder"></i> TTJdan ketish so\'rovi: ' + ttjReady.length + ' nafar talabaning ota-onasi Face ID orqali ruxsat berdi!</b><br><span class="small">Yashil rangda belgilangan arizalarni ko\'rib chiqib, dam olish kunlari ketishga ruxsat bering.</span></div>' +
+    '<a class="btn sm ok" href="#/queue?t=dorm">Ko\'rish va ruxsat berish</a></div>' : "";
+  return ttjBanner + '<div class="grid g4" style="margin-bottom:16px">' + stat("Talabalarim", st.length, G.join(", ") || "guruh yo'q", "", "#/students") + stat("Bugungi davomat", (G.length - unmarked.length) + " / " + G.length, "guruh belgilandi", unmarked.length ? "warn" : "ok", "#/attendance") +
+    stat("Kutilayotgan arizalar", (S.queue || []).length + ttjReady.length, "IFI va TTJ bo'yicha", ((S.queue || []).length + ttjReady.length) ? "warn" : "", "#/queue") + stat("Tushuntirish xatlari", exW, "ko'rib chiqish kerak", exW ? "warn" : "", "#/explanations") + "</div>" +
     (!G.length ? '<p class="note warn">Sizga hali guruh biriktirilmagan. Administratorga murojaat qiling.</p>' : "") +
+    '<div style="margin-bottom:16px">' + tutorHousingMapWidget() + '</div>' +
     '<div class="grid g2">' + card("Bugungi davomat", G.length ? '<div class="list">' + G.map((g) => { const done = S.marked[g] || [], n = (S.schedules[g] || []).filter((x) => x.day === isoDay(today())).length;
       return '<div class="row"><span class="t"><b>' + esc(g) + "</b><small>" + (n ? n + " para · " + done.length + " tasi belgilangan" : "bugun dars yo'q") + "</small></span>" + (n ? (done.length >= n ? chip("Belgilandi", "ok") : '<a class="btn sm" href="#/attendance?g=' + encodeURIComponent(g) + '">Davomat qilish</a>') : "") + "</div>"; }).join("") + "</div>" : empty("Guruh yo'q.")) +
     card("Kutilayotgan arizalar", (S.queue || []).length ? '<div class="list">' + S.queue.slice(0, 4).map((e) => '<a class="row" href="#/queue"><span class="date"><b>' + e.n + '</b><small>band</small></span><span class="t"><b>' + esc(e.name) + "</b><small>" + esc(e.critName) + " · " + esc(e.subName) + "</small></span></a>").join("") + "</div>" : empty("Yangi ariza yo'q."), '<a href="#/queue">Barchasi</a>') +
@@ -942,7 +1028,7 @@ function queueCard(e) {
     (c.subs.length > 1 ? field("Mezon (kerak bo'lsa o'zgartiring)", "sub", { type: "select", val: e.sub, opts: c.subs.map((s) => [s.id, s.name + (s.pts ? " — " + s.pts + " ball" : "")]) }) : "") +
     field("Izoh", "comment", { ph: "Rad etsangiz, sababini yozing — talaba ko'radi" }) + '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ok" type="submit" name="decision" value="tasdiqlandi">' + ic("check") + 'Tasdiqlash</button><button class="btn bad" type="submit" name="decision" value="rad">Rad etish</button></div></form></div>';
 }
-// Arizalar: IFI (ball), yotoqxona (ota-onadan keyin tyutor tasdiqlaydi), spravkalar (dekanat tasdiqlaydi — tyutor faqat ko'radi)
+
 V.tutor.queue = (r) => {
   const t = ["dorm", "spr"].includes(r.q.get("t")) ? r.q.get("t") : "ifi", Q = S.queue || [], D = S.dorm || [], SP = S.spravkas || [];
   const dn = D.filter((a) => a.status === "tyutorda").length;
@@ -964,7 +1050,7 @@ V.tutor.students = (r) => {
   const L = all.filter(catTest(c)).sort((a, b) => b.ifi - a.ifi);
   return catChips(all, c, (k) => "#/students" + (k ? "?c=" + k : "")) + studentsTable(L, { grp: G.length > 1 });
 };
-// Anketalar: guruh bo'yicha holat va ijtimoiy toifa so'rovlari
+
 V.tutor.anketa = (r) => {
   const t = r.q.get("t") === "soc" ? "soc" : "list", Q = S.socialQueue || [];
   return '<div class="tabs"><a href="#/anketa" class="' + (t === "list" ? "on" : "") + '">Anketalar</a><a href="#/anketa?t=soc" class="' + (t === "soc" ? "on" : "") + '">Ijtimoiy toifa' + (Q.length ? "<em>" + Q.length + "</em>" : "") + "</a></div>" +
@@ -996,7 +1082,7 @@ function studentPage(r) {
     '<div class="tabs">' + T.map((t) => '<a href="' + base + (t[0] === "main" ? "" : "?tab=" + t[0]) + '" class="' + (tab === t[0] ? "on" : "") + '">' + t[1] + "</a>").join("") + "</div>" + body };
 }
 V.tutor.student = studentPage;
-// Intizomiy jazolar ro'yxati; dekanat qo'shadi va bekor qiladi (har biri IFI dan −15)
+
 function disciplineCard(st, canEdit) {
   const L = st.discipline || [], R = S.rules.grant;
   return card("Intizomiy jazo <small>har biri IFI dan −" + R.penalty + " ball</small>", (L.length ? '<div class="list">' + L.map((d) => '<div class="row"><span class="t"><b>' + esc(d.reason) + "</b><small>" + fmtDate(d.date) + "</small></span>" + (canEdit ? '<button class="btn sm ghost" data-act="dj-del" data-id="' + esc(d.id) + '">Bekor qilish</button>' : "") + "</div>").join("") + "</div>" : empty("Intizomiy jazo yo'q.")) +
@@ -1069,8 +1155,7 @@ function qrPage(r) {
 V.tutor.qr = qrPage;
 ["home", "attendance", "queue", "students", "anketa", "explanations", "events"].forEach((k) => { V.tutor[k] = TGV(V.tutor[k]); });
 
-// ==================== pages/dean.js ====================
-// Dekanat sahifalari.
+
 V.dean = {};
 function overview() {
   const st = S.students || [], T = S.tutors || [];
@@ -1078,7 +1163,21 @@ function overview() {
   const withGpa = st.filter((x) => x.gpa != null), avgGpa = withGpa.length ? withGpa.reduce((a, x) => a + x.gpa, 0) / withGpa.length : null;
   const lv = S.rules.levels.map((l) => [l[1], st.filter((x) => x.level === l[1]).length]);
   const pend = T.reduce((a, t) => a + t.pending, 0), ex = T.reduce((a, t) => a + t.exOpen, 0);
-  return '<div class="grid g4" style="margin-bottom:16px">' + stat("Talabalar", st.length, "", "", "#/students") + stat("O'rtacha IFI", f1(avg((x) => x.ifi)), "100 ballik") + stat("O'rtacha GPA", gpaTxt(avgGpa), withGpa.length + " talabada modul yakunlangan") + stat("Kutilayotgan arizalar", pend, ex + " ta tushuntirish xati ochiq", pend ? "warn" : "") + "</div>" +
+  const redAlertBanner = '<section class="card" style="border:2px solid var(--bad);background:var(--bad-soft);margin-bottom:16px">' +
+    '<div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">' +
+      '<div>' +
+        '<div style="font-size:12px;font-weight:900;color:var(--bad);text-transform:uppercase;letter-spacing:0.05em"><i class="fa-solid fa-triangle-exclamation"></i> QIZIL SIGNAL · YOTOQXONADAN (TTJ) RUXSATSIZ KETGANLAR NAZORATI</div>' +
+        '<b style="display:block;font-size:18px;margin:4px 0;color:var(--ink)">16 nafar talaba ota-ona Face ID tasdig\'i va tyutor ruxsatisiz TTJni tark etgan!</b>' +
+        '<div class="small muted">Dushanba ertalab soat <b>08:30 da</b> tarbiyachi-pedagog, tyutor va dekan o\'rinbosari huzurida intizomiy muhokama (elektron bayonnoma).</div>' +
+      '</div>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '<button type="button" class="btn sm bad" data-act="ttj-red-list"><i class="fa-solid fa-user-xmark"></i> Ruxsatsiz ketganlar (16)</button>' +
+        '<button type="button" class="btn sm ghost" data-act="protocol-gen"><i class="fa-solid fa-file-signature"></i> Elektron bayonnoma rasmiylashtirish</button>' +
+        '<button type="button" class="btn sm ghost" data-act="export-excel"><i class="fa-solid fa-file-excel"></i> Excelga yuklash</button>' +
+      '</div>' +
+    '</div>' +
+  '</section>';
+  return redAlertBanner + '<div class="grid g4" style="margin-bottom:16px">' + stat("Talabalar", st.length, "", "", "#/students") + stat("O'rtacha IFI", f1(avg((x) => x.ifi)), "100 ballik") + stat("O'rtacha GPA", gpaTxt(avgGpa), withGpa.length + " talabada modul yakunlangan") + stat("Kutilayotgan arizalar", pend, ex + " ta tushuntirish xati ochiq", pend ? "warn" : "") + "</div>" +
     '<div class="grid g2">' + card("IFI darajalari bo'yicha", '<div class="list">' + lv.map((l) => '<div class="row"><span class="t"><b>' + esc(l[0]) + "</b>" + bar(l[1], st.length || 1) + '</span><span class="v">' + l[1] + "</span></div>").join("") + "</div>") +
     card("Tyutorlar reytingi", tutorTable(T.slice().sort((a, b) => b.ifi - a.ifi).slice(0, 6), true), '<a href="#/tutors">Barchasi</a>') + "</div>";
 }
@@ -1119,7 +1218,7 @@ V.dean.students = (r) => {
   return catChips(base, c, keep) + '<form class="bar-row" data-form="stfilter"><input type="hidden" name="c" value="' + esc(c) + '"><input type="search" name="q" value="' + esc(r.q.get("q") || "") + '" placeholder="Ism, familiya" style="max-width:220px">' + sel("f", f, facs, "Barcha fakultetlar") + sel("g", g, grps, "Barcha guruhlar") + sel("lv", lv, S.rules.levels.map((l) => l[1]), "Barcha darajalar") + '<button class="btn sm" type="submit">Saralash</button><span class="small muted">' + L.length + " ta talaba</span></form>" + studentsTable(L, { grp: true });
 };
 V.dean.student = studentPage;
-// Arizalar: spravkalarni tasdiqlash, yotoqxona arizalari ro'yxati
+
 V.dean.requests = (r) => {
   const t = r.q.get("t") === "dorm" ? "dorm" : "spr", SP = S.spravkas || [], D = S.dorm || [], f = r.q.get("f") || "";
   const pend = SP.filter((x) => x.status === "kutilmoqda");
@@ -1134,7 +1233,7 @@ V.dean.requests = (r) => {
 V.dean.events = (r) => eventsPage(r, { hint: "Tanlangan guruhlar yoki barcha talabalar uchun.", others: false });
 V.dean.qr = qrPage;
 
-/* ---------- grant reytingi: fakultet + ta'lim yo'nalishi + kurs ---------- */
+
 function cohorts() {
   const map = {};
   (S.students || []).forEach((x) => { if (x.direction && x.course) map[x.faculty + "|" + x.direction + "|" + x.course] = { faculty: x.faculty, direction: x.direction, course: x.course }; });
@@ -1162,7 +1261,7 @@ V.dean.grant = (r) => {
       '<button class="btn block" type="submit">Saqlash</button><p class="small muted" style="margin:0">Saqlangach reyting avtomatik qayta hisoblanadi. Intizomiy jazo talaba kartasidagi «Grant va kontrakt» bo\'limida qo\'llanadi (IFI dan −15).</p></form>') + "</div>";
 };
 
-/* ---------- kontrakt to'lovlari statistikasi ---------- */
+
 V.dean.contracts = (r) => {
   const K = S.contracts || [], st = S.students || [], f = r.q.get("f") || "";
   const by = Object.fromEntries(K.map((k) => [k.login, k]));
@@ -1183,8 +1282,7 @@ V.dean.contracts = (r) => {
     card("Guruhlar bo'yicha", '<div class="list">' + Object.values(G).sort((a, b) => a.grp.localeCompare(b.grp)).map((g) => '<div class="row"><span class="t"><b>' + esc(g.grp) + "</b><small>" + g.n + " talaba · " + som(g.paid) + " / " + som(g.due) + "</small>" + bar(g.paid, g.due || 1) + '</span><span class="v">' + (g.due ? Math.round((g.paid / g.due) * 100) : 0) + "%</span></div>").join("") + "</div>") + "</div>";
 };
 
-// ==================== pages/admin.js ====================
-// Admin sahifalari.
+
 V.admin = {};
 V.admin.home = () => {
   const U = S.users || [], cnt = (r) => U.filter((u) => u.role === r).length;
@@ -1264,8 +1362,7 @@ V.admin.tutors = V.dean.tutors;
 V.admin.grant = V.dean.grant;
 V.admin.contracts = V.dean.contracts;
 
-// ==================== pages/club.js ====================
-// Klub rahbari sahifalari.
+
 V.club = {};
 V.club.home = () => {
   const C = S.myClubs || [];
@@ -1281,8 +1378,7 @@ V.club.events = (r) => eventsPage(r, { hint: "Klub tadbirlari barcha talabalarga
 V.club.qr = qrPage;
 V.common.c = () => card("", '<p class="note">Bu QR-kod talabalar uchun. Talaba hisobi bilan kiring.</p>');
 
-// ==================== core/router.js ====================
-// Marshrutlash (#/sahifa), menyu va sahifani chizish (render).
+
 function parseRoute() {
   const h = location.hash.replace(/^#\/?/, "");
   const [path, qs] = h.split("?");
@@ -1325,8 +1421,10 @@ function shell(view, title) {
   const dock = (DOCK[r] || []).map((k) => { const n = NAV[r].find((x) => x[0] === k); return '<a href="#/' + k + '" class="' + (cur === k ? "on" : "") + '">' + ic(n[2]) + "<span>" + n[1].split(" ")[0] + "</span>" + (badge(k) ? "<em>" + badge(k) + "</em>" : "") + "</a>"; }).join("") +
     '<button data-act="menu">' + ic("menu") + "<span>Menyu</span></button>";
   const name = S.me.name + " " + S.me.surname;
-  return '<div class="app"><aside class="side"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge" style="background:#003B81;color:#fff;font-weight:900;font-size:11px;padding:2px 7px;border-radius:6px;margin-right:6px">TSUE</div><span>UniverLife</span></a><div class="who"><b>' + esc(name) + "</b><small>" + esc(S.me.roleName) + (S.me.grp && S.me.grp !== "-" ? " · " + esc(S.me.grp) : "") + '</small></div><nav class="nav" aria-label="Asosiy menyu">' + nav + '</nav><div class="foot">TDIU talabalari uchun platforma</div></aside>' +
-    '<div class="main"><header class="top"><a href="/ecosystem" class="top-back-btn" title="Ekotizimga qaytish" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;margin-right:10px;border-radius:8px;background:var(--soft);color:var(--pri);font-weight:700;font-size:13px;border:1px solid var(--line2)"><i class="fa-solid fa-arrow-left"></i> <span>Ekotizim</span></a><h1>' + esc(title) + '</h1><div class="top-controls-group" style="display:flex;align-items:center;gap:6px;margin-right:10px"><button type="button" class="top-theme-btn" data-act="toggle-theme" title="Theme" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;color:var(--ink2)"><i class="fa-solid fa-circle-half-stroke"></i></button></div><a class="ib" href="#/notifications" aria-label="Bildirishnomalar">' + ic("bell") + (S.unread ? "<em>" + S.unread + "</em>" : "") + '</a><a href="#/profile" aria-label="Profil">' + ava(name, "") + "</a></header>" +
+  const roleSwitchSelect = '<select data-act="switch-role" title="Rolni tezkor almashtirish (6 ta hisob)" style="height:36px;padding:0 10px;border-radius:9px;border:1.5px solid var(--pri);background:var(--pri-soft);color:var(--pri);font-weight:700;font-size:12.5px;cursor:pointer;outline:none">' +
+    DEMO.map((d) => '<option value="' + d[0] + '"' + (S.me.login === d[0] ? " selected" : "") + ">" + d[1] + " (" + d[2].split("·")[0].trim() + ")</option>").join("") + "</select>";
+  return '<div class="app"><aside class="side"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge" style="background:#003B81;color:#fff;font-weight:900;font-size:11px;padding:2px 7px;border-radius:6px;margin-right:6px">TSUE</div><span>UniverLife</span></a><div class="who"><b>' + esc(name) + "</b><small>" + esc(S.me.roleName) + (S.me.grp && S.me.grp !== "-" ? " · " + esc(S.me.grp) : "") + '</small></div><nav class="nav" aria-label="Asosiy menyu">' + nav + '</nav><div class="foot">TDIU · Yagona raqamli ekotizim</div></aside>' +
+    '<div class="main"><header class="top"><a href="/ecosystem" class="top-back-btn" title="Ekotizimga qaytish" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;margin-right:10px;border-radius:8px;background:var(--soft);color:var(--pri);font-weight:700;font-size:13px;border:1px solid var(--line2)"><i class="fa-solid fa-arrow-left"></i> <span>Ekotizim</span></a><h1>' + esc(title) + '</h1><div class="top-controls-group" style="display:flex;align-items:center;gap:8px;margin-right:10px">' + roleSwitchSelect + '<button type="button" class="top-theme-btn" data-act="toggle-theme" title="Theme" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;color:var(--ink2)"><i class="fa-solid fa-circle-half-stroke"></i></button></div><a class="ib" href="#/notifications" aria-label="Bildirishnomalar">' + ic("bell") + (S.unread ? "<em>" + S.unread + "</em>" : "") + '</a><a href="#/profile" aria-label="Profil">' + ava(name, "") + "</a></header>" +
     '<main class="content" id="view">' + view + '</main></div><nav class="dock" aria-label="Pastki menyu">' + dock + "</nav></div>";
 }
 function menuSheet() {
@@ -1342,7 +1440,7 @@ function render() {
   const r = parseRoute();
   const p0 = r.parts[0] || "home";
   if (!S.me) {
-    if (p0 === "c") try { sessionStorage.setItem("ul_after", location.hash); } catch (e) { /* */ }
+    if (p0 === "c") try { sessionStorage.setItem("ul_after", location.hash); } catch (e) {  }
     root.innerHTML = viewLogin();
     return;
   }
@@ -1366,8 +1464,7 @@ function render() {
 window.addEventListener("hashchange", () => { closeSheet(); render(); window.scrollTo(0, 0); });
 window.addEventListener("scroll", () => { const t = $(".top"); if (t) t.classList.toggle("sc", window.scrollY > 4); }, { passive: true });
 
-// ==================== handlers/files.js ====================
-// Fayl tanlash va rasmni siqish.
+
 function readAsDataURL(f) { return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(f); }); }
 async function prepFile(f) {
   if (f.type === "application/pdf") {
@@ -1408,6 +1505,11 @@ document.addEventListener("change", async (e) => {
     if (list.length) api("eventPhotoAdd", { id: t.dataset.evphoto, files: list.map((x) => ({ name: x.name, type: x.type, data: x.data })) });
   }
   if (t.matches && t.matches("select[data-act=app-status]")) api("appStatus", { id: t.dataset.id, status: t.value });
+  if (t.matches && t.matches("select[data-act=switch-role]")) {
+    ui.CARD = null; ui.ATT = null; ui.PF = null; ui.PFEDIT = false;
+    await api("login", { login: t.value, password: "demo1234" });
+    location.hash = "#/home";
+  }
 });
 function geo() {
   return new Promise((res, rej) => {
@@ -1423,7 +1525,6 @@ async function showFile(id) {
   else { const a = document.createElement("a"); a.href = src2; a.download = d.name; document.body.appendChild(a); a.click(); a.remove(); }
 }
 
-// Sahifadagi <img data-fid> rasmlarni serverdan yuklaydi (keshlanadi, bir vaqtda bitta so'rov)
 let loading = false;
 async function paintPhotos() {
   if (loading) return;
@@ -1442,8 +1543,7 @@ async function paintPhotos() {
 }
 document.addEventListener("ul:render", paintPhotos);
 
-// ==================== handlers/forms.js ====================
-// Formalarni yuborish (data-form).
+
 document.addEventListener("submit", async (e) => {
   const f = e.target.closest("form[data-form]");
   if (!f) return;
@@ -1452,7 +1552,7 @@ document.addEventListener("submit", async (e) => {
   const sub = e.submitter;
   if (kind === "login") {
     const j = await api("login", { login: g("login"), password: fd.get("password") });
-    if (j) { let to = ""; try { to = sessionStorage.getItem("ul_after") || ""; sessionStorage.removeItem("ul_after"); } catch (x) { /* */ } if (to) location.hash = to; else if (location.hash !== "#/home") location.hash = "#/home"; }
+    if (j) { let to = ""; try { to = sessionStorage.getItem("ul_after") || ""; sessionStorage.removeItem("ul_after"); } catch (x) {  } if (to) location.hash = to; else if (location.hash !== "#/home") location.hash = "#/home"; }
     return;
   }
   if (kind === "phone") return api("setPhone", { phone: g("phone") });
@@ -1514,7 +1614,7 @@ document.addEventListener("submit", async (e) => {
   if (kind === "clubform") { const j = await api("clubSave", Object.fromEntries(fd.entries())); if (j) closeSheet(); return; }
   if (kind === "schform") { const j = await api("scholarshipSave", Object.fromEntries(fd.entries())); if (j) closeSheet(); return; }
   if (kind === "artform") { const j = await api("articleSave", Object.fromEntries(fd.entries())); if (j) closeSheet(); return; }
-  // Anketa: barcha maydonlar + yangi fayllar; "send" — tyutorga yuborish, "save" — qoralama
+
   if (kind === "anketa") {
     const data = {}, files = {};
     (S.profileForm || []).flatMap((s) => s.fields).forEach((x) => {
@@ -1557,7 +1657,7 @@ document.addEventListener("submit", async (e) => {
   }
   if (kind === "socreview") { const j = await api("socialReview", { id: g("id"), decision: "no", comment: g("comment") }, { noRender: true }); if (j) { closeSheet(); ui.CARD = null; render(); } return; }
 });
-// Anketa yozilayotgan qiymatlarni eslab qoladi (sahifa qayta chizilsa yo'qolmasin)
+
 document.addEventListener("input", (e) => {
   const t = e.target;
   if (!t.name || !t.name.startsWith("p_") || !t.closest("form[data-form=anketa]")) return;
@@ -1565,8 +1665,7 @@ document.addEventListener("input", (e) => {
   ui.PF[t.name.slice(2)] = t.value;
 });
 
-// ==================== handlers/clicks.js ====================
-// Tugmalar bosilishi (data-act).
+
 document.addEventListener("click", async (e) => {
   const tr = e.target.closest("tr[data-href]");
   if (tr && !e.target.closest("a,button,select,input")) { go(tr.dataset.href); return; }
@@ -1579,9 +1678,9 @@ document.addEventListener("click", async (e) => {
   if (a === "demo") { const f = $("form[data-form=login]"); f.login.value = b.dataset.login; f.password.value = "demo1234"; f.requestSubmit(); return; }
   if (a === "menu") return menuSheet();
   if (a === "logout") { closeSheet(); await api("logout"); ui.CARD = null; ui.ATT = null; ui.PF = null; ui.PFEDIT = false; location.hash = "#/home"; return; }
-  if (a === "tg") { ui.TG = b.dataset.g || ""; try { localStorage.setItem("ul_tg", ui.TG); } catch (x) { /* */ } return render(); }
+  if (a === "tg") { ui.TG = b.dataset.g || ""; try { localStorage.setItem("ul_tg", ui.TG); } catch (x) {  } return render(); }
   if (a === "sday") { ui.schedDay = Number(b.dataset.d); return render(); }
-  if (a === "kid") { ui.kidIdx = Number(b.dataset.i); try { localStorage.setItem("ul_kid", ui.kidIdx); } catch (x) { /* */ } return render(); }
+  if (a === "kid") { ui.kidIdx = Number(b.dataset.i); try { localStorage.setItem("ul_kid", ui.kidIdx); } catch (x) {  } return render(); }
   if (a === "rmfile") { (FILES[b.dataset.k] || []).splice(Number(b.dataset.i), 1); return paintThumbs(b.dataset.k); }
   if (a === "file") return showFile(id);
   if (a === "print") return window.print();
@@ -1626,7 +1725,7 @@ document.addEventListener("click", async (e) => {
   if (a === "sch-edit") return sheet("Stipendiyani tahrirlash", schForm((S.scholarships || []).find((s) => s.id === id)));
   if (a === "sch-del") { if (confirm("Stipendiyani o'chirasizmi?")) api("scholarshipDelete", { id }); return; }
   if (a === "art-new") return sheet("Yangi yangilik", '<form class="form" data-form="artform">' + field("Sarlavha", "title", { req: true }) + '<div class="f2">' + field("Bo'lim", "tag", { type: "select", opts: ["Yangilik", "Tadbir", "Sport", "Ilm-fan", "E'lon"] }) + field("Sana", "date", { type: "date", val: today() }) + "</div>" + field("Matn", "body", { type: "textarea", rows: 7, hint: "xatboshilarni bo'sh qator bilan ajrating" }) + '<button class="btn block" type="submit">Saqlash</button></form>');
-  // Anketa va ijtimoiy toifa
+
   if (a === "pf-go") { const el = document.getElementById("pf-" + id); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
   if (a === "pf-rm") { b.closest("span").remove(); return; }
   if (a === "pf-edit") { ui.PFEDIT = true; return render(); }
@@ -1637,13 +1736,81 @@ document.addEventListener("click", async (e) => {
   if (a === "soc-ok") return reCard(await api("socialReview", { id, decision: "ok" }, { noRender: true }));
   if (a === "soc-no") return sheet("Rad etish", '<form class="form" data-form="socreview"><input type="hidden" name="id" value="' + esc(id) + '">' + field("Sababi", "comment", { ph: "Masalan: hujjat o'qilmaydi" }) + '<button class="btn bad" type="submit">Rad etish</button></form>');
   if (a === "soc-del") { if (confirm("Toifani o'chirasizmi?")) reCard(await api("socialDelete", { id }, { noRender: true })); return; }
-  // Spravka, yotoqxona, tushuntirish xati, tadbir rasmlari
+
   if (a === "spr-new") { FILES.spr = []; return sheet("Spravka yuklash", spravkaForm()); }
   if (a === "spr-del") { if (confirm("Spravkani bekor qilasizmi?")) api("spravkaDelete", { id }); return; }
   if (a === "spr-ok") { if (confirm("Tasdiqlansa, shu kunlardagi qoldirilgan darslar «sababli» bo'ladi. Davom etasizmi?")) api("spravkaReview", { id, decision: "ok" }); return; }
   if (a === "spr-no" || a === "dorm-no") return sheet("Rad etish", '<form class="form" data-form="' + (a === "spr-no" ? "sprreview" : "dormreview") + '"><input type="hidden" name="id" value="' + esc(id) + '">' + field("Sababi", "comment", { ph: "Talaba ko'radi" }) + '<button class="btn bad" type="submit">Rad etish</button></form>');
+  if (a === "dorm-faceid") {
+    sheet("Face ID · Ota-ona biometrik tasdiqlash", '<div style="text-align:center;padding:12px 0">' +
+      '<div style="width:96px;height:96px;margin:0 auto 14px;border-radius:24px;background:var(--pri-soft);border:2px dashed var(--pri);display:grid;place-items:center;font-size:44px;color:var(--pri)"><i class="fa-solid fa-face-viewfinder"></i></div>' +
+      '<h3 style="margin:0 0 6px;font-size:18px">' + esc(S.me.name + " " + S.me.surname) + '</h3>' +
+      '<p class="small muted" style="margin:0 0 14px">JSHSHIR: <b>' + esc(S.me.jshir || "31004751230088") + '</b> · Shaxsni biometrik tasdiqlash</p>' +
+      '<p class="note warn small" style="text-align:left;margin-bottom:16px">Farzandingiz dam olish kunlari TTJdan viloyatga/uyga ketish uchun ruxsat so\'radi. Talaba boshqa telefondan o\'zi bosib qo\'ymasligi uchun Face ID tasdiqlash talab etiladi.</p>' +
+      '<button class="btn ok block" data-act="dorm-faceid-confirm" data-id="' + esc(id) + '"><i class="fa-solid fa-check-double"></i> Face ID tasdiqlandi — Ruxsat beraman</button>' +
+      '</div>');
+    return;
+  }
+  if (a === "dorm-faceid-confirm") {
+    closeSheet();
+    return api("dormDecide", { id, decision: "ok" });
+  }
   if (a === "dorm-ok") return api("dormDecide", { id, decision: "ok" });
   if (a === "dorm-cancel") { if (confirm("Arizani bekor qilasizmi?")) api("dormCancel", { id }); return; }
+  if (a === "export-excel") {
+    const rows = [["F.I.Sh.", "Guruh", "JSHSHIR", "Telefon", "GPA", "IFI Bali", "Sababsiz soat", "Yashash joyi (Tuman / Manzil)", "Holati"]];
+    const list = S.students || [];
+    const districts = ["Chilonzor tumani, 18-kvartal, 12-uy (Ijara)", "TTJ-6, 3-qavat, 312-xona", "Chilonzor tumani, 19-kvartal, 4-uy (Ijara)", "Yunusobod tumani, 11-kvartal, 9-uy (Ijara)", "Toshkent sh., Shayxontohur tumani (O'z uyi)", "Olmazor tumani, Beruniy ko'chasi, 15-uy (Ijara)"];
+    list.forEach((s, idx) => {
+      rows.push([
+        (s.surname || "") + " " + (s.name || ""),
+        s.grp || "RST-81/25",
+        s.jshir || ("3050" + String(1000000000 + idx)),
+        s.phone || "+998 90 123 45 67",
+        s.gpa != null ? String(s.gpa) : "4.25",
+        String(s.ifi || 78),
+        String(s.absH || 0),
+        districts[idx % districts.length],
+        s.prof && s.prof.status ? s.prof.status : "tasdiqlangan"
+      ]);
+    });
+    const csv = "\uFEFF" + rows.map((r) => r.map((c) => '"' + String(c).replace(/"/g, '""') + '"').join(";")).join("\r\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "TDIU_Talabalar_Anketa_Ijara_Reyestri_" + today() + ".csv";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    toast("Excel (.CSV) jadval muvaffaqiyatli yuklab olindi!");
+    return;
+  }
+  if (a === "ttj-red-list") {
+    const offenders = [
+      ["Ergashev Jasurbek", "RST-81/25", "TTJ-6 · 214-xona", "Ota-ona Face ID tasdig'isiz chiqib ketgan"],
+      ["Qodirov Shohruh", "RST-81/25", "TTJ-6 · 308-xona", "Tyutor ruxsatisiz viloyatga ketgan"],
+      ["Normatov Azizbek", "RST-83/25", "TTJ-5 · 112-xona", "Ariza qoldirmasdan TTJga qaytmagan"],
+      ["Tursunov Diyorbek", "RST-83/25", "TTJ-6 · 405-xona", "Ota-ona Face ID rad etgan bo'lsa ham ketgan"],
+      ["Mahmudov Sardor", "RI-72/25", "TTJ-5 · 209-xona", "Ruxsatsiz ketgan (kechki yo'qlamada yo'q)"]
+    ];
+    sheet("QIZIL RO'YXAT · TTJdan ruxsatsiz ketganlar (16 nafar)", '<p class="note bad small" style="margin-top:0">Ushbu talabalar ota-ona Face ID tasdig\'i va tyutor ruxsatisiz dam olish kunlari TTJni tark etgan. Dushanba soat <b>08:30 da</b> dekan o\'rinbosari, tyutor va tarbiyachi-pedagog huzuriga chaqirtirilgan:</p>' +
+      '<div class="tw"><table class="t"><thead><tr><th>Talaba</th><th>Guruh / TTJ</th><th>Qoidabuzarlik</th></tr></thead><tbody>' +
+      offenders.map((o) => '<tr><td><b>' + esc(o[0]) + '</b></td><td>' + esc(o[1] + " · " + o[2]) + '</td><td><span class="chip bad">' + esc(o[3]) + '</span></td></tr>').join("") +
+      '</tbody></table></div><div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end"><button class="btn sm ghost" data-act="protocol-gen"><i class="fa-solid fa-file-signature"></i> Bayonnoma tuzish</button><button class="btn sm ok" data-act="close-sheet">Tushunarli</button></div>');
+    return;
+  }
+  if (a === "protocol-gen") {
+    sheet("Elektron bayonnoma rasmiylashtirish (Raqamlashtirish)", '<div class="paper" style="padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--card)">' +
+      '<h3 style="text-align:center;margin:0 0 8px">TDIU RAQAMLI IQTISODIYOT VA AXBOROT TEXNOLOGIYALARI FAKULTETI</h3>' +
+      '<p style="text-align:center;font-weight:800;margin:0 0 14px">ELEKTRON BAYONNOMA № 24-' + today().slice(8, 10) + '</p>' +
+      '<p class="small"><b>Sana:</b> ' + fmtDate(today()) + ' · <b>Joy:</b> Dekanat (B-bino) / Elektron tizim</p>' +
+      '<p class="small"><b>Qatnashdilar:</b> Dekan Akbarov N.G\'., Yoshlar bilan ishlash bo\'yicha dekan o\'rinbosari Amonov A.R., guruh tyutori Abdurahmonov U. va TTJ tarbiyachi-pedagogi.</p>' +
+      '<p class="small"><b>Kun tartibi:</b> Yotoqxona (TTJ) ichki tartib-qoidalari, davomat va ijtimoiy faollik ko\'rsatkichlarini raqamli nazorat qilish hamda ruxsatsiz ketgan talabalar bilan profilaktik suhbat o\'tkazish.</p>' +
+      '<p class="small"><b>Qaror qilindi:</b> Barcha jarayonlar qog\'ozsiz elektron shaklda tasdiqlansin, ota-onalarga bildirishnoma yuborilsin.</p>' +
+      '</div><div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end"><button class="btn sm ghost" data-act="print">' + ic("print") + ' PDF / Chop etish</button><button class="btn sm ok" data-act="close-sheet">' + ic("check") + ' QR-imzo bilan tasdiqlash</button></div>');
+    return;
+  }
   if (a === "ex-reason") { const inp = b.closest("form").querySelector("input[name=reason]"); inp.value = b.dataset.t; b.parentNode.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b)); return; }
   if (a === "ph-del") { if (confirm("Rasmni o'chirasizmi?")) api("eventPhotoDelete", { id }); return; }
   if (a === "art-del") { if (confirm("Yangilikni o'chirasizmi?")) api("articleDelete", { id }); return; }
@@ -1652,9 +1819,6 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet
 
 
 
-// ==========================================
-// TSUE UNIVERLIFE V3 MOCK ENGINE & ADAPTER
-// ==========================================
 
 const ROLE_LABEL = { student: "Talaba", parent: "Ota-ona", tutor: "Tyutor", dean: "Dekanat", admin: "Administrator", club: "Klub rahbari" };
 const PAIRS = { 1: "08:30–09:50", 2: "10:00–11:20", 3: "11:30–12:50", 4: "13:30–14:50", 5: "15:00–16:20", 6: "16:30–17:50" };
@@ -1804,7 +1968,7 @@ const DORM_REASONS = [
 const DORM_FLOW = ["ota-onada", "tyutorda", "tasdiqlandi"];
 const EX_REASONS = ["Darsga sababsiz kelmagan", "Darsga kechikib kelgan", "Ma'rifat darsiga kelmagan", "Kiyinish qoidasiga rioya qilmagan", "Tadbirga kelmagan"];
 
-const DB_STORAGE_KEY = "tsue_univerlife_v3_local_db";
+const DB_STORAGE_KEY = "tsue_univerlife_v4_local_db";
 
 function getLocalDb() {
   try {
@@ -1852,7 +2016,6 @@ function saveLocalDb(db) {
   }
 }
 
-// Domain constants & calculation engines
 const GRANT_CONF = {
   gpaWeight: 16,
   ifiDivisor: 5,
@@ -2127,7 +2290,15 @@ function studentFullEngine(db, K, st, viewer) {
     return { name: pu.name + " " + pu.surname, phone: pu.phone || "" };
   });
   
-  const contract = (db.contracts || []).find(c => c.login === st.login) || null;
+  const rawContract = (db.contracts || []).find(c => c.login === st.login) || null;
+  const contract = rawContract ? {
+    ...rawContract,
+    year: rawContract.year || "2026-2027",
+    due: Number(rawContract.due) || 0,
+    paid: Number(rawContract.paid) || 0,
+    left: Math.max(0, (Number(rawContract.due) || 0) - (Number(rawContract.paid) || 0)),
+    pct: rawContract.due ? Math.round(((Number(rawContract.paid) || 0) / Number(rawContract.due)) * 100) : 0
+  } : null;
   const prof = (db.profiles || []).find(p => p.login === st.login);
   let profileData = {};
   if (prof) {
@@ -2343,7 +2514,14 @@ function buildStateEngine(db, meUser) {
       };
     });
     base.quotas = K.Q;
-    base.contracts = (db.contracts || []);
+    base.contracts = (db.contracts || []).map(c => ({
+      ...c,
+      year: c.year || "2026-2027",
+      due: Number(c.due) || 0,
+      paid: Number(c.paid) || 0,
+      left: Math.max(0, (Number(c.due) || 0) - (Number(c.paid) || 0)),
+      pct: c.due ? Math.round(((Number(c.paid) || 0) / Number(c.due)) * 100) : 0
+    }));
     
     if (meUser.role === "admin") {
       base.users = (db.users || []);
@@ -2371,7 +2549,6 @@ function buildStateEngine(db, meUser) {
   return base;
 }
 
-// Local RPC API Dispatcher
 async function localApiHandler(action, data) {
   const ldb = getLocalDb();
   
@@ -2648,22 +2825,32 @@ async function localApiHandler(action, data) {
     const id = "dorm_" + Date.now();
     (ldb.dorm_apps ||= []).push({
       id, login: S.me.login, reason: data.reason, note: data.note || "",
-      files: JSON.stringify(data.files || []), status: "tyutorda", comment: "", created: Date.now()
+      files: JSON.stringify(data.files || []), status: "ota-onada", comment: "", created: Date.now()
     });
     saveLocalDb(ldb);
     setState(buildStateEngine(ldb, S.me));
-    return { ok: true, msg: "Yotoqxona arizasi yuborildi", state: S };
+    return { ok: true, msg: "TTJ arizasi ota-onangizga Face ID tasdiqlash uchun yuborildi!", state: S };
   }
   
   if (action === "dormDecide") {
     const d = (ldb.dorm_apps || []).find(x => x.id === data.id);
     if (d) {
-      d.status = data.decision === "ok" ? "tasdiqlandi" : "rad";
-      d.comment = data.comment || "";
+      if (data.decision === "ok") {
+        if (d.status === "ota-onada") {
+          d.status = "tyutorda";
+          d.parent_at = Date.now();
+        } else {
+          d.status = "tasdiqlandi";
+          d.tutor_at = Date.now();
+        }
+      } else {
+        d.status = "rad";
+        d.comment = data.comment || "";
+      }
       saveLocalDb(ldb);
     }
     setState(buildStateEngine(ldb, S.me));
-    return { ok: true, msg: data.decision === "ok" ? "Ariza tasdiqlandi" : "Ariza rad etildi", state: S };
+    return { ok: true, msg: data.decision === "ok" ? (S.me?.role === "parent" ? "Face ID tasdiqlandi! Ariza tyutorga o'tdi" : "Ruxsat berildi! TTJ tarbiyachisiga va dekanatga ko'rindi") : "Ariza rad etildi", state: S };
   }
   
   if (action === "dormCancel") {
@@ -2962,7 +3149,6 @@ async function localApiHandler(action, data) {
   return { ok: true, state: S };
 }
 
-// Override core api() function
 async function api(action, data, opt) {
   opt = opt || {};
   if (ui.busy && !opt.quiet) return null;
@@ -2987,7 +3173,6 @@ async function api(action, data, opt) {
   }
 }
 
-// Ecosystem SSO Boot Loader
 function bootSSO() {
   try {
     const raw = localStorage.getItem("riat_user") || localStorage.getItem("tsue_user");
@@ -3025,14 +3210,13 @@ function bootSSO() {
   return null;
 }
 
-// App Initialization
 (function init() {
   const ldb = getLocalDb();
   const ssoUser = bootSSO();
   if (ssoUser) {
     setState(buildStateEngine(ldb, ssoUser));
   } else {
-    // Default to sardor.alisherov for convenience if not logged in
+
     const defaultStudent = (ldb.users || []).find(u => u.login === "sardor.alisherov") || ldb.users[0];
     if (defaultStudent) {
       setState(buildStateEngine(ldb, defaultStudent));

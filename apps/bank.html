@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<!-- TOP BAR -->
+
 <header class="bank-topbar">
   <div class="bank-topbar-inner">
     <a href="/ecosystem.html" class="bank-logo-wrap" title="Вернуться в экосистему">
@@ -45,7 +45,7 @@
   </div>
 </header>
 
-<!-- NOTIFICATION SIDEBAR -->
+
 <div class="bank-notif-sidebar" id="bankNotifSidebar">
   <div class="bank-notif-head">
     <h3><i class="fa-solid fa-bell" style="color:var(--bank-blue);margin-right:8px"></i> Уведомления</h3>
@@ -57,10 +57,10 @@
   </div>
 </div>
 
-<!-- MAIN -->
+
 <main class="bank-main">
 
-  <!-- ── ГОСТЬ ── -->
+  
   <div id="bankGuestState" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;gap:20px">
     <div style="width:80px;height:80px;background:linear-gradient(135deg,#002d62,#004899);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:34px;color:#fff;box-shadow:0 8px 32px rgba(0,72,153,.3)"><i class="fa-solid fa-landmark"></i></div>
     <div>
@@ -70,12 +70,12 @@
     <button class="bank-btn bank-btn-blue" style="font-size:15px;padding:14px 32px" onclick="openBankAuth()"><i class="fa-solid fa-right-to-bracket"></i> Войти через RIAT Ecosystem</button>
   </div>
 
-  <!-- ── ОСНОВНОЕ СОДЕРЖИМОЕ ── -->
+  
   <div id="bankLoggedContent" style="display:none">
 
-    <!-- DASHBOARD -->
+    
     <div class="bank-section active" id="section-dashboard">
-      <!-- HERO -->
+      
       <div class="bank-hero" id="bankHeroCard">
         <div class="bank-hero-inner">
           <div class="bank-hero-left">
@@ -98,7 +98,55 @@
         </div>
       </div>
 
-      <!-- STATS (admin only) -->
+      <div class="bank-panel" style="margin-bottom:24px;border:1px solid rgba(245,158,11,.35);background:linear-gradient(135deg,#fffbeb,#ffffff)">
+        <div class="bank-panel-head" style="border-bottom:1px solid rgba(245,158,11,.2)">
+          <div class="bank-panel-title" style="color:#92400e"><i class="fa-solid fa-coins" style="color:#d97706"></i> Equity (EQT) Coin — Sarflash yo'nalishlari (3 ta asosiy imkoniyat)</div>
+          <span class="bank-badge bank-badge-award">TDIU Raqamli Valyutasi</span>
+        </div>
+        <div class="bank-panel-body" style="padding:18px">
+          <div style="font-size:13px;color:#475569;margin-bottom:16px;line-height:1.5">
+            Talabalar yil davomida QR-kod orqali tadbirlarda, klublarda va olimpiadalarda qatnashib to'plagan <b>Equity (EQT)</b> coinlarini quyidagi <b>3 ta rasmiy yo'nalishda</b> bevosita sarflashlari mumkin:
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+            <div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 12px rgba(0,0,0,.03)">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                  <span style="width:40px;height:40px;border-radius:10px;background:#eff6ff;color:#1d4ed8;display:flex;align-items:center;justify-content:center;font-size:18px"><i class="fa-solid fa-shirt"></i></span>
+                  <span style="background:#dbeafe;color:#1e40af;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:800">250 EQ</span>
+                </div>
+                <div style="font-weight:800;font-size:15px;color:#0f172a;margin-bottom:6px">1. Universitet logotipli sovg'alar</div>
+                <div style="font-size:12.5px;color:#64748b;line-height:1.45;margin-bottom:14px">TDIU va RIAT brendli hoodie, futbolka, termos, kepka va esdalik sovg'alar to'plami (Merch Shop).</div>
+              </div>
+              <button class="bank-btn bank-btn-blue bank-btn-sm" style="width:100%;justify-content:center" onclick="redeemEquityReward(250, 'TDIU Brendli Merch (Hoodie + Termos)')"><i class="fa-solid fa-bag-shopping"></i> Xarid qilish (250 EQ)</button>
+            </div>
+            <div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 12px rgba(0,0,0,.03)">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                  <span style="width:40px;height:40px;border-radius:10px;background:#ecfdf5;color:#047857;display:flex;align-items:center;justify-content:center;font-size:18px"><i class="fa-solid fa-utensils"></i></span>
+                  <span style="background:#d1fae5;color:#065f46;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:800">80 EQ</span>
+                </div>
+                <div style="font-weight:800;font-size:15px;color:#0f172a;margin-bottom:6px">2. Ovqatlanish shaxobchalari</div>
+                <div style="font-size:12.5px;color:#64748b;line-height:1.45;margin-bottom:14px">Universitet oshxonalari, bufet va kampus qahvaxonalarida tushlik uchun QR-vaucher.</div>
+              </div>
+              <button class="bank-btn bank-btn-green bank-btn-sm" style="width:100%;justify-content:center" onclick="redeemEquityReward(80, 'Universitet oshxonasi — Tushlik QR-vaucheri')"><i class="fa-solid fa-qrcode"></i> Vaucher olish (80 EQ)</button>
+            </div>
+            <div style="background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 12px rgba(0,0,0,.03)">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                  <span style="width:40px;height:40px;border-radius:10px;background:#fef3c7;color:#b45309;display:flex;align-items:center;justify-content:center;font-size:18px"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                  <span style="background:#fde68a;color:#92400e;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:800">1 000 EQ</span>
+                </div>
+                <div style="font-weight:800;font-size:15px;color:#0f172a;margin-bottom:6px">3. Kontrakt to'loviga chegirma</div>
+                <div style="font-size:12.5px;color:#64748b;line-height:1.45;margin-bottom:14px">To'лов-shartnoma (kontrakt) summasining ma'lum qismini qoplash uchun rasmiy sertifikat.</div>
+              </div>
+              <button class="bank-btn bank-btn-gold bank-btn-sm" style="width:100%;justify-content:center" onclick="redeemEquityReward(1000, 'Kontrakt to\'loviga imtiyozli chegirma sertifikati')"><i class="fa-solid fa-certificate"></i> Sertifikat olish (1000 EQ)</button>
+            </div>
+          </div>
+          <div id="eqRedeemMsg" style="display:none;margin-top:14px"></div>
+        </div>
+      </div>
+
+      
       <div id="bankAdminStats" style="display:none">
         <div class="bank-stats-row">
           <div class="bank-stat-card">
@@ -121,7 +169,7 @@
       </div>
 
       <div class="bank-grid">
-        <!-- LEFT: recent transactions -->
+        
         <div>
           <div class="bank-panel">
             <div class="bank-panel-head">
@@ -133,7 +181,7 @@
             </div>
           </div>
 
-          <!-- Pending approvals for admin -->
+          
           <div class="bank-panel" id="dashPendingPanel" style="display:none">
             <div class="bank-panel-head">
               <div class="bank-panel-title"><i class="fa-solid fa-hourglass-half" style="color:var(--bank-orange)"></i> Заявки на одобрение <span class="bank-badge bank-badge-pending" id="dashPendingCount">0</span></div>
@@ -142,7 +190,7 @@
           </div>
         </div>
 
-        <!-- RIGHT: Quick actions + mini card -->
+        
         <div>
           <div class="bank-panel">
             <div class="bank-panel-head">
@@ -167,7 +215,7 @@
             </div>
           </div>
 
-          <!-- Admin quick credit panel -->
+          
           <div class="bank-panel" id="adminQuickCredit" style="display:none">
             <div class="bank-panel-head">
               <div class="bank-panel-title"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--bank-gold)"></i> Быстрое начисление</div>
@@ -202,7 +250,7 @@
       </div>
     </div>
 
-    <!-- TRANSFER -->
+    
     <div class="bank-section" id="section-transfer">
       <div style="max-width:640px;margin:0 auto">
         <div style="margin-bottom:24px">
@@ -249,7 +297,7 @@
       </div>
     </div>
 
-    <!-- HISTORY -->
+    
     <div class="bank-section" id="section-history">
       <div style="margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
         <div>
@@ -285,7 +333,7 @@
       </div>
     </div>
 
-    <!-- ADMIN: BANK CENTER -->
+    
     <div class="bank-section" id="section-admin">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap">
         <div style="background:linear-gradient(135deg,var(--bank-navy),var(--bank-blue));width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;flex-shrink:0"><i class="fa-solid fa-shield-halved"></i></div>
@@ -297,7 +345,7 @@
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px">
-        <!-- All Accounts -->
+        
         <div class="bank-panel" style="margin-bottom:0">
           <div class="bank-panel-head">
             <div class="bank-panel-title"><i class="fa-solid fa-users"></i> Все счета</div>
@@ -306,7 +354,7 @@
           <div class="bank-panel-body" id="adminAccountsList" style="max-height:380px;overflow-y:auto;padding:8px 14px"></div>
         </div>
 
-        <!-- Pending TX -->
+        
         <div class="bank-panel" style="margin-bottom:0">
           <div class="bank-panel-head">
             <div class="bank-panel-title"><i class="fa-solid fa-gavel"></i> Очередь одобрений <span class="bank-badge bank-badge-pending" id="adminPendingCount">0</span></div>
@@ -316,7 +364,7 @@
         </div>
       </div>
 
-      <!-- Full Ledger -->
+      
       <div class="bank-panel">
         <div class="bank-panel-head">
           <div class="bank-panel-title"><i class="fa-solid fa-book"></i> Главная книга (Ledger)</div>
@@ -347,10 +395,10 @@
       </div>
     </div>
 
-  </div><!-- /bankLoggedContent -->
+  </div>
 </main>
 
-<!-- AUTH MODAL -->
+
 <div class="bank-modal-overlay" id="bankAuthModal">
   <div class="bank-modal">
     <div class="bank-modal-head">
@@ -376,7 +424,7 @@
   </div>
 </div>
 
-<!-- TRANSFER MODAL (quick) -->
+
 <div class="bank-modal-overlay" id="bankTransferModal">
   <div class="bank-modal">
     <div class="bank-modal-head">
@@ -406,7 +454,7 @@
   </div>
 </div>
 
-<!-- REQUEST MODAL -->
+
 <div class="bank-modal-overlay" id="bankRequestModal">
   <div class="bank-modal">
     <div class="bank-modal-head">
@@ -432,7 +480,7 @@
   </div>
 </div>
 
-<!-- FREEZE MODAL -->
+
 <div class="bank-modal-overlay" id="bankFreezeModal">
   <div class="bank-modal">
     <div class="bank-modal-head" style="background:linear-gradient(135deg,#7f1d1d,#dc2626)">
@@ -455,7 +503,7 @@
   </div>
 </div>
 
-<!-- REJECT MODAL -->
+
 <div class="bank-modal-overlay" id="bankRejectModal">
   <div class="bank-modal">
     <div class="bank-modal-head" style="background:linear-gradient(135deg,#7f1d1d,#dc2626)">
@@ -478,16 +526,21 @@
 <script src="/js/bank.js"></script>
 <script>
 const BANK_ACCOUNTS_STATIC = {
-  'tsue-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', id: 'TSUE-Monarch' },
-  'riat-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', id: 'TSUE-Monarch' },
-  'monarch':      { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', id: 'TSUE-Monarch' },
-  'tsue-dekan':   { user: 'TSUE-Dekan',  pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', id: 'TSUE-Dekan' },
-  'riat-dekan':   { user: 'TSUE-Dekan',  pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', id: 'TSUE-Dekan' },
-  'dekan':        { user: 'TSUE-Dekan',  pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', id: 'TSUE-Dekan' },
-  'dilrabo':      { user: 'dilrabo',      pass: 'tutor2025',  name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', id: 'tutor-dilrabo-vahidovna' },
+  'tsue-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Rektorat · Superadmin)', role: 'Супер-администратор', id: 'TSUE-Monarch' },
+  'riat-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Rektorat · Superadmin)', role: 'Супер-администратор', id: 'TSUE-Monarch' },
+  'monarch':      { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Rektorat · Superadmin)', role: 'Супер-администратор', id: 'TSUE-Monarch' },
+  'dekanat.demo': { user: 'dekanat.demo', pass: 'dekan2026',  name: 'Akbarov Nodir G‘afurovich (Dekan)', role: 'Руководитель факультета', id: 'TSUE-Dekan' },
+  'tsue-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Akbarov Nodir G‘afurovich (Dekan)', role: 'Руководитель факультета', id: 'TSUE-Dekan' },
+  'riat-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Akbarov Nodir G‘afurovich (Dekan)', role: 'Руководитель факультета', id: 'TSUE-Dekan' },
+  'dekan':        { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Akbarov Nodir G‘afurovich (Dekan)', role: 'Руководитель факультета', id: 'TSUE-Dekan' },
+  'tyutor.demo':  { user: 'tyutor.demo',  pass: 'tutor2026',  name: 'Abdurahmonov Umar (Guruh tyutori)', role: 'Тьютор факультета', id: 'tyutor-umar' },
+  'dilrabo':      { user: 'dilrabo',      pass: 'tutor2025',  name: 'Abdurahmonov Umar (Guruh tyutori)', role: 'Тьютор факультета', id: 'tyutor-umar' },
+  'klub.demo':    { user: 'klub.demo',    pass: 'club2026',   name: "Yo'ldoshev Bahodir (Klub rahbari)", role: 'Руководитель клуба', id: 'club-bahodir' },
+  'sardor.alisherov': { user: 'sardor.alisherov', pass: 'student2026', name: "Ro'ziyev Qodirjon (Talaba · RST-81/25)", role: 'Студент', id: 'st-qodirjon' },
+  'ota.demo':     { user: 'ota.demo',     pass: 'parent2026', name: 'Shodiyev Bekmurod aka (Ota-ona)', role: 'Родитель', id: 'parent-bekmurod' },
   'teacher':      { user: 'teacher',      pass: 'teacher2025',name: 'Test Teacher', role: 'Преподаватель кафедры', id: 'teacher-main' },
-  'student-test': { user: 'student-test', pass: 'student2026',name: 'Тестовый Студент (Демо)', role: 'Студент', id: 'student-test' },
-  'parent-test':  { user: 'parent-test',  pass: 'parent2026', name: 'Тестовый Родитель (Демо)', role: 'Родитель', id: 'parent-test' },
+  'student-test': { user: 'student-test', pass: 'student2026',name: "Ro'ziyev Qodirjon (Talaba · RST-81/25)", role: 'Студент', id: 'st-qodirjon' },
+  'parent-test':  { user: 'parent-test',  pass: 'parent2026', name: 'Shodiyev Bekmurod aka (Ota-ona)', role: 'Родитель', id: 'parent-bekmurod' },
   'at_394210001': { user: 'at_394210001',pass: 'student2026', name: 'МАХМУДЖОНОВА ХУШНОРА МУХТОРЖОН КИЗИ', role: 'Студент', id: 'st_394210001' }
 };
 
@@ -496,10 +549,43 @@ let bankIsAdmin = false;
 
 function bankGetUser() {
   try {
-    const raw = localStorage.getItem('tsue_auth_user') || localStorage.getItem('bank_auth_user');
-    if (raw) return JSON.parse(raw);
+    const raw = localStorage.getItem('riat_user') || localStorage.getItem('tsue_auth_user') || localStorage.getItem('bank_auth_user');
+    if (raw) {
+      const u = JSON.parse(raw);
+      const loginKey = (u.login || u.username || u.user || u.id || '').toLowerCase();
+      if (BANK_ACCOUNTS_STATIC[loginKey]) {
+        const st = BANK_ACCOUNTS_STATIC[loginKey];
+        return { id: st.id, username: st.user, name: u.name || st.name, role: u.roleTitle || u.role || st.role };
+      }
+      return {
+        id: u.id || u.login || u.username || 'st-qodirjon',
+        username: u.login || u.username || 'sardor.alisherov',
+        name: u.name || "Ro'ziyev Qodirjon",
+        role: u.roleTitle || u.role || 'Talaba'
+      };
+    }
   } catch {}
   return null;
+}
+
+function redeemEquityReward(cost, itemTitle) {
+  if (!bankCurrentUser) { openBankAuth(); return; }
+  const msgEl = document.getElementById('eqRedeemMsg');
+  const acc = EquityBank.getAccount(bankCurrentUser.id);
+  if (!acc || acc.balance < cost) {
+    showBankAlert(msgEl, 'error', 'Hisobingizda yetarli Equity (EQ) mavjud emas! Kerakli miqdor: ' + cost + ' EQ');
+    return;
+  }
+  const res = EquityBank.directDebit(bankCurrentUser.id, cost, 'Xarid / Vaucher: ' + itemTitle, bankCurrentUser);
+  if (res.ok) {
+    showBankAlert(msgEl, 'success', 'Muvaffaqiyatli расмийлаштирилди: «' + itemTitle + '» (-' + cost + ' EQ). Elektron chek: ' + res.rcpId);
+    refreshDashboard();
+    renderHistory();
+    const tx = EquityBank.findTxById(res.txId);
+    if (tx) EquityBank.openReceipt(tx);
+  } else {
+    showBankAlert(msgEl, 'error', res.error || 'Xatolik yuz berdi');
+  }
 }
 
 function bankRoleIsAdmin(user) {

@@ -1,42 +1,56 @@
-/**
- * RIAT-Messenger (Telegram Web Edition)
- * True Telegram UX: Folders, channels, double-checks, audio-visual feedback, reply & file simulation
- */
+
 
 const TG_CHANNELS = [
+  {
+    id: 'tutor-direct-umar',
+    type: 'direct',
+    folder: 'direct',
+    name: 'Abdurahmonov Umar (Guruh tyutori · RST-81/25)',
+    verified: true,
+    avatarBg: 'linear-gradient(135deg, #f59e0b, #d97706)',
+    avatarIcon: 'fa-chalkboard-user',
+    unread: 1,
+    statusText: 'в сети · +998 90 345 12 67',
+    desc: 'Ota-onalar va talabalar uchun guruh tyutori Abdurahmonov Umar bilan bevosita tezkor aloqa (davomat, TTJdan ruxsat olish, ijara xonadonlari).',
+    members: [
+      { name: 'Abdurahmonov Umar', role: 'Guruh tyutori (RST-81/25, RST-83/25)', status: 'в сети' },
+      { name: 'Shodiyev Bekmurod aka', role: "Ota-ona (Ro'ziyev Qodirjonning otasi)", status: 'в сети' },
+      { name: "Ro'ziyev Qodirjon", role: 'Talaba (RST-81/25)', status: 'был(а) недавно' }
+    ]
+  },
   {
     id: 'dekanat-channel',
     type: 'channel',
     folder: 'channels',
-    name: 'Деканат · Официальный канал',
+    name: 'Dekanat · Raqamli iqtisodiyot va AT fakulteti',
     verified: true,
     avatarBg: 'linear-gradient(135deg, #004899, #00224d)',
     avatarIcon: 'fa-bullhorn',
     unread: 2,
-    statusText: '1,420 подписчиков',
-    desc: 'Официальные приказы руководства факультета, академические дедлайны, распоряжения и новости.',
+    statusText: '2,450 obunachi',
+    desc: 'Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti dekanati rasmiy axborot kanali.',
     members: [
-      { name: 'Акбаров Нодир Гафурович', role: 'Декан факультета', status: 'был(а) недавно' },
-      { name: 'Амонов Алишер Раджаб угли', role: 'Зам. декана по молодёжи', status: 'в сети' },
-      { name: 'Юлдошев Улугбек Аскар угли', role: 'Зам. декана по учёбе', status: 'был(а) 15 минут назад' }
+      { name: 'Akbarov Nodir G‘afurovich', role: 'Fakultet dekani (+998 71 245 42 43)', status: 'был(а) недавно' },
+      { name: 'Amonov Alisher Radjab o‘g‘li', role: "Yoshlar bilan ishlash bo'yicha dekan o'rinbosari (+998 71 239 01 29)", status: 'в сети' },
+      { name: 'Yo‘ldoshev Ulug‘bek Asqar o‘g‘li', role: "O'quv ishlari bo'yicha dekan o'rinbosari", status: 'был(а) 15 минут назад' }
     ]
   },
   {
-    id: 'academic-group-711',
+    id: 'academic-group-rst81',
     type: 'group',
     folder: 'groups',
-    name: 'Группа 711-23 «Цифровая Экономика»',
+    name: 'Guruh RST-81/25 «Raqamli iqtisodiyot»',
     verified: false,
     avatarBg: 'linear-gradient(135deg, #0284c7, #0369a1)',
     avatarIcon: 'fa-graduation-cap',
     unread: 0,
-    statusText: '28 участников, 4 в сети',
-    desc: 'Официальный академический чат учебной группы 711-23. Тьютор: Dilrabo Vahidovna.',
+    statusText: '28 ishtirokchi, 6 tasi tarmoqda',
+    desc: 'RST-81/25 o‘quv guruhi rasmiy akademik chati. Guruh tyutori: Abdurahmonov Umar.',
     members: [
-      { name: 'Dilrabo Vahidovna', role: 'Тьютор группы', status: 'в сети' },
-      { name: 'Каримов Азиз', role: 'Староста группы', status: 'в сети' },
-      { name: 'Алимов Сардор', role: 'Студент', status: 'был(а) недавно' },
-      { name: 'Рахимова Нигора', role: 'Студент', status: 'была(а) час назад' }
+      { name: 'Abdurahmonov Umar', role: 'Guruh tyutori', status: 'в сети' },
+      { name: "Ro'ziyev Qodirjon", role: 'Talaba (RST-81/25)', status: 'в сети' },
+      { name: 'Karimov Aziz', role: 'Guruh sardori', status: 'в сети' },
+      { name: 'Rahimova Nigora', role: 'Talaba', status: 'была(а) час назад' }
     ]
   },
   {
@@ -56,31 +70,16 @@ const TG_CHANNELS = [
     ]
   },
   {
-    id: 'tutor-direct-dilrabo',
-    type: 'direct',
-    folder: 'direct',
-    name: 'Dilrabo Vahidovna (Тьютор)',
-    verified: false,
-    avatarBg: 'linear-gradient(135deg, #f59e0b, #d97706)',
-    avatarIcon: 'fa-chalkboard-user',
-    unread: 0,
-    statusText: 'в сети',
-    desc: 'Персональная оперативная консультация с наставником учебной группы факультета.',
-    members: [
-      { name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', status: 'в сети' }
-    ]
-  },
-  {
     id: 'bot-equity-ai',
     type: 'bot',
     folder: 'bots',
-    name: 'RIAT Academic AI Bot',
+    name: 'RIAT Academic AI & Equity Bot',
     verified: true,
     avatarBg: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
     avatarIcon: 'fa-robot',
     unread: 0,
     statusText: 'бот',
-    desc: 'Виртуальный ассистент расписания, начисления баллов Equity и справок с места учёбы.',
+    desc: 'Виртуальный ассистент расписания, начисления баллов Equity (EQT) и QR-пропусков ТТЖ.',
     members: [
       { name: 'RIAT Academic Bot', role: 'Официальный Telegram-бот', status: 'всегда в сети' }
     ]
@@ -88,42 +87,68 @@ const TG_CHANNELS = [
 ];
 
 const DEFAULT_TG_MESSAGES = {
+  'tutor-direct-umar': [
+    {
+      id: 301,
+      author: 'Abdurahmonov Umar',
+      authorRole: 'Guruh tyutori · RST-81/25',
+      text: "Assalomu alaykum, Bekmurod aka! Farzandingiz <b>Ro'ziyev Qodirjon</b> (RST-81/25) sentyabr oyidan beri <b>36 soat (18 para)</b> sababsiz dars qoldirgan. Shuningdek, shanba-yakshanba kunlari TTJ-5 yotoqxonasidan uyga (Samarqandga) borib kelish uchun elektron ariza yubordi. Ota-ona profilidan <b>Face ID</b> orqali tasdiqlab bersangiz, men ham yashil tugmani bosib ruxsat beraman.",
+      time: '11:30',
+      out: false
+    },
+    {
+      id: 302,
+      author: 'Shodiyev Bekmurod aka',
+      authorRole: 'Ota-ona',
+      text: "Va alaykum assalom, Umarjon! Xabar uchun katta rahmat. Hozir Ota-ona profilidan Face ID orqali ruxsatnomani tasdiqladim. Davomati va 6 mln so'm kontrakt qoldig'i bo'yicha bugun o'zi bilan gaplashib, chora ko'raman.",
+      time: '11:42',
+      out: true
+    },
+    {
+      id: 303,
+      author: 'Abdurahmonov Umar',
+      authorRole: 'Guruh tyutori · RST-81/25',
+      text: "Rahmat, Bekmurod aka! Tizimda sizning Face ID tasdig'ingiz <b>Yashil</b> bo'lib ko'rindi. Men ham TTJ tarbiyachi-pedagogi va dekan o'rinbosari uchun elektron ruxsatnomani tasdiqladim.",
+      time: '11:45',
+      out: false
+    }
+  ],
   'dekanat-channel': [
     {
       id: 1,
-      author: 'Деканат RIAT',
-      authorRole: 'Администрация',
-      text: ' <b>Уважаемые студенты и преподаватели факультета Цифровой Экономики!</b><br><br>Напоминаем, что весенний модуль рубежного контроля завершается 25 числа. Просьба своевременно проверить академические баллы в платформе HEMIS.',
+      author: 'Akbarov Nodir G‘afurovich',
+      authorRole: 'Fakultet dekani',
+      text: '<b>Hurmatli Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti talabalari hamda ota-onalar!</b><br><br>Fakultetimizda barcha jarayonlar to‘liq raqamlashtirildi: ota-onalar JSHSHIR va Face ID orqali farzandining davomati, fanlarni o‘zlashtirishi, uch bosqichli JONLI REYTINGI (Universitet / Fakultet / Guruh kesimida) va TTJdan ruxsat olish jarayonini onlayn kuzatishlari mumkin.',
       time: '10:15',
       out: false
     },
     {
       id: 2,
-      author: 'Амонов Алишер Раджаб угли',
-      authorRole: 'Зам. декана',
-      text: ' <b>СТАРТ ПРИЁМА ЗАЯВОК НА ХАКАТОН RIAT 2026!</b><br><br>Приглашаем команды студентов принять участие в хакатоне по машинному обучению и финтеху. Победители получат прямой грант и <b>2,500 Equity</b> на личный счет!',
+      author: 'Amonov Alisher Radjab o‘g‘li',
+      authorRole: "Yoshlar bilan ishlash bo'yicha dekan o'rinbosari",
+      text: '<b>IJTIMOIY FAOLLIK INDEKSI VA EQUITY (EQT) COIN!</b><br><br>Endilikda tadbirlarda va klublarda ishtirok etgan talabalar <b>dinamik QR-kod</b>ni skanerlash orqali yil davomida avtomatik ball va <b>Equity (EQT)</b> coin yig‘adilar. To‘plangan coinlarni universitet brend sovg‘alari, oshxona vaucherlari va kontrakt to‘loviga chegirmaga yo‘naltirish mumkin!',
       time: '11:40',
       out: false,
       doc: {
-        name: 'Reglament_Hackathon_RIAT_2026.pdf',
+        name: 'Ijtimoiy_Faollik_va_Equity_Nizomi_2026.pdf',
         size: '1.4 MB'
       }
     }
   ],
-  'academic-group-711': [
+  'academic-group-rst81': [
     {
       id: 101,
-      author: 'Dilrabo Vahidovna',
-      authorRole: 'Тьютор',
-      text: 'Ребята, всем добрый день! Завтра в 14:00 состоится кураторский час в 304 аудитории. Посещаемость обязательна.',
+      author: 'Abdurahmonov Umar',
+      authorRole: 'Guruh tyutori',
+      text: "Hurmatli RST-81/25 guruhi talabalari! Hamma o'z profilidan yashash manzili (ijara xonadoni, TTJ-5 yoki o'z uyi) ma'lumotlarini va geolokatsiyasini bugun 18:00 gacha kiritib qo'ysin. RIAT-Maps xaritasi orqali ijara xonadonlarini o'rganish marshruti shakllantirilmoqda.",
       time: '09:20',
       out: false
     },
     {
       id: 102,
-      author: 'Каримов Азиз',
-      authorRole: 'Староста',
-      text: 'Здравствуйте, Dilrabo Vahidovna! Принято, старостат группы явку обеспечит ',
+      author: 'Karimov Aziz',
+      authorRole: 'Guruh sardori',
+      text: 'Assalomu alaykum, ustoz! Tushunarli, guruhimizdagi 28 nafar talabaning barchasiga yetkazdim, hozir anketa jadvalini to‘ldiryapmiz.',
       time: '09:24',
       out: false
     }
@@ -142,31 +167,20 @@ const DEFAULT_TG_MESSAGES = {
       }
     }
   ],
-  'tutor-direct-dilrabo': [
-    {
-      id: 301,
-      author: 'Dilrabo Vahidovna',
-      authorRole: 'Тьютор',
-      text: 'Здравствуйте! Ваши документы на академическую стипендию и ведомости согласованы деканатом. Отличная учеба!',
-      time: '12:05',
-      out: false
-    }
-  ],
   'bot-equity-ai': [
     {
       id: 401,
       author: 'RIAT Academic AI Bot',
       authorRole: 'Bot',
-      text: ' <b>Приветствую в Telegram-боте RIAT!</b><br><br>Я могу проверить ваш баланс Equity, выдать расписание занятий или подсказать контакты деканата. Напишите, например: <i>«расписание»</i> или <i>«баланс equity»</i>.',
+      text: '<b>TDIU RIAT Academic & Equity Botga xush kelibsiz!</b><br><br>Men orqali Equity (EQT) balansingizni tekshirishingiz, dars jadvalini olishingiz yoki Dekanat va Tyutor telefon raqamlarini bilib olishingiz mumkin. Masalan: <i>«расписание»</i> yoki <i>«баланс equity»</i> deb yozing.',
       time: '12:00',
       out: false
     }
   ]
 };
 
-// Global State
 let currentFolder = 'all';
-let currentChatId = 'dekanat-channel';
+let currentChatId = 'tutor-direct-umar';
 let currentUser = null;
 let messagesStore = {};
 
@@ -216,7 +230,7 @@ function updateThemeIcon(isDark) {
 }
 
 function loadStoredMessages() {
-  const stored = localStorage.getItem('riat_tg_messages');
+  const stored = localStorage.getItem('riat_tg_messages_v2');
   if (stored) {
     try {
       messagesStore = JSON.parse(stored);
@@ -230,7 +244,7 @@ function loadStoredMessages() {
 }
 
 function saveMessages() {
-  localStorage.setItem('riat_tg_messages', JSON.stringify(messagesStore));
+  localStorage.setItem('riat_tg_messages_v2', JSON.stringify(messagesStore));
 }
 
 function setFolder(folderKey, el) {
@@ -258,7 +272,6 @@ function renderChatList() {
     const isActive = item.id === currentChatId;
     const isOnline = item.statusText.includes('в сети');
 
-    // Clean snippet HTML tags
     const cleanSnippet = (lastMsg.text || '').replace(/<[^>]*>?/gm, '');
 
     return `
@@ -298,7 +311,6 @@ function selectChat(chatId) {
   chat.unread = 0;
   renderChatList();
 
-  // Header update
   const titleEl = document.getElementById('headerTitle');
   const statusEl = document.getElementById('headerStatus');
   const avatarEl = document.getElementById('headerAvatarImg');
@@ -319,7 +331,6 @@ function selectChat(chatId) {
     avatarEl.innerHTML = `<i class="fa-solid ${chat.avatarIcon}" style="font-size: 16px;"></i>`;
   }
 
-  // Right Profile Drawer update
   const drawerAvatar = document.getElementById('drawerBigAvatar');
   const drawerName = document.getElementById('drawerProfileName');
   const drawerStatus = document.getElementById('drawerProfileStatus');
@@ -346,10 +357,8 @@ function selectChat(chatId) {
     `).join('');
   }
 
-  // Render chat messages
   renderMessages();
 
-  // Mobile layout switch
   if (window.innerWidth <= 768) {
     document.getElementById('chatsColumn')?.classList.add('hidden-mobile');
   }
@@ -458,7 +467,6 @@ function sendTelegramMessage() {
   renderMessages();
   renderChatList();
 
-  // Automatic Bot Interaction
   if (currentChatId === 'bot-equity-ai') {
     setTimeout(() => {
       replyFromBot(text);

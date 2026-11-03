@@ -1832,7 +1832,7 @@ function editLocked(s,st){
   return `<section class="card" style="max-width:640px"><div class="ds" style="border-top:0">${h}</div></section>`;
 }
 const editGrantedNote=(st)=>`<div class="note" style="max-width:640px;margin-bottom:14px;border-left-color:var(--ok);background:var(--ok-bg)">Tyutoringiz (${esc(st.by||"")}) o‘zgartirishga ruxsat berdi. ${fmtDate(st.exp)} gacha amal qiladi; ma’lumotni saqlagach ruxsat tugaydi.</div>`;
-const NAV={dekanat:[["map","Xarita: Talabalar va Shahar"],["reports","Hududlar statistikasi"],["notes","Bildirishnomalar"]],tutor:[["map","Xarita: Talabalar va Shahar"],["notes","Bildirishnomalar"]],student:[["map","Xarita: Talabalar va Shahar"],["me","Mening joylashuvim"]]};
+const NAV={dekanat:[["map","Xarita: Talabalar va Shahar"],["campus","Kampus, TTJ va Transport"],["reports","Hududlar statistikasi"],["notes","Bildirishnomalar"]],tutor:[["map","Xarita: Talabalar va Shahar"],["campus","Kampus, TTJ va Transport"],["notes","Bildirishnomalar"]],student:[["map","Xarita: Talabalar va Shahar"],["campus","Kampus, TTJ va Transport"],["me","Mening joylashuvim"]]};
 function roleSub(){ // rol nomi nishonda allaqachon bor: bu yerda faqat qo‘shimcha ma’lumot
   if(ME.role==="dekanat")return ME.faculty+" fakulteti";
   if(ME.role==="tutor"){const g=myGroups();return !g.length?"Guruh biriktirilmagan":g.length>3?g[0]+" … "+g[g.length-1]+" · "+g.length+" ta guruh":g.join(", ");}
@@ -1847,9 +1847,25 @@ function shell(){
 
   if(view==="map")initMap();
 }
+function campusPage(){
+  const infra=[
+    ["🏛️ TDIU Bosh o‘quv binosi (Rektorat)","Islom Karimov ko‘chasi, 49-uy","Metro: O‘zbekiston (2 daqiqa piyoda) · Avtobuslar: 11, 32, 51, 76, 100","https://yandex.com/maps/?pt=69.2505,41.3108&z=17&l=map"],
+    ["💻 Raqamli iqtisodiyot va AT fakulteti (B-bino)","Islom Karimov ko‘chasi, 49-uy, B-korpus, 2–4 qavatlar","Dekanat: B-204 · Kafedralar: B-301, B-305 · IT-Laboratoriya: B-108","https://yandex.com/maps/?pt=69.2512,41.3112&z=17&l=map"],
+    ["🏢 Talabalar turar joyi: TTJ-5 va TTJ-6","Chilonzor tumani, Olmazor massivi / Beshyog‘och","Bosh binogacha: 🚇 Metro (Chilonzor yo‘li: Olmazor / Xalqlar Do‘stligi → O‘zbekiston, 9 daqiqa) · 🚌 Avtobus: 51, 81, 100 (14 daqiqa)","https://yandex.com/maps/?rtext=41.3045,69.2412~41.3108,69.2505&rtt=mt"],
+    ["🏟️ TDIU Sport majmuasi va Madaniyat saroyi","Islom Karimov ko‘chasi, 49A","Mini-futbol, voleybol, kurash, stol tennisi va Katta akt zali","https://yandex.com/maps/?pt=69.2498,41.3101&z=17&l=map"],
+    ["🏠 Chilonzor tumani ijara xonadonlari klasteri","Chilonzor 18 va 19-kvartallar, Shuhrat chorrahasi","Kampusgacha jamoat transporti: 🚇 Chilonzor bekati → Paxtakor / O‘zbekiston (15 daqiqa) · 🚌 Avtobus: 2, 80, 94, 103","https://yandex.com/maps/?rtext=41.2742,69.1995~41.3108,69.2505&rtt=mt"],
+    ["🏠 Yunusobod tumani ijara xonadonlari klasteri","Yunusobod 11 va 13-kvartallar","Kampusgacha jamoat transporti: 🚇 Yunusobod yo‘li → Ming O‘rik / Alisher Navoiy → O‘zbekiston (18 daqiqa) · 🚌 Avtobus: 51, 67, 91","https://yandex.com/maps/?rtext=41.3665,69.2862~41.3108,69.2505&rtt=mt"]
+  ];
+  return head("Kampus, TTJ va Jamoat transporti","Universitet infratuzilmasi va transport yo‘nalishlari","Barcha o‘quv binolari, kafedralar, TTJ-5/6 yotoqxonalari, sport majmuasi hamda talabalar uchun avtobus va metro yo‘nalishlari.")+
+  `<div class="kpis"><div class="kpi"><span>O‘quv binolari</span><b class="tab">7</b><small>A, B, C, D, E korpuslar</small></div><div class="kpi"><span>Talabalar turar joyi</span><b class="tab">6</b><small>TTJ-1 … TTJ-6</small></div><div class="kpi"><span>Metro bekatlari</span><b class="tab">3</b><small>O‘zbekiston, Xalqlar Do‘stligi, Paxtakor</small></div><div class="kpi"><span>Avtobus yo‘nalishlari</span><b class="tab">12</b><small>11, 32, 51, 76, 81, 100 va b.</small></div></div>
+  <section class="card"><div class="cardh"><h2>Barcha binolar, TTJ va transport marshrutlari</h2><p>Talaba va ota-ona TTJ yoki ijara xonadonidan universitetga qaysi avtobus/metroda necha daqiqada borishini bir bosishda ko‘radi</p></div>
+  <div class="tw"><table><thead><tr><th>Obyekt / Yo‘nalish</th><th>Manzil va joylashuv</th><th>Jamoat transporti (Metro & Avtobus) va vaqt</th><th>Xaritada</th></tr></thead><tbody>
+  ${infra.map((x)=>`<tr><td><b>${x[0]}</b></td><td>${x[1]}</td><td>${x[2]}</td><td><a class="btn sm pri" target="_blank" rel="noopener" href="${x[3]}">Yo‘nalishni ochish →</a></td></tr>`).join("")}
+  </tbody></table></div></section>`;
+}
 function page(){
   if(!navFor().some(([k])=>k===view))view=navFor()[0][0]; // rolga ruxsat etilmagan sahifa ochilmaydi
-  try{if(view==="notes"){const h=notesPage();myNotes().forEach((n)=>{n.read=true;});saveDB();return h;}return (view==="dash"?notesBanner()+updBanner():"")+(view==="me"?stuBanner():"")+((view==="dash"||view==="me")?locBanner():"")+{onboard:onboardPage,notes:notesPage,dash:dashboard,students:studentsPage,map:mapPage,tutors:tutorsPage,reports:reportsPage,audit:auditPage,me:mePage,edit:editPage}[view]();}catch(e){return `<div class="empty">Xato: ${esc(e.message)}</div>`;}
+  try{if(view==="notes"){const h=notesPage();myNotes().forEach((n)=>{n.read=true;});saveDB();return h;}return (view==="dash"?notesBanner()+updBanner():"")+(view==="me"?stuBanner():"")+((view==="dash"||view==="me")?locBanner():"")+{onboard:onboardPage,notes:notesPage,dash:dashboard,students:studentsPage,map:mapPage,campus:campusPage,tutors:tutorsPage,reports:reportsPage,audit:auditPage,me:mePage,edit:editPage}[view]();}catch(e){return `<div class="empty">Xato: ${esc(e.message)}</div>`;}
 }
 const updBanner=()=>{if(ME.role==="student")return "";const n=scoped().filter((s)=>s.upd&&!s.isNew).length;return n?`<div class="note locb" style="border-left-color:var(--accent);background:var(--accent-soft)"><span><b>${n} ta talaba ma’lumotini yangiladi.</b> Tekshirib chiqing.</span><button class="btn sm pri" data-updonly>Ko‘rish</button></div>`:"";};
 const locBanner=()=>hasLoc()?"":ME.role==="student"?`<div class="note locb"><span><b>Uy joylashuvi yuborilmagan.</b> Uyda bo‘lganingizda yuboring: tyutoringiz uyingizni aniq topadi.</span><button class="btn sm pri" data-mark="${ME.student}">Yuborish</button></div>`:"";

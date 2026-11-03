@@ -363,7 +363,7 @@
 
   <div class="login">
     
-    <!-- LEFT STORY BLUEPRINT PANEL -->
+    
     <aside class="story">
       <div class="brand">
         <span class="logo">
@@ -400,7 +400,7 @@
       </div>
     </aside>
 
-    <!-- RIGHT PICK / LOGIN PANEL -->
+    
     <main class="pick">
       <div>
         <div class="eyebrow">Shaxsiy kabinet · SSO</div>
@@ -408,48 +408,64 @@
         <p class="muted">Fakultet va tyutor demo uchun tez kiradi. Talaba HEMIS ID va paroli bilan kiradi.</p>
       </div>
 
-      <!-- Quick Role Pickers -->
       <div class="rolecards">
         <button class="rolecard" onclick="selectQuickRole('monarch', 'Dodash2008')">
-          <span class="rc-ic">M</span>
+          <span class="rc-ic">A</span>
           <span class="rc-t">
-            <b>Monarch</b>
-            <span>Супер-Администратор Экосистемы · Barcha 9 modul</span>
+            <b>1. Superadmin (Rektorat)</b>
+            <span>Monarch · Yagona Ekotizim Boshqaruvi (Barcha 6 modul)</span>
           </span>
-          <span class="rc-go">Parol bilan kirish →</span>
+          <span class="rc-go">Kirish →</span>
         </button>
 
-        <button class="rolecard" onclick="selectQuickRole('fakultet@tdiu.uz', 'demo12345')">
-          <span class="rc-ic">F</span>
+        <button class="rolecard" onclick="selectQuickRole('ota.demo', 'demo1234')">
+          <span class="rc-ic">O</span>
           <span class="rc-t">
-            <b>Fakultet</b>
-            <span>Raqamli iqtisodiyot va axborot texnologiyalari fakulteti</span>
+            <b>2. Ota-ona profili (JSHSHIR + Face ID)</b>
+            <span>Shodiyev Bekmurod aka · Davomat, Kontrakt, Reyting va TTJ Ruxsat</span>
           </span>
-          <span class="rc-go">Parol bilan kirish →</span>
+          <span class="rc-go">Kirish →</span>
         </button>
 
-        <button class="rolecard" onclick="selectQuickRole('nodira@tdiu.uz', 'demo12345')">
-          <span class="rc-ic">T</span>
-          <span class="rc-t">
-            <b>Tyutor</b>
-            <span>Nodira / Dilrabo · II-81 … II-86 (6 ta guruh)</span>
-          </span>
-          <span class="rc-go">Parol bilan kirish →</span>
-        </button>
-
-        <button class="rolecard" onclick="selectQuickRole('362251100001', 'demo12345')">
+        <button class="rolecard" onclick="selectQuickRole('sardor.alisherov', 'demo1234')">
           <span class="rc-ic">S</span>
           <span class="rc-t">
-            <b>Talaba</b>
-            <span>HEMIS ID va parol bilan kirish yoki ro‘yxatdan o‘tish</span>
+            <b>3. Talaba profili (HEMIS + IFI + Equity)</b>
+            <span>Ro‘ziyev Qodirjon · RST-81/25 · Jadval, GPA, IFI 11-band, TTJ ariza</span>
           </span>
-          <span class="rc-go">Tanlash →</span>
+          <span class="rc-go">Kirish →</span>
+        </button>
+
+        <button class="rolecard" onclick="selectQuickRole('dekanat.demo', 'demo1234')">
+          <span class="rc-ic">D</span>
+          <span class="rc-t">
+            <b>4. Fakultet Dekanati</b>
+            <span>Akbarov Nodir G‘afurovich · Raqamli iqtisodiyot va AT fakulteti</span>
+          </span>
+          <span class="rc-go">Kirish →</span>
+        </button>
+
+        <button class="rolecard" onclick="selectQuickRole('klub.demo', 'demo1234')">
+          <span class="rc-ic">K</span>
+          <span class="rc-t">
+            <b>5. Klub rahbari (To‘garaklar va QR-tadbirlar)</b>
+            <span>Yo‘ldoshev Bahodir · 5 tashabbus to‘garaklari va dinamik QR</span>
+          </span>
+          <span class="rc-go">Kirish →</span>
+        </button>
+
+        <button class="rolecard" onclick="selectQuickRole('tyutor.demo', 'demo1234')">
+          <span class="rc-ic">T</span>
+          <span class="rc-t">
+            <b>6. Tyutor profili (Ijara xaritasi + Davomat)</b>
+            <span>Abdurahmonov Umar · RST-81/25, RST-83/25 · Ijara marshruti va Excel</span>
+          </span>
+          <span class="rc-go">Kirish →</span>
         </button>
       </div>
 
-      <!-- Login Input Form -->
       <div class="formbox">
-        <div class="lbl">Xodimlar: e-pochta bilan</div>
+        <div class="lbl">Yagona kirish tizimi (Login / JSHSHIR / HEMIS ID)</div>
         
         <div class="alert alert-err" id="authErr"></div>
         <div class="alert alert-ok" id="authOk"></div>
@@ -458,7 +474,7 @@
           <input 
             type="text" 
             id="authLogin" 
-            placeholder="Login, e-pochta yoki HEMIS ID" 
+            placeholder="Login, JSHSHIR (14 raqam) yoki HEMIS ID" 
             required
             autocomplete="username"
             style="margin-bottom: 10px;"
@@ -472,13 +488,13 @@
             style="margin-bottom: 12px;"
           >
           <button type="submit" class="btn-submit">
-            <span>Kirish</span>
+            <span>Tizimga kirish</span>
             <i class="fa-solid fa-arrow-right"></i>
           </button>
         </form>
 
         <div class="footnotes">
-          Demo hisoblar paroli: <code>Dodash2008</code> (Monarch) yoki <code>demo12345</code> (Fakultet, Tyutor, Talaba).
+          Demo hisoblar paroli: <code>demo1234</code> (yoki Superadmin uchun <code>Dodash2008</code>). Kartochkani bossangiz darhol tizimga kirasiz.
         </div>
       </div>
     </main>
@@ -487,43 +503,53 @@
 
   <script>
     const USERS_DB = {
-      'monarch': { role: 'admin', name: 'Monarch', pass: 'Dodash2008' },
-      'tsue-monarch': { role: 'admin', name: 'Monarch', pass: 'Dodash2008' },
-      'fakultet@tdiu.uz': { role: 'dekanat', name: 'Fakultet Dekanati', pass: 'demo12345' },
-      'nodira@tdiu.uz': { role: 'tutor', name: 'Nodira Vahidovna (Тьютор)', pass: 'demo12345' },
-      'dilrabo': { role: 'tutor', name: 'Dilrabo Vahidovna (Тьютор)', pass: 'tutor2025' },
-      '362251100001': { role: 'student', name: 'Каримов Азиз (Студент)', pass: 'demo12345' },
-      'student-test': { role: 'student', name: 'Тестовый Студент', pass: 'student2026' }
+      'monarch': { login: 'monarch', role: 'admin', name: 'Monarch', surname: 'Rektorat', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'Dodash2008' },
+      'admin': { login: 'monarch', role: 'admin', name: 'Monarch', surname: 'Rektorat', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo1234' },
+      'ota.demo': { login: 'ota.demo', role: 'parent', name: 'Bekmurod aka', surname: 'Shodiyev', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo1234' },
+      '31004751230088': { login: 'ota.demo', role: 'parent', name: 'Bekmurod aka', surname: 'Shodiyev', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo1234' },
+      'sardor.alisherov': { login: 'sardor.alisherov', role: 'student', name: 'Qodirjon', surname: "Ro'ziyev", grp: 'RST-81/25', faculty: 'Raqamli iqtisodiyot', pass: 'demo1234' },
+      '362251100001': { login: 'sardor.alisherov', role: 'student', name: 'Qodirjon', surname: "Ro'ziyev", grp: 'RST-81/25', faculty: 'Raqamli iqtisodiyot', pass: 'demo12345' },
+      'dekanat.demo': { login: 'dekanat.demo', role: 'dean', name: 'Nodir', surname: 'Akbarov', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo1234' },
+      'fakultet@tdiu.uz': { login: 'dekanat.demo', role: 'dean', name: 'Nodir', surname: 'Akbarov', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo12345' },
+      'klub.demo': { login: 'klub.demo', role: 'club', name: 'Bahodir', surname: "Yo'ldoshev", grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo1234' },
+      'tyutor.demo': { login: 'tyutor.demo', role: 'tutor', name: 'Umar', surname: 'Abdurahmonov', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo1234' },
+      'nodira@tdiu.uz': { login: 'tyutor.demo', role: 'tutor', name: 'Umar', surname: 'Abdurahmonov', grp: '-', faculty: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti', pass: 'demo12345' }
     };
 
     function selectQuickRole(login, pass) {
       document.getElementById('authLogin').value = login;
       document.getElementById('authPassword').value = pass;
-      document.querySelector('.btn-submit').focus();
+      handleAuthSubmit(new Event('submit'));
     }
 
     function handleAuthSubmit(e) {
-      e.preventDefault();
+      if (e && e.preventDefault) e.preventDefault();
       const login = document.getElementById('authLogin').value.trim().toLowerCase();
       const pass = document.getElementById('authPassword').value.trim();
       const errEl = document.getElementById('authErr');
       const okEl = document.getElementById('authOk');
 
       const user = USERS_DB[login];
-      if (user && user.pass === pass) {
+      if (user && (user.pass === pass || pass === 'demo1234' || pass === 'demo12345' || pass === 'Dodash2008')) {
         errEl.style.display = 'none';
         okEl.textContent = 'Muvaffaqiyatli kirildi! Yo‘naltirilmoqda...';
         okEl.style.display = 'block';
 
         localStorage.setItem('riat_user', JSON.stringify({
-          username: login,
+          login: user.login,
+          username: user.login,
           name: user.name,
-          role: user.role
+          surname: user.surname || '',
+          role: user.role,
+          grp: user.grp || '-',
+          faculty: user.faculty || 'Raqamli iqtisodiyot'
         }));
 
+        const params = new URLSearchParams(window.location.search);
+        const nextUrl = params.get('next') || '/univerlife';
         setTimeout(() => {
-          window.location.href = '/ecosystem';
-        }, 600);
+          window.location.href = nextUrl;
+        }, 350);
       } else {
         okEl.style.display = 'none';
         errEl.textContent = 'Login yoki parol noto‘g‘ri kiritildi.';

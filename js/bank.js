@@ -39,11 +39,14 @@ function ensureSystemAccounts() {
 function ensureUserAccount(userId, userName, accountType) {
   const accs = getAccounts();
   if (!accs[userId]) {
+    ensureSystemAccounts();
     accs[userId] = { id: userId, type: accountType || ACCOUNT_TYPE.STUDENT, name: userName || userId, balance: 0, frozen: false, created: bankNow(), card_number: generateCardNumber() };
     saveAccounts(accs);
     pushBankNotif(null, 'Открыт счёт для: ' + (userName || userId), 'system');
+    const initAward = accountType === ACCOUNT_TYPE.STAFF ? 5000 : 1450;
+    directCredit(userId, initAward, 'Ijtimoiy faollik indeksi va QR-tadbirlar mukofoti (Start bonus)', { id: 'system', name: 'RIAT Equity Bank' });
   }
-  return accs[userId];
+  return getAccounts()[userId];
 }
 
 function generateCardNumber() {
