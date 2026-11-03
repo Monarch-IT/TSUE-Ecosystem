@@ -63,7 +63,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "guljakhon.makhmudova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Ilxamova Yodgorxon Saidaxmedovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Ilxamova Yodgorxon Saidaxmedovna.png",
       "bio": "Ilxamova Yodgorxon Saidaxmedovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -113,7 +113,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "guljakhon.makhmudova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Abidov Abdujabbar Abduxamidovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Abidov Abdujabbar Abduxamidovich.png",
       "bio": "Abidov Abdujabbar Abduxamidovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -163,7 +163,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "jo‘raev@tsue.uz",
-      "photo": "assets/teachers/raqamli/joraev_g_u.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/joraev_g_u.png",
       "bio": "Jo‘raev G‘ayrat Umarovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -213,7 +213,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "kuchkarov@tsue.uz",
-      "photo": "assets/teachers/raqamli/kuchkarov_t_s.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/kuchkarov_t_s.png",
       "bio": "Kuchkarov Taxir Safarovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -263,7 +263,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "maxmudova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Maxmudova Guljaxon Nematjonovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Maxmudova Guljaxon Nematjonovna.png",
       "bio": "Maxmudova Guljaxon Nematjonovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -313,7 +313,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "d.babarakhimova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Bobojonov Azizjon Babaxanovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Bobojonov Azizjon Babaxanovich.png",
       "bio": "Bobojonov Azizjon Babaxanovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Dasturlash",
@@ -363,7 +363,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "vafoev@tsue.uz",
-      "photo": "assets/teachers/raqamli/Vafoev Boburjon Rasulovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Vafoev Boburjon Rasulovich.png",
       "bio": "Vafoev Boburjon Rasulovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -413,7 +413,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "kobilov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Kobilov Alisher Urinovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Kobilov Alisher Urinovich.png",
       "bio": "Kobilov Alisher Urinovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -463,7 +463,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "ikramov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Ikramov Maxmudjan Muxamedjanovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Ikramov Maxmudjan Muxamedjanovich.png",
       "bio": "Ikramov Maxmudjan Muxamedjanovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -513,7 +513,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "qulmatova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Qulmatova Sayyora Safarovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Qulmatova Sayyora Safarovna.png",
       "bio": "Qulmatova Sayyora Safarovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -563,7 +563,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "umarov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Umarov Omonilla Saidaminovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Umarov Omonilla Saidaminovich.png",
       "bio": "Umarov Omonilla Saidaminovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -613,7 +613,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "yaxshiboev@tsue.uz",
-      "photo": "assets/teachers/raqamli/Yaxshiboev  Rustam Erkinboy o‘g‘li.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Yaxshiboev  Rustam Erkinboy o‘g‘li.png",
       "bio": "Yaxshiboev  Rustam Erkinboy o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -663,7 +663,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "azizova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Azizova Manzura Ibragimovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Azizova Manzura Ibragimovna.png",
       "bio": "Azizova Manzura Ibragimovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -713,7 +713,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "asraev@tsue.uz",
-      "photo": "assets/teachers/raqamli/Asraev Umar Mo‘minovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Asraev Umar Mo‘minovich.png",
       "bio": "Asraev Umar Mo‘minovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -814,7 +814,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "jumaniyozova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Jumaniyozova Muqaddas Yuldashevna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Jumaniyozova Muqaddas Yuldashevna.png",
       "bio": "Jumaniyozova Muqaddas Yuldashevna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Kompyuter tarmoqlari",
@@ -865,7 +865,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "matniyozov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Matniyozov Raximjon Rajabbaevich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Matniyozov Raximjon Rajabbaevich.png",
       "bio": "Matniyozov Raximjon Rajabbaevich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -915,7 +915,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "shoaxmedova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Shoaxmedova Nozima Xayrullaevna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Shoaxmedova Nozima Xayrullaevna.png",
       "bio": "Shoaxmedova Nozima Xayrullaevna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -965,7 +965,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "xomidov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Xomidov Xamdam Xasan o‘g‘li.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Xomidov Xamdam Xasan o‘g‘li.png",
       "bio": "Xomidov Xamdam Xasan o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1015,7 +1015,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "karimova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Karimova Shirin Zoxid qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Karimova Shirin Zoxid qizi.png",
       "bio": "Karimova Shirin Zoxid qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1065,7 +1065,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "turaeva@tsue.uz",
-      "photo": "assets/teachers/raqamli/Turaeva Nafisa Odiljonovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Turaeva Nafisa Odiljonovna.png",
       "bio": "Turaeva Nafisa Odiljonovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1115,7 +1115,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "xidirova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Xidirova Barchinoy Ilxomovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Xidirova Barchinoy Ilxomovna.png",
       "bio": "Xidirova Barchinoy Ilxomovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1165,7 +1165,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "norboeva@tsue.uz",
-      "photo": "assets/teachers/raqamli/Norboeva Nafisa Erkinovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Norboeva Nafisa Erkinovna.png",
       "bio": "Norboeva Nafisa Erkinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1215,7 +1215,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "bekmirzaev_obidjon@tsue.uz",
-      "photo": "assets/teachers/raqamli/Mirzaraximova Aziza Baxrom qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Mirzaraximova Aziza Baxrom qizi.png",
       "bio": "Mirzaraximova Aziza Baxrom qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Bulutli texnologiyalar"
@@ -1264,7 +1264,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "muzaffarova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Muzaffarova Dilbar Mamalatif qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Muzaffarova Dilbar Mamalatif qizi.png",
       "bio": "Muzaffarova Dilbar Mamalatif qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1315,7 +1315,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "bekmirzaev_obidjon@tsue.uz",
-      "photo": "assets/teachers/raqamli/Mirzanova Nozima Maratovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Mirzanova Nozima Maratovna.png",
       "bio": "Mirzanova Nozima Maratovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Bulutli texnologiyalar"
@@ -1364,7 +1364,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "samieva@tsue.uz",
-      "photo": "assets/teachers/raqamli/Samieva Maftuna Faxriddinovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Samieva Maftuna Faxriddinovna.png",
       "bio": "Samieva Maftuna Faxriddinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1414,7 +1414,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "ablazov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Ablazov Lazizbek Abdiqosimovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Ablazov Lazizbek Abdiqosimovich.png",
       "bio": "Ablazov Lazizbek Abdiqosimovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1464,7 +1464,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "abdug‘anieva@tsue.uz",
-      "photo": "assets/teachers/raqamli/Abdug‘anieva Mavjuda Asatullaevna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Abdug‘anieva Mavjuda Asatullaevna.png",
       "bio": "Abdug‘anieva Mavjuda Asatullaevna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1514,7 +1514,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "anvarova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Anvarova Muqaddas Maxammadjonovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Anvarova Muqaddas Maxammadjonovna.png",
       "bio": "Anvarova Muqaddas Maxammadjonovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1564,7 +1564,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "ishanxodjaeva@tsue.uz",
-      "photo": "assets/teachers/raqamli/Ishanxodjaeva Dilfuza Erkinovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Ishanxodjaeva Dilfuza Erkinovna.png",
       "bio": "Ishanxodjaeva Dilfuza Erkinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1614,7 +1614,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "madyarova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Madyarova Muxlisa Abdulla qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Madyarova Muxlisa Abdulla qizi.png",
       "bio": "Madyarova Muxlisa Abdulla qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1664,7 +1664,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "majidova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Majidova Iroda Gayratovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Majidova Iroda Gayratovna.png",
       "bio": "Majidova Iroda Gayratovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1714,7 +1714,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "bekmirzaev_obidjon@tsue.uz",
-      "photo": "assets/teachers/raqamli/Mirzaaxmedov Dilmurod Miradilovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Mirzaaxmedov Dilmurod Miradilovich.png",
       "bio": "Mirzaaxmedov Dilmurod Miradilovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Bulutli texnologiyalar"
@@ -1763,7 +1763,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "muslimov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Muslimov Otabek Olimovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Muslimov Otabek Olimovich.png",
       "bio": "Muslimov Otabek Olimovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1813,7 +1813,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "otaboev@tsue.uz",
-      "photo": "assets/teachers/raqamli/Otaboev Nodirbek Oybek o‘g‘li.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Otaboev Nodirbek Oybek o‘g‘li.png",
       "bio": "Otaboev Nodirbek Oybek o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1863,7 +1863,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "parpieva@tsue.uz",
-      "photo": "assets/teachers/raqamli/Parpieva Raʼno Abdurasulovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Parpieva Raʼno Abdurasulovna.png",
       "bio": "Parpieva Raʼno Abdurasulovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1913,7 +1913,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "rashidov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Rashidov Xasan Shirinovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Rashidov Xasan Shirinovich.png",
       "bio": "Rashidov Xasan Shirinovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -1966,7 +1966,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "tuychiyev@tsue.uz",
-      "photo": "assets/teachers/raqamli/Tuychiyev Shavkatjon Shokirali o‘g‘li.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Tuychiyev Shavkatjon Shokirali o‘g‘li.png",
       "bio": "Tuychiyev Shavkatjon Shokirali o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2016,7 +2016,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "yusupova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Yusupova Dilbar Mirobidovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Yusupova Dilbar Mirobidovna.png",
       "bio": "Yusupova Dilbar Mirobidovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2066,7 +2066,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "suvanova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Suvanova Dilnoza Dilmurod qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Suvanova Dilnoza Dilmurod qizi.png",
       "bio": "Suvanova Dilnoza Dilmurod qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2116,7 +2116,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "xusnuddinov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Xusnuddinov Yorqinjon Muxiddin o‘g‘li.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Xusnuddinov Yorqinjon Muxiddin o‘g‘li.png",
       "bio": "Xusnuddinov Yorqinjon Muxiddin o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2169,7 +2169,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "gaibnazarova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Gaibnazarova Zilola Maxsudovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Gaibnazarova Zilola Maxsudovna.png",
       "bio": "Gaibnazarova Zilola Maxsudovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2219,7 +2219,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "kucharova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Kucharova Shaxlo Sobir qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Kucharova Shaxlo Sobir qizi.png",
       "bio": "Kucharova Shaxlo Sobir qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2269,7 +2269,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "nabieva@tsue.uz",
-      "photo": "assets/teachers/raqamli/Nabieva Feruza Odilovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Nabieva Feruza Odilovna.png",
       "bio": "Nabieva Feruza Odilovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2319,7 +2319,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "rustamova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Rustamova Ziyoda Anvar qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Rustamova Ziyoda Anvar qizi.png",
       "bio": "Rustamova Ziyoda Anvar qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2369,7 +2369,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "xoliyarov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Xoliyarov Farxod Toshmuradovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Xoliyarov Farxod Toshmuradovich.png",
       "bio": "Xoliyarov Farxod Toshmuradovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2419,7 +2419,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "s.khalikov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Xaliqulova Husniya Salohiddinovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Xaliqulova Husniya Salohiddinovna.png",
       "bio": "Xaliqulova Husniya Salohiddinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Toshkent temir yo‘l muhandislari instituti temir yo‘l transportida avtomatika",
@@ -2473,7 +2473,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "o‘ktamov@tsue.uz",
-      "photo": "assets/teachers/raqamli/O‘ktamov Xamidullo Xabibullo o‘g‘li.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/O‘ktamov Xamidullo Xabibullo o‘g‘li.png",
       "bio": "O‘ktamov Xamidullo Xabibullo o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2523,7 +2523,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "ermamatova@tsue.uz",
-      "photo": "assets/teachers/raqamli/Ermamatova Shoxsanam Ermamatovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/raqamli/Ermamatova Shoxsanam Ermamatovna.png",
       "bio": "Ermamatova Shoxsanam Ermamatovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -2573,7 +2573,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "murad.sultanov@tsue.uz",
-      "photo": "assets/teachers/att/Sultanov M..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Sultanov M..jpg",
       "bio": "2008-2009 yy. 2009-2010 yy. 2012-2012 yy. 2013-2016 yy. 2016-2016 yy.",
       "subjects": [
         "operatsion tizimlar",
@@ -2626,7 +2626,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "dadabayeva@tsue.uz",
-      "photo": "assets/teachers/att/Dadabayeva R..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Dadabayeva R..jpg",
       "bio": "1968-1970 yy. - Toshkent xalq xo‘jaligi instituti hisoblash texnikasi kafedrasi assistenti 1970-1973 yy. - Toshkent xalq xo‘jaligi instituti aspiranti 1973-1975 yy. - Toshkent xalq xo‘jaligi instituti hisoblash matematikasi va dasturlash kafedrasi assistenti 1975-1979 yy. - Toshkent xalq xo‘jaligi instituti hisoblash matematikasi va dasturlash kafedrasi katta o‘qituvchisi 1979-2006 yy. - Toshkent davlat iqtisodiyot universiteti iqtisodiy informatika kafedrasi dots.nti",
       "subjects": [
         "Magistr:",
@@ -2672,7 +2672,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "j_baltayev@tsue.uz",
-      "photo": "assets/teachers/att/Boltayev J..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Boltayev J..jpg",
       "bio": "2005-2010 yy.- Toshkent axborot texnologiyalari universiteti talabasi 2011-2011yy.-Urganch tadbirkorlik va servis kasb-hunar kolleji informatika o‘qituvchisi 2011-2013 yy.-Toshkent axborot texnologiyalari universiteti magistranti 2013-2013 yy.- Toshkent axborot texnologiyalari universiteti ma’lumotlar uzatish tarmoqlari va tizimlari kafedrasida katta laboranti",
       "subjects": [
         "IT loyixa boshqaruvi",
@@ -2722,7 +2722,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "o.rahimov@tsue.uz",
-      "photo": "assets/teachers/att/Raximov O..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Raximov O..jpg",
       "bio": "2006-2008 yy. 2008-2011 yy. 2008-2014 yy. 2008-2019 yy. 2008-2013 yy.",
       "subjects": [
         "Fizika"
@@ -2771,7 +2771,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "sarvar.xalikov@tsue.uz",
-      "photo": "assets/teachers/att/Xalikov S..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Xalikov S..jpg",
       "bio": "2008-2012 yy. - Toshkent temir yo‘l muhandislari instituti talabasi 2012-2014 yy. - Toshkent temir yo‘l muhandislari instituti magistranti 2014-2016 yy.- “O‘zbekiston temir yo‘llari” Toshkent muntaqaviy temir yo‘l uzeli Toshkent elektr ta’minoti distansiyasining Chuqursoy kontakt tarmog‘i elektromexanigi 2016-2019 yy. - Toshkent elektr tarmoqlari korxonasining avtomatika va o‘lchovlar, releli himoya",
       "subjects": [
         "Elektronika va sxemalar"
@@ -2820,7 +2820,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "bobirjonzayniddinov17@gmail.com",
-      "photo": "assets/teachers/att/Zayniddinov B..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Zayniddinov B..jpg",
       "bio": "2015-2016 yy. - Qibray Energetika kasb-hunar kolleji oʻqituvchisi 2016 yy.  -Toshkent davlat texnika universiteti intellektual muhandislik tizimlari kafedrasi assistenti 2017-2018 yy. -Toshkent davlat texnika universiteti mexatronika va robototexnika kafedrasi assistenti 2018-2022 yy. -Toshkent davlat texnika universiteti mexatronika va robototexnika kafedrasi katta oʻqituvchisi",
       "subjects": [
         "IT loyiha boshqaruvi",
@@ -2874,7 +2874,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "n.iskhakova@tsue.uz",
-      "photo": "assets/teachers/att/Isxakova N..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Isxakova N..jpg",
       "bio": "Isxakova Nargiza Patxillayevna — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "Dasturlash",
@@ -2924,7 +2924,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "a.adilova@tsue.uz",
-      "photo": "assets/teachers/att/Adilova A..png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Adilova A..png",
       "bio": "2008-2011y.y –Toshkent Farmatsevtika Instituti qoshidagi akademik litsey II-toifali o‘qituvchisi 2016 -2017 y.y. -Toshkent to‘qimachilik va Yengil sanoat institutining “Fizika va elektrotexnika” kafedrasi assistenti; 2018-2020 y.y -Toshkent to‘qimachilik va Yengil sanoat institutining “Fizika va elektrotexnika” kafedrasi katta o‘qituvchisi 2020-2021 y.y- Toshkent to‘qimachilik va Yengil sanoat institutining “Fizika va elektrotexnika” kafedrasi mudiri 2021-2024 y.y -Toshkent to‘qimachilik va Yengil sanoat institutining “Fizika va elektrotexnika” kafedrasi katta o‘qituvchisi",
       "subjects": [
         "Fizika",
@@ -2974,7 +2974,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "bekmirzaev_obidjon@tsue.uz",
-      "photo": "assets/teachers/att/Bekmirzayev O..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Bekmirzayev O..jpg",
       "bio": "2014-2016 yy. - Toshkent axborot texnologiyalari universiteti informatika asoslari kafedrasi assistenti 2016-2020 yy. - Toshkent axborot texnologiyalari universiteti axborot xavfsizligini ta’minlash kafedrasi assistenti, katta о‘qituvchisi 2020-2023 yy. - Muhammad al-xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti axborot xavfsizligi fakulteti doktoranti 2023-2024 yy.  - Muhammad al-xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti axborot xavfsizligi kafedrasi dotsenti 2024-2026 yy.  - Toshkent davlat iqtisodiyot universiteti sun’iy intellekt kafedrasi dotsenti",
       "subjects": [
         "Bulutli texnologiyalar"
@@ -3023,7 +3023,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "elyor0689@gmail.com",
-      "photo": "assets/teachers/att/Samadov E..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Samadov E..jpg",
       "bio": "2008-2009 yy. - Talimarjon IES UK da markazlashgan ta’mirlash sexida 4-daraja chilangari 2009-2010 yy. - Chirchiq Oliy Tank Qo‘mondonlik-Muhandislik Bilim Yurtida xizmat o‘tagan 2010-2010 yy. - Talimarjon IES UK da markazlashgan ta’mirlash sexida 4-daraja chilangari 2010-2014 yy. - Toshkent davlat texnika universiteti talabasi 2015-2015 yy. - Talimarjon IES UK da Texnologik jarayonlarni avtomatlashtirishni boshqarish tizimlari sexida 4-daraja elektr chilangari",
       "subjects": [
         "operatsion tizimlar",
@@ -3075,7 +3075,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "abdullaevM@tsue.uz",
-      "photo": "assets/teachers/att/Abdullayev M..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Abdullayev M..jpg",
       "bio": "2007-2011 yy. -Toshkent axborot texnologiyalari universiteti talabasi 2011-2013 yy. -Toshkent axborot texnologiyalari universiteti magistranti 2011-2013 yy.",
       "subjects": [
         "Dasturlash"
@@ -3124,7 +3124,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "sardor@astrin.uz",
-      "photo": "assets/teachers/att/Tojiyev S..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Tojiyev S..jpg",
       "bio": "2012 – 2014 yy –  Bremen Yakobs universiteti ilmiy xodimi, Bremen, Germaniya (PhD, doktorantura) 2014 – 2020 yy –  Oldenburg universiteti ilmiy xodimi, Oldenburg, Germaniya (PhD, doktorantura) 2025  –  h.v.       –  “TIQXMMI” milliy tadqiqot universiteti huzuridadi “Fundamental va amaliy tadqiqotlar instituti” doktoranti (DSc.). 2025 – 2026 yy  –  Toshkent davlat iqtisodiyot universiteti dotsenti v.b.b.",
       "subjects": [
         "Fizika",
@@ -3174,7 +3174,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "s.khalikov@tsue.uz",
-      "photo": "assets/teachers/att/Xaliqov S..png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Xaliqov S..png",
       "bio": "1997-2001 yy. - Toshkent temir yo‘l muhandislari instituti talabasi 2001-2003 yy. - Toshkent temir yo‘l muhandislari instituti magistranti 2003-2005 yy.",
       "subjects": [
         "Toshkent temir yo‘l muhandislari instituti temir yo‘l transportida avtomatika",
@@ -3228,7 +3228,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "j.kamalova@tsue.uz",
-      "photo": "assets/teachers/att/Kamalova J..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Kamalova J..jpg",
       "bio": "2012-2015 yy. - SEGi University (Malaysia) bakalavr talabasi 2015-2016 yy. - OOO \"TRAVEL ORNAMENT\" turizm operatori 2016-2017 yy.",
       "subjects": [
         "dasturlash",
@@ -3276,7 +3276,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "d.babarakhimova@tsue.uz",
-      "photo": "assets/teachers/att/Boboraximova D..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Boboraximova D..jpg",
       "bio": "Boboraximova Dilnoza Abduxalikovna — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "Dasturlash",
@@ -3326,7 +3326,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "arziqulov@tsue.uz",
-      "photo": "assets/teachers/att/Arziqulov S..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Arziqulov S..jpg",
       "bio": "Arziqulov Sunnatullo Daniyarovich — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "Axborot tizimlari arxitekturasi",
@@ -3374,7 +3374,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "d.ergashev@tsue.uz",
-      "photo": "assets/teachers/att/Ergashev D..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Ergashev D..jpg",
       "bio": "2004-2008 yy. - Toshkent axborot texnologiyalari universiteti talabasi 2007-2008 yy. 2008-2009 yy.",
       "subjects": [
         "dasturlash tillari",
@@ -3428,7 +3428,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "abraevam@tsue.uz",
-      "photo": "assets/teachers/att/Abrayeva M..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Abrayeva M..jpg",
       "bio": "2019-2020 yy. - Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti Algoritmlar va dasturlash texnologiyalari kafedrasi kabinet mudiri 2020-2023 yy. - Olmazor tumani 233-maktab o‘qituvchisi 2023-2024 yy.",
       "subjects": [
         "Dasturlash"
@@ -3477,7 +3477,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "manzurkamannapova@gmail.com",
-      "photo": "assets/teachers/att/Mannopova M..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Mannopova M..jpg",
       "bio": "2021-2024yy. - Yakkasaroy tumanidagi 160-sonli Ixtisoslashtirilgan Davlat umum ta’lim maktabining infomatika fani o’qituvchisi 2024-2025 yy. - Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi assistenti 2025 y.- h.v.",
       "subjects": [
         "IT loyiha boshqaruvi",
@@ -3527,7 +3527,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "husniyarustamovna@gmail.com",
-      "photo": "assets/teachers/att/Salimova H..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Salimova H..jpg",
       "bio": "2017–2021 yy. – Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universitetining “Kompyuter injiniringi” fakulteti talabasi 2018–2021 yy. – Respublika Yoshlar markazi Toshkent shahri bo‘linmasi ingliz tili fani o‘qituvchisi 2021–2023 yy. – Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universitetining “Axborot xavfsizligi” mutaxassisligi magistranti 2024 y. – h.v. – Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi assistenti Markaziy Osiyo telekommunikatsiya operatorlarida texnik samaradorlikni DEA-CCR modeli orqali baholash: O‘zbektelekom AK tajribasi. // “Moliyaviy texnologiyalar” ilmiy elektron jurnali. 2026-yil.",
       "subjects": [
         "Axborot tizimini ishlab chiqish metodologiyalari",
@@ -3581,7 +3581,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "a.nosirkulov@tsue.uz",
-      "photo": "assets/teachers/att/Nosirqulov A..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Nosirqulov A..jpg",
       "bio": "2021-2022 yy. Toshkent   shahar 74- sonli umumiy o`rta ta`lim maktabida fizika fani o`qituvchisi 2024 yil va h.v - Toshkent davlat iqtisodiyot universiteti Axborot tizimlari va texnologiyalari kafedrasi assistenti",
       "subjects": [
         "Fizika",
@@ -3628,7 +3628,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "khurramov@tsue.uz",
-      "photo": "assets/teachers/att/Xurramov A..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Xurramov A..jpg",
       "bio": "2022-2023 yy. - Muhammad Al-Xorazmiy nomidagi ”PKQT va UMO tarmoq markazi” davlat muassasi “Uslubchi” 2023-2024 yy. 2023-2024 yy. - Toshkent moliya instituti axborot tizimlari va texnologiyalari kafedrasi o‘qituvchi-stajyori",
       "subjects": [
         "Web tizimlari",
@@ -3680,7 +3680,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "m.matyakupova@tsue.uz",
-      "photo": "assets/teachers/att/Matyakubova M..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Matyakubova M..jpg",
       "bio": "2023-2024 yy.",
       "subjects": [
         "y. - h.v",
@@ -3729,7 +3729,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "shoymardonov@tsue.uz",
-      "photo": "assets/teachers/att/Shoymardonov A..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Shoymardonov A..jpg",
       "bio": "Shoymardonov Axrorjon Azamat o‘g‘li — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "Axborot tizimlari arxitekturasi",
@@ -3777,7 +3777,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "tursunboyevs418@gmail.com",
-      "photo": "assets/teachers/att/Tursunboyev Sh..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Tursunboyev Sh..jpg",
       "bio": "Tursunbayev Shoxrux Yunusali o‘g‘li — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "operatsion tizimlar",
@@ -3831,7 +3831,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "gulruxmadraximova91@tsue.uz",
-      "photo": "assets/teachers/att/Madraximova G..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Madraximova G..jpg",
       "bio": "2009-2013 yy. - Urganch Davlat Universiteti talabasi 2016-2025 yy. - Toshkent Shahar yunusobod tumani 235-maktab o’qituvchisi 2024-2026 yy.",
       "subjects": [
         "Dasturlash"
@@ -3880,7 +3880,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "sayyora.uzakova@tsue.uz",
-      "photo": "assets/teachers/att/Uzakovas S..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Uzakovas S..jpg",
       "bio": "2016-2019 yy. - Samarqand iqtisodiyot va servis instituti “Axborot texnologiyalari” kafedrasi assistenti 2025 y. - h.v. - Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi assistenti",
       "subjects": [
         "operatsion tizimlar",
@@ -3928,7 +3928,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "muxlisa.mirjamolova@mail.ru",
-      "photo": "assets/teachers/att/Mirjamolova M..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Mirjamolova M..jpg",
       "bio": "Mirjamolova Muxlisa Abdug'affor qizi — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "Axborot tizimlari arxitekturasi",
@@ -3979,7 +3979,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "k.khaydarov@tsue.uz",
-      "photo": "assets/teachers/att/Haydarov K..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Haydarov K..jpg",
       "bio": "Haydarov Kozimjon Karimovich — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "Fizika",
@@ -4030,7 +4030,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Chorshanba–Juma: 14:00–16:00",
       "email": "m.jonqobilov@tsue.uz",
-      "photo": "assets/teachers/att/Jonqobilov M..jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/att/Jonqobilov M..jpg",
       "bio": "Jonqobilov Mansur Mamarajabovich — преподаватель и исследователь кафедры АТТ ТГЭУ.",
       "subjects": [
         "java dasturlash tili",
@@ -4082,7 +4082,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "mbbahodir@tsue.uz",
-      "photo": "assets/teachers/ai/image1.jpeg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image1.jpeg",
       "bio": "Mo‘minov Bahodir Boltayevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Ma’lumotlar bazasi",
@@ -4135,7 +4135,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "sharafxodjayev@gmail.com",
-      "photo": "assets/teachers/ai/image2.jpeg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image2.jpeg",
       "bio": "Xashimxodjayev Sharafutdin Ishanxodjayevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Ma’lumotlar tuzilmasi va algoritmlar",
@@ -4181,7 +4181,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "rashid.nasimov@tsue.uz",
-      "photo": "assets/teachers/ai/image4.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image4.png",
       "bio": "Nasimov Rashid Hamid o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Kompyuter tarmoqlari",
@@ -4233,7 +4233,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "eshmuradov@tsue.uz",
-      "photo": "assets/teachers/ai/image5.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image5.png",
       "bio": "Eshmuradov Dilshod Elmuradovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4281,7 +4281,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "sh.kamalov@tsue.uz",
-      "photo": "assets/teachers/ai/image6.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image6.png",
       "bio": "Kamalov Shuxrat Kamalovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Компьютерное зрение",
@@ -4334,7 +4334,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "g.belalova@tsue.uz",
-      "photo": "assets/teachers/ai/image7.jpeg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image7.jpeg",
       "bio": "Belalova Guzal Anvarovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Buyumlar internet",
@@ -4387,7 +4387,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "maqsud_1158@mail.ru",
-      "photo": "assets/teachers/ai/image8.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image8.png",
       "bio": "Maxammadiyev Maxsud Mardon o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Kompyuter tarmoqlari"
@@ -4436,7 +4436,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "zaripaakbarova@gmail.com",
-      "photo": "assets/teachers/ai/image9.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image9.png",
       "bio": "Zaripov Bahodir Bobomurod o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4484,7 +4484,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "oktamungboyevich@gmail.com",
-      "photo": "assets/teachers/ai/image10.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image10.png",
       "bio": "Mustafakulov O‘ktam Ungboyevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Amaliy intellektual tizimlar",
@@ -4535,7 +4535,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "rashidov@tsue.uz",
-      "photo": "assets/teachers/ai/image11.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image11.png",
       "bio": "Rashidov Xusan Shirinbayevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4587,7 +4587,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "saburova@tsue.uz",
-      "photo": "assets/teachers/ai/image13.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image13.png",
       "bio": "Saburova Nasiba Rozumovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4635,7 +4635,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "s.saparov@tsue.uz",
-      "photo": "assets/teachers/ai/image14.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image14.png",
       "bio": "Saparov Saidqul Xo`jamuro-dovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4687,7 +4687,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "muxamadiyev@tsue.uz",
-      "photo": "assets/teachers/ai/image15.jpeg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image15.jpeg",
       "bio": "Muxamadiyev Sanjar Isoyevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4735,7 +4735,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "umarov@tsue.uz",
-      "photo": "assets/teachers/ai/image16.jpeg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image16.jpeg",
       "bio": "Umarov Ulug‘bek Unarovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4787,7 +4787,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "ro'ziyeva@tsue.uz",
-      "photo": "assets/teachers/ai/image17.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image17.png",
       "bio": "Ro‘ziyeva   Gulshaharxon  G‘ulomovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -4835,7 +4835,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "m.olimova@tsue.uz",
-      "photo": "assets/teachers/ai/image18.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image18.png",
       "bio": "Olimova Muxlisa Vohidjon qizi — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun’iy intellekt",
@@ -4886,7 +4886,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "u.arabov@tsue.uz",
-      "photo": "assets/teachers/ai/image19.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image19.png",
       "bio": "Arabov Ubaydullo Hamroqul oʼgʼli — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Ma’lumotlar bazasi",
@@ -4936,7 +4936,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "absalomova@tsue.uz",
-      "photo": "assets/teachers/ai/image20.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image20.png",
       "bio": "Absalomova Go‘zal Bo‘ribayeva — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Ma’lumotlar bazasi",
@@ -4987,7 +4987,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "z.norqulova@tsue.uz",
-      "photo": "assets/teachers/ai/image21.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image21.png",
       "bio": "Norqulova Ziyoda Nabi qizi — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Ma’lumotlar bazasi",
@@ -5038,7 +5038,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "n.kuldasheva@tsue.uz",
-      "photo": "assets/teachers/ai/image22.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image22.png",
       "bio": "Quldasheva Nargiza Komoliddin qizi — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Компьютерное зрение",
@@ -5090,7 +5090,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "jumanazarov@tsue.uz",
-      "photo": "assets/teachers/ai/image23.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image23.png",
       "bio": "Jumanazarov Javlon Shoxnazar o'g'li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Kompyuter tarmoqlari",
@@ -5141,7 +5141,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "a.xojamqulov@tsue.uz",
-      "photo": "assets/teachers/ai/image24.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image24.png",
       "bio": "Xo‘jamqulov Abdulaziz Xazrat  o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Kompyuterli koʻrish (Computer vision)",
@@ -5192,7 +5192,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "n.allaberganova@tsue.uz",
-      "photo": "assets/teachers/ai/image25.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image25.png",
       "bio": "Allaberganova Nasiba Muradovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -5244,7 +5244,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "d.gulmurodova@tsue.uz",
-      "photo": "assets/teachers/ai/image26.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image26.png",
       "bio": "Gulmurodova Dinora — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Kompyuter tarmoqlari",
@@ -5295,7 +5295,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "mirzoyev@tsue.uz",
-      "photo": "assets/teachers/ai/image27.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image27.png",
       "bio": "Mirzoyev Akmal Axadovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -5343,7 +5343,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "dauletov@tsue.uz",
-      "photo": "assets/teachers/ai/image28.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image28.png",
       "bio": "Dauletov Adilbek Yusupbaevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -5391,7 +5391,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "aktamov@tsue.uz",
-      "photo": "assets/teachers/ai/image29.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image29.png",
       "bio": "Aktamov Shoxruxbek Ulug‘bek o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -5439,7 +5439,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "choyoungin@tsue.uz",
-      "photo": "assets/teachers/ai/image30.emf",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image30.emf",
       "bio": "ChoYoungin — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -5487,7 +5487,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Payshanba: 14:00–16:00",
       "email": "ayxan@tsue.uz",
-      "photo": "assets/teachers/ai/image31.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ai/image31.png",
       "bio": "Ayxan Istanbullu — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
       "subjects": [
         "Sun'iy intellekt",
@@ -5535,7 +5535,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "п.а.@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/01_Allayarov_Piratdin_Atabayevich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/01_Allayarov_Piratdin_Atabayevich.jpg",
       "bio": "П.А. АЛЛАЯРОВНИНГ ПЕДАГОГИК ВА ИЛМИЙ ФАОЛИЯТИ ТЎҒРИСИДА — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -5587,7 +5587,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "m.shafiq@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/02_Muhammad_Shafiq.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/02_Muhammad_Shafiq.jpg",
       "bio": "Muhammad Shafiq — dotsent, PhD, xalqaro ekonometrika va makroiqtisodiy tahlil bo‘yicha mutaxassis.",
       "subjects": [
         "Ekonometrika",
@@ -5635,7 +5635,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "и.ф.д.,@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/03_Mirzayev_Imomnazar_Kalandarovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/03_Mirzayev_Imomnazar_Kalandarovich.jpg",
       "bio": "И.ф.д., проф. И.Қ. Мирзаевнинг  педагогик ва илмий фаолияти тўғрисида — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -5683,7 +5683,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "xamdamov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/04_Xamdamov_Isakjan_Mamasaliyevich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/04_Xamdamov_Isakjan_Mamasaliyevich.jpg",
       "bio": "Xamdamov Isakjan Mamasaliyevich — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "yil 1-fevral Andijon viloyati Shaxrixon tumanida tavallud topgan",
@@ -5733,7 +5733,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "fayziev@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/05_Fayziyev_Rabim_Alikulovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/05_Fayziyev_Rabim_Alikulovich.jpg",
       "bio": "Fayziev R.A. ilmiy-pedagogik faoliyatida: 2021 yilda Qozog'iston Respublikasi mustaqilligining 30 yilligi arafasida Qozog'istonning nufuzli \"Tulga\" (\"shaxs\") jurnalining maxsus sonida “Тұлға. Ұстаз. Ғалым” (\"Shaxs. Ustoz. Olim\") rukni bilan Fayziev R.A. faoliyati ham e'tirof etildi, ko'p nusxada chop etilib, Internetga ham joylashtirildi. 2021 yilda Ta'limni axborotlashtirish akademiyasi tomonidpn Toshkent davlat iqtisodiyot universitetining 90 yilligi munosabati bilan yuborilgan tabrik xatida ham \"Fayziev R.A. akademiya faoliyatida faol ishtirok etadi, bizning ilmiy hamjamiyatimizning nufuzli a'zosidir\" deb e'tirof etildi. 2021 yilda Fayziev R.A. Toshkent davlat iqtisodiyot universitetining 90 yilligi munosabati bilan O'zR Oliy va o'rta maxsus ta'lim vazirligining \"Toshkent davlat iqtisodiyot universitetining 90 yilligi\" esdalik nishoni hamda O'zR kasaba uyushmalari federasiyasining esdalik ko'krak nishoni bilan taqdirlandi. 2022 yilda Qozog'iston Respublikasi Prezidenti Kasim-Jomart Kemelevich Tokaevning Qozog'iston xalqiga \"Xalq birligi va tizimli islohotlar - yurt ravnaqining mustahkam poydevori\" nomli murojaatnomasini ommalashtirish maqsadida \"Qozog'iston Respublikasida xizmat ko'rsatgan xodim\" respublika tanlovi o'tkazilib, Xalqaro axborotlashtirish akademiyasi tavsiyasi bilan tanlovda Fayziev R.A. ham qatnashdi. Tanlov natijalariga ko'ra Fayziev R.A. ham tanlov g'olibi sifatida e'tirof etilib, \"Qozog'iston Respublikasida xizmat ko'rsatgan xodim\" ko'krak nishoni, diplom va ushbu tanlov g'oliblari faoliyati yoritilgan entsiklopediya bilan taqdirlandi.",
       "subjects": [
         "Fayziev Rabim Alikulovich 200 dan ortiq",
@@ -5787,7 +5787,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "almuradov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/06_Almuradov_Abdulla.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/06_Almuradov_Abdulla.jpg",
       "bio": "Almuradov Abdulla — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -5835,7 +5835,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "турабай@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/07_Djurayev_Turabay.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/07_Djurayev_Turabay.jpg",
       "bio": "Турабай Джураевнинг педагогик ва илмий фаолияти ҳақида маълумот — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -5883,7 +5883,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "raxmanov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/08_Raxmanov_Mexridin_Sindarovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/08_Raxmanov_Mexridin_Sindarovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 1990-1995 yy. - Nizomiy nomidagi Toshkent davlat pedagogika instituti talabasi Tajriba: 1994-yil 20-dekabrdan 1995-yil 25-maygacha-Toshkent shahridagi 146-maktabda matematika o‘qituvchisi.",
       "subjects": [
         "yil 6-sentyabrdan 2022-yil 29-avgustgacha-Toshkent moliya instituti “Tabiy-ilmiy va gumanitar fanlar” kafedrasida katta o‘qituvchi",
@@ -5935,7 +5935,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "sapayev@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/09_Sapayev_Dilshod_Xushnudovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/09_Sapayev_Dilshod_Xushnudovich.jpg",
       "bio": "Sapaev Dilshod Xushnudovichning pedagogik va ilmiy FAOLIYATI TO‘G‘RISIDA. Tug‘ilgan yili: 22.11.1975  Xorazm viloyati Urganch shaxri 1998-1999 yy.- Chilonzor tumani “Xalq banki” ATB Buxgalter 2001-2003 yy.- Toshkent Kimyo-texenologiya instituti “Sanoat iqtisodiyoti va menejment” kafedrasi assistent, “Xalqaro bo‘limi” metodist 2003-2007 yy.- Chet el firmasi “Alkim Tekstil” ximik-texnolog",
       "subjects": [
         "Ekonometrika",
@@ -5982,7 +5982,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "абдуллаева@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/10_Abdullayeva_Diloro_Kuysunovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/10_Abdullayeva_Diloro_Kuysunovna.jpg",
       "bio": "Абдуллаева Дилора Куйсуновна — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6030,7 +6030,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "urunov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/11_Urunov_Ravshanbek_Sadullayevich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/11_Urunov_Ravshanbek_Sadullayevich.jpg",
       "bio": "Ish tajribasi Ta’lim: 1988-1995 yy. - Toshkent davlat universiteti talabasi Tajriba: 1988-1996 yy. - Toshkent davlat universiteti talabasi",
       "subjects": [
         "Hozirgi kunga qadar R.Urunov tomonidan 1 ta darslik(hammualif) 1 ta o‘quv qo‘llanma",
@@ -6080,7 +6080,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "рахимов@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/12_Raximov_Nuritdin_Raxmanovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/12_Raximov_Nuritdin_Raxmanovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 1978-1983 йй. - Тошкент давлат техника университети талабаси 1986-1990 йй. - Ўзбекистон Республикаси фанлар академияси кибернетика илмий текшириш  институти аспиранти Tajriba:",
       "subjects": [
         "Ekonometrika",
@@ -6132,7 +6132,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "qodirov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/13_Qodirov_Farxod_Amirovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/13_Qodirov_Farxod_Amirovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 1989-1994 yy. - Toshkent davlat universiteti talabasi Tajriba: 1994-1996 yy. - Toshkent shahar kibernetika instituti stajyor-tadqiqotchisi",
       "subjects": [
         "Ekonometrika",
@@ -6184,7 +6184,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "ishniyazov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/14_Ishniyazov_Baxrom_Normamatovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/14_Ishniyazov_Baxrom_Normamatovich.jpg",
       "bio": "Ishniyazov Baxrom Normamatovich — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6236,7 +6236,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "kusharov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/15_Kusharov_Zoxid_Keldiyorovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/15_Kusharov_Zoxid_Keldiyorovich.jpg",
       "bio": "Kusharov Zoxid Keldiyorovichning pedagogik va ilmiy faoliyati TO‘G‘RISIDA. Kusharov Zoxid Keldiyorovich– 1971 yil 14 avgustda Samarqand viloyati Payariq tumani Nakrut qishlog‘ida tavallud topgan. 1988 yilda tumandagi 15-o‘rta maktabni tamomlagan. 1088-1994 yillarda O‘zbekiston Milliy Universiteti (oldingi ToshDU) Matematika fakultetida tahsil olgan. 1994-2021 yillarda Toshkent davlat agrar universitetida turli lavozimlarda, ya’ni assistent, katta o‘qituvchi, dotsent, kafedra mudiri, dekan muovini lavozimlarida faoliyat ko‘rsatgan. 2021 yildan 2025 yilgacha xususiy Oliy ta’lim muassasalarida pedagogik faoliyatini davom ettirgan.",
       "subjects": [
         "Ekonometrika",
@@ -6288,7 +6288,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "sabirov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/16_Sabirov_Karimjon_Kabildjanovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/16_Sabirov_Karimjon_Kabildjanovich.jpg",
       "bio": "Sabirov Karimjon Kabildjanovich — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6336,7 +6336,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "qquuvvoonn94@gmail.com",
-      "photo": "assets/teachers/ekonometrika/17_Raximberdiyev_Quvonchbek_Baxtiyorovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/17_Raximberdiyev_Quvonchbek_Baxtiyorovich.jpg",
       "bio": "РАХИМБЕРДИЕВ ҚУВОНЧБЕК БАХТИЁРОВИЧНИНГ ИЛМИЙ ПЕДАГОГИК ИШЛАРИ БЎЙИЧА МАЬЛУМОТ — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6384,7 +6384,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "shamsiyeva@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/18_Shamsiyeva_Feruza_Muratxodjayevna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/18_Shamsiyeva_Feruza_Muratxodjayevna.jpg",
       "bio": "Shamsiyeva Feruza Muratxodjayevna — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6432,7 +6432,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "fayziyeva@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/19_Fayziyeva_Nargiza_Rabimovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/19_Fayziyeva_Nargiza_Rabimovna.jpg",
       "bio": "3 ta o’quv qo’llanma, 1 ta ilmiy monografiya hamda 22 ta ilmiy maqola va tezislar muallifi.",
       "subjects": [
         "Ekonometrika",
@@ -6484,7 +6484,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "mir.raxmonov@tsue.uz.",
-      "photo": "assets/teachers/ekonometrika/20_Raxmonov_Mirvoxid_Rajabovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/20_Raxmonov_Mirvoxid_Rajabovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 2000-2004 йй. - Oʼzbekiston milliy universiteti talabasi (bakalavriat) 2011-2013 йй. - Moskva davlat mashinasozlik universiteti (MАMI) (magistratura) Tajriba:",
       "subjects": [
         "Professor",
@@ -6538,7 +6538,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "jumanovazilola9@gmail.com",
-      "photo": "assets/teachers/ekonometrika/21_Jumanova_Zilola_Tuychiyevna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/21_Jumanova_Zilola_Tuychiyevna.jpg",
       "bio": "Ish tajribasi Ta’lim: 2008 - 2012 y - Mirzo Ulugʻbek nomidagi Oʻzbekiston Milliy universiteti talabasi. 2019 - 2021 y",
       "subjects": [
         "Ekonometrika",
@@ -6590,7 +6590,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "siluvayan@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/22_Siluvayan_Priyan.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/22_Siluvayan_Priyan.jpg",
       "bio": "Siluvayan Priyan — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6638,7 +6638,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "isakova@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/23_Isakova_Naima_Ikromjonovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/23_Isakova_Naima_Ikromjonovna.jpg",
       "bio": "Ish tajribasi Ta’lim: 2014 - 2018 y - Namangan Muhandislik tehnologiyalari instituti  talabasi. 2018 - 2020 y",
       "subjects": [
         "Ekonometrika",
@@ -6690,7 +6690,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "muminova@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/24_Muminova_Maxbuba_Abduvafoyevna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/24_Muminova_Maxbuba_Abduvafoyevna.jpg",
       "bio": "Ish tajribasi Ta’lim: 1990-1995 yy. - Samarqand davlat universiteti talabasi Tajriba: 1995-2002 –  19-maktab o‘qituvchisi",
       "subjects": [
         "Ekonometrika",
@@ -6742,7 +6742,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "akram.ishnazarov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/25_Ishnazarov_Akram_Ismoilovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/25_Ishnazarov_Akram_Ismoilovich.jpg",
       "bio": "ИШНАЗАРОВ АКРАМ ИСМОИЛОВИЧ — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6790,7 +6790,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "tashkent,@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/26_Golestan_Zeinabsadat_Seyedmohammad.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/26_Golestan_Zeinabsadat_Seyedmohammad.jpg",
       "bio": "Tashkent, UzbekistanZeinab.golestan@gmail.com+998 970 17 16 40Tashkent, UzbekistanZeinab.golestan@gmail.com+998 970 17 16 40Zeinabsadat Golestan — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6838,7 +6838,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "тошпулов@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/27_Toshpulov_Bekzod_Sultonmurodovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/27_Toshpulov_Bekzod_Sultonmurodovich.jpg",
       "bio": "ТОШПУЛОВ БЕКЗОД СУЛТОНМУРОДОВИЧНИНГ ПЕДАГОГИК ВА ИЛМИЙ ФАОЛИЯТИ ТЎҒРИСИДА. — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -6886,7 +6886,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "farmonov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/28_Farmonov_Bobur_Davronovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/28_Farmonov_Bobur_Davronovich.jpg",
       "bio": "2017-yil Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti Matematika fakulteti Matematika ta’lim yo‘nalishini tamomlab, 2019-yil O‘zMU Matematika fakulteti Disfferansial tenglamalar va matematik-fizika mutaxasisligini tamomlagan.Oliy ta’limda faoliyatimni 2020-yil 4-sentabridan Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti Amaliy matematika va intellectual texnologiyalar fakultetining Axborot xavfsizligi kafedrasida stajyor o‘qituvchi lavozimida boshlagan. 2021-yil shu kafedrada o‘qituvchi, 2023-yil katta o‘qituvchi lavozimlarida faoliyat olib borgan. 2025-yil 2-sentabrdan Toshkent Davlat Iqtisodiyot universiteti Raqamli iqtisodiyot va axborot texnologiyalar fakultetining Ekonometrika kafedrasida katta o‘qituvchi lavozimida ishlab kelmoqda. Hozirgi kunda matematik bilimlarni iqtisodiyot va ekonometrika sohasi bilan umumlashtirib, Ma’lumotlar tahlili bo’yicha ilmiy izlanishlar olib bormoqda. 6. Aholi turmush tarzini yaxshilashda ko‘p qavatli turar joy majmualari joylashuvining ekonometrik modellari: jahon tajribasi. Muhandislik va Iqtisodiyot jurnali. 2026. 7. Security analysis in iot technologies. 2025 9.  The impact of business diversification on poverty rates in uzbekistan: econometric analysis based on the ardl model. HSR. 2026. 10. Disjunktiv normal shakldagi mantiqiy tenglamalar tizimini yechish dasturi. № DGU 14998. 2022",
       "subjects": [
         "Ilmiy va innovatsion ishlari. Scopus bazasidagi Xalqaro jurnalda bitta ilmiy maqola",
@@ -6936,7 +6936,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "sindorov@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/29_Sindorov_Davlatbek_Abdumajid_ogli.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/29_Sindorov_Davlatbek_Abdumajid_ogli.jpg",
       "bio": "Ish tajribasi Ta’lim: 2017-2021 yy. - Guliston davlat universiteti talabasi (bakalavriat) 2021-2023 yy. - Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti magistranti (magistratura) Tajriba:",
       "subjects": [
         "(01.04–31.07) –  Toshkent amaliy fanlar universiteti “Umumiqtisodiy fanlar” kafedrasi assistent o‘qituvchisi",
@@ -6985,7 +6985,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "z.tokhirova@tsue.uz.",
-      "photo": "assets/teachers/ekonometrika/30_Toxirova_Zarifa_Shuhrat_qizi.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/30_Toxirova_Zarifa_Shuhrat_qizi.jpg",
       "bio": "pedagogik va ilmiy faoliyati to‘g‘risida Tohirova Zarifa Shuhrat qizi 2003-yil 16-aprelda Samarqand viloyati Narpay tumanida tavallud topgan. 2018-yilda 68-umumiy o‘rta ta’lim maktabini tamomlagan. 2020-2024-yillarda Samarqand iqtisodiyot va servis instituti “Iqtisodiyot” fakultetida “Iqtisodiyot (tarmoqlar va sohalar bo‘yicha)” yo‘nalishida bakalavr bosqichida tahsil olgan. 2024-2026-yillarda Toshkent davlat iqtisodiyot universitetida “Ekonometrika” yo‘nalishida magistratura bosqichida tahsil olgan.",
       "subjects": [
         "yillarda Samarqand davlat chet tillar instituti qoshidagi akademik litseyning Aniq fanlar yo‘nalishida tahsil olgan",
@@ -7032,7 +7032,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "haqberdiyev@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/31_Haqberdiyev_Sardorbek_Orifjon_ogli.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/31_Haqberdiyev_Sardorbek_Orifjon_ogli.jpg",
       "bio": "Ish tajribasi: 2026 й - ҳ.в     - Тошкент давлат иқтисодиёт университети, “Эконометрика” таълим йўналиши assistant – o’qituvchisi",
       "subjects": [
         "Ekonometrika",
@@ -7082,7 +7082,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
       "email": "жумамуратов@tsue.uz",
-      "photo": "assets/teachers/ekonometrika/32_Jumamuratov_Sultanbek_Ilyasovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/ekonometrika/32_Jumamuratov_Sultanbek_Ilyasovich.jpg",
       "bio": "ЖУМАМУРАТОВ СУЛТАНБЕК ИЛЬЯСОВИЧ — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
       "subjects": [
         "Ekonometrika",
@@ -7130,7 +7130,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "bunyod_utanov@tsue.uz",
-      "photo": "assets/teachers/statistika/1_Utanov_Bunyod_Quvondiqovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/1_Utanov_Bunyod_Quvondiqovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 2005–2009 – Toshkent Davlat Agrar Universiteti (TSAU), Talaba 2011–2013 – Toshkent Moliya Instituti, Magistrant 2018–2021 – Toshkent Moliya Instituti, Doktorant",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7182,7 +7182,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "dolgova@tsue.uz",
-      "photo": "assets/teachers/statistika/10_Dolgova_Irina_Yevdokimovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/10_Dolgova_Irina_Yevdokimovna.jpg",
       "bio": "Ish tajribasi Ta’lim: Toshkent Milliy Iqtisodiyot Instituti – Iqtisodiy Kibernetika FakultetiDiplom Bilan Tafsirlangan, 1983Daraja: Iqtisodchi-Matematik Magistratura – Toshkent Milliy Iqtisodiyot InstitutiPhD, Iqtisodiyot, 1991Dissertatsiya: Hududlarning Ijtimoiy-Iqtisodiy Rivojlanishini Ekonometriya Modellari Asosida Bashorat Qilish (Sirdaryo Mahalliy Hududiy-Iqtisodiy Kompleksi Misolida) Akademik Unvon: Ekonometriya Va Statistika Bo‘yicha Dottsent, 1999",
       "subjects": [
         "Tabiiy Va Texnik Fanlar Kafedrasi",
@@ -7236,7 +7236,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "sayfullayev@tsue.uz",
-      "photo": "assets/teachers/statistika/11_Sayfullayev_Siddik_Nosirovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/11_Sayfullayev_Siddik_Nosirovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 2005 – Iqtisodiyot bo‘yicha bakalavr (faxriy diplom), Toshkent Davlat Iqtisodiyot Universiteti 2007 – Iqtisodiyotda Statistik va Matematik Usullar bo‘yicha magistr, TSUE Ilmiy daraja va unvon: Iqtisodiyot bo‘yicha falsafa doktori (PhD)",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7285,7 +7285,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "jumayev@tsue.uz",
-      "photo": "assets/teachers/statistika/12_Jumayev_Akbar_Maxmudovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/12_Jumayev_Akbar_Maxmudovich.jpg",
       "bio": "Ish tajribasi Ta’lim: Jahon Iqtisodiyoti va Diplomatiya Universiteti, Bakalavr (kunduzgi), 2010 Jahon Iqtisodiyoti va Diplomatiya Universiteti, Magistratura, 2015 Tajriba:",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7333,7 +7333,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "zaripaakbarova@gmail.com",
-      "photo": "assets/teachers/statistika/13_Akbarova_Barno_Shuxratovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/13_Akbarova_Barno_Shuxratovna.jpg",
       "bio": "Ish tajribasi 🎓 Ta’lim Toshkent davlat iqtisodiyot universiteti – Kasb ta’limi yo‘nalishi bo‘yicha bakalavr, 2009-yil Toshkent davlat iqtisodiyot universiteti – Iqtisodiyotda statistika va matematik usullar yo‘nalishi bo‘yicha magistr (imtiyozli diplom), 2011-yil 👩‍🏫 Biografiya / Kasbiy faoliyat 2009–2010 – O‘qituvchi, Uchtepa milliy hunarmandchilik kolleji",
       "subjects": [
         "🎖 Ilmiy daraja va unvon",
@@ -7383,7 +7383,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "a.ruziev@tsue.uzManzil",
-      "photo": "assets/teachers/statistika/14_Roziyev_Alisher_Ibraimovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/14_Roziyev_Alisher_Ibraimovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 2009 – Kamoliddin Behzod Milliy Rassomchilik va Dizayn Instituti – Toshkent, O‘zbekistonBakalavr darajasi, Menejment 2012 – Toshkent Moliya Instituti – Toshkent, O‘zbekistonMagistr darajasi, Makroiqtisodiy statistika Tajriba: 2005–2009 – Bakalavr talabasi, Kamoliddin Behzod Milliy Rassomchilik va Dizayn Instituti",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7435,7 +7435,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "shakirova@tsue.uz",
-      "photo": "assets/teachers/statistika/15_Shakirova_Nigora_Axrolovna.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/15_Shakirova_Nigora_Axrolovna.png",
       "bio": "Ish tajribasi Ta’lim: 2006 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonKasb-hunar ta’limi bo‘yicha bakalavr darajasi 2008 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonIqtisodiyotda statistika va matematik usullar bo‘yicha magistr darajasi Tajriba:",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7483,7 +7483,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "hayitova@tsue.uz",
-      "photo": "assets/teachers/statistika/16_Hayitova_Nigora_Ilxomovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/16_Hayitova_Nigora_Ilxomovna.jpg",
       "bio": "Ish tajribasi Ta’lim: 2005 – Buxoro Oziq-ovqat va Yengil Sanoat Texnologiyalari Instituti, Buxoro, O‘zbekistonKasb-hunar ta’limi bo‘yicha bakalavr (Informatika va IT) 2020 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonEkonometriya bo‘yicha magistr Tajriba: 2001–2005 – Talaba, Buxoro Oziq-ovqat va Yengil Sanoat Texnologiyalari Instituti",
       "subjects": [
         "–2019 – Ixtisoslashgan Davlat O‘rta Maktab (Tabiiy fanlar",
@@ -7533,7 +7533,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "jalolov@tsue.uz",
-      "photo": "assets/teachers/statistika/17_Jalolov_Ilhom_Isomiddinovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/17_Jalolov_Ilhom_Isomiddinovich.jpg",
       "bio": "Ish tajribasi Ta’lim: Toshkent Moliya Instituti – Moliya bo‘yicha bakalavr (B.A.), 2009 (kunduzgi) Toshkent Moliya Instituti – Moliya bo‘yicha magistr (M.A.), 2013 Toshkent Davlat Iqtisodiyot Universiteti – PhD dasturi (Asosiy doktorantura), 2018–2020",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7581,7 +7581,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "jamaldinova@tsue.uz",
-      "photo": "assets/teachers/statistika/18_Jamaldinova_Asal_Saliyevna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/18_Jamaldinova_Asal_Saliyevna.jpg",
       "bio": "Ish tajribasi Ta’lim: 2009 – Bakalavr (kunduzgi), Toshkent Moliya Instituti 2011 – Magistr, Toshkent Moliya Instituti Tajriba:",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7632,7 +7632,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "kamaletdinov@tsue.uz",
-      "photo": "assets/teachers/statistika/19_Kamaletdinov_Ulugbek__Muzaffarovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/19_Kamaletdinov_Ulugbek__Muzaffarovich.jpg",
       "bio": "Улуғбек Музаффарович Камалетдинов — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7684,7 +7684,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "z.tashmatov@tsue.uz",
-      "photo": "assets/teachers/statistika/2_Tashmatov_Zayirkul_Xudayberganovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/2_Tashmatov_Zayirkul_Xudayberganovich.jpg",
       "bio": "Ish tajribasi Ta’lim 1972 – Toshkent Milliy Iqtisodiyot Instituti (kunduzgi ta’lim) 1967–1972 – Talaba, Toshkent Milliy Iqtisodiyot Instituti 1973–1975 – Assistent, Stajyor, Tadqiqotchi, Toshkent Milliy Iqtisodiyot Instituti",
       "subjects": [
         "–1990 – Katta o‘qituvchi",
@@ -7737,7 +7737,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "mirolimov@tsue.uz",
-      "photo": "assets/teachers/statistika/20_Mirolimov_Mirislom_Mirshokir_ogli.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/20_Mirolimov_Mirislom_Mirshokir_ogli.jpg",
       "bio": "Ish tajribasi Ta’lim: 2016 – Statistika bo‘yicha bakalavr, Toshkent Davlat Iqtisodiyot Universiteti 2018 – Statistika bo‘yicha magistr (faxr bilan), Toshkent Davlat Iqtisodiyot Universiteti Tajriba:",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7789,7 +7789,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "murodov@tsue.uz",
-      "photo": "assets/teachers/statistika/21_Murodov_Jaxongir_Chorievich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/21_Murodov_Jaxongir_Chorievich.png",
       "bio": "Ish tajribasi Ta’lim: 2011 – Iqtisodiyotda Matematik va Statistik Usullar bo‘yicha magistr (faxr bilan), Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2010 – Yetakchi mutaxassis, Davlat Registri bo‘limi, Davlat Statistika Qo‘mitasi",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7841,7 +7841,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "nabiyeva@tsue.uz",
-      "photo": "assets/teachers/statistika/22_Nabiyeva_Durdona_Dilshod_qizi.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/22_Nabiyeva_Durdona_Dilshod_qizi.jpg",
       "bio": "Nabiyeva Durdona Dilshod qizi — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7889,7 +7889,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "nuraliyev@tsue.uz",
-      "photo": "assets/teachers/statistika/23_Nuraliyev_Saidolimxon_Seyduvali_o'g'li.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/23_Nuraliyev_Saidolimxon_Seyduvali_o'g'li.jpg",
       "bio": "Ish tajribasi Ta’lim: 2020 – Bakalavr, Statistika, Toshkent Davlat Iqtisodiyot Universiteti 2022 – Magistr, Iqtisodiyot (Tadqiqotchi-O‘qituvchi), Toshkent Davlat Iqtisodiyot Universiteti Tajriba:",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7937,7 +7937,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "qurbonboyev@tsue.uz",
-      "photo": "assets/teachers/statistika/24_Qurbonboyev_Abdulla_Mansur.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/24_Qurbonboyev_Abdulla_Mansur.jpg",
       "bio": "Ish tajribasi Ta’lim: 2020 – Bakalavr (kunduzgi), Qoraqalpoq Davlat Universiteti 2022 – Magistr (kunduzgi), Toshkent Davlat Iqtisodiyot Universiteti Tajriba:",
       "subjects": [
         "Iqtisodiy statistika",
@@ -7987,7 +7987,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "raxmataliyev@tsue.uz",
-      "photo": "assets/teachers/statistika/25_Raxmataliyev_Muzaffar_Eshdavlatovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/25_Raxmataliyev_Muzaffar_Eshdavlatovich.jpg",
       "bio": "Ish tajribasi Ta’lim: 2005 – Termiz Davlat Universiteti, Surxondaryo, O‘zbekistonIqtisodiyot bo‘yicha bakalavr darajasi 2007 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonIqtisodiyot bo‘yicha magistr darajasi Tajriba:",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8037,7 +8037,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "roziqova@tsue.uz",
-      "photo": "assets/teachers/statistika/26_Roziqova_Gulmira_Sharipovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/26_Roziqova_Gulmira_Sharipovna.jpg",
       "bio": "Ish tajribasi Ta’lim: 2003 – Bakalavr, Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 1994 – Xodim, “Dori-Darmon” Davlat Qo‘shma Sarmoya Kompaniyasi 1995–2005 – Muhandis, Iqtisodiy Bilimlarni Tarqatish Markazi, Toshkent Davlat Iqtisodiyot Universiteti",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8087,7 +8087,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "salixodjayeva@tsue.uz",
-      "photo": "assets/teachers/statistika/28_Salixodjayeva_Umida_Abduakbar_qizi.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/28_Salixodjayeva_Umida_Abduakbar_qizi.png",
       "bio": "Ish tajribasi Ta’lim: Toshkent Kimyo-Texnologiya Instituti – Boshqaruv bo‘yicha bakalavr, 2014 Toshkent Davlat Iqtisodiyot Universiteti – Statistika bo‘yicha magistr, 2016 PhD (Doktorlik dasturi) – Ekonometriya va Statistika, 2022",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8139,7 +8139,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "toraeva@tsue.uz",
-      "photo": "assets/teachers/statistika/29_Toraeva_Zilola_Turgnovna.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/29_Toraeva_Zilola_Turgnovna.jpg",
       "bio": "Ish tajribasi Ta’lim: 2013 – Bakalavr, Qarshi Muhandislik-Iqtisodiyot Instituti, Qarshi, O‘zbekiston 2021 – Magistrlik darajasi, Iqtisodiyot (Statistika), Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2009–2013 – Talaba, Qarshi Muhandislik-Iqtisodiyot Instituti",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8187,7 +8187,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "a.ayubjonov@tsue.uz",
-      "photo": "assets/teachers/statistika/3_Ayubjonov_Abbos_Hosilovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/3_Ayubjonov_Abbos_Hosilovich.jpg",
       "bio": "Ish tajribasi • Biography:1976–1976 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi assistenti,1976–1977 yy. – Harbiy xizmatda,1977–1980 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi assistenti,1980–1983 yy. – Moskva iqtisodiyot-statistika instituti aspiranti,1983–1984 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi assistenti,1984–1989 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi katta o‘qituvchisi,1989–1991 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi dotsenti,1991–2002 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi dotsenti,2002–2003 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri,2003–2007 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi dotsenti,2007–2010 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri,2010–2016 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi dotsenti,2016–2017 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri vazifasini vaqtincha bajaruvchisi,2017-2024 yy. - Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri. • Education:1976 yilda A.A. Jdanov nomli Leningrad davlat universiteti, Iqtisodiy kibernetika mutaxassisligini tamomlagan. 1980–1983 yillar mobaynida Moskva iqtisodiyot-statistika instituti aspiranturasida ta’lim olgan. 1994 yilda O‘zbekiston Respublikasi OAK TDİU ilmiy kengashining tavsiyasiga ko‘ra Statistika kafedrasi bo‘yicha dotsent ilmiy unvoni tasdiqlangan.",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8235,7 +8235,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "zokirova@tsue.uz",
-      "photo": "assets/teachers/statistika/30_Zokirova_Munisa_Jamoliddin_qizi.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/30_Zokirova_Munisa_Jamoliddin_qizi.jpg",
       "bio": "Ish tajribasi Ta’lim: 2016 – Bakalavr, Kasb-hunar Ta’limi (Iqtisodiyot), Toshkent Davlat Iqtisodiyot Universiteti 2021 – Magistr, Statistika, Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2016–2021 – Katta Mutaxassis, Respublika Ta’lim Markazi, O‘zbekiston Respublikasi Xalq Ta’limi Vazirligi",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8287,7 +8287,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "po'latov@tsue.uz",
-      "photo": "assets/teachers/statistika/31_Po'latov_Dilyor_Dilshod_o'g'li.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/31_Po'latov_Dilyor_Dilshod_o'g'li.png",
       "bio": "Po'latov Dilyor Dilshod o'g'li — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8335,7 +8335,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "b.mamatkulov@tsue.uzManzil",
-      "photo": "assets/teachers/statistika/4_Mamatkulov_Baxtiyor_Xalmuradovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/4_Mamatkulov_Baxtiyor_Xalmuradovich.jpg",
       "bio": "Ish tajribasi Ta’lim 1995 – Toshkent Davlat Agrar Universiteti, Bakalavr (kunduzgi ta’lim) Tajriba 1990–1995 – Talaba, Toshkent Davlat Agrar Universiteti",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8385,7 +8385,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "a.siddikov@tsue.uz",
-      "photo": "assets/teachers/statistika/5_Siddikov_Alisher_Jurakulovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/5_Siddikov_Alisher_Jurakulovich.jpg",
       "bio": "Ish tajribasi Ta’lim: Toshkent Milliy Iqtisodiyot Instituti, Iqtisodiyot bakalavri (faxriy diplom, kunduzgi) – 1989 Magistratura, Toshkent Davlat Sharqshunoslik Instituti – 1995–1998 Doktorantura, Samarali Iqtisodiy Siyosat Markazi, O‘zbekiston Iqtisodiyot Vazirligi – 2003–2006",
       "subjects": [
         "Katta ilmiy xodim",
@@ -8435,7 +8435,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "abduraxmonov@tsue.uz",
-      "photo": "assets/teachers/statistika/6_Abduraxmonov_Abduazim_Djalilitdinovich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/6_Abduraxmonov_Abduazim_Djalilitdinovich.jpg",
       "bio": "Ish tajribasi Ta’lim: Toshkent Davlat Iqtisodiyot Universiteti – B.A. (2002) Toshkent Davlat Iqtisodiyot Universiteti – M.A. (2004)Mutaxassislik: Kasbiy ta’lim, Ekonometriya va Statistika Ilmiy daraja va unvon:",
       "subjects": [
         "Professor",
@@ -8487,7 +8487,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "kh.khujakulov@tsue.uzManzil",
-      "photo": "assets/teachers/statistika/7_Xujakulov_Xayitmurat_Djavliyevich.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/7_Xujakulov_Xayitmurat_Djavliyevich.jpg",
       "bio": "Ish tajribasi Ta’lim: 1997 – Toshkent Milliy Iqtisodiyot Instituti, Toshkent, O‘zbekistonBakalavr darajasi, Iqtisodiyot Mukofotlar: 1999 – O‘zbekiston Respublikasi Oliy Ta’lim A’lochisi",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8539,7 +8539,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "a.ruziev@tsue.uzManzil",
-      "photo": "assets/teachers/statistika/8_Akbarova_Zaripa.jpg",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/8_Akbarova_Zaripa.jpg",
       "bio": "Office: TSUE, Building 3, Room 403       Email: zaripaakbarova@gmail.com — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
       "subjects": [
         "Iqtisodiy statistika",
@@ -8591,7 +8591,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Dushanba–Payshanba: 14:00–16:00",
       "email": "nabixojayev@tsue.uz",
-      "photo": "assets/teachers/statistika/9_Nabixojayev_Abbos_Abduppataxovich.png",
+      "photo": "https://tsue-digital-economy.web.app/assets/teachers/statistika/9_Nabixojayev_Abbos_Abduppataxovich.png",
       "bio": "Ish tajribasi Ta’lim: 1968–1973 – Toshkent Milliy Iqtisodiyot Instituti, Iqtisodiy Kibernetika Fakulteti, Mutaxassislik: Iqtisodiy Kibernetika",
       "subjects": [
         "Mukofotlar va Unvonlar:",

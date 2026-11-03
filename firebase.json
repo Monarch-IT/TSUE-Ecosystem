@@ -16,7 +16,8 @@
       "**/*.jar",
       "**/*.gradle",
       "**/gradlew",
-      "**/gradlew.bat"
+      "**/gradlew.bat",
+      "assets/teachers/**"
     ],
     "rewrites": [
       {
