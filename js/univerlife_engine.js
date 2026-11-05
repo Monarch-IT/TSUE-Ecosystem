@@ -7,23 +7,23 @@ const S = { me: null };
 
 function setState(n) { for (const k of Object.keys(S)) delete S[k]; Object.assign(S, n || { me: null }); }
 
-const V = {}; // sahifalar ro'yxati: V.<rol>.<sahifa> = (route) => html
+const V = {};
 
-const FILES = {}; // tanlangan fayllar (forma maydoni nomi bo'yicha)
+const FILES = {};
 
 const ui = {
-  busy: false,       // so'rov ketyapti
-  lastErr: "",       // oxirgi server xatosi
-  afterRender: [],   // sahifa chizilgandan keyin bajariladigan funksiyalar
-  CARD: null,        // xodim ochgan talaba kartasi
-  schedDay: 0,       // dars jadvalida tanlangan kun
-  devId: "",         // qurilma belgisi (QR uchun)
-  kidIdx: 0,         // ota-ona: tanlangan farzand
-  TG: "",            // tyutor: tanlangan guruh ("" = barchasi)
-  ATT: null,         // tyutor: ochiq davomat varag'i
-  fileCache: {},     // ochilgan fayllar keshi
-  qrTimer: null,     // QR ekran taymeri
-  qrLast: "",        // oxirgi QR token
+  busy: false,
+  lastErr: "",
+  afterRender: [],
+  CARD: null,
+  schedDay: 0,
+  devId: "",
+  kidIdx: 0,
+  TG: "",
+  ATT: null,
+  fileCache: {},
+  qrTimer: null,
+  qrLast: "",
 };
 
 
@@ -46,7 +46,7 @@ const tel = (p) => String(p || "").replace(/[^+\d]/g, "");
 const AVC = ["#2f5a6e", "#5b7b3a", "#8a5a2b", "#5a4d8a", "#2b6f78", "#8a3d4f"];
 const avc = (s) => { let h = 0; for (const ch of String(s)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return AVC[h % AVC.length]; };
 const ava = (name, cls) => '<span class="av ' + (cls || "s") + '" style="background:' + avc(name) + '">' + esc(ini(name)) + "</span>";
-const gpaTxt = (g) => (g == null ? "Kutilmoqda" : f2(g)); // null — joriy yilda hali modul tugamagan
+const gpaTxt = (g) => (g == null ? "Kutilmoqda" : f2(g));
 const som = (n) => num(n) + " so'm";
 
 
@@ -163,13 +163,8 @@ const DEMO = [
   ["tyutor.demo", "6. Tyutor", "Abdurahmonov Umar"]
 ];
 function viewLogin() {
-  return '<div class="auth"><div class="auth-l"><a href="/ecosystem" class="brand" title="Ekotizim bosh sahifasiga o‘tish"><div class="riat-badge" style="background:#003B81;color:#fff;font-weight:900;font-size:11px;padding:2px 7px;border-radius:6px;margin-right:6px">TSUE</div><span>UniverLife</span></a><div><h2>Talaba hayoti bitta platformada</h2><p>Davomat, baholar, ijtimoiy faollik indeksi, stipendiyalar, to\'garaklar va tadbirlar — talaba, ota-ona, tyutor, klub rahbari, dekanat va rektorat uchun.</p>' +
-    "<ul><li>6 turdagi yagona shaxsiy kabinet (SSO + JSHSHIR + Face ID)</li><li>Ota-ona uchun 3 pog'onali jonli reyting (Universitet, Fakultet, Guruh)</li><li>TTJ dan javob olish: Talaba → Ota-ona (Face ID) → Tyutor → Tarbiyachi</li><li>Tyutor uchun ijara xonadonlari xaritasi, marshrut va 1-klik Excel</li></ul></div><small style=\"color:#a9c4cf\">TDIU · Raqamli iqtisodiyot va axborot texnologiyalari fakulteti</small></div>" +
-    '<div class="auth-r"><div class="auth-box"><h1>Yagona tizimga kirish</h1><p class="lead">6 ta asosiy rol bo\'yicha yagona kirish (Login, JSHSHIR yoki HEMIS ID).</p><form class="form" data-form="login">' +
-    field("Login yoki JSHSHIR (14 raqam)", "login", { req: true, ph: "masalan: ota.demo yoki 31004751230088", attrs: ' autocomplete="username" autocapitalize="none"' }) +
-    field("Parol", "password", { type: "password", req: true, attrs: ' autocomplete="current-password"' }) +
-    '<button class="btn block" type="submit">Kirish</button></form><div class="demo">Taqdimot uchun 6 turdagi tayyor hisoblar (1-klik bilan kirish):<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px">' +
-    DEMO.map((d) => '<button type="button" data-act="demo" data-login="' + d[0] + '" style="text-align:left;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);cursor:pointer"><b>' + d[1] + "</b><br><small class=\"muted\">" + esc(d[2]) + "</small></button>").join("") + "</div></div></div></div></div>";
+  window.location.replace("/auth");
+  return '<div style="display:flex;height:100vh;align-items:center;justify-content:center;font-family:sans-serif;background:#F6F9FD;color:#003B81;font-size:16px;font-weight:700"><i class="fa-solid fa-spinner fa-spin" style="margin-right:10px"></i> Tizimga yo‘naltirilmoqda...</div>';
 }
 
 
@@ -290,7 +285,7 @@ function grantView(st) {
   const g = st.grant, A = st.acad, R = S.rules.grant, ifi = st.ifi ? st.ifi.total : 0;
   if (!g) return "";
   if (A.gpa == null) return card("Grant", '<div class="hero"><div class="big"><span style="font-size:24px;color:var(--muted)">Kutilmoqda</span></div><div class="hx"><p>Grant bali joriy yil GPA si bilan hisoblanadi — <b>modul tugagach chiqadi</b>.</p></div></div>', chip("Kutilmoqda"));
-  const reg = (st.social || []).some((x) => x.cat === "reestr" && x.status === "tasdiqlandi"); // ijtimoiy himoya reyestri (anketa → toifa)
+  const reg = (st.social || []).some((x) => x.cat === "reestr" && x.status === "tasdiqlandi");
   const lo = Math.max(0, Math.floor(Math.min(g.score, g.cut.half ?? g.score, g.cut.full ?? g.score) / 10) * 10 - 10);
   const segs = [], cuts = [];
   const h = g.cut.half, f = g.cut.full;
@@ -310,9 +305,12 @@ function grantView(st) {
 
 function contractView(st) {
   const k = st.contract;
-  if (!k) return card("Kontrakt", st.payType === "grant" ? '<p class="muted" style="margin:0">Grant asosida — to\'lov yo\'q</p>' : empty("Ma'lumot kiritilmagan"));
-  return card("Kontrakt <small>" + esc(k.year) + "</small>", '<div class="hero"><span class="mr ' + (k.pct >= 100 ? "ok" : k.pct < 50 ? "bad" : "warn") + '" style="--p:' + k.pct + ';width:76px;height:76px"><i style="width:60px;height:60px;font-weight:800;font-size:16px;color:var(--ink)">' + k.pct + "%</i></span>" +
-    '<div class="hx" style="min-width:180px"><div class="kv"><div><small>To\'langan</small><b>' + som(k.paid) + "</b></div><div><small>Qoldiq</small><b" + (k.left ? ' style="color:var(--bad)"' : "") + ">" + som(k.left) + '</b></div></div><p class="small muted" style="margin:8px 0 0">Jami: ' + som(k.due) + "</p></div></div>", k.pct >= 100 ? chip("To'langan", "ok") : chip("Qarz bor", "bad"));
+  if (!k) return card("Kontrakt to'lovi", st.payType === "grant" ? '<p class="muted" style="margin:0">Davlat granti asosida — to\'lov yo\'q</p>' : empty("Ma'lumot kiritilmagan"));
+  const deadlineAlert = '<div class="note warn small" style="margin-top:12px;border-left:4px solid #f59e0b;padding:8px 12px;background:rgba(245,158,11,0.08);border-radius:6px">' +
+    '<b><i class="fa-solid fa-triangle-exclamation"></i> Respublika bo\'yicha muhim eslatma:</b><br>' +
+    'O\'zbekiston Respublikasi Oliy ta\'lim vazirligi talabiga muvofiq, <b>1-noyabrga qadar</b> yillik to\'lov-kontrakt miqdorining kamida <b>25% qismi</b> to\'lanishi shart! Qoldiqni o\'z vaqtida so\'ndirishni unutmang.</div>';
+  return card("Kontrakt to'lovi <small>" + esc(k.year) + "</small>", '<div class="hero"><span class="mr ' + (k.pct >= 100 ? "ok" : k.pct < 25 ? "bad" : "warn") + '" style="--p:' + k.pct + ';width:76px;height:76px"><i style="width:60px;height:60px;font-weight:800;font-size:16px;color:var(--ink)">' + k.pct + "%</i></span>" +
+    '<div class="hx" style="min-width:180px"><div class="kv"><div><small>To\'langan</small><b>' + som(k.paid) + "</b></div><div><small>Qoldiq (Qarzdorlik)</small><b" + (k.left ? ' style="color:var(--bad)"' : "") + ">" + som(k.left) + '</b></div></div><p class="small muted" style="margin:8px 0 0">Jami yillik shartnoma: ' + som(k.due) + "</p></div></div>" + deadlineAlert, k.pct >= 100 ? chip("100% to'langan", "ok") : k.pct >= 25 ? chip("25% to'langan", "warn") : chip("Qarzdorlik mavjud", "bad"));
 }
 
 
@@ -903,7 +901,9 @@ V.parent.home = P((k) => {
 
   return parentBadgeBar + ttjAlert +
     '<div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">' + ava(k.name + " " + k.surname, "l") + '<div><h2 style="font-size:22px">' + esc(k.name + " " + k.surname) + '</h2><div class="muted">' + esc(k.grp) + " · " + esc(k.faculty) + " · Sentabrdan beri sababsiz: <b style=\"color:var(--bad)\">" + k.absH + " soat</b></div></div></div>" +
-    todayStatus(k) + '<div style="height:16px"></div><div class="kpis">' + homeKpis(k) + "</div>" +
+    todayStatus(k) + '<div style="height:16px"></div>' +
+    card("Bugungi dars jadvali va soatlar (" + (isoDay(today()) === 7 ? "Bugun yakshanba" : DAYS[isoDay(today())]) + ")", todayLessons(k.schedule), '<a href="#/schedule">Haftalik to\'liq jadval</a>') +
+    '<div style="height:16px"></div><div class="kpis">' + homeKpis(k) + "</div>" +
     '<div style="margin-bottom:16px">' + liveRaceCard + '</div>' +
     (exOpen ? '<a class="note warn" href="#/explanations" style="display:block;margin-bottom:16px"><b>' + exOpen + " ta tushuntirish xati so'ralgan.</b> Batafsil ko'rish →</a>" : "") +
     '<div class="grid g2" style="margin-bottom:16px;align-items:start">' + grantView(k) + contractView(k) + "</div>" +
@@ -950,12 +950,29 @@ function TGV(fn) {
   };
 }
 function tutorHousingMapWidget() {
-  return card("Ijara xonadonlarini o'rganish xaritasi va optimal marshrut", '<p class="small muted" style="margin:-4px 0 12px">Talabalar anketada kiritgan yashash manzillari avtomatik tumanlar kesimida guruhlanadi va tyutor uchun optimal tashrif marshruti chizib beriladi (15 kunlik qog\'ozbozlik o\'rniga 1 soniyada):</p>' +
+  return card("Talabalarning yashash joylari to'g'risida ma'lumot (Jami: 136 nafar talaba)", '<p class="small muted" style="margin:-4px 0 12px">Tyutor biriktirilgan talabalarning yashash toifalari va ijara xonadonlari monitoringi. Yashash sharoiti yomon (qizil zona) bo\'lgan talabalar zudlik bilan TTJga ko\'chiriladi:</p>' +
     '<div class="grid g4" style="margin-bottom:14px">' +
-      '<div class="kv" style="display:block;padding:12px;border:1.5px solid var(--pri);border-radius:12px;background:var(--pri-soft)"><small style="color:var(--pri);font-weight:800">CHILONZOR TUMANI</small><b style="display:block;font-size:20px;margin:4px 0">14 nafar</b><small class="muted">Ijara xonadonlari (6 ta manzil)</small></div>' +
-      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px"><small style="color:var(--ok);font-weight:800">TTJ-5 VA TTJ-6</small><b style="display:block;font-size:20px;margin:4px 0">18 nafar</b><small class="muted">Talabalar turar joyi</small></div>' +
-      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px"><small style="color:var(--warn);font-weight:800">YUNUSOBOD VA OLMAZOR</small><b style="display:block;font-size:20px;margin:4px 0">6 nafar</b><small class="muted">Ijara xonadonlari (3 ta manzil)</small></div>' +
-      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--line);border-radius:12px"><small class="muted" style="font-weight:800">O\'Z UYI / QARINDOSHI</small><b style="display:block;font-size:20px;margin:4px 0">10 nafar</b><small class="muted">Toshkent sh. doimiy</small></div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1.5px solid var(--ok);border-radius:12px;background:rgba(30,138,95,0.06)"><small style="color:var(--ok);font-weight:800">O\'Z UYI</small><b style="display:block;font-size:20px;margin:4px 0;color:var(--ok)">12 nafar</b><small class="muted">Toshkent sh. doimiy ro\'yxat</small></div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--pri);border-radius:12px;background:var(--pri-soft)"><small style="color:var(--pri);font-weight:800">QARINDOSHINIKI</small><b style="display:block;font-size:20px;margin:4px 0;color:var(--pri)">4 nafar</b><small class="muted">Yaqin qarindoshi nazoratida</small></div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1px solid var(--ok);border-radius:12px;background:rgba(30,138,95,0.06)"><small style="color:var(--ok);font-weight:800">TTJ (TALABALAR TURAR JOYI)</small><b style="display:block;font-size:20px;margin:4px 0;color:var(--ok)">52 nafar</b><small class="muted">TTJ-5 va TTJ-6 yotoqxonalari</small></div>' +
+      '<div class="kv" style="display:block;padding:12px;border:1.5px solid var(--ink);border-radius:12px;background:var(--soft)"><small style="color:var(--ink);font-weight:800">IJARA XONADONLARI</small><b style="display:block;font-size:20px;margin:4px 0;color:var(--ink)">68 nafar</b><small class="muted">Svetofor monitoringida</small></div>' +
+    '</div>' +
+    '<div style="margin-bottom:14px;padding:14px;border-radius:12px;background:var(--card);border:1px solid var(--line)">' +
+      '<div style="font-size:12.5px;font-weight:800;color:var(--ink);text-transform:uppercase;margin-bottom:10px"><i class="fa-solid fa-traffic-light"></i> Ijara xonadonlarining «Svetofor» holati (68 nafar):</div>' +
+      '<div class="grid g3">' +
+        '<div style="padding:10px 12px;border-radius:10px;background:rgba(30,138,95,0.08);border:1px solid var(--ok);display:flex;align-items:center;gap:10px">' +
+          '<div style="width:14px;height:14px;border-radius:50%;background:var(--ok);flex-shrink:0"></div>' +
+          '<div><b style="color:var(--ok);font-size:14px">Yashil zona: 48 nafar</b><br><small class="muted">Yaxshi sharoit (gaz, isitish, xavfsiz)</small></div>' +
+        '</div>' +
+        '<div style="padding:10px 12px;border-radius:10px;background:rgba(245,158,11,0.08);border:1px solid var(--warn);display:flex;align-items:center;gap:10px">' +
+          '<div style="width:14px;height:14px;border-radius:50%;background:var(--warn);flex-shrink:0"></div>' +
+          '<div><b style="color:var(--warn);font-size:14px">Sariq zona: 14 nafar</b><br><small class="muted">O\'rtacha sharoit (monitoringda)</small></div>' +
+        '</div>' +
+        '<div style="padding:10px 12px;border-radius:10px;background:rgba(179,64,47,0.08);border:1.5px solid var(--bad);display:flex;align-items:center;gap:10px">' +
+          '<div style="width:14px;height:14px;border-radius:50%;background:var(--bad);flex-shrink:0"></div>' +
+          '<div><b style="color:var(--bad);font-size:14px">Qizil zona: 6 nafar</b><br><small style="color:var(--bad);font-weight:700">Og\'ir sharoit! TTJga ko\'chirish zarur</small></div>' +
+        '</div>' +
+      '</div>' +
     '</div>' +
     '<div style="padding:14px;border-radius:12px;background:var(--soft);border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">' +
       '<div style="flex:1;min-width:260px">' +
@@ -965,14 +982,14 @@ function tutorHousingMapWidget() {
           '<span>→</span>' +
           '<span class="chip pri">2-manzil: Chilonzor-19, 4-uy, 15-xonadon (2 talaba)</span>' +
           '<span>→</span>' +
-          '<span class="chip warn">3-manzil: Shuhrat chorrahasi, 8-uy, 51-xonadon (2 talaba)</span>' +
+          '<span class="chip bad">3-manzil: Shuhrat chorrahasi, 8-uy (Qizil zona · 2 talaba)</span>' +
         '</div>' +
       '</div>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-        '<button type="button" class="btn sm ghost" data-act="export-excel"><i class="fa-solid fa-file-excel"></i> Excelga yuklash (.CSV)</button>' +
+        '<button type="button" class="btn sm ghost" data-act="export-excel"><i class="fa-solid fa-file-excel"></i> 1-klik Excelga yuklash (.CSV)</button>' +
         '<a class="btn sm" href="/maps"><i class="fa-solid fa-map-location-dot"></i> RIAT-Maps xaritada ochish</a>' +
       '</div>' +
-    '</div>', chip("Avto-marshrut", "pri"));
+    '</div>', chip("136 talaba", "pri"));
 }
 V.tutor = {};
 V.tutor.home = () => {
@@ -1244,7 +1261,7 @@ V.dean.grant = (r) => {
   const C = cohorts();
   if (!C.length) return card("", empty("Talabalarga ta'lim yo'nalishi va kurs kiritilmagan (Admin → Foydalanuvchilar)."));
   const ranked0 = (c) => (S.students || []).filter((x) => x.faculty === c.faculty && x.direction === c.direction && x.course === c.course && x.grant && x.grant.pos).length;
-  const cur = C.find((c) => c.key === r.q.get("k")) || C.slice().sort((a, b) => ranked0(b) - ranked0(a))[0]; // standart: reytingi bor yo'nalish
+  const cur = C.find((c) => c.key === r.q.get("k")) || C.slice().sort((a, b) => ranked0(b) - ranked0(a))[0];
   const q = (S.quotas || []).find((x) => x.faculty === cur.faculty && x.direction === cur.direction && x.course === cur.course) || { full_n: 0, half_n: 0 };
   const L = (S.students || []).filter((x) => x.faculty === cur.faculty && x.direction === cur.direction && x.course === cur.course);
   const ranked = L.filter((x) => x.grant && x.grant.pos).sort((a, b) => a.grant.pos - b.grant.pos);
@@ -1441,7 +1458,7 @@ function render() {
   const p0 = r.parts[0] || "home";
   if (!S.me) {
     if (p0 === "c") try { sessionStorage.setItem("ul_after", location.hash); } catch (e) {  }
-    root.innerHTML = viewLogin();
+    window.location.replace("/auth");
     return;
   }
   if (p0 === "login") { location.replace("#/home"); return; }
@@ -1459,7 +1476,7 @@ function render() {
   root.innerHTML = shell(html, title);
   document.title = title + " · UniverLife";
   ui.afterRender.forEach((f) => { try { f(); } catch (e) { console.error(e); } });
-  document.dispatchEvent(new Event("ul:render")); // masalan, rasmlarni yuklash (handlers/files.js)
+  document.dispatchEvent(new Event("ul:render"));
 }
 window.addEventListener("hashchange", () => { closeSheet(); render(); window.scrollTo(0, 0); });
 window.addEventListener("scroll", () => { const t = $(".top"); if (t) t.classList.toggle("sc", window.scrollY > 4); }, { passive: true });
@@ -1677,7 +1694,7 @@ document.addEventListener("click", async (e) => {
   e.preventDefault();
   if (a === "demo") { const f = $("form[data-form=login]"); f.login.value = b.dataset.login; f.password.value = "demo1234"; f.requestSubmit(); return; }
   if (a === "menu") return menuSheet();
-  if (a === "logout") { closeSheet(); await api("logout"); ui.CARD = null; ui.ATT = null; ui.PF = null; ui.PFEDIT = false; location.hash = "#/home"; return; }
+  if (a === "logout") { closeSheet(); await api("logout"); ui.CARD = null; ui.ATT = null; ui.PF = null; ui.PFEDIT = false; window.location.replace("/auth"); return; }
   if (a === "tg") { ui.TG = b.dataset.g || ""; try { localStorage.setItem("ul_tg", ui.TG); } catch (x) {  } return render(); }
   if (a === "sday") { ui.schedDay = Number(b.dataset.d); return render(); }
   if (a === "kid") { ui.kidIdx = Number(b.dataset.i); try { localStorage.setItem("ul_kid", ui.kidIdx); } catch (x) {  } return render(); }
@@ -1951,18 +1968,18 @@ function progress(data) {
 }
 
 const SPRAVKA_KINDS = [
-  { id: "kasallik", name: "Kasallik (tibbiy ma'lumotnoma)" },
-  { id: "oilaviy", name: "Oilaviy sabab" },
-  { id: "tadbir", name: "Tadbir yoki musobaqa" },
-  { id: "boshqa", name: "Boshqa" },
+  { id: "kasallik", name: "Tibbiy ma'lumotnoma (spravka)" },
+  { id: "oilaviy", name: "To'y va oilaviy marosimlar" },
+  { id: "tadbir", name: "Universitet/Fakultet tadbiri va musobaqalar" },
+  { id: "boshqa", name: "Boshqa uzrli sabab" }
 ];
 const MAX_SPRAVKA_DAYS = 31;
 
 const DORM_REASONS = [
-  { id: "uzoq", name: "Uzoq viloyatdan" },
-  { id: "ijara", name: "Ijara qimmat yoki topilmadi" },
-  { id: "oilaviy", name: "Oilaviy sharoit" },
-  { id: "boshqa", name: "Boshqa" },
+  { id: "viloyat", name: "Viloyatga (uyga borish)" },
+  { id: "shahar", name: "Toshkent shahriga (qarindosh / tadbirga)" },
+  { id: "oilaviy", name: "Oilaviy sharoit / marosim" },
+  { id: "boshqa", name: "Boshqa asosli sabab" }
 ];
 
 const DORM_FLOW = ["ota-onada", "tyutorda", "tasdiqlandi"];
@@ -2122,7 +2139,7 @@ function hemisAbsenceCalc(db, logins) {
   const start = "2026-09-01";
   const marks = (db.att_marks || []).filter(m => m.status === "kelmadi" && m.date >= start && logins.includes(m.login));
   for (const m of marks) {
-    out[m.login] = (out[m.login] || 0) + 2; // 2 hours per pair
+    out[m.login] = (out[m.login] || 0) + 2;
   }
   return out;
 }
@@ -2593,6 +2610,7 @@ async function localApiHandler(action, data) {
   if (action === "logout") {
     try { localStorage.removeItem("riat_user"); } catch(e) {}
     setState(buildStateEngine(ldb, null));
+    window.location.replace("/auth");
     return { ok: true, msg: "Tizimdan chiqildi", state: S };
   }
   
